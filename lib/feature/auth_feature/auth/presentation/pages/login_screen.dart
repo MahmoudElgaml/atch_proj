@@ -25,6 +25,7 @@ class LoginScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 88, left: 36),
+
                   child: Image.asset(Assets.imagesBubbleText),
                 ),
                 Padding(
