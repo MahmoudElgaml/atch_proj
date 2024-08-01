@@ -1,9 +1,6 @@
 import 'package:atch_proj/generated/assets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/app_color.dart';
 import '../widgets/login_drawer.dart';
@@ -25,11 +22,10 @@ class LoginScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 88, left: 36),
-
                   child: Image.asset(Assets.imagesBubbleText),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 40),
+                  padding: const EdgeInsets.only(top: 40),
                   child: Image.asset(
                     Assets.imagesLogInPhoto,
                     fit: BoxFit.fill,

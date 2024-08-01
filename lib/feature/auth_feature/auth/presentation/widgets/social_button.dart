@@ -1,6 +1,4 @@
 import 'package:atch_proj/generated/assets.dart';
-import 'package:atch_proj/generated/assets.dart';
-import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
