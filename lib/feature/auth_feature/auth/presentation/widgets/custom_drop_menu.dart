@@ -11,7 +11,7 @@ class CustomDropMenu extends StatefulWidget {
 class _CustomDropMenuState extends State<CustomDropMenu> {
   final List<String> items = [
     'user',
-    'advertise',
+    'advertiser',
   ];
 
   String selectedValue = "user";
