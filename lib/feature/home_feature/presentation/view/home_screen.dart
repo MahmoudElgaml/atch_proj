@@ -27,6 +27,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Gap(13),
           PopularAds()
+
         ],
       ),
     );
