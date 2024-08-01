@@ -10,8 +10,8 @@ class APiManger {
 
   APiManger();
 
-  Future<Response> get(String endPoint) {
-    return dio.get(EndPoints.baseUrl + endPoint);
+  Future<Response> get(String endPoint,Map<String, dynamic> body) {
+    return dio.get(EndPoints.baseUrl + endPoint,data: body);
   }
 
   Future<Response> post(String endPoint, Map<String, dynamic> body) {

@@ -1,3 +1,5 @@
+import 'package:atch_proj/feature/auth_feature/auth/data/model/SignData.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +15,20 @@ import '../../../../../core/utils/app_style.dart';
 import 'coatume_button.dart';
 import 'costume_text_filed.dart';
 
-class SignUpDrawer extends StatelessWidget {
+class SignUpDrawer extends StatefulWidget {
   const SignUpDrawer({super.key});
+
+  @override
+  State<SignUpDrawer> createState() => _SignUpDrawerState();
+}
+
+class _SignUpDrawerState extends State<SignUpDrawer> {
+  TextEditingController name=TextEditingController();
+  TextEditingController username=TextEditingController();
+  TextEditingController age=TextEditingController();
+  TextEditingController password=TextEditingController();
+  TextEditingController email=TextEditingController();
+  String selectedValue="user";
 
   @override
   Widget build(BuildContext context) {
@@ -38,20 +52,36 @@ class SignUpDrawer extends StatelessWidget {
               Center(
                 child: Text(
                   "Sign Up",
-
                   style: AppStyle.style34(context),
                 ),
               ),
               const Gap(32),
-              const CostumeTextFiled(title: "Full Name"),
+              CostumeTextFiled(
+                title: "Full Name",
+                textEditingController: name,
+              ),
               const Gap(32),
-              const CostumeTextFiled(title: "Email"),
+              CostumeTextFiled(
+                title: "userName",
+                textEditingController: username,
+              ),
+              const Gap(32),
+              CostumeTextFiled(
+                title: "Email",
+                textEditingController: email,
+              ),
               const Gap(20),
-              const CostumeTextFiled(title: "Age"),
+              CostumeTextFiled(
+                title: "Age",
+                textEditingController: age,
+              ),
               const Gap(20),
-              const CostumeTextFiled(title: "Password"),
+              CostumeTextFiled(
+                title: "Password",
+                textEditingController: password,
+              ),
               const Gap(30),
-              CustomDropMenu(),
+              CustomDropMenu(selectedValue: selectedValue,),
               const Gap(25),
               Align(
                 alignment: Alignment.centerRight,
@@ -63,7 +93,17 @@ class SignUpDrawer extends StatelessWidget {
               const Gap(20),
               CostumeButton(
                 title: "SignUP",
-                onPressed: () => context.push(AppRoute.homeKey),
+                onPressed: () {
+                  SignData signData = SignData();
+                  signData.password = password.text;
+                  signData.username=username.text;
+                  signData.age = age.text;
+                  signData.email = email.text;
+                  signData.name = name.text;
+                  signData.role=selectedValue;
+                  AuthCubit.get(context).signIn(signData);
+                },
+                isLoading: false,
               ),
               const Gap(32),
               Center(
@@ -73,7 +113,7 @@ class SignUpDrawer extends StatelessWidget {
                 ),
               ),
               const Gap(28),
-              Center(child: const SocialButton()),
+              const Center(child: SocialButton()),
               const Gap(28),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -11,6 +11,7 @@ class AppStyle {
     );
   }
 
+
   static TextStyle styleRegularOpacity = TextStyle(
     color: Colors.black.withOpacity(.3),
     fontWeight: FontWeight.bold,
