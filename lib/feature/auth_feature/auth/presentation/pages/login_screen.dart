@@ -12,28 +12,26 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
+
         children: [
           Container(
-            color: AppColor.authColor,
+            color: Colors.white,
             height: double.infinity,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 88, left: 36),
-                  child: Image.asset(Assets.imagesBubbleText),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 40),
-                  child: Image.asset(
-                    Assets.imagesLogInPhoto,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ],
-            ),
-          ),
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.only(top:44.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                      width: 212,
+                      height: 197,
+                      child: Image.asset(Assets.imagesGLogo)),
+                ],
+              ),
+            )
+      ),
+
           const LogInDrawer(),
         ],
       ),

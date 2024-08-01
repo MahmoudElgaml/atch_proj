@@ -17,45 +17,23 @@ class SignUpScreen extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            color: AppColor.authColor,
-            height: double.infinity,
-            width: MediaQuery.sizeOf(context).width,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 88, left: 36),
-                  child: Column(
-                    children: [
-                      Image.asset(Assets.imagesBubbleTextSign),
-                      const Gap(16),
-                      DefaultTextStyle(
-                        style: const TextStyle(
-                          fontSize: 24,
-                        ),
-                        child: AnimatedTextKit(
-                          animatedTexts: [
-                            WavyAnimatedText('Getting Start!'),
-                          ],
-                          onTap: () {},
-                        ),
-                      )
-                    ],
-                  ),
+              color: Colors.white,
+              height: double.infinity,
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.only(top:44.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                        width: 212,
+                        height: 197,
+                        child: Image.asset(Assets.imagesGLogo)),
+                  ],
                 ),
-                FittedBox(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 40),
-                    child: Image.asset(
-                      Assets.imagesLogInPhoto,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              )
           ),
+
           const SignUpDrawer()
         ],
       ),

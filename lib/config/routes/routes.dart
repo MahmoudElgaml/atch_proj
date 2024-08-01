@@ -5,9 +5,6 @@ import 'package:atch_proj/feature/home_feature/presentation/view/home_screen.dar
 import 'package:go_router/go_router.dart';
 
 import '../../feature/splash_feature/presentation/view/splash_view.dart';
-
-
-
 class AppRoute {
   static const String splashKey = "/";
   static const String signInKey = "/signup";

@@ -1,3 +1,4 @@
+import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';
 
@@ -31,6 +32,7 @@ class LogInDrawer extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 30, left: 36, right: 36),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "Login",
@@ -40,7 +42,8 @@ class LogInDrawer extends StatelessWidget {
               const CostumeTextFiled(title: "Email"),
               const Gap(32),
               const CostumeTextFiled(title: "password"),
-              const Gap(20),
+              const Gap(30),
+              CustomDropMenu(),
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -57,12 +60,14 @@ class LogInDrawer extends StatelessWidget {
 
               ),
               const Gap(32),
-              Text(
-                style: AppStyle.styleRegularOpacity,
-                "or Log in With",
+              Center(
+                child: Text(
+                  style: AppStyle.styleRegularOpacity,
+                  "or Log in With",
+                ),
               ),
               const Gap(28),
-              const SocialButton(),
+              Center(child: const SocialButton()),
               const Gap(28),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -78,8 +83,10 @@ class LogInDrawer extends StatelessWidget {
                       style: TextStyle(color: AppColor.authColor),
                     ),
                   ),
+                  
                 ],
               ),
+              Gap(15)
             ],
           ),
         ),

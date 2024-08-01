@@ -1,3 +1,4 @@
+import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';
 
@@ -32,20 +33,26 @@ class SignUpDrawer extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 30, left: 36, right: 36),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Sign Up",
-                style: AppStyle.style34(context),
+              Center(
+                child: Text(
+                  "Sign Up",
+
+                  style: AppStyle.style34(context),
+                ),
               ),
               const Gap(32),
               const CostumeTextFiled(title: "Full Name"),
               const Gap(32),
-              const CostumeTextFiled(title: "Mobile Number"),
-              const Gap(20),
               const CostumeTextFiled(title: "Email"),
               const Gap(20),
-              const CostumeTextFiled(title: "Password"),
+              const CostumeTextFiled(title: "Age"),
               const Gap(20),
+              const CostumeTextFiled(title: "Password"),
+              const Gap(30),
+              CustomDropMenu(),
+              const Gap(25),
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -59,12 +66,14 @@ class SignUpDrawer extends StatelessWidget {
                 onPressed: () => context.push(AppRoute.homeKey),
               ),
               const Gap(32),
-              Text(
-                style: AppStyle.styleRegularOpacity,
-                "or Sign Un With",
+              Center(
+                child: Text(
+                  style: AppStyle.styleRegularOpacity,
+                  "or Sign Un With",
+                ),
               ),
               const Gap(28),
-              const SocialButton(),
+              Center(child: const SocialButton()),
               const Gap(28),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

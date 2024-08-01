@@ -36,7 +36,8 @@ dependencies:
   injectable: ^2.4.4
   get_it: ^7.7.0
   dartz: ^0.10.1
-
+  dropdown_button2: ^2.3.9
+  
   gap: ^3.0.1
   flutter_animate: ^4.5.0
   animated_text_kit: ^4.2.2
