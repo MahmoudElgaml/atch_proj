@@ -12,7 +12,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 35,horizontal: 20),
-      height: MediaQuery.of(context).size.height * .25,
+      height: MediaQuery.of(context).size.height * .22,
       decoration:const BoxDecoration(
           color: AppColor.appBarColor,
           borderRadius: BorderRadius.only(
