@@ -15,20 +15,25 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       drawer: Drawer(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              CustomAppBar(),
-            ],
-          ),
-          Gap(13),
-          PopularAds()
-
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                CustomAppBar(),
+              ],
+            ),
+            Gap(13),
+            Column(
+              children: [
+                PopularAds(),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
