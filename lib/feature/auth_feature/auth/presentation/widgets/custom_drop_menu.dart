@@ -2,10 +2,11 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropMenu extends StatefulWidget {
-  CustomDropMenu({super.key});
+  CustomDropMenu({super.key,required this.selectedValue});
 
   @override
   State<CustomDropMenu> createState() => _CustomDropMenuState();
+  String selectedValue;
 }
 
 class _CustomDropMenuState extends State<CustomDropMenu> {
@@ -14,7 +15,7 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
     'advertiser',
   ];
 
-  String selectedValue = "user";
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
       child: DropdownButton2(
         isExpanded: true,
         hint: Text(
-          selectedValue,
+          widget.selectedValue,
           style: TextStyle(
             fontSize: 20,
             color: Theme.of(context).hintColor,
@@ -39,10 +40,10 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
                   ),
                 ))
             .toList(),
-        value: selectedValue,
+        value: widget.selectedValue,
         onChanged: (String? value) {
           setState(() {
-            selectedValue = value ?? "user";
+            widget.selectedValue = value ?? "user";
           });
         },
         buttonStyleData:  ButtonStyleData(

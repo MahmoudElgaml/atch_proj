@@ -37,12 +37,18 @@ dependencies:
   get_it: ^7.7.0
   dartz: ^0.10.1
   dropdown_button2: ^2.3.9
+
   font_awesome_flutter: ^10.2.1
   
+=======
+
+
   gap: ^3.0.1
   flutter_animate: ^4.5.0
   animated_text_kit: ^4.2.2
   google_fonts: ^6.2.1
+  flutter_bloc: ^8.1.6
+  bloc: ^8.1.4
 
 
 
