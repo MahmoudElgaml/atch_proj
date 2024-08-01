@@ -12,6 +12,16 @@ class AppStyle {
   }
 
 
+  static TextStyle style13(BuildContext context) {
+    return TextStyle(
+      color: Colors.white,
+      fontSize: responsiveFont(fontSize: 13, context: context),
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+
+
   static TextStyle styleRegularOpacity = TextStyle(
     color: Colors.black.withOpacity(.3),
     fontWeight: FontWeight.bold,
