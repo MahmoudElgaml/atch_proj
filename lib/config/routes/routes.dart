@@ -24,6 +24,7 @@ class AppRoute {
         path: signInKey,
         builder: (context, state) => const SignUpScreen(),
       ),
+
       GoRoute(
         path: logInKey,
         builder: (context, state) => const LoginScreen() ,
