@@ -23,7 +23,6 @@ class HomeScreen extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             children: [
               CustomAppBar(),
-              TabsAppBar(),
             ],
           ),
           Gap(13),

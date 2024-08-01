@@ -23,7 +23,7 @@ class _TabsAppBarState extends State<TabsAppBar> {
               },
               isScrollable: true,
               indicatorColor: Colors.transparent,
-              tabs: [
+              tabs: const [
                 Tab(icon: Icon(Icons.directions_car)),
                 Tab(icon: Icon(Icons.directions_transit)),
                 Tab(icon: Icon(Icons.directions_bike)),
