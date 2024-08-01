@@ -1,7 +1,5 @@
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/social_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -10,9 +8,7 @@ import '../../../../../config/routes/routes.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_string.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../pages/login_screen.dart';
 import 'coatume_button.dart';
-import 'costume_avatar.dart';
 import 'costume_text_filed.dart';
 
 class LogInDrawer extends StatelessWidget {

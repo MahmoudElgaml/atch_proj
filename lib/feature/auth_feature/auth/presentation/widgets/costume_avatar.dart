@@ -9,7 +9,7 @@ class CostumeAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 23,vertical: 23),
+      padding: const EdgeInsets.symmetric(horizontal: 23,vertical: 23),
       decoration: BoxDecoration(
           border: Border.all(
               color: Colors.grey.shade300
