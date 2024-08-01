@@ -11,13 +11,15 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 35,horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 20),
       height: MediaQuery.of(context).size.height * .22,
-      decoration:const BoxDecoration(
-          color: AppColor.appBarColor,
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(33),
-              bottomRight: Radius.circular(33))),
+      decoration: const BoxDecoration(
+        color: AppColor.appBarColor,
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(33),
+          bottomRight: Radius.circular(33),
+        ),
+      ),
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

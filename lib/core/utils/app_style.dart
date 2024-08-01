@@ -20,6 +20,24 @@ class AppStyle {
     );
   }
 
+  static TextStyle style26(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: responsiveFont(fontSize: 26, context: context),
+      fontWeight: FontWeight.w400,
+
+    );
+  }
+  static TextStyle style18(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: responsiveFont(fontSize: 18 , context: context),
+      fontWeight: FontWeight.bold,
+
+    );
+  }
+
+
 
 
   static TextStyle styleRegularOpacity = TextStyle(

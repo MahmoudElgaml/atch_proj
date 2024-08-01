@@ -8,6 +8,9 @@ class Assets {
   static const String imagesFacebook = 'assets/images/facebook.png';
   static const String imagesGLogo = 'assets/images/g_logo.png';
   static const String imagesGoogle = 'assets/images/google.png';
+  static const String imagesImageTest = 'assets/images/image_test.png';
+  static const String imagesListIcon = 'assets/images/list_icon.png';
   static const String imagesLogInPhoto = 'assets/images/log_in_photo.png';
+  static const String imagesNotification = 'assets/images/notification.png';
 
 }
