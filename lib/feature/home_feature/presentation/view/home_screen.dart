@@ -1,3 +1,5 @@
+import 'package:atch_proj/feature/home_feature/presentation/view/widgets/custom_app_bar.dart';
+import 'package:atch_proj/feature/home_feature/presentation/view/widgets/tabs_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -5,10 +7,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: const Text("home"),
+    return const Scaffold(
+      drawer: Drawer(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Stack(
+              alignment: Alignment.bottomCenter,
+              children: [CustomAppBar(), TabsAppBar()]),
+        ],
       ),
     );
   }
