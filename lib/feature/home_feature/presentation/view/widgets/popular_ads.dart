@@ -21,7 +21,7 @@ class PopularAds extends StatelessWidget {
           SizedBox(
             height: 250,
             child: ListView.separated(
-              separatorBuilder: (context, index) => Gap(10),
+              separatorBuilder: (context, index) => const Gap(10),
               itemBuilder: (context, index) => const PopularItem(),
               itemCount: 20,
               scrollDirection: Axis.horizontal,

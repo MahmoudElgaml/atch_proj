@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  const Scaffold(
       drawer: Drawer(),
       body: SingleChildScrollView(
         child: Column(
@@ -21,9 +21,17 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Stack(
+              clipBehavior:  Clip.none,
               alignment: Alignment.bottomCenter,
               children: [
                 CustomAppBar(),
+                Positioned(
+                  top:  150,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal:100),
+                    child: TabsAppBar(),
+                  ),
+                ),
               ],
             ),
             Gap(13),
