@@ -9,7 +9,7 @@ class CustomTap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
+
       decoration: BoxDecoration(
         color: categories.color,
         borderRadius: BorderRadius.circular(21),

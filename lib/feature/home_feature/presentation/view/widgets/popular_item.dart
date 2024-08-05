@@ -4,8 +4,8 @@ import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class PopularItem extends StatelessWidget {
-  const PopularItem({super.key});
+class  AdsItem extends StatelessWidget {
+  const AdsItem({super.key});
 
   @override
   Widget build(BuildContext context) {
