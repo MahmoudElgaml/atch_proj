@@ -1,50 +1,23 @@
 
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
-import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/all_campain.dart';
+import 'package:atch_proj/feature/home_feature/presentation/widgets/all_campain.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/bottom_navi_bar.dart';
-import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/custom_app_bar.dart';
-import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/popular_ads.dart';
-import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/tabs_app_bar.dart';
+import 'package:atch_proj/feature/home_feature/presentation/widgets/custom_app_bar.dart';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+import '../../../home_feature/presentation/view/home_screen.dart';
+
+class HomeScreenLayout extends StatelessWidget {
+  const HomeScreenLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
     return  const Scaffold(
       drawer: Drawer(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Stack(
-            clipBehavior: Clip.none,
-            alignment: Alignment.bottomCenter,
-            children: [
-              CustomAppBar(),
-              Positioned(
-                top: 150,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 100),
-                  child: TabsAppBar(),
-                ),
-              ),
-            ],
-          ),
-          Gap(17),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [PopularAds(), Gap(17), AllAds(), Gap(20)],
-              ),
-            ),
-          )
-        ],
-      ),
+      body:HomeScreen(),
       bottomNavigationBar: BottomNaviBar()
     );
   }
