@@ -1,10 +1,12 @@
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_images.dart';
-import 'package:atch_proj/feature/home_feature/presentation/view/widgets/first_sction_app_bar.dart';
+
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/search_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
+import 'first_sction_app_bar.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});

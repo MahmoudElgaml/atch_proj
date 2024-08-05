@@ -1,6 +1,8 @@
 import 'package:atch_proj/core/utils/models/categories.dart';
-import 'package:atch_proj/feature/home_feature/presentation/view/widgets/custom_tap.dart';
+
 import 'package:flutter/material.dart';
+
+import 'custom_tap.dart';
 
 class TabsAppBar extends StatefulWidget {
   const TabsAppBar({super.key});

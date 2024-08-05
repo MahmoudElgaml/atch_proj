@@ -1,9 +1,10 @@
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_screen.dart';
-import 'package:atch_proj/feature/home_feature/presentation/view/home_screen.dart';
+
 
 import 'package:go_router/go_router.dart';
 
+import '../../feature/home_layout_feature/presentation/view/home_screen.dart';
 import '../../feature/splash_feature/presentation/view/splash_view.dart';
 class AppRoute {
   static const String splashKey = "/";

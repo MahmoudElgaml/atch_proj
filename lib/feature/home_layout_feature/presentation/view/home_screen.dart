@@ -1,10 +1,10 @@
-import 'package:atch_proj/feature/home_feature/presentation/view/widgets/all_campain.dart';
-import 'package:atch_proj/feature/home_feature/presentation/view/widgets/bottom_navi_bar.dart';
-import 'package:atch_proj/feature/home_feature/presentation/view/widgets/custom_app_bar.dart';
-import 'package:atch_proj/feature/home_feature/presentation/view/widgets/popular_ads.dart';
-import 'package:atch_proj/feature/home_feature/presentation/view/widgets/tabs_app_bar.dart';
 
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
+import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/all_campain.dart';
+import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/bottom_navi_bar.dart';
+import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/custom_app_bar.dart';
+import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/popular_ads.dart';
+import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/tabs_app_bar.dart';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-
+      bottomNavigationBar: BottomNaviBar()
     );
   }
 }
