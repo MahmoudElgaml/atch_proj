@@ -16,6 +16,8 @@ import '../../../feature/auth_feature/auth/data/repo/auth_repo_impl.dart'
     as _i188;
 import '../../../feature/auth_feature/auth/presentation/manger/auth_cubit.dart'
     as _i1035;
+import '../../../feature/home_layout_feature/presentation/manager/home_layout_cubit.dart'
+    as _i637;
 import '../../api/api_manger.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -29,6 +31,7 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    gh.factory<_i637.HomeLayoutCubit>(() => _i637.HomeLayoutCubit());
     gh.singleton<_i254.APiManger>(() => _i254.APiManger());
     gh.factory<_i283.AuthRepo>(() => _i188.AuthRepoImpl(gh<_i254.APiManger>()));
     gh.singleton<_i1035.AuthCubit>(

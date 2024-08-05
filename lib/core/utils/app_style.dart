@@ -36,6 +36,15 @@ class AppStyle {
 
     );
   }
+  static TextStyle style18ExtraBold(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontFamily: "AbhayaLibre",
+      fontSize: responsiveFont(fontSize: 18 , context: context),
+      fontWeight: FontWeight.w900,
+
+    );
+  }
 
 
 

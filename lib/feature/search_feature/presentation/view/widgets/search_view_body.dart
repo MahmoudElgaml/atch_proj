@@ -6,10 +6,13 @@ class SearchViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        SearchTextField()
-      ],
+    return Container(
+      color: Colors.red,
+      child: const Column(
+        children: [
+          SearchTextField()
+        ],
+      ),
     );
   }
 }

@@ -1,15 +1,30 @@
+import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_layout_cubit.dart';
 import 'package:flutter/material.dart';
 
-class BottomNaviBar extends StatelessWidget {
+class BottomNaviBar extends StatefulWidget {
   const BottomNaviBar({super.key});
+
+  @override
+  State<BottomNaviBar> createState() => _BottomNaviBarState();
+}
+
+class _BottomNaviBarState extends State<BottomNaviBar> {
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      unselectedLabelStyle: const TextStyle(fontSize: 14,),
+      currentIndex: selectedIndex,
+      onTap: (value) {
+        HomeLayoutCubit.get(context).viewTap(value);
+        setState(() {
+          selectedIndex = value;
+        });
+      },
+      unselectedLabelStyle: const TextStyle(fontSize: 14),
       showUnselectedLabels: true,
-      unselectedItemColor: Color(0xff72757E),
-      selectedItemColor: Color(0xff5669FF),
+      unselectedItemColor: const Color(0xff72757E),
+      selectedItemColor: const Color(0xff5669FF),
       showSelectedLabels: true,
       items: const [
         BottomNavigationBarItem(
