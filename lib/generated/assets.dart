@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String fontsAbhayaLibreExtraBold = 'assets/fonts/AbhayaLibre-ExtraBold.ttf';
   static const String imagesApple = 'assets/images/apple.png';
   static const String imagesBubbleText = 'assets/images/bubble_text.png';
   static const String imagesBubbleTextSign = 'assets/images/bubble_text_sign.png';
@@ -12,5 +13,7 @@ class Assets {
   static const String imagesListIcon = 'assets/images/list_icon.png';
   static const String imagesLogInPhoto = 'assets/images/log_in_photo.png';
   static const String imagesNotification = 'assets/images/notification.png';
+  static const String imagesSearchImageTest = 'assets/images/search_image_test.png';
+  static const String imagesTestImageProfile = 'assets/images/test_image_profile.png';
 
 }

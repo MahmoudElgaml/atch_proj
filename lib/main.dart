@@ -30,6 +30,10 @@ class MyApp extends StatelessWidget {
       create: (context) =>getIt<AuthCubit>() ,
       child: MaterialApp.router(
         theme: ThemeData(
+
+           iconTheme: IconThemeData(
+             color: Colors.black
+           ),
           primarySwatch: Colors.blue,
         ),
         useInheritedMediaQuery: true,

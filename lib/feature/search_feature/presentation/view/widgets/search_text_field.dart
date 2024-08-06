@@ -1,3 +1,4 @@
+import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,7 +14,7 @@ class SearchTextField extends StatelessWidget {
         focusedBorder: buildOutlineInputBorder(),
         hintText: 'Search',
         hintStyle: AppStyle.style13(context).copyWith(
-          fontSize: 15,color: Colors.white.withOpacity(.3)
+          fontSize: 15,color: Colors.grey.withOpacity(.3)
         ),
         prefixIcon: IconButton(
           padding: EdgeInsets.zero,
@@ -23,7 +24,7 @@ class SearchTextField extends StatelessWidget {
             child: Icon(
               FontAwesomeIcons.magnifyingGlass,
               size: 22,
-              color: Colors.white,
+              color: AppColor.primaryColor,
             ),
           ),
         ),
