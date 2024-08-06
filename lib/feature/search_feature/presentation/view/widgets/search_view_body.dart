@@ -1,3 +1,4 @@
+import 'package:atch_proj/feature/search_feature/presentation/view/widgets/filter_button.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/search_item.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/search_text_field.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,13 @@ class SearchViewBody extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
-            SearchTextField(),
+            Row(
+              children: [
+                Expanded(child: SearchTextField()),
+                Gap(10),
+                FilterButton()
+              ],
+            ),
             Gap(20),
             SearchItem()
           ],
