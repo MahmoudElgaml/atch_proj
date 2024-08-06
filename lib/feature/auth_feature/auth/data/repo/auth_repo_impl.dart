@@ -32,7 +32,7 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<Failure, UserData>> logIn(
       {required String email,required  String password,required String role}) async {
     try {
-     var response=   await aPiManger.get(EndPoints.logIn, {"email": email, "password": password,"role":role});
+     var response=   await aPiManger.get(EndPoints.logIn,body:  {"email": email, "password": password,"role":role});
 
      UserData userData=UserData.fromJson(response.data);
       return right(userData);
