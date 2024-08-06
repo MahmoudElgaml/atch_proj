@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -33,7 +33,12 @@ class HomeScreen extends StatelessWidget {
         Expanded(
           child: SingleChildScrollView(
             child: Column(
-              children: [PopularAds(), Gap(17), AllAds(), Gap(20)],
+              children: [
+                PopularAds(),
+                Gap(17),
+                AllAds(),
+                Gap(20),
+              ],
             ),
           ),
         )

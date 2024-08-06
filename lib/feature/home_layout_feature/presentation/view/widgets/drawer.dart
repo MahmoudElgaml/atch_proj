@@ -40,14 +40,16 @@ class HomeDrawer extends StatelessWidget {
             Column(
               children: items
                   .map(
-                    (e) => DrawerItem(
+                    (e) =>
+                    DrawerItem(
                       drawerItemModel: e,
                     ),
-                  )
+              )
                   .toList(),
             ),
-            Gap(164),
-            DrawerItem(drawerItemModel: DrawerItemModel("Sign Out",Icons.login))
+            const Gap(164),
+            DrawerItem(
+                drawerItemModel: DrawerItemModel("Sign Out", Icons.login))
           ],
         ),
       ),
