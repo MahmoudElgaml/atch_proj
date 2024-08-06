@@ -8,20 +8,31 @@ abstract class HomeLayoutState {
 
 class HomeState extends HomeLayoutState {
   @override
-  Widget viewTap()=>const HomeScreen();
+  Widget viewTap() =>
+      MultiBlocProvider(
+        providers: [
+
+          BlocProvider(
+            create: (context) => getIt<GetPopularCampaignCubit>()..getPopularCampaign(),
+          ),
+        ],
+        child: const HomeScreen(),
+      );
 }
 
 class SearchState extends HomeLayoutState {
   @override
-  Widget viewTap()=>const SearchView();
+  Widget viewTap() => const SearchView();
 }
+
 class WishListState extends HomeLayoutState {
   @override
-  Widget viewTap() =>const WishlistScreen();
+  Widget viewTap() => const WishlistScreen();
 
 }
+
 class AccountState extends HomeLayoutState {
   @override
-  Widget viewTap() =>const AccountScreen();
+  Widget viewTap() => const AccountScreen();
 
 }

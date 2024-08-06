@@ -1,11 +1,16 @@
+import 'dart:ui';
+
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/components/save_button.dart';
+import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class  AdsItem extends StatelessWidget {
-  const AdsItem({super.key});
+class AdsItem extends StatelessWidget {
+  const AdsItem({super.key, this.campaigns});
+
+  final Campaigns? campaigns;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +33,12 @@ class  AdsItem extends StatelessWidget {
               ),
               const Gap(14),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(7.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "فراشة الحج اشرف بتحييكو",
+                      campaigns?.campaignName ?? "",
                       style: AppStyle.style18(context),
                     ),
                     const Gap(12),
@@ -50,6 +56,19 @@ class  AdsItem extends StatelessWidget {
                         ),
                       ],
                     ),
+                    Row(
+                      children: [
+                        const Gap(10),
+                        Text(campaigns?.offer.toString() ?? ""),
+                        const Gap(20),
+                        Text(
+                          campaigns?.price.toString() ?? "",
+                          style: const TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                          ),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),
