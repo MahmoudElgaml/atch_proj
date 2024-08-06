@@ -13,6 +13,7 @@ class Assets {
   static const String imagesListIcon = 'assets/images/list_icon.png';
   static const String imagesLogInPhoto = 'assets/images/log_in_photo.png';
   static const String imagesNotification = 'assets/images/notification.png';
+  static const String imagesSearchImageTest = 'assets/images/search_image_test.png';
   static const String imagesTestImageProfile = 'assets/images/test_image_profile.png';
 
 }

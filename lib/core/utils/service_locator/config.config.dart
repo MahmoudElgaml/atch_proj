@@ -18,6 +18,8 @@ import '../../../feature/auth_feature/auth/presentation/manger/auth_cubit.dart'
     as _i1035;
 import '../../../feature/home_feature/data/repo/home_repo.dart' as _i651;
 import '../../../feature/home_feature/data/repo/home_repo_impl.dart' as _i766;
+import '../../../feature/home_feature/presentation/manager/get_normal_campagin_cubit.dart'
+    as _i369;
 import '../../../feature/home_feature/presentation/manager/get_popular_campaign_cubit.dart'
     as _i401;
 import '../../../feature/home_layout_feature/presentation/manager/home_layout_cubit.dart'
@@ -43,6 +45,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1035.AuthCubit(gh<_i283.AuthRepo>()));
     gh.factory<_i401.GetPopularCampaignCubit>(
         () => _i401.GetPopularCampaignCubit(gh<_i651.HomeRepo>()));
+    gh.factory<_i369.GetNormalCampaginCubit>(
+        () => _i369.GetNormalCampaginCubit(gh<_i651.HomeRepo>()));
     return this;
   }
 }

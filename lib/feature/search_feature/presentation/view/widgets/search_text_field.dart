@@ -21,6 +21,7 @@ class SearchTextField extends StatelessWidget {
           icon: const Opacity(
             opacity: .8,
             child: Icon(
+
               FontAwesomeIcons.magnifyingGlass,
               size: 22,
               color: Colors.white,
