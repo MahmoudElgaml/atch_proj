@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class AdDetailsWidget extends StatelessWidget {
-  AdDetailsWidget(this.image,this.firstText,this.SecondText);
+  AdDetailsWidget(this.image,this.firstText,this.SecondText, {super.key});
 
   String image;
   String firstText;
@@ -15,12 +15,12 @@ class AdDetailsWidget extends StatelessWidget {
       child: Row(
         children: [
           Image.asset(image,width: 48,),
-          Gap(20),
+          const Gap(20),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(firstText),
-              Gap(5),
+              const Gap(5),
               Text(SecondText)
             ],
           )

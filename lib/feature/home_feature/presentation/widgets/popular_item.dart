@@ -17,7 +17,7 @@ class AdsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        GoRouter.of(context).push(AppRoute.adDetails);
+        GoRouter.of(context).push(AppRoute.adDetails,extra: campaigns);
       },
       child: Container(
         decoration: BoxDecoration(

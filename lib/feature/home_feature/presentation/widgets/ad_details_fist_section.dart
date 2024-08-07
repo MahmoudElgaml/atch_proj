@@ -1,11 +1,14 @@
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 class AdDetailsFistSection extends StatelessWidget {
-  const AdDetailsFistSection({super.key});
+
+  AdDetailsFistSection({super.key,required this.campaign});
+  Campaigns campaign;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class AdDetailsFistSection extends StatelessWidget {
                 IconButton(onPressed: (){
                   GoRouter.of(context).pop();
                 }, icon:const Icon(Icons.arrow_back,color: Colors.white,)),
-                Gap(20),
+                const Gap(20),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 38.0),
                   child: Text("AD Details",style: AppStyle.style34(context).copyWith(
@@ -29,7 +32,7 @@ class AdDetailsFistSection extends StatelessWidget {
                       fontWeight: FontWeight.w400
                   ),),
                 ),
-                Gap(110),
+                const Gap(110),
                 Image.asset(
                     Assets.imagesFavicon
                 )
@@ -41,4 +44,6 @@ class AdDetailsFistSection extends StatelessWidget {
           ),
         ]);
   }
+
+
 }
