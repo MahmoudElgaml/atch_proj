@@ -34,6 +34,6 @@ class _TabsAppBarState extends State<TabsAppBar> {
               tabs: category.map((e) => CustomTap(categories: e),).toList()
             ))
       ],
-    );;
+    );
   }
 }

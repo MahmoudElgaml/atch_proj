@@ -31,7 +31,7 @@ class HomeDrawer extends StatelessWidget {
                     fit: BoxFit.fill,
                   )),
             ),
-            Gap(12),
+            const Gap(12),
             Text(
               "Ashfak Sayem",
               style: AppStyle.style18ExtraBold(context),

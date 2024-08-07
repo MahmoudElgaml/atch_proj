@@ -9,8 +9,8 @@ class SearchViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: const Padding(
+    return const SafeArea(
+      child: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [

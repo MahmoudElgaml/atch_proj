@@ -6,4 +6,5 @@ class EndPoints{
   static const getPopularCampaign="/home/popularCampaigns";
   static const getNormalCampaign="/home/normalCampaigns";
 
+
 }

@@ -5,11 +5,9 @@ import 'package:atch_proj/feature/home_feature/presentation/manager/get_popular_
 import 'package:atch_proj/feature/home_feature/presentation/view/home_screen.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/search_view.dart';
 import 'package:atch_proj/feature/wishlist_feature/presentation/view/wishListScreen.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 part 'home_layout_state.dart';
 @injectable

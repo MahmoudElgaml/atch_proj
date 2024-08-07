@@ -8,7 +8,7 @@ class WishlistScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("wishlist"),
+        title: const Text("wishlist"),
       ),
     );
   }

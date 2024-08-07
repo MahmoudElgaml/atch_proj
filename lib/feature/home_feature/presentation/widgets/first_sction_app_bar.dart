@@ -1,6 +1,5 @@
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/app_images.dart';
 

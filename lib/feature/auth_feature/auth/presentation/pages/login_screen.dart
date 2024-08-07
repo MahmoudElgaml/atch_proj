@@ -2,7 +2,6 @@ import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 
 
-import '../../../../../core/utils/app_color.dart';
 import '../widgets/login_drawer.dart';
 
 class LoginScreen extends StatelessWidget {

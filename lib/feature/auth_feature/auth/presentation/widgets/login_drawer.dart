@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:injectable/injectable.dart';
 
 import '../../../../../config/routes/routes.dart';
 import '../../../../../core/utils/app_color.dart';

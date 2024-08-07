@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         theme: ThemeData(
 
-           iconTheme: IconThemeData(
+           iconTheme: const IconThemeData(
              color: Colors.black
            ),
           primarySwatch: Colors.blue,

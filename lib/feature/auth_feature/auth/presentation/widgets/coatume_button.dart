@@ -49,7 +49,7 @@ class CostumeButton extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             } else if (state is AuthFailState) {
               print(state.message.toString());
-              return Center(child: Text(state.message,style: TextStyle(color: Colors.white),));
+              return Center(child: Text(state.message,style: const TextStyle(color: Colors.white),));
             }
             return Text(
               title,

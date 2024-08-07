@@ -15,7 +15,7 @@ class SearchItem extends StatelessWidget {
       color: Colors.white24,
       shape: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: Colors.transparent)),
+          borderSide: const BorderSide(color: Colors.transparent)),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(

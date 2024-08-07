@@ -1,11 +1,8 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:atch_proj/generated/assets.dart';
 
 import 'package:flutter/material.dart';
 
-import 'package:gap/gap.dart';
 
-import '../../../../../core/utils/app_color.dart';
 import '../widgets/signup_drawer.dart';
 
 class SignUpScreen extends StatelessWidget {

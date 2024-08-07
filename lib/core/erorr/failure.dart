@@ -17,7 +17,7 @@ class ServerFailure extends Failure {
       case DioExceptionType.sendTimeout:
         return ServerFailure("send Timeout");
       case DioExceptionType.receiveTimeout:
-        return ServerFailure("recive Timeout");
+        return ServerFailure("receive Timeout");
       case DioExceptionType.badCertificate:
         return ServerFailure("connection Timeout");
       case DioExceptionType.badResponse:
@@ -31,10 +31,10 @@ class ServerFailure extends Failure {
         if (dioException.message!.contains("SocketException")) {
           return ServerFailure("error in internet");
         } else {
-          return ServerFailure("opps there something went wrong");
+          return ServerFailure("Opps there something went wrong");
         }
       default:
-        return ServerFailure("opps there something went wrong");
+        return ServerFailure("Opps there something went wrong");
     }
   }
 
@@ -49,7 +49,7 @@ class ServerFailure extends Failure {
       return ServerFailure("internal server error, please try later",
           statusCode: statusCode.toString());
     } else {
-      return ServerFailure("opps try again latter",
+      return ServerFailure("Opps try again latter",
           statusCode: statusCode.toString());
     }
   }

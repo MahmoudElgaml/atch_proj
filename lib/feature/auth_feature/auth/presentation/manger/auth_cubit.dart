@@ -1,7 +1,6 @@
 import 'package:atch_proj/feature/auth_feature/auth/data/model/SignData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/repo/auth_repo.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';

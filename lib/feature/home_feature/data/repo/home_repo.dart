@@ -6,6 +6,6 @@ abstract class HomeRepo{
 
 Future<Either<Failure,CampaignModel>>  getPopularCampaign();
 Future<Either<Failure,CampaignModel>>  getNormalCampaign();
-
+Future<Either<Failure, CampaignModel>> getAdDetails();
 
 }
