@@ -21,11 +21,15 @@ class AdsItem extends StatelessWidget {
       onTap: () {
         GoRouter.of(context).push(AppRoute.adDetails, extra: campaigns);
       },
-      child: Container(
-        decoration: BoxDecoration(
+      child: Card(
+        borderOnForeground: true,
+        shadowColor: Colors.black26,
+        color: Colors.white,
+        elevation: 20,
+        shape: OutlineInputBorder(
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(
-            color: const Color(0xff8c8c8c),
+          borderSide: const BorderSide(
+            color: Color(0xff8c8c8c),
           ),
         ),
         child: Stack(
