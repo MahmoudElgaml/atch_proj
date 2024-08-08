@@ -33,7 +33,7 @@ class AdDetailsSection extends StatelessWidget {
         AdDetailsWidget(
             Assets.imagesLocation, "Gala Convention Center", "36 Faisal st"),
         const Gap(25),
-        AdDetailsWidget(Assets.imagesProfileTest, "Ashfak Sayem", "Organizer"),
+        AdDetailsWidget(Assets.imagesProfileTestImage, "Ashfak Sayem", "Organizer"),
         const Gap(200),
         const AdDetailsButton()
       ],

@@ -34,7 +34,7 @@ class AdDetailsFistSection extends StatelessWidget {
                 ),
                 const Gap(110),
                 Image.asset(
-                    Assets.imagesFavicon
+                    Assets.imagesFavIcon
                 )
               ],
             ),
