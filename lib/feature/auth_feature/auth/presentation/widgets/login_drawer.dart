@@ -21,9 +21,9 @@ class LogInDrawer extends StatefulWidget {
 }
 
 class _LogInDrawerState extends State<LogInDrawer> {
- TextEditingController email=TextEditingController();
- TextEditingController password=TextEditingController();
- String selectedValue="user";
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  String selectedValue = "user";
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +49,19 @@ class _LogInDrawerState extends State<LogInDrawer> {
                 style: AppStyle.style34(context),
               ),
               const Gap(32),
-              CostumeTextFiled(title: "Email", textEditingController: email,),
+              CostumeTextFiled(
+                title: "Email",
+                textEditingController: email,
+              ),
               const Gap(32),
-               CostumeTextFiled(title: "password",textEditingController: password,),
+              CostumeTextFiled(
+                title: "password",
+                textEditingController: password,
+              ),
               const Gap(30),
-              CustomDropMenu(selectedValue: selectedValue,),
+              CustomDropMenu(
+                selectedValue: selectedValue,
+              ),
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -62,44 +70,60 @@ class _LogInDrawerState extends State<LogInDrawer> {
                 ),
               ),
               const Gap(20),
-             CostumeButton(
+              CostumeButton(
                 title: 'Login',
                 isLoading: true,
                 onPressed: () {
-                  AuthCubit.get(context).logIn(email.text, password.text,selectedValue);
-
+                  AuthCubit.get(context)
+                      .logIn(email.text, password.text, selectedValue);
                 },
-
               ),
               const Gap(32),
               Center(
                 child: Text(
                   style: AppStyle.styleRegularOpacity,
-
                   "or Log in With",
                 ),
               ),
               const Gap(28),
               const Center(child: SocialButton()),
               const Gap(28),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     style: AppStyle.styleRegularOpacity,
                     "NewUser? ",
                   ),
-                  InkWell(
-                    onTap: () => context.go(AppRoute.test),
-                    child: const Text(
-                      "Create Account",
-                      style: TextStyle(color: AppColor.authColor),
-                    ),
+                  const Gap(10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Create Account",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      TextButton(
+                        onPressed: () => context.go(AppRoute.signUpAsAdvertise),
+                        child: const Text(
+                          "Advertise",
+                          style: TextStyle(color: AppColor.authColor),
+                        ),
+                      ),
+                      const Text("or"),
+                      TextButton(
+                        onPressed: () => context.go(AppRoute.signInKey),
+                        child: const Text(
+                          "User",
+                          style: TextStyle(color: AppColor.authColor),
+                        ),
+                      ),
+                    ],
                   ),
-
+                  const Gap(15)
                 ],
-              ),
-              const Gap(15)
+              )
             ],
           ),
         ),

@@ -2,6 +2,7 @@ import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/test_upload_image.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/sign_up_advertise.dart';
 import 'package:atch_proj/feature/home_feature/presentation/widgets/ad_details_screen.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_layout_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +18,7 @@ class AppRoute {
   static const String logInKey = "/";
   static const String homeKey = "/home";
   static const String adDetails="/adDetails";
-  static const String test="/test";
+  static const String signUpAsAdvertise="/advertise";
 
   static final router = GoRouter(
     routes: [
@@ -45,8 +46,8 @@ class AppRoute {
         builder: (context, state) => const AdDetailsScreen() ,
       ),
       GoRoute(
-        path: test,
-        builder: (context, state) => const TestUploadImage() ,
+        path: signUpAsAdvertise,
+        builder: (context, state) => const SignUpAdvertise() ,
       ),
     ],
   );
