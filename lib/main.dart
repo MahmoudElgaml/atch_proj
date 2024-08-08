@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       create: (context) =>getIt<AuthCubit>() ,
       child: MaterialApp.router(
         theme: ThemeData(
-
+            scaffoldBackgroundColor: Colors.white,
            iconTheme: const IconThemeData(
              color: Colors.black
            ),

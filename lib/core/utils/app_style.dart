@@ -5,6 +5,7 @@ import 'app_color.dart';
 class AppStyle {
   static TextStyle style34(BuildContext context) {
     return TextStyle(
+      fontFamily: "AbhayaLibre",
       color: AppColor.authColor,
       fontSize: responsiveFont(fontSize: 34, context: context),
       fontWeight: FontWeight.bold,

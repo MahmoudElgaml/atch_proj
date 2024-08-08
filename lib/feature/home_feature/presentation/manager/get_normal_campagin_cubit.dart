@@ -23,6 +23,7 @@ class GetNormalCampaginCubit extends Cubit<GetNormalCampaginState> {
       },
           (success) {
         popularCampaign=success.campaigns??[];
+
         emit(GetNormalCampaginSuccessState());
 
 

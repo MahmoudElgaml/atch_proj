@@ -10,20 +10,23 @@ import 'package:gap/gap.dart';
 class AdDetailsSection extends StatelessWidget {
   const AdDetailsSection({super.key, required this.campaign});
 
- final Campaigns campaign;
-
+  final Campaigns campaign;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AdDetailsFistSection(campaign:campaign),
+        SizedBox(
+          height: MediaQuery.sizeOf(context).height * .3,
+          child: AdDetailsFistSection(campaign: campaign),
+        ),
         const Gap(30),
         Center(
           child: Text(
-            campaign.campaignName??"",
-            style: AppStyle.style34(context)
-                .copyWith(color: Colors.black, fontWeight: FontWeight.w400),
+            campaign.campaignName ?? "",
+            style: AppStyle.style34(context).copyWith(
+              color: Colors.black,
+            ),
           ),
         ),
         const Gap(50),
@@ -31,9 +34,13 @@ class AdDetailsSection extends StatelessWidget {
             Assets.imagesDate, "14 December,2021", "Tuesday 4:00PM "),
         const Gap(25),
         AdDetailsWidget(
-            Assets.imagesLocation, "Gala Convention Center", "36 Faisal st"),
+          Assets.imagesLocation,
+          campaign.locations!.isEmpty ? "No Location" : campaign.locations![0],
+          campaign.locations!.isEmpty ? "No Location" : campaign.locations![1],
+        ),
         const Gap(25),
-        AdDetailsWidget(Assets.imagesProfileTestImage, "Ashfak Sayem", "Organizer"),
+        AdDetailsWidget(
+            Assets.imagesProfileTestImage, "Ashfak Sayem", "Organizer"),
         const Gap(200),
         const AdDetailsButton()
       ],
