@@ -23,23 +23,26 @@ class PopularAds extends StatelessWidget {
           const Gap(17),
           BlocBuilder<GetPopularCampaignCubit, GetPopularCampaignState>(
             builder: (context, state) {
-              if(state is GetPopularCampaignFailureState){
+              if (state is GetPopularCampaignFailureState) {
                 return Center(child: Text(state.message));
-              }
-              else if (state is GetPopularCampaignSuccessState){
-                var popularCampaigns=GetPopularCampaignCubit.get(context).popularCampaign;
+              } else if (state is GetPopularCampaignSuccessState) {
+                var popularCampaigns =
+                    GetPopularCampaignCubit.get(context).popularCampaign;
                 return SizedBox(
                   height: 250,
                   child: ListView.separated(
                     separatorBuilder: (context, index) => const Gap(10),
-                    itemBuilder: (context, index) =>  AdsItem(campaigns: popularCampaigns[index],),
-                    itemCount:popularCampaigns.length,
+                    itemBuilder: (context, index) => AspectRatio(
+                      aspectRatio: 237/255,
+                        child: AdsItem(
+                      campaigns: popularCampaigns[index],
+                    )),
+                    itemCount: popularCampaigns.length,
                     scrollDirection: Axis.horizontal,
                   ),
                 );
               }
               return const Center(child: CircularProgressIndicator());
-
             },
           ),
         ],

@@ -30,6 +30,8 @@ class Campaigns {
     this.description,
     this.endDate,
     this.id,
+    this.images,
+    this.locations,
     this.offer,
     this.price,
     this.startDate,
@@ -42,6 +44,9 @@ class Campaigns {
     description = json['description'];
     endDate = json['end_date'];
     id = json['id'];
+    images = json['images'] != null ? json['images'].cast<String>() : [];
+    locations =
+    json['locations'] != null ? json['locations'].cast<String>() : [];
     offer = json['offer'];
     price = json['price'];
     startDate = json['start_date'];
@@ -53,6 +58,8 @@ class Campaigns {
   String? description;
   String? endDate;
   num? id;
+  List<String>? images;
+  List<String>? locations;
   num? offer;
   num? price;
   String? startDate;
@@ -65,6 +72,8 @@ class Campaigns {
     map['description'] = description;
     map['end_date'] = endDate;
     map['id'] = id;
+    map['images'] = images;
+    map['locations'] = locations;
     map['offer'] = offer;
     map['price'] = price;
     map['start_date'] = startDate;

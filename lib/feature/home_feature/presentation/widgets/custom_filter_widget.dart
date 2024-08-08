@@ -7,9 +7,8 @@ class CustomFilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(.3),
-        borderRadius: BorderRadius.circular(15)
-      ),
+          color: Colors.white.withOpacity(.3),
+          borderRadius: BorderRadius.circular(15)),
     );
   }
 }

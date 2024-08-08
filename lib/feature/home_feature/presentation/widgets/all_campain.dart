@@ -23,24 +23,28 @@ class AllAds extends StatelessWidget {
           const Gap(17),
           BlocBuilder<GetNormalCampaginCubit, GetNormalCampaginState>(
             builder: (context, state) {
-              if(state is GetNormalCampaginFailState){
-                return Center(child: Text(state.mesage),);
-              }
-              else if (state is GetNormalCampaginSuccessState){
-                var campaigns= GetNormalCampaginCubit.get(context).popularCampaign;
+              if (state is GetNormalCampaginFailState) {
+                return Center(
+                  child: Text(state.mesage),
+                );
+              } else if (state is GetNormalCampaginSuccessState) {
+                var campaigns =
+                    GetNormalCampaginCubit.get(context).popularCampaign;
                 return SizedBox(
                   height: 250,
                   child: ListView.separated(
                     separatorBuilder: (context, index) => const Gap(10),
-                    itemBuilder: (context, index) =>  AdsItem(campaigns:campaigns[index] ,),
+                    itemBuilder: (context, index) => AspectRatio(
+                        aspectRatio: 237/255,
+                        child: AdsItem(
+                      campaigns: campaigns[index],
+                    )),
                     itemCount: campaigns.length,
-
                     scrollDirection: Axis.horizontal,
                   ),
                 );
               }
               return const Center(child: CircularProgressIndicator());
-
             },
           ),
         ],
