@@ -23,12 +23,12 @@ class SignUpDrawer extends StatefulWidget {
 }
 
 class _SignUpDrawerState extends State<SignUpDrawer> {
-  TextEditingController name=TextEditingController();
-  TextEditingController username=TextEditingController();
-  TextEditingController age=TextEditingController();
-  TextEditingController password=TextEditingController();
-  TextEditingController email=TextEditingController();
-  String selectedValue="user";
+  TextEditingController name = TextEditingController();
+  TextEditingController username = TextEditingController();
+  TextEditingController age = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController email = TextEditingController();
+  String selectedValue = "user";
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +81,9 @@ class _SignUpDrawerState extends State<SignUpDrawer> {
                 textEditingController: password,
               ),
               const Gap(30),
-              CustomDropMenu(selectedValue: selectedValue,),
+              CustomDropMenu(
+                selectedValue: selectedValue,
+              ),
               const Gap(25),
               Align(
                 alignment: Alignment.centerRight,
@@ -96,11 +98,11 @@ class _SignUpDrawerState extends State<SignUpDrawer> {
                 onPressed: () {
                   SignData signData = SignData();
                   signData.password = password.text;
-                  signData.username=username.text;
+                  signData.username = username.text;
                   signData.age = age.text;
                   signData.email = email.text;
                   signData.name = name.text;
-                  signData.role=selectedValue;
+                  signData.role = selectedValue;
                   AuthCubit.get(context).signIn(signData);
                 },
                 isLoading: false,

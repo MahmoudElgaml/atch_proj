@@ -90,7 +90,7 @@ class _LogInDrawerState extends State<LogInDrawer> {
                     "NewUser? ",
                   ),
                   InkWell(
-                    onTap: () => context.go(AppRoute.signInKey),
+                    onTap: () => context.go(AppRoute.test),
                     child: const Text(
                       "Create Account",
                       style: TextStyle(color: AppColor.authColor),

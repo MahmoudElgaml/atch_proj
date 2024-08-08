@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String assetsImagesEmptyImage = 'assets/images/empty_image.png';
   static const String fontsAbhayaLibreExtraBold = 'assets/fonts/AbhayaLibre-ExtraBold.ttf';
   static const String images1638950165112 = 'assets/images/1638950165112.jfif';
   static const String imagesAdImage = 'assets/images/ad_image.png';
