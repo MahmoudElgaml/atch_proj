@@ -23,15 +23,18 @@ class SignUpAdvertise extends StatefulWidget {
 }
 
 class _SignUpAdvertiseState extends State<SignUpAdvertise> {
-  TextEditingController name = TextEditingController();
+  TextEditingController companyName = TextEditingController();
 
-  TextEditingController username = TextEditingController();
+  TextEditingController advertiseName = TextEditingController();
 
-  TextEditingController age = TextEditingController();
+  TextEditingController about = TextEditingController();
 
   TextEditingController password = TextEditingController();
 
   TextEditingController email = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController location = TextEditingController();
+  String selectedValue="Factory";
 
   @override
   Widget build(BuildContext context) {
@@ -52,31 +55,43 @@ class _SignUpAdvertiseState extends State<SignUpAdvertise> {
               ),
               const Gap(32),
               CostumeTextFiled(
-                title: "Full Name",
-                textEditingController: name,
+                title: "Company Name",
+                textEditingController: companyName,
               ),
-              const Gap(32),
+              const Gap(20),
               CostumeTextFiled(
-                title: "userName",
-                textEditingController: username,
+                title: "Advertise Name",
+                textEditingController: advertiseName,
               ),
-              const Gap(32),
+              const Gap(20),
               CostumeTextFiled(
                 title: "Email",
                 textEditingController: email,
               ),
               const Gap(20),
+
+
               CostumeTextFiled(
-                title: "Age",
-                textEditingController: age,
+                title: "about",
+                textEditingController: about,
               ),
               const Gap(20),
               CostumeTextFiled(
                 title: "Password",
                 textEditingController: password,
               ),
-              const Gap(30),
-
+              const Gap(20),
+              CostumeTextFiled(
+                title: "phone",
+                textEditingController: phone,
+              ),
+              const Gap(20),
+              CostumeTextFiled(
+                title: "location",
+                textEditingController: location,
+              ),
+              const Gap(20),
+              CustomDropMenu(selectedValue: selectedValue),
               const Gap(25),
               Align(
                 alignment: Alignment.centerRight,
@@ -89,14 +104,14 @@ class _SignUpAdvertiseState extends State<SignUpAdvertise> {
               CostumeButton(
                 title: "SignUP",
                 onPressed: () {
-                  SignData signData = SignData();
-                  signData.password = password.text;
-                  signData.username = username.text;
-                  signData.age = age.text;
-                  signData.email = email.text;
-                  signData.name = name.text;
+                  // SignData signData = SignData();
+                  // signData.password = password.text;
+                  // signData.advertiseName = advertiseName.text;
+                  // signData.about = about.text;
+                  // signData.email = email.text;
+                  // signData.name = name.text;
 
-                  AuthCubit.get(context).signIn(signData);
+                  //AuthCubit.get(context).signIn(signData);
                 },
                 isLoading: false,
               ),

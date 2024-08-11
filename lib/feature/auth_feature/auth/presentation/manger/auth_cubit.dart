@@ -1,4 +1,5 @@
 import 'package:atch_proj/feature/auth_feature/auth/data/model/SignData.dart';
+import 'package:atch_proj/feature/auth_feature/auth/data/model/SignDataTest.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/repo/auth_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +15,7 @@ class AuthCubit extends Cubit<AuthState> {
    UserData userData=UserData();
   AuthRepo authRepo;
   static AuthCubit get(context)=>BlocProvider.of(context);
-  signIn(SignData signData) async {
+  signIn(SignDataTest signData) async {
     emit(AuthLoadingState());
     var result = await authRepo.sign(signData);
     result.fold(

@@ -2,6 +2,7 @@ import 'package:atch_proj/core/api/api_manger.dart';
 import 'package:atch_proj/core/api/end_points.dart';
 import 'package:atch_proj/core/erorr/failure.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/SignData.dart';
+import 'package:atch_proj/feature/auth_feature/auth/data/model/SignDataTest.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/repo/auth_repo.dart';
 import 'package:dartz/dartz.dart';
@@ -15,9 +16,9 @@ class AuthRepoImpl implements AuthRepo {
   AuthRepoImpl(this.aPiManger);
 
   @override
-  Future<Either<Failure, String>> sign(SignData signData) async {
+  Future<Either<Failure, String>> sign(SignDataTest signData) async {
     try {
-      await aPiManger.post(EndPoints.register, signData.toJson());
+      await aPiManger.post(EndPoints.register, signData.formData());
       return right("success");
     } catch (e) {
       if (e is DioException) {

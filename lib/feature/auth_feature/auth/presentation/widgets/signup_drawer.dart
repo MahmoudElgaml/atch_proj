@@ -94,14 +94,14 @@ class _SignUpDrawerState extends State<SignUpDrawer> {
               CostumeButton(
                 title: "SignUP",
                 onPressed: () {
-                  SignData signData = SignData();
-                  signData.password = password.text;
-                  signData.username=username.text;
-                  signData.age = age.text;
-                  signData.email = email.text;
-                  signData.name = name.text;
-                  signData.role=selectedValue;
-                  AuthCubit.get(context).signIn(signData);
+                  // SignData signData = SignData();
+                  // signData.password = password.text;
+                  // signData.username=username.text;
+                  // signData.age = age.text;
+                  // signData.email = email.text;
+                  // signData.name = name.text;
+                  // signData.role=selectedValue;
+                  // AuthCubit.get(context).signIn(signData);
                 },
                 isLoading: false,
               ),

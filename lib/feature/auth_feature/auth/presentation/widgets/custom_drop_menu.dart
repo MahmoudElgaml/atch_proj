@@ -2,7 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropMenu extends StatefulWidget {
- CustomDropMenu({super.key,required this.selectedValue});
+  CustomDropMenu({super.key, required this.selectedValue});
 
   @override
   State<CustomDropMenu> createState() => _CustomDropMenuState();
@@ -11,11 +11,9 @@ class CustomDropMenu extends StatefulWidget {
 
 class _CustomDropMenuState extends State<CustomDropMenu> {
   final List<String> items = [
-    'user',
-    'advertiser',
+    'Factory',
+    "user"
   ];
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +41,18 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
         value: widget.selectedValue,
         onChanged: (String? value) {
           setState(() {
-            widget.selectedValue = value ?? "user";
+            widget.selectedValue = value ?? "Factory";
           });
         },
-        buttonStyleData:  ButtonStyleData(
+        buttonStyleData: ButtonStyleData(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(12),
               border: const Border(
-            top: BorderSide(color: Colors.black),
-            bottom: BorderSide(color: Colors.black),
-            right: BorderSide(color: Colors.black),
-            left: BorderSide(color: Colors.black),
-          )),
+                top: BorderSide(color: Colors.black),
+                bottom: BorderSide(color: Colors.black),
+                right: BorderSide(color: Colors.black),
+                left: BorderSide(color: Colors.black),
+              )),
           padding: const EdgeInsets.symmetric(horizontal: 16),
           height: 40,
           width: 140,
