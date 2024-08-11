@@ -3,15 +3,15 @@ import 'package:atch_proj/core/utils/models/drawer_item_model.dart';
 import 'package:flutter/material.dart';
 
 class DrawerItem extends StatelessWidget {
-  const DrawerItem({super.key, required this.drawerItemModel});
+  const DrawerItem({super.key, required this.drawerItemModel,this.onPressed});
 
   final DrawerItemModel drawerItemModel;
-
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: EdgeInsets.zero,
-      onTap: () {},
+      onTap: onPressed,
       leading: Icon(drawerItemModel.iconData,size: 30,color: Colors.black,),
       title: Text(
         drawerItemModel.title,

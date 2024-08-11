@@ -1,3 +1,5 @@
+import 'package:atch_proj/config/routes/routes.dart';
+import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/models/drawer_item_model.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
@@ -7,6 +9,7 @@ import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeDrawer extends StatelessWidget {
   const HomeDrawer({super.key});
@@ -54,7 +57,12 @@ class HomeDrawer extends StatelessWidget {
             ),
             const Gap(164),
             DrawerItem(
-                drawerItemModel: DrawerItemModel("Sign Out", Icons.login))
+              onPressed: () {
+                getIt<StorageToken>().deleteToken();
+                context.go(AppRoute.logInKey);
+              },
+              drawerItemModel: DrawerItemModel("Sign Out", Icons.login),
+            )
           ],
         ),
       ),
