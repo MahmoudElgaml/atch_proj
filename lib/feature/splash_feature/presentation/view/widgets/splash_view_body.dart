@@ -1,3 +1,5 @@
+import 'package:atch_proj/core/cache/storage_token.dart';
+import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -25,15 +27,20 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       backgroundColor: Colors.white,
       body: Center(
         child: Animate(
-          child: Image.asset(Assets.imagesGLogo).animate().fade(duration: const Duration(seconds: 3)),
+          child: Image.asset(Assets.imagesGLogo)
+              .animate()
+              .fade(duration: const Duration(seconds: 3)),
         ),
       ),
     );
   }
 
   void navigateToHome() {
-    Future.delayed(const Duration(seconds: 4), () {
-      context.go(AppRoute.logInKey);
+    Future.delayed(const Duration(seconds: 4), () async {
+      var token = await getIt<StorageToken>().getToken();
+      token == null
+          ? context.go(AppRoute.logInKey)
+          : context.go(AppRoute.homeKey);
     });
   }
 }

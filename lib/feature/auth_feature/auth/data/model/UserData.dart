@@ -6,11 +6,11 @@ class UserData {
 
   UserData.fromJson(dynamic json) {
     message = json['message'];
-    user = json['user'] != null ? User.fromJson(json['user']) : null;
+    user = json['user'] != null ? UserInformation.fromJson(json['user']) : null;
   }
 
   String? message;
-  User? user;
+  UserInformation? user;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -22,44 +22,56 @@ class UserData {
   }
 }
 
-class User {
-  User({
-    this.age,
+class UserInformation {
+  UserInformation({
+    this.about,
+    this.advertiserName,
+    this.advertiserPic,
+    this.advertiserType,
+    this.companyName,
     this.email,
     this.id,
-    this.name,
     this.password,
-    this.profilePic,
-    this.username,
+    this.referralCode,
+    this.visaNumber,
   });
 
-  User.fromJson(dynamic json) {
-    age = json['age'];
-    email = json['email'];
+  UserInformation.fromJson(dynamic json) {
+    about = json['about'];
+    advertiserName = json['advertiser_name'];
+    advertiserPic = json['advertiser_pic'];
+    advertiserType = json['advertiser_type'];
+    companyName = json['company_name'];
+    email = json['contact_email'];
     id = json['id'];
-    name = json['name'];
     password = json['password'];
-    profilePic = json['profile_pic'];
-    username = json['username'];
+    referralCode = json['referral_code'];
+    visaNumber = json['visa_number'];
   }
 
-  num? age;
+  String? about;
+  String? advertiserName;
+  String? advertiserPic;
+  String? advertiserType;
+  String? companyName;
   String? email;
   num? id;
-  String? name;
   String? password;
-  dynamic profilePic;
-  String? username;
+  String? referralCode;
+  String? visaNumber;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['age'] = age;
-    map['email'] = email;
+    map['about'] = about;
+    map['advertiser_name'] = advertiserName;
+    map['advertiser_pic'] = advertiserPic;
+    map['advertiser_type'] = advertiserType;
+    map['company_name'] = companyName;
+    map['contact_email'] = email;
     map['id'] = id;
-    map['name'] = name;
     map['password'] = password;
-    map['profile_pic'] = profilePic;
-    map['username'] = username;
+    map['referral_code'] = referralCode;
+    map['visa_number'] = visaNumber;
     return map;
   }
 }

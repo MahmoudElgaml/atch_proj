@@ -1,7 +1,10 @@
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/models/drawer_item_model.dart';
+import 'package:atch_proj/core/utils/service_locator/config.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/drawer_item.dart';
 import 'package:atch_proj/generated/assets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -10,6 +13,7 @@ class HomeDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var userData = AuthCubit.get(context).userData.user;
     List<DrawerItemModel> items = [
       DrawerItemModel("Contact Us", Icons.mail_outline_outlined),
       DrawerItemModel("Settings", Icons.settings),
@@ -24,27 +28,28 @@ class HomeDrawer extends StatelessWidget {
             Container(
               width: 70,
               height: 70,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                    image: AssetImage(Assets.imagesTestImageProfile),
+                    image: CachedNetworkImageProvider(
+                      userData?.advertiserPic ?? "",
+                    ),
                     fit: BoxFit.fill,
                   )),
             ),
             const Gap(12),
             Text(
-              "Ashfak Sayem",
+              userData?.advertiserName ?? "",
               style: AppStyle.style18ExtraBold(context),
             ),
             const Gap(40),
             Column(
               children: items
                   .map(
-                    (e) =>
-                    DrawerItem(
+                    (e) => DrawerItem(
                       drawerItemModel: e,
                     ),
-              )
+                  )
                   .toList(),
             ),
             const Gap(164),

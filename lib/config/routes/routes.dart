@@ -13,9 +13,9 @@ import 'package:go_router/go_router.dart';
 import '../../feature/home_layout_feature/presentation/view/home_screen.dart';
 import '../../feature/splash_feature/presentation/view/splash_view.dart';
 class AppRoute {
-  static const String splashKey = "/splash";
+  static const String splashKey = "/";
   static const String signInKey = "/signup";
-  static const String logInKey = "/";
+  static const String logInKey = "/login";
   static const String homeKey = "/home";
   static const String adDetails="/adDetails";
   static const String signUpAsAdvertise="/advertise";

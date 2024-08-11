@@ -75,7 +75,7 @@ class _LogInDrawerState extends State<LogInDrawer> {
                 isLoading: true,
                 onPressed: () {
                   AuthCubit.get(context)
-                      .logIn(email.text, password.text, selectedValue);
+                      .logIn(email.text, password.text, "advertiser");
                 },
               ),
               const Gap(32),

@@ -25,6 +25,7 @@ import '../../../feature/home_feature/presentation/manager/get_popular_campaign_
 import '../../../feature/home_layout_feature/presentation/manager/home_layout_cubit.dart'
     as _i637;
 import '../../api/api_manger.dart' as _i254;
+import '../../cache/storage_token.dart' as _i353;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -39,14 +40,18 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i637.HomeLayoutCubit>(() => _i637.HomeLayoutCubit());
     gh.singleton<_i254.APiManger>(() => _i254.APiManger());
-    gh.factory<_i283.AuthRepo>(() => _i188.AuthRepoImpl(gh<_i254.APiManger>()));
+    gh.singleton<_i353.StorageToken>(() => _i353.StorageToken());
+    gh.factory<_i283.AuthRepo>(() => _i188.AuthRepoImpl(
+          gh<_i254.APiManger>(),
+          gh<_i353.StorageToken>(),
+        ));
     gh.factory<_i651.HomeRepo>(() => _i766.HomeRepoImpl(gh<_i254.APiManger>()));
     gh.singleton<_i1035.AuthCubit>(
         () => _i1035.AuthCubit(gh<_i283.AuthRepo>()));
-    gh.factory<_i401.GetPopularCampaignCubit>(
-        () => _i401.GetPopularCampaignCubit(gh<_i651.HomeRepo>()));
     gh.factory<_i369.GetNormalCampaginCubit>(
         () => _i369.GetNormalCampaginCubit(gh<_i651.HomeRepo>()));
+    gh.factory<_i401.GetPopularCampaignCubit>(
+        () => _i401.GetPopularCampaignCubit(gh<_i651.HomeRepo>()));
     return this;
   }
 }

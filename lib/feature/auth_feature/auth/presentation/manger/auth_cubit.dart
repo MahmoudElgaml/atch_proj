@@ -7,14 +7,16 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
 part 'auth_state.dart';
+
 @singleton
 @injectable
 class AuthCubit extends Cubit<AuthState> {
-
   AuthCubit(this.authRepo) : super(AuthInitial());
-   UserData userData=UserData();
+  UserData userData = UserData();
   AuthRepo authRepo;
-  static AuthCubit get(context)=>BlocProvider.of(context);
+
+  static AuthCubit get(context) => BlocProvider.of(context);
+
   signIn(SignDataTest signData) async {
     emit(AuthLoadingState());
     var result = await authRepo.sign(signData);
@@ -27,15 +29,17 @@ class AuthCubit extends Cubit<AuthState> {
       },
     );
   }
-  logIn(String email,String password,String role) async {
+
+  logIn(String email, String password, String role) async {
     emit(AuthLoadingState());
-    var result = await authRepo.logIn(email: email,password: password,role: role);
+    var result =
+        await authRepo.logIn(email: email, password: password, role: role);
     result.fold(
-          (l) {
+      (l) {
         emit(AuthFailState(l.message));
       },
-          (r) {
-            userData=r;
+      (r) {
+        userData = r;
         emit(AuthSuccessState());
       },
     );

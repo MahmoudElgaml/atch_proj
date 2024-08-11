@@ -1,5 +1,6 @@
 import 'package:atch_proj/core/api/api_manger.dart';
 import 'package:atch_proj/core/api/end_points.dart';
+import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/erorr/failure.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/SignData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/SignDataTest.dart';
@@ -13,19 +14,17 @@ import 'package:injectable/injectable.dart';
 class AuthRepoImpl implements AuthRepo {
   APiManger aPiManger;
 
-  AuthRepoImpl(this.aPiManger);
-
+  AuthRepoImpl(this.aPiManger,this.storageToken);
+StorageToken storageToken;
   @override
   Future<Either<Failure, String>> sign(SignDataTest signData) async {
     try {
-      print(signData.toJson());
       var formData = await signData.formData();
 
       await aPiManger.post(EndPoints.register, formData);
       return right("success");
     } catch (e) {
       if (e is DioException) {
-        print(e.message.toString());
         return left(ServerFailure.fromServer(e));
       } else {
         return left(ServerFailure(e.toString()));
@@ -43,6 +42,7 @@ class AuthRepoImpl implements AuthRepo {
           body: {"email": email, "password": password, "role": role});
 
       UserData userData = UserData.fromJson(response.data);
+      storageToken.setToken(userData.user!.id.toString());
       return right(userData);
     } catch (e) {
       if (e is DioException) {
