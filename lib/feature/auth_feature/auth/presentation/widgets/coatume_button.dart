@@ -1,4 +1,5 @@
 import 'package:atch_proj/config/routes/routes.dart';
+import 'package:atch_proj/core/services/upload_image_service.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,6 +40,7 @@ class CostumeButton extends StatelessWidget {
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             if(state is AuthSuccessState) {
+              UploadImageService.selectedImage=null;
               isLoading
                   ? context.push(AppRoute.homeKey,extra: AuthCubit.get(context).userData)
                   : context.go(AppRoute.logInKey);

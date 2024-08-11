@@ -18,10 +18,14 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, String>> sign(SignDataTest signData) async {
     try {
-      await aPiManger.post(EndPoints.register, signData.formData());
+      print(signData.toJson());
+      var formData = await signData.formData();
+
+      await aPiManger.post(EndPoints.register, formData);
       return right("success");
     } catch (e) {
       if (e is DioException) {
+        print(e.message.toString());
         return left(ServerFailure.fromServer(e));
       } else {
         return left(ServerFailure(e.toString()));
@@ -31,11 +35,14 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<Either<Failure, UserData>> logIn(
-      {required String email,required  String password,required String role}) async {
+      {required String email,
+      required String password,
+      required String role}) async {
     try {
-     var response=   await aPiManger.get(EndPoints.logIn,body:  {"email": email, "password": password,"role":role});
+      var response = await aPiManger.get(EndPoints.logIn,
+          body: {"email": email, "password": password, "role": role});
 
-     UserData userData=UserData.fromJson(response.data);
+      UserData userData = UserData.fromJson(response.data);
       return right(userData);
     } catch (e) {
       if (e is DioException) {

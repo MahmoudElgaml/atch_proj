@@ -1,4 +1,5 @@
 import 'package:atch_proj/core/services/upload_image_service.dart';
+import 'package:atch_proj/feature/auth_feature/auth/data/model/SignDataTest.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/test_upload_image.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class _SignUpAdvertiseState extends State<SignUpAdvertise> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TestUploadImage(),
-              Gap(20),
+              const Gap(20),
               Center(
                 child: Text(
                   "Sign Up",
@@ -104,14 +105,20 @@ class _SignUpAdvertiseState extends State<SignUpAdvertise> {
               CostumeButton(
                 title: "SignUP",
                 onPressed: () {
-                  // SignData signData = SignData();
-                  // signData.password = password.text;
-                  // signData.advertiseName = advertiseName.text;
-                  // signData.about = about.text;
-                  // signData.email = email.text;
-                  // signData.name = name.text;
-
-                  //AuthCubit.get(context).signIn(signData);
+                  List<String> phones=[phone.text];
+                  List<String> locations=[location.text];
+                  SignDataTest signData = SignDataTest();
+                 signData.companyName=companyName.text;
+                 signData.advertiserName=advertiseName.text;
+                 signData.contactEmail=email.text;
+                 signData.about=about.text;
+                 signData.password=password.text;
+                 signData.advertiserPhones=phones;
+                 signData.advertiserLocation=locations;
+                 signData.role="advertiser";
+                 signData.advertiserType=selectedValue;
+                 signData.image=UploadImageService.imageFile;
+                  AuthCubit.get(context).signIn(signData);
                 },
                 isLoading: false,
               ),

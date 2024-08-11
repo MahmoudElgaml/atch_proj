@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -63,10 +65,12 @@ class SignDataTest {
     return map;
   }
 
-  formData() async{
-    FormData.fromMap({
-      "data": toJson(),
-      "image": await MultipartFile.fromFile(image!.path, filename: image!.name)
+  Future<FormData> formData() async{
+
+  return   FormData.fromMap({
+      "data": jsonEncode(toJson()),
+      "image":  image==null? null:await MultipartFile.fromFile(image!.path, filename: image!.name)
     });
+
   }
 }
