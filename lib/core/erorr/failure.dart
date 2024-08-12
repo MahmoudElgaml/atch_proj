@@ -22,7 +22,7 @@ class ServerFailure extends Failure {
         return ServerFailure("connection Timeout");
       case DioExceptionType.badResponse:
         return ServerFailure.fromBadResponse(
-            dioException.response!.statusCode!, dioException.message);
+            dioException.response!.statusCode!, dioException.response!.data);
       case DioExceptionType.cancel:
         return ServerFailure("request to server is canceled");
       case DioExceptionType.connectionError:
@@ -40,7 +40,7 @@ class ServerFailure extends Failure {
 
   factory ServerFailure.fromBadResponse(int statusCode, dynamic response) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 402) {
-      return ServerFailure(response,
+      return ServerFailure(response["error"],
           statusCode: statusCode.toString());
     } else if (statusCode == 404) {
       return ServerFailure(" not found data ",
