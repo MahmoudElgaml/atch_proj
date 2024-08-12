@@ -1,6 +1,7 @@
 class EndPoints{
 
   static const baseUrl="https://great-eagle.vercel.app";
+  static const search="/search_page/search";
   static const register="/register";
   static const logIn="/login";
   static const getPopularCampaign="/home/popularCampaigns";

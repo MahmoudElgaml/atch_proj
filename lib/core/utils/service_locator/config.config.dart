@@ -24,6 +24,11 @@ import '../../../feature/home_feature/presentation/manager/get_popular_campaign_
     as _i401;
 import '../../../feature/home_layout_feature/presentation/manager/home_layout_cubit.dart'
     as _i637;
+import '../../../feature/search_feature/data/repo/search_repo.dart' as _i341;
+import '../../../feature/search_feature/data/repo/search_repo_impl.dart'
+    as _i523;
+import '../../../feature/search_feature/presentation/manger/search_cubit.dart'
+    as _i694;
 import '../../api/api_manger.dart' as _i254;
 import '../../cache/storage_token.dart' as _i353;
 
@@ -52,6 +57,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i369.GetNormalCampaginCubit(gh<_i651.HomeRepo>()));
     gh.factory<_i401.GetPopularCampaignCubit>(
         () => _i401.GetPopularCampaignCubit(gh<_i651.HomeRepo>()));
+    gh.factory<_i341.SearchRepo>(
+        () => _i523.SearchRepoImpl(gh<_i254.APiManger>()));
+    gh.factory<_i694.SearchCubit>(
+        () => _i694.SearchCubit(gh<_i341.SearchRepo>()));
     return this;
   }
 }
