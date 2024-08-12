@@ -31,7 +31,7 @@ class CustomAppBar extends StatelessWidget {
             child: FirstSctionAppBar(),
           ),
           Gap(10),
-          SearchTextField(),
+
         ],
       ),
     );

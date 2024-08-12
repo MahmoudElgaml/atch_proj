@@ -3,6 +3,7 @@ import 'package:atch_proj/feature/account_feature/presentation/account_screen.da
 import 'package:atch_proj/feature/home_feature/presentation/manager/get_normal_campagin_cubit.dart';
 import 'package:atch_proj/feature/home_feature/presentation/manager/get_popular_campaign_cubit.dart';
 import 'package:atch_proj/feature/home_feature/presentation/view/home_screen.dart';
+import 'package:atch_proj/feature/search_feature/presentation/manger/search_cubit.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/search_view.dart';
 import 'package:atch_proj/feature/wishlist_feature/presentation/view/wishListScreen.dart';
 import 'package:flutter/cupertino.dart';

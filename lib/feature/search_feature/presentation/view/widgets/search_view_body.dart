@@ -1,31 +1,76 @@
+import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/search_feature/presentation/manger/search_cubit.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/filter_button.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/search_item.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/search_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 class SearchViewBody extends StatelessWidget {
-  const SearchViewBody({super.key});
+  SearchViewBody({super.key});
+
+  final TextEditingController search = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             Row(
               children: [
-                Expanded(child: SearchTextField()),
-                Gap(10),
-                FilterButton()
+                Expanded(
+                  child: SearchTextField(
+                    textEditingController: search,
+                  ),
+                ),
+                const Gap(10),
+                const FilterButton()
               ],
             ),
-            Gap(20),
-            SearchItem()
+            const Gap(20),
+            const SearchList(),
           ],
         ),
       ),
+    );
+  }
+}
+
+class SearchList extends StatelessWidget {
+  const SearchList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<SearchCubit, SearchState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        if (state is SearchFailState) {
+          return Center(
+            child: Text(state.message),
+          );
+        } else if (state is SearchSuccessState) {
+          return Expanded(
+            child: ListView.separated(
+              separatorBuilder: (context, index) => const Gap(10),
+              itemBuilder: (context, index) => SearchItem(
+                campaigns: state.searchItemModel.campaigns![index],
+              ),
+              itemCount: state.searchItemModel.campaigns?.length ?? 0,
+            ),
+          );
+        }
+        else if(state is SearchLoadingState){
+          return const Center(child: CircularProgressIndicator(),);
+        }
+        return  Expanded(
+          child: Center(
+            child: Text("Type to Search",style: AppStyle.style34(context),),
+          ),
+        );
+      },
     );
   }
 }

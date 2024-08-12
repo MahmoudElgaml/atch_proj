@@ -24,7 +24,10 @@ class HomeState extends HomeLayoutState {
 
 class SearchState extends HomeLayoutState {
   @override
-  Widget viewTap() => const SearchView();
+  Widget viewTap() =>  BlocProvider(
+  create: (context) => getIt<SearchCubit>(),
+  child: const SearchView(),
+);
 }
 
 class WishListState extends HomeLayoutState {

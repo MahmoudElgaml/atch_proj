@@ -12,6 +12,12 @@ class GetPopularCampaignCubit extends Cubit<GetPopularCampaignState> {
   static  GetPopularCampaignCubit get(context)=>BlocProvider.of(context);
 
   List<Campaigns> popularCampaign=[];
+  @override
+  void emit(GetPopularCampaignState state) {
+    if (!isClosed) {
+      super.emit(state);
+    }
+  }
   getPopularCampaign() async {
     emit(GetPopularCampaignLoadingState());
     var result = await homeRepo.getPopularCampaign();

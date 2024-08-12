@@ -11,7 +11,12 @@ class GetNormalCampaginCubit extends Cubit<GetNormalCampaginState> {
   GetNormalCampaginCubit(this.homeRepo) : super(GetNormalCampaginInitial());
   HomeRepo homeRepo;
   static  GetNormalCampaginCubit get(context)=>BlocProvider.of(context);
-
+  @override
+  void emit(GetNormalCampaginState state) {
+    if (!isClosed) {
+      super.emit(state);
+    }
+  }
   List<Campaigns> popularCampaign=[];
   getNormalCampaign() async {
     emit(GetNormalCampaginLoadingState());

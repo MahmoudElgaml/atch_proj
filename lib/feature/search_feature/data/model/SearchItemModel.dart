@@ -7,12 +7,12 @@ class SearchItemModel {
     if (json['campaigns'] != null) {
       campaigns = [];
       json['campaigns'].forEach((v) {
-        campaigns?.add(Campaigns.fromJson(v));
+        campaigns?.add(SearchCampaigns.fromJson(v));
       });
     }
   }
 
-  List<Campaigns>? campaigns;
+  List<SearchCampaigns>? campaigns;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -23,8 +23,8 @@ class SearchItemModel {
   }
 }
 
-class Campaigns {
-  Campaigns({
+class SearchCampaigns {
+  SearchCampaigns({
     this.advertiserId,
     this.campaignName,
     this.description,
@@ -36,7 +36,7 @@ class Campaigns {
     this.targetAudience,
   });
 
-  Campaigns.fromJson(dynamic json) {
+  SearchCampaigns.fromJson(dynamic json) {
     advertiserId = json['advertiser_id'];
     campaignName = json['campaign_name'];
     description = json['description'];

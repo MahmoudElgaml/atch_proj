@@ -1,15 +1,17 @@
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/search_feature/data/model/SearchItemModel.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class SearchItem extends StatelessWidget {
-  const SearchItem({super.key});
+  const SearchItem({super.key, required this.campaigns});
+
+  final SearchCampaigns campaigns;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-
       elevation: 10,
       shadowColor: Colors.transparent,
       color: Colors.white24,
@@ -39,16 +41,22 @@ class SearchItem extends StatelessWidget {
             const Gap(18),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 Text(
-                  "1st  May- Sat -2:00 PM",
+                  campaigns.endDate ?? " No Date",
                   style: AppStyle.style12Regular(context),
                 ),
+                Text(
+                  campaigns.campaignName ?? "",
+                  style: AppStyle.style18(context),
+                ),
+                const Gap(7),
                 FittedBox(
                   child: SizedBox(
                     width: 170,
                     child: Text(
-                      "A virtual evening of smooth jazz",
+                      overflow: TextOverflow.ellipsis,
+                      campaigns.description ?? "",
                       maxLines: 2,
                       style: AppStyle.style18(context),
                     ),

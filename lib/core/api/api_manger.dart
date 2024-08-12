@@ -16,10 +16,6 @@ class APiManger {
   }
 
   Future<Response> post(String endPoint, dynamic body) {
-    return dio.post(EndPoints.baseUrl + endPoint, data: body, options: Options(
-    headers: {
-    'Content-Type': 'multipart/form-data',
-    },
-    ),);
+    return dio.post(EndPoints.baseUrl + endPoint, data: body, );
   }
 }

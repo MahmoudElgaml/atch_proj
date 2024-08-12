@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             CustomAppBar(),
             Positioned(
-              top: 150,
+              top: 90,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 100),
                 child: TabsAppBar(),
