@@ -38,7 +38,6 @@ StorageToken storageToken;
       required String password,
       required String role}) async {
     try {
-     
       var response = await aPiManger.get(EndPoints.logIn,
           body: {"email": email, "password": password, "role": role});
 

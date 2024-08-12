@@ -13,7 +13,7 @@ class SearchItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 10,
-      shadowColor: Colors.transparent,
+      shadowColor: Colors.white24,
       color: Colors.white24,
       shape: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),

@@ -6,7 +6,7 @@ class UserData {
 
   UserData.fromJson(dynamic json) {
     message = json['message'];
-    user = json['user'] != null ? UserInformation.fromJson(json['user']) : null;
+    user = json['person'] != null ? UserInformation.fromJson(json['person']) : null;
   }
 
   String? message;
@@ -16,7 +16,7 @@ class UserData {
     final map = <String, dynamic>{};
     map['message'] = message;
     if (user != null) {
-      map['user'] = user?.toJson();
+      map['person'] = user?.toJson();
     }
     return map;
   }
