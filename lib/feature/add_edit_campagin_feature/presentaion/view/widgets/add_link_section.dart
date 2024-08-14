@@ -50,7 +50,7 @@ class AddLinkSection extends StatelessWidget {
           bloc: linkCubit,
           builder: (context, state) {
             return linkCubit.links.isEmpty
-                ? const SizedBox()
+                ?  const SizedBox()
                 : SizedBox(
                     height: MediaQuery.sizeOf(context).height * .1,
                     child: ListView.builder(

@@ -13,20 +13,25 @@ part 'add_image_state.dart';
 class AddImageCubit extends Cubit<AddImageState> {
   AddImageCubit() : super(AddImageInitial());
   List<Uint8List> images = [];
-  static AddImageCubit get(context)=>BlocProvider.of(context);
+  List<XFile> backendImages = [];
+
+  static AddImageCubit get(context) => BlocProvider.of(context);
+
   addImage() async {
     await UploadImageService.selectImage(ImageSource.gallery);
     UploadImageService.selectedImage != null
         ? images.add(UploadImageService.selectedImage!)
         : null;
-    UploadImageService.selectedImage=null;
+    UploadImageService.imageFile != null
+        ? backendImages.add(UploadImageService.imageFile!)
+        : null;
+    UploadImageService.selectedImage = null;
     emit(AddImageSuccessState());
   }
 
-  delete(int index){
+  delete(int index) {
     images.removeAt(index);
+    backendImages.removeAt(index);
     emit(AddImageDeletedState());
-
   }
-
 }
