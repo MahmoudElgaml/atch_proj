@@ -12,7 +12,6 @@ class AppStyle {
     );
   }
 
-
   static TextStyle style13(BuildContext context) {
     return TextStyle(
       color: Colors.white,
@@ -26,48 +25,61 @@ class AppStyle {
       color: Colors.black,
       fontSize: responsiveFont(fontSize: 26, context: context),
       fontWeight: FontWeight.w400,
-
     );
   }
+
   static TextStyle style18(BuildContext context) {
     return TextStyle(
       fontFamily: "AbhayaLibre",
       color: Colors.black,
-      fontSize: responsiveFont(fontSize: 18 , context: context),
+      fontSize: responsiveFont(fontSize: 18, context: context),
       fontWeight: FontWeight.bold,
-
     );
   }
+
   static TextStyle style18ExtraBold(BuildContext context) {
     return TextStyle(
       color: Colors.black,
       fontFamily: "AbhayaLibre",
-      fontSize: responsiveFont(fontSize: 18 , context: context),
+      fontSize: responsiveFont(fontSize: 18, context: context),
       fontWeight: FontWeight.w900,
-
     );
   }
+
   static TextStyle style14ExtraBold(BuildContext context) {
     return TextStyle(
       color: Colors.black,
       fontFamily: "AbhayaLibre",
       fontSize: responsiveFont(fontSize: 14, context: context),
       fontWeight: FontWeight.w900,
-
     );
   }
+  static TextStyle style14Regular(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontFamily: "AbhayaLibre",
+      fontSize: responsiveFont(fontSize: 14, context: context),
+      fontWeight: FontWeight.w400,
+    );
+  }
+
   static TextStyle style12Regular(BuildContext context) {
     return TextStyle(
       color: const Color(0xff5669FF),
       fontFamily: "AbhayaLibre",
-      fontSize: responsiveFont(fontSize: 15 , context: context),
+      fontSize: responsiveFont(fontSize: 15, context: context),
       fontWeight: FontWeight.w400,
-
     );
   }
 
-
-
+  static TextStyle style24Regular(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontFamily: "AbhayaLibre",
+      fontSize: responsiveFont(fontSize: 24, context: context),
+      fontWeight: FontWeight.w400,
+    );
+  }
 
   static TextStyle styleRegularOpacity = TextStyle(
     color: Colors.black.withOpacity(.3),

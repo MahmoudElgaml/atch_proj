@@ -1,42 +1,35 @@
+import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropMenu extends StatefulWidget {
-  CustomDropMenu({super.key, required this.selectedValue});
+  CustomDropMenu(
+      {super.key,
+      required this.items,
+      required this.selectedValue,
+      required this.isAuth});
 
   @override
   State<CustomDropMenu> createState() => _CustomDropMenuState();
-  String selectedValue;
+  String? selectedValue;
+  final List<String> items;
+
+  final bool isAuth;
 }
 
 class _CustomDropMenuState extends State<CustomDropMenu> {
-  final List<String> items = [
-    'Factory',
-    "user"
-  ];
-
   @override
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
       child: DropdownButton2(
         isExpanded: true,
-        hint: Text(
-          widget.selectedValue,
-          style: TextStyle(
-            fontSize: 20,
-            color: Theme.of(context).hintColor,
-          ),
-        ),
-        items: items
-            .map((String item) => DropdownMenuItem<String>(
-                  value: item,
-                  child: Text(
-                    item,
-                    style: const TextStyle(
-                      fontSize: 19,
-                    ),
-                  ),
-                ))
+        items: widget.items
+            .map(
+              (String item) => DropdownMenuItem<String>(
+                value: item,
+                child: Text(item, style: AppStyle.style18(context)),
+              ),
+            )
             .toList(),
         value: widget.selectedValue,
         onChanged: (String? value) {
@@ -45,21 +38,20 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
           });
         },
         buttonStyleData: ButtonStyleData(
+
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               border: const Border(
-                top: BorderSide(color: Colors.black),
-                bottom: BorderSide(color: Colors.black),
-                right: BorderSide(color: Colors.black),
-                left: BorderSide(color: Colors.black),
+                top: BorderSide(color: Color(0xffE4DFDF)),
+                bottom: BorderSide(color: Color(0xffE4DFDF)),
+                right: BorderSide(color: Color(0xffE4DFDF)),
+                left: BorderSide(color: Color(0xffE4DFDF)),
               )),
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          height: 40,
-          width: 140,
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          height: widget.isAuth ? 40 : null,
+          width: widget.isAuth ? 140 : null,
         ),
-        menuItemStyleData: const MenuItemStyleData(
-          height: 40,
-        ),
+        menuItemStyleData: const MenuItemStyleData(),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:atch_proj/core/utils/service_locator/config.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/add_campaign_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/test_upload_image.dart';
@@ -19,6 +20,7 @@ class AppRoute {
   static const String homeKey = "/home";
   static const String adDetails="/adDetails";
   static const String signUpAsAdvertise="/advertise";
+  static const String addCampaign="/addCampaign";
 
   static final router = GoRouter(
     routes: [
@@ -48,6 +50,10 @@ class AppRoute {
       GoRoute(
         path: signUpAsAdvertise,
         builder: (context, state) => const SignUpAdvertise() ,
+      ),
+      GoRoute(
+        path: addCampaign,
+        builder: (context, state) => const AddCampaignScreen() ,
       ),
     ],
   );

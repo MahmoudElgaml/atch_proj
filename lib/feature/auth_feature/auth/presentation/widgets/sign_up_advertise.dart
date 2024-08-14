@@ -92,7 +92,7 @@ class _SignUpAdvertiseState extends State<SignUpAdvertise> {
                 textEditingController: location,
               ),
               const Gap(20),
-              CustomDropMenu(selectedValue: selectedValue),
+          //    CustomDropMenu(selectedValue: selectedValue),
               const Gap(25),
               Align(
                 alignment: Alignment.centerRight,

@@ -81,7 +81,7 @@ class _SignUpDrawerState extends State<SignUpDrawer> {
                 textEditingController: password,
               ),
               const Gap(30),
-              CustomDropMenu(selectedValue: selectedValue,),
+           //   CustomDropMenu(selectedValue: selectedValue,),
               const Gap(25),
               Align(
                 alignment: Alignment.centerRight,

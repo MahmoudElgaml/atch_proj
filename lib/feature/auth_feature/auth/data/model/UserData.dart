@@ -6,7 +6,9 @@ class UserData {
 
   UserData.fromJson(dynamic json) {
     message = json['message'];
-    user = json['person'] != null ? UserInformation.fromJson(json['person']) : null;
+    user = json['person'] != null
+        ? UserInformation.fromJson(json['person'])
+        : null;
   }
 
   String? message;
