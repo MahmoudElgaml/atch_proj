@@ -1,5 +1,6 @@
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/helper.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/add_link_section.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/add_photo_section.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_camapaign_textfiled.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_date_time_text_filed.dart';
@@ -98,7 +99,8 @@ class AddCampaignScreen extends StatelessWidget {
                       ),
                       const Gap(19),
                       const AddPhotoSection(),
-                      Gap(20)
+                      const Gap(20),
+                      const AddLinkSection()
               
               
               

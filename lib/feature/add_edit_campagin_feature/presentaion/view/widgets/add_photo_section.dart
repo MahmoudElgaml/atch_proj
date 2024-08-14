@@ -32,7 +32,9 @@ class AddPhotoSection extends StatelessWidget {
         BlocBuilder<AddImageCubit, AddImageState>(
           builder: (context, state) {
             var images = AddImageCubit.get(context).images;
-            return SizedBox(
+            return
+            images.isEmpty?const SizedBox():
+              SizedBox(
               height: MediaQuery.sizeOf(context).height * .1,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
