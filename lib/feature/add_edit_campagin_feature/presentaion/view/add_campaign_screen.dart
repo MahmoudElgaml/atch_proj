@@ -1,3 +1,4 @@
+import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/add_link_section.dart';
@@ -25,7 +26,9 @@ class AddCampaignScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+
         appBar: AppBar(
+            surfaceTintColor: Colors.transparent,
           backgroundColor: Colors.white,
         ),
         body: SizedBox(
@@ -100,10 +103,24 @@ class AddCampaignScreen extends StatelessWidget {
                       const Gap(19),
                       const AddPhotoSection(),
                       const Gap(20),
-                      const AddLinkSection()
-              
-              
-              
+                      const AddLinkSection(),
+                      const Gap(20),
+                      Center(
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColor.primaryColor
+                            ),
+                          onPressed: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Add Campaign",
+                              style: AppStyle.style24Regular(context)
+                                  .copyWith(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   )
                 ],

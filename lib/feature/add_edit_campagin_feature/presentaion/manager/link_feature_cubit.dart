@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
 part 'link_feature_state.dart';
-@singleton
+
 @injectable
 class LinkFeatureCubit extends Cubit<LinkFeatureState> {
   LinkFeatureCubit() : super(LinkFeatureInitial());

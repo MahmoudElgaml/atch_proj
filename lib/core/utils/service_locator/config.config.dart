@@ -50,11 +50,11 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.factory<_i864.AddImageCubit>(() => _i864.AddImageCubit());
+    gh.factory<_i973.LinkFeatureCubit>(() => _i973.LinkFeatureCubit());
     gh.factory<_i637.HomeLayoutCubit>(() => _i637.HomeLayoutCubit());
     gh.factory<_i395.ChangeDateCubit>(() => _i395.ChangeDateCubit());
     gh.singleton<_i254.APiManger>(() => _i254.APiManger());
     gh.singleton<_i353.StorageToken>(() => _i353.StorageToken());
-    gh.singleton<_i973.LinkFeatureCubit>(() => _i973.LinkFeatureCubit());
     gh.factory<_i283.AuthRepo>(() => _i188.AuthRepoImpl(
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),

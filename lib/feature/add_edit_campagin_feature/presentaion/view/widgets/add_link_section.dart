@@ -13,6 +13,7 @@ class AddLinkSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var linkCubit = getIt<LinkFeatureCubit>();
     return Column(
       children: [
         Row(
@@ -32,7 +33,7 @@ class AddLinkSection extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: TextField(
                           onSubmitted: (value) {
-                            getIt<LinkFeatureCubit>().addLink(value);
+                            linkCubit.addLink(value);
                             context.pop();
                           },
                         ),
@@ -46,18 +47,21 @@ class AddLinkSection extends StatelessWidget {
           ],
         ),
         BlocBuilder<LinkFeatureCubit, LinkFeatureState>(
+          bloc: linkCubit,
           builder: (context, state) {
-            var links = LinkFeatureCubit.get(context).links;
-            return SizedBox(
-              height: MediaQuery.sizeOf(context).height * .1,
-              child: ListView.builder(
-                itemBuilder: (context, index) => LinkItem(
-                  link: links[index],
-                  index:  index,
-                ),
-                itemCount: links.length,
-              ),
-            );
+            return linkCubit.links.isEmpty
+                ? const SizedBox()
+                : SizedBox(
+                    height: MediaQuery.sizeOf(context).height * .1,
+                    child: ListView.builder(
+                      itemBuilder: (context, index) => LinkItem(
+                        linkCubit: linkCubit,
+                        link: linkCubit.links[index],
+                        index: index,
+                      ),
+                      itemCount: linkCubit.links.length,
+                    ),
+                  );
           },
         )
       ],
@@ -66,10 +70,15 @@ class AddLinkSection extends StatelessWidget {
 }
 
 class LinkItem extends StatelessWidget {
-  const LinkItem({super.key, required this.link, required this.index});
+  const LinkItem(
+      {super.key,
+      required this.link,
+      required this.index,
+      required this.linkCubit});
 
   final String link;
   final int index;
+  final LinkFeatureCubit linkCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -81,8 +90,11 @@ class LinkItem extends StatelessWidget {
         ),
         const Spacer(),
         IconButton(
-          onPressed: () => LinkFeatureCubit.get(context).deleteLink(index),
-          icon: const Icon(Icons.delete,color: Colors.grey,),
+          onPressed: () => linkCubit.deleteLink(index),
+          icon: const Icon(
+            Icons.delete,
+            color: Colors.grey,
+          ),
         )
       ],
     );
