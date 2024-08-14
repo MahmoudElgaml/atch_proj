@@ -17,8 +17,9 @@ class UploadImageService {
   }
 
   static selectImage(ImageSource imageSource) async {
-    Uint8List image = await pickImage(imageSource);
-    selectedImage = image;
+    Uint8List? image = await pickImage(imageSource);
+    image!=null?
+    selectedImage = image:null;
 
   }
 }

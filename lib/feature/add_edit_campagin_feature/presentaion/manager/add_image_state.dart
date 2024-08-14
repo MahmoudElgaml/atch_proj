@@ -5,3 +5,4 @@ abstract class AddImageState {}
 
 class AddImageInitial extends AddImageState {}
 class AddImageSuccessState extends AddImageState {}
+class AddImageDeletedState extends AddImageState {}

@@ -21,10 +21,9 @@ class AddPhotoSection extends StatelessWidget {
               style: AppStyle.style24Regular(context),
             ),
             const Spacer(),
-             IconButton(
+            IconButton(
               onPressed: () => AddImageCubit.get(context).addImage(),
-              icon: const Icon( Icons.add),
-
+              icon: const Icon(Icons.add),
               color: Colors.black,
             ),
           ],
@@ -39,6 +38,7 @@ class AddPhotoSection extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 separatorBuilder: (context, index) => const Gap(15),
                 itemBuilder: (context, index) => ImageItem(
+                  index: index,
                   image: images[index],
                 ),
                 itemCount: images.length,
@@ -52,10 +52,10 @@ class AddPhotoSection extends StatelessWidget {
 }
 
 class ImageItem extends StatelessWidget {
-  const ImageItem({super.key, required this.image});
+  const ImageItem({super.key, required this.image,required this.index});
 
   final Uint8List image;
-
+ final int index;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -66,8 +66,9 @@ class ImageItem extends StatelessWidget {
           aspectRatio: 1,
           child: SizedBox(width: 200, height: 200, child: Image.memory(image)),
         ),
-        const Icon(
-          Icons.highlight_remove,
+        IconButton(
+          onPressed: () => AddImageCubit.get(context).delete(index),
+          icon: const Icon(Icons.highlight_remove),
           color: Colors.grey,
         )
       ],

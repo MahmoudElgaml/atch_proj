@@ -22,4 +22,11 @@ class AddImageCubit extends Cubit<AddImageState> {
     UploadImageService.selectedImage=null;
     emit(AddImageSuccessState());
   }
+
+  delete(int index){
+    images.removeAt(index);
+    emit(AddImageDeletedState());
+
+  }
+
 }
