@@ -2,6 +2,7 @@ import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_camapaign_textfiled.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_date_time_text_filed.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/date_section_widget.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
@@ -78,37 +79,7 @@ class AddCampaignScreen extends StatelessWidget {
                       ],
                     ),
                     const Gap(19),
-                    Row(
-                      children: [
-                        Text(
-                          "Start Date :",
-                          style: AppStyle.style24Regular(context),
-                        ),
-                        const Gap(10),
-                        Expanded(
-                          child: CustomDateTimeTextFiled(
-                            hintText: Helper.dateToString(DateTime.now()),
-                            icon: const Icon(Icons.date_range),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const Gap(19),
-                    Row(
-                      children: [
-                        Text(
-                          "End Date :",
-                          style: AppStyle.style24Regular(context),
-                        ),
-                        const Gap(10),
-                        Expanded(
-                          child: CustomDateTimeTextFiled(
-                            hintText: Helper.dateToString(DateTime.now()),
-                            icon: const Icon(Icons.timer_outlined),
-                          ),
-                        ),
-                      ],
-                    ),
+                    const DateSectionWidget(),
                     const Gap(19),
                     const CustomCampaignTextFiled(
                       hint: "Price",
@@ -123,6 +94,9 @@ class AddCampaignScreen extends StatelessWidget {
                       labelText: "Offer",
                       icon: Icon(Icons.attach_money_sharp),
                     ),
+
+
+
                   ],
                 )
               ],
