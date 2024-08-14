@@ -16,4 +16,9 @@ class LinkFeatureCubit extends Cubit<LinkFeatureState> {
     emit(LinkFeatureAddSuccess());
 
   }
+  deleteLink(int index){
+
+    links.removeAt(index);
+    emit(LinkFeatureDeleteSuccess());
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_image_cubit.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/change_date_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/link_feature_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/add_campaign_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
@@ -59,7 +60,12 @@ class AppRoute {
                   BlocProvider(
                     create: (context) => getIt<AddImageCubit>(),
                   ),
-                  BlocProvider(create: (context) => getIt<LinkFeatureCubit>(),)
+                  BlocProvider(
+                    create: (context) => getIt<LinkFeatureCubit>(),
+                  ),
+                  BlocProvider(
+                    create: (context) => getIt<ChangeDateCubit>(),
+                  ),
                 ],
                 child: const AddCampaignScreen(),
               )),

@@ -27,15 +27,17 @@ class AddLinkSection extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (context) {
-                    return Dialog(child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TextField(
-                        onSubmitted: (value) {
-                          getIt<LinkFeatureCubit>().addLink(value);
-                          context.pop();
-                        },
+                    return Dialog(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextField(
+                          onSubmitted: (value) {
+                            getIt<LinkFeatureCubit>().addLink(value);
+                            context.pop();
+                          },
+                        ),
                       ),
-                    ),);
+                    );
                   },
                 );
               },
@@ -45,14 +47,14 @@ class AddLinkSection extends StatelessWidget {
         ),
         BlocBuilder<LinkFeatureCubit, LinkFeatureState>(
           builder: (context, state) {
-            var links=LinkFeatureCubit.get(context).links;
+            var links = LinkFeatureCubit.get(context).links;
             return SizedBox(
-              height: MediaQuery
-                  .sizeOf(context)
-                  .height * .1,
+              height: MediaQuery.sizeOf(context).height * .1,
               child: ListView.builder(
-                itemBuilder: (context, index) =>
-                 LinkItem(link: links[index]),
+                itemBuilder: (context, index) => LinkItem(
+                  link: links[index],
+                  index:  index,
+                ),
                 itemCount: links.length,
               ),
             );
@@ -64,15 +66,25 @@ class AddLinkSection extends StatelessWidget {
 }
 
 class LinkItem extends StatelessWidget {
-  const LinkItem({super.key, required this.link});
+  const LinkItem({super.key, required this.link, required this.index});
 
   final String link;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
-    return Linkify(
-      onOpen: (link) async => await lunchUrl(link.url),
-      text: link,
+    return Row(
+      children: [
+        Linkify(
+          onOpen: (link) async => await lunchUrl(link.url),
+          text: link,
+        ),
+        const Spacer(),
+        IconButton(
+          onPressed: () => LinkFeatureCubit.get(context).deleteLink(index),
+          icon: const Icon(Icons.delete,color: Colors.grey,),
+        )
+      ],
     );
   }
 }
