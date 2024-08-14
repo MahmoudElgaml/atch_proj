@@ -1,5 +1,6 @@
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_image_cubit.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/link_feature_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/add_campaign_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_screen.dart';
@@ -8,7 +9,6 @@ import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/sign_up
 import 'package:atch_proj/feature/home_feature/presentation/widgets/ad_details_screen.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_layout_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 import 'package:go_router/go_router.dart';
 
@@ -34,17 +34,15 @@ class AppRoute {
         path: signInKey,
         builder: (context, state) => const SignUpScreen(),
       ),
-
       GoRoute(
         path: logInKey,
         builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
         path: homeKey,
-        builder: (context, state) =>
-            BlocProvider(
-                create: (context) => getIt<HomeLayoutCubit>(),
-                child: const HomeScreenLayout()),
+        builder: (context, state) => BlocProvider(
+            create: (context) => getIt<HomeLayoutCubit>(),
+            child: const HomeScreenLayout()),
       ),
       GoRoute(
         path: adDetails,
@@ -55,13 +53,16 @@ class AppRoute {
         builder: (context, state) => const SignUpAdvertise(),
       ),
       GoRoute(
-        path: addCampaign,
-        builder: (context, state) =>
-            BlocProvider(
-              create: (context) => getIt<AddImageCubit>(),
-              child: const AddCampaignScreen(),
-            ),
-      ),
+          path: addCampaign,
+          builder: (context, state) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) => getIt<AddImageCubit>(),
+                  ),
+                  BlocProvider(create: (context) => getIt<LinkFeatureCubit>(),)
+                ],
+                child: const AddCampaignScreen(),
+              )),
     ],
   );
 }

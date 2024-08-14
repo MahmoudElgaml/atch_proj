@@ -13,6 +13,8 @@ import 'package:injectable/injectable.dart' as _i526;
 
 import '../../../feature/add_edit_campagin_feature/presentaion/manager/add_image_cubit.dart'
     as _i864;
+import '../../../feature/add_edit_campagin_feature/presentaion/manager/link_feature_cubit.dart'
+    as _i973;
 import '../../../feature/auth_feature/auth/data/repo/auth_repo.dart' as _i283;
 import '../../../feature/auth_feature/auth/data/repo/auth_repo_impl.dart'
     as _i188;
@@ -45,10 +47,11 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
-    gh.factory<_i637.HomeLayoutCubit>(() => _i637.HomeLayoutCubit());
     gh.factory<_i864.AddImageCubit>(() => _i864.AddImageCubit());
+    gh.factory<_i637.HomeLayoutCubit>(() => _i637.HomeLayoutCubit());
     gh.singleton<_i254.APiManger>(() => _i254.APiManger());
     gh.singleton<_i353.StorageToken>(() => _i353.StorageToken());
+    gh.singleton<_i973.LinkFeatureCubit>(() => _i973.LinkFeatureCubit());
     gh.factory<_i283.AuthRepo>(() => _i188.AuthRepoImpl(
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
