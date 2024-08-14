@@ -1,4 +1,6 @@
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/change_date_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/app_style.dart';
@@ -10,40 +12,49 @@ class DateSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
+    var dateCubit = ChangeDateCubit.get(context);
+    return BlocBuilder<ChangeDateCubit, ChangeDateState>(
+      builder: (context, state) {
+        return Column(
           children: [
-            Text(
-              "Start Date :",
-              style: AppStyle.style24Regular(context),
+            Row(
+              children: [
+                Text(
+                  "Start Date :",
+                  style: AppStyle.style24Regular(context),
+                ),
+                const Gap(10),
+                Expanded(
+                  child: CustomDateTimeTextFiled(
+                    onTap: () {
+                      dateCubit.showFirstDate(context);
+                    },
+                    hintText: Helper.dateToString(dateCubit.firstDate),
+                    icon: const Icon(Icons.date_range),
+                  ),
+                ),
+              ],
             ),
-            const Gap(10),
-            Expanded(
-              child: CustomDateTimeTextFiled(
-                hintText: Helper.dateToString(DateTime.now()),
-                icon: const Icon(Icons.date_range),
-              ),
+            const Gap(19),
+            Row(
+              children: [
+                Text(
+                  "End Date :",
+                  style: AppStyle.style24Regular(context),
+                ),
+                const Gap(10),
+                Expanded(
+                  child: CustomDateTimeTextFiled(
+                    onTap: () => dateCubit.showLastDate(context),
+                    hintText: Helper.dateToString(dateCubit.lastDate),
+                    icon: const Icon(Icons.date_range),
+                  ),
+                ),
+              ],
             ),
           ],
-        ),
-        const Gap(19),
-        Row(
-          children: [
-            Text(
-              "End Date :",
-              style: AppStyle.style24Regular(context),
-            ),
-            const Gap(10),
-            Expanded(
-              child: CustomDateTimeTextFiled(
-                hintText: Helper.dateToString(DateTime.now()),
-                icon: const Icon(Icons.timer_outlined),
-              ),
-            ),
-          ],
-        ),
-      ],
+        );
+      },
     );
   }
 }
