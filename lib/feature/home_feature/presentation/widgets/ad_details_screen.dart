@@ -10,7 +10,9 @@ class AdDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Campaigns campaign = GoRouterState.of(context).extra! as Campaigns;
     return Scaffold(
-      body: AdDetailsSection(campaign: campaign,),
+      body: AdDetailsSection(
+        campaign: campaign,
+      ),
     );
   }
 }

@@ -2,10 +2,12 @@ import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/home_feature/presentation/widgets/ad_details_button.dart';
 import 'package:atch_proj/feature/home_feature/presentation/widgets/ad_details_fist_section.dart';
-import 'package:atch_proj/feature/home_feature/presentation/widgets/ad_details_widget.dart';
+import 'package:atch_proj/feature/home_feature/presentation/widgets/ad_details_location_widget.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
+import 'add_detail_widget.dart';
 
 class AdDetailsSection extends StatelessWidget {
   const AdDetailsSection({super.key, required this.campaign});
@@ -14,36 +16,48 @@ class AdDetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: MediaQuery.sizeOf(context).height * .3,
-          child: AdDetailsFistSection(campaign: campaign),
-        ),
-        const Gap(30),
-        Center(
-          child: Text(
-            campaign.campaignName ?? "",
-            style: AppStyle.style34(context).copyWith(
-              color: Colors.black,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(
+            height: MediaQuery.sizeOf(context).height * .3,
+            child: AdDetailsFistSection(campaign: campaign),
+          ),
+          const Gap(30),
+          Center(
+            child: Text(
+              campaign.campaignName ?? "",
+              style: AppStyle.style34(context).copyWith(
+                color: Colors.black,
+              ),
             ),
           ),
-        ),
-        const Gap(50),
-        AdDetailsWidget(
-            Assets.imagesDate, "14 December,2021", "Tuesday 4:00PM "),
-        const Gap(25),
-        AdDetailsWidget(
-          Assets.imagesLocation,
-          campaign.locations!.isEmpty ? "No Location" : campaign.locations![0],
-          campaign.locations!.isEmpty ? "No Location" : campaign.locations![1],
-        ),
-        const Gap(25),
-        AdDetailsWidget(
-            Assets.imagesProfileTestImage, "Ashfak Sayem", "Organizer"),
-        const Gap(200),
-        const AdDetailsButton()
-      ],
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              children: [
+                const Gap(50),
+                AdDetailsWidget(
+                  image: Assets.imagesDate,
+                  first: campaign.startDate,
+                  last: campaign.endDate,
+                ),
+                const Gap(25),
+                AdDetailsLocationWidget(
+                    Assets.imagesLocation, campaign.locations ?? []),
+                const Gap(25),
+                AdDetailsWidget(
+                  imageAdvertise: campaign.advertiser?.advertiserPic ?? "",
+                  first: campaign.advertiser?.advertiserName,
+                  last: "Advertiser",
+                ),
+                 Gap(MediaQuery.sizeOf(context).height*.1),
+                const AdDetailsButton()
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
