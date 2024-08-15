@@ -1,30 +1,36 @@
+import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class AdDetailsLocationWidget extends StatelessWidget {
-  const AdDetailsLocationWidget(this.image,this.location, {super.key});
+  const AdDetailsLocationWidget(this.image, this.location, {super.key});
 
   final String image;
-final   List<String> location;
+  final List<String> location;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
         child: Row(
           children: [
-            Image.asset(image,width: 48,),
+            Image.asset(
+              image,
+              width: 48,
+            ),
             const Gap(20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children:location.map((e) => Text(e),).toList()
+              children: location
+                  .map(
+                    (e) => Text(e, style: AppStyle.style18(context)),
+                  )
+                  .toList(),
             )
           ],
         ),
       ),
     );
   }
-
-
 }

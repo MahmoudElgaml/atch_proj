@@ -1,3 +1,4 @@
+import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -35,8 +36,8 @@ class AdDetailsWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(first ?? ""),
-                Text(last ?? ""),
+                Text(first ?? "",style: AppStyle.style18(context),),
+                Text(last ?? "",style: AppStyle.style18(context),),
               ],
             )
           ],
