@@ -10,16 +10,19 @@ class CustomCampaignTextFiled extends StatelessWidget {
       this.icon,
       required this.hint,
       required this.maxLine,
-      required this.labelText});
+      required this.labelText,
+      this.textEditingController});
 
   final String hint;
   final String labelText;
   final Icon? icon;
   final int maxLine;
+  final TextEditingController? textEditingController;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: textEditingController,
       decoration: InputDecoration(
           border: Helper.buildOutlineInputBorder(),
           enabledBorder: Helper.buildOutlineInputBorder(),

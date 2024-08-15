@@ -12,7 +12,7 @@ class CustomDropMenu extends StatefulWidget {
   @override
   State<CustomDropMenu> createState() => _CustomDropMenuState();
   String? selectedValue;
-  final List<String> items;
+  final Map<String, String> items;
 
   final bool isAuth;
 }
@@ -23,14 +23,14 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
     return DropdownButtonHideUnderline(
       child: DropdownButton2(
         isExpanded: true,
-        items: widget.items
-            .map(
-              (String item) => DropdownMenuItem<String>(
-                value: item,
-                child: Text(item, style: AppStyle.style18(context)),
-              ),
-            )
-            .toList(),
+        items: widget.items.entries.map(
+          (item) {
+            return DropdownMenuItem<String>(
+              value: item.value,
+              child: Text(item.key, style: AppStyle.style18(context)),
+            );
+          },
+        ).toList(),
         value: widget.selectedValue,
         onChanged: (String? value) {
           setState(() {
@@ -38,7 +38,6 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
           });
         },
         buttonStyleData: ButtonStyleData(
-
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               border: const Border(

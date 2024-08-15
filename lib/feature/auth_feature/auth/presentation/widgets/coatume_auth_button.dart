@@ -35,14 +35,16 @@ class CostumeButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            shadowColor: Colors.transparent),
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+        ),
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
-            if(state is AuthSuccessState) {
-              UploadImageService.selectedImage=null;
+            if (state is AuthSuccessState) {
+              UploadImageService.selectedImage = null;
               isLoading
-                  ? context.push(AppRoute.homeKey,extra: AuthCubit.get(context).userData)
+                  ? context.push(AppRoute.homeKey,
+                      extra: AuthCubit.get(context).userData)
                   : context.go(AppRoute.logInKey);
             }
           },
@@ -50,8 +52,14 @@ class CostumeButton extends StatelessWidget {
             if (state is AuthLoadingState) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is AuthFailState) {
-              print(state.message.toString());
-              return Center(child: Text(state.message,style: const TextStyle(color: Colors.white),));
+              return Center(
+                child: Text(
+                  state.message,
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              );
             }
             return Text(
               title,

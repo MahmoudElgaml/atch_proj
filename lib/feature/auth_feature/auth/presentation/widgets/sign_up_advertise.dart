@@ -12,7 +12,7 @@ import '../../../../../core/utils/app_string.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../data/model/SignData.dart';
 import '../manger/auth_cubit.dart';
-import 'coatume_button.dart';
+import 'coatume_auth_button.dart';
 import 'costume_text_filed.dart';
 import 'custom_drop_menu.dart';
 

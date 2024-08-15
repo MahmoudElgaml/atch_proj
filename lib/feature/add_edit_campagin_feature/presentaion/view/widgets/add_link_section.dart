@@ -9,11 +9,11 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../manager/link_feature_cubit.dart';
 
 class AddLinkSection extends StatelessWidget {
-  const AddLinkSection({super.key});
-
+  const AddLinkSection({super.key,required this.linkCubit});
+final LinkFeatureCubit linkCubit;
   @override
   Widget build(BuildContext context) {
-    var linkCubit = getIt<LinkFeatureCubit>();
+
     return Column(
       children: [
         Row(

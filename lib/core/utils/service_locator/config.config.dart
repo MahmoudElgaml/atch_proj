@@ -11,6 +11,12 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../../feature/add_edit_campagin_feature/data/repo/add_campaign_repo.dart'
+    as _i793;
+import '../../../feature/add_edit_campagin_feature/data/repo/add_campaign_repo_impl.dart'
+    as _i11;
+import '../../../feature/add_edit_campagin_feature/presentaion/manager/add_campaign_cubit.dart'
+    as _i376;
 import '../../../feature/add_edit_campagin_feature/presentaion/manager/add_image_cubit.dart'
     as _i864;
 import '../../../feature/add_edit_campagin_feature/presentaion/manager/change_date_cubit.dart'
@@ -66,8 +72,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i369.GetNormalCampaginCubit(gh<_i651.HomeRepo>()));
     gh.factory<_i401.GetPopularCampaignCubit>(
         () => _i401.GetPopularCampaignCubit(gh<_i651.HomeRepo>()));
+    gh.factory<_i793.AddCampaignRepo>(
+        () => _i11.AddCampaignRepoImpl(gh<_i254.APiManger>()));
     gh.factory<_i341.SearchRepo>(
         () => _i523.SearchRepoImpl(gh<_i254.APiManger>()));
+    gh.factory<_i376.AddCampaignCubit>(
+        () => _i376.AddCampaignCubit(gh<_i793.AddCampaignRepo>()));
     gh.factory<_i694.SearchCubit>(
         () => _i694.SearchCubit(gh<_i341.SearchRepo>()));
     return this;
