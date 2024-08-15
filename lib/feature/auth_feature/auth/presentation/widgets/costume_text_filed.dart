@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
 
+class CostumeTextFiled extends StatelessWidget {
+  const CostumeTextFiled(
+      {required this.title, super.key, required this.textEditingController,this.validator,this.keyboardType});
 
-class CostumeTextFiled extends StatefulWidget {
-  const CostumeTextFiled({required this.title, super.key,required this.textEditingController});
   final TextEditingController? textEditingController;
   final String title;
-
-  @override
-  State<CostumeTextFiled> createState() => _CostumeTextFiledState();
-}
-
-class _CostumeTextFiledState extends State<CostumeTextFiled> {
+ final String? Function(String?value)? validator;
+ final  TextInputType? keyboardType;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(widget.title,style: const TextStyle(fontSize: 13),),
-         TextField(
-          controller: widget.textEditingController,
+        Text(
+          title,
+          style: const TextStyle(fontSize: 13),
+        ),
+        TextFormField(
+          keyboardType:keyboardType ,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          validator: validator,
+          controller: textEditingController,
           decoration: const InputDecoration(),
         )
       ],
