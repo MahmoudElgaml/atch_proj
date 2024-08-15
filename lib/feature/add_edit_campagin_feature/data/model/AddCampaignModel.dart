@@ -66,7 +66,7 @@ class AddCampaignModel {
  FormData formData(){
     return FormData.fromMap({
       "data": jsonEncode(toJson()),
-      "image": images?.map( (e) => MultipartFile.fromFileSync(e.path,filename: e.name)),
+      "image": images?.map( (e) => MultipartFile.fromFileSync(e.path,filename: e.name)).toList(),
     }
     );
 
