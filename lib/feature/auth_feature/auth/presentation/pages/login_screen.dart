@@ -1,6 +1,6 @@
+import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/logo_widget.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
-
 
 import '../widgets/login_drawer.dart';
 
@@ -9,29 +9,11 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Stack(
-
         children: [
-          Container(
-            color: Colors.white,
-            height: double.infinity,
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.only(top:44.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                      width: 212,
-                      height: 197,
-                      child: Image.asset(Assets.imagesGLogo)),
-                ],
-              ),
-            )
-      ),
-
-          const LogInDrawer(),
+          LogoWidget(),
+          LogInDrawer(),
         ],
       ),
     );
