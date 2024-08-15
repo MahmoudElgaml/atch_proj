@@ -5,13 +5,16 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
+import 'core/services/loading_service.dart';
 import 'core/utils/bloc_observer.dart';
 
 
 void main() {
   Bloc.observer = MyBlocObserver();
    configureDependencies();
+  configureEasyLoading();
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
@@ -38,7 +41,7 @@ class MyApp extends StatelessWidget {
         ),
         useInheritedMediaQuery: true,
         locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
+       builder: EasyLoading.init(builder: DevicePreview.appBuilder),
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         routerConfig: AppRoute.router,

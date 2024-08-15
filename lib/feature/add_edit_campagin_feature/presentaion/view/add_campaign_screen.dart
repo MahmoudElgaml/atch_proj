@@ -35,7 +35,7 @@ class AddCampaignScreen extends StatelessWidget {
   final TextEditingController description = TextEditingController();
   final TextEditingController price = TextEditingController();
   final TextEditingController offer = TextEditingController();
-  var linkCubit = getIt<LinkFeatureCubit>();
+ final  LinkFeatureCubit linkCubit = getIt<LinkFeatureCubit>();
 
   @override
   Widget build(BuildContext context) {
