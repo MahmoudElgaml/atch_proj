@@ -7,7 +7,8 @@ class CustomDropMenu extends StatefulWidget {
       {super.key,
       required this.items,
       required this.selectedValue,
-      required this.isAuth});
+      required this.isAuth,
+      required this.setValue});
 
   @override
   State<CustomDropMenu> createState() => _CustomDropMenuState();
@@ -15,6 +16,7 @@ class CustomDropMenu extends StatefulWidget {
   final Map<String, String> items;
 
   final bool isAuth;
+  final void Function(String value) setValue;
 }
 
 class _CustomDropMenuState extends State<CustomDropMenu> {
@@ -33,9 +35,12 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
         ).toList(),
         value: widget.selectedValue,
         onChanged: (String? value) {
+          widget.setValue(value??"Babies");
+
           setState(() {
             widget.selectedValue = value ?? "Factory";
           });
+
         },
         buttonStyleData: ButtonStyleData(
           decoration: BoxDecoration(

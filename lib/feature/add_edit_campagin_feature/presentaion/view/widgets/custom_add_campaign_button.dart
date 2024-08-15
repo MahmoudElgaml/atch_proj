@@ -9,7 +9,7 @@ import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
 
 class CustomAddCampaignButton extends StatelessWidget {
-  const CustomAddCampaignButton({super.key, this.onPressed});
+  const CustomAddCampaignButton({super.key, this.onPressed,});
 
   final void Function()? onPressed;
 
