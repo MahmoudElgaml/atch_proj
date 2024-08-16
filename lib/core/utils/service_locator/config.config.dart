@@ -41,6 +41,12 @@ import '../../../feature/search_feature/data/repo/search_repo_impl.dart'
     as _i523;
 import '../../../feature/search_feature/presentation/manger/search_cubit.dart'
     as _i694;
+import '../../../feature/wishlist_feature/data/repo/wishlist_repo.dart'
+    as _i965;
+import '../../../feature/wishlist_feature/data/repo/wishlist_repo_impl.dart'
+    as _i325;
+import '../../../feature/wishlist_feature/presentation/manger/wishlist_cubit.dart'
+    as _i878;
 import '../../api/api_manger.dart' as _i254;
 import '../../cache/storage_token.dart' as _i353;
 
@@ -61,11 +67,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i395.ChangeDateCubit>(() => _i395.ChangeDateCubit());
     gh.singleton<_i254.APiManger>(() => _i254.APiManger());
     gh.singleton<_i353.StorageToken>(() => _i353.StorageToken());
+    gh.factory<_i965.WishlistRepo>(() => _i325.WishlistRepoImpl(
+          gh<_i254.APiManger>(),
+          gh<_i353.StorageToken>(),
+        ));
     gh.factory<_i283.AuthRepo>(() => _i188.AuthRepoImpl(
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
         ));
     gh.factory<_i651.HomeRepo>(() => _i766.HomeRepoImpl(gh<_i254.APiManger>()));
+    gh.factory<_i878.WishlistCubit>(
+        () => _i878.WishlistCubit(gh<_i965.WishlistRepo>()));
     gh.singleton<_i1035.AuthCubit>(
         () => _i1035.AuthCubit(gh<_i283.AuthRepo>()));
     gh.factory<_i369.GetNormalCampaginCubit>(

@@ -1,7 +1,13 @@
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_layout_cubit.dart';
+import 'package:atch_proj/feature/wishlist_feature/data/model/WishlistItemModel.dart';
+import 'package:atch_proj/feature/wishlist_feature/presentation/manger/wishlist_cubit.dart';
+import 'package:atch_proj/feature/wishlist_feature/presentation/view/widgets/ad_item.dart';
+import 'package:atch_proj/feature/wishlist_feature/presentation/view/widgets/wishlist_empty_widget.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 class WishlistScreen extends StatelessWidget {
@@ -9,40 +15,51 @@ class WishlistScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            Gap(MediaQuery.of(context).size.height * .03),
-            Image.asset(Assets.imagesMiniLogo),
-            const Gap(20),
-            Text(
-              "0 more",
-              style:
-                  AppStyle.style13(context).copyWith(color: AppColor.fontColor),
-            ),
-            Gap(MediaQuery.of(context).size.height * 0.25),
-            Center(
-              child: Column(
-                children: [
-                  Image.asset(Assets.imagesWishlist),
-                ],
-              ),
-            ),
-            Gap(MediaQuery.of(context).size.height * 0.09),
-            Text(
-              "No favourites yet",
-              style: AppStyle.style26(context),
-            ),
-            Text(
-              "Tap heart next to the product, We'll save them for you here",
-              style:
-                  AppStyle.style13(context).copyWith(color: AppColor.fontColor),
-            ),
-
-          ],
+    return const Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              WishlistList(),
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class WishlistList extends StatelessWidget {
+  const WishlistList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<WishlistCubit, WishlistState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        if (state is WishlistSuccessState) {
+          return Expanded(
+            child: ListView.separated(
+              itemBuilder: (context, index) => AdWishlistItem(
+                wishlist: state.wishlist![index]!,
+              ),
+              separatorBuilder: (context, index) => const Gap(15),
+              itemCount: state.wishlist?.length ?? 0,
+            ),
+          );
+        } else if (state is WishlistEmptyState) {
+          return const WishlistEmptyWidget();
+        } else if (state is WishlistFailState) {
+          return Center(child: Text(state.message));
+        }
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
     );
   }
 }

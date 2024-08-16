@@ -14,6 +14,7 @@ class AppStyle {
 
   static TextStyle style13(BuildContext context) {
     return TextStyle(
+      fontFamily: "AbhayaLibre",
       color: Colors.white,
       fontSize: responsiveFont(fontSize: 13, context: context),
       fontWeight: FontWeight.bold,
@@ -22,6 +23,7 @@ class AppStyle {
 
   static TextStyle style26(BuildContext context) {
     return TextStyle(
+      fontFamily: "AbhayaLibre",
       color: Colors.black,
       fontSize: responsiveFont(fontSize: 26, context: context),
       fontWeight: FontWeight.w400,
