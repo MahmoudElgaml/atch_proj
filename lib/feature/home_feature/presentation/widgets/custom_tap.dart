@@ -9,13 +9,14 @@ class CustomTap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-
       decoration: BoxDecoration(
         color: categories.color,
         borderRadius: BorderRadius.circular(21),
       ),
-      padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 16),
-      child: Center(child: Text(categories.title)),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+      child: Center(
+        child: Text(categories.title),
+      ),
     );
   }
 }

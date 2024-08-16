@@ -12,17 +12,16 @@ class TabsAppBar extends StatefulWidget {
 }
 
 class _TabsAppBarState extends State<TabsAppBar> {
-  int selectedIndex=0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    List<Categories> category=Categories.values.toList();
-    return  Column(
+    List<Categories> category = Categories.values.toList();
+    return Column(
       children: [
         DefaultTabController(
-            length: 3,
-            child: TabBar(
-
+          length: 3,
+          child: TabBar(
               dividerColor: Colors.transparent,
               tabAlignment: TabAlignment.center,
               onTap: (index) {
@@ -31,8 +30,12 @@ class _TabsAppBarState extends State<TabsAppBar> {
               },
               isScrollable: true,
               indicatorColor: Colors.transparent,
-              tabs: category.map((e) => CustomTap(categories: e),).toList()
-            ))
+              tabs: category
+                  .map(
+                    (e) => CustomTap(categories: e),
+                  )
+                  .toList()),
+        )
       ],
     );
   }
