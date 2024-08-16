@@ -39,7 +39,7 @@ class AppRoute {
       ),
       GoRoute(
         path: logInKey,
-        builder: (context, state) => const WishlistScreen(),
+        builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
         path: homeKey,

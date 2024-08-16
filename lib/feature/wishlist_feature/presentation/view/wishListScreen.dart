@@ -36,16 +36,13 @@ class WishlistList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<WishlistCubit, WishlistState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+    return BlocBuilder<WishlistCubit, WishlistState>(
       builder: (context, state) {
         if (state is WishlistSuccessState) {
           return Expanded(
             child: ListView.separated(
               itemBuilder: (context, index) => AdWishlistItem(
-                wishlist: state.wishlist![index]!,
+                wishItem: state.wishlist![index]!,
               ),
               separatorBuilder: (context, index) => const Gap(15),
               itemCount: state.wishlist?.length ?? 0,

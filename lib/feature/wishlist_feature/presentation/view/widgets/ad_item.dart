@@ -4,6 +4,7 @@ import 'package:atch_proj/feature/wishlist_feature/data/model/WishlistItemModel.
 import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 class AdWishlistItem extends StatelessWidget {
@@ -16,7 +17,7 @@ class AdWishlistItem extends StatelessWidget {
     return Container(
       height: 90,
       decoration: BoxDecoration(
-        color: Colors.white60,
+        color: Colors.grey[90],
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -25,12 +26,15 @@ class AdWishlistItem extends StatelessWidget {
           Expanded(
             flex: 1,
             child: AspectRatio(
-              aspectRatio: 90 / 10,
-              child: CachedNetworkImage(
-                imageUrl: wishItem.images?[0] ?? "",
-                errorWidget: (context, url, error) {
-                  return Image.asset(Assets.assetsImagesEmptyImage);
-                },
+              aspectRatio: 79 / 92,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: CachedNetworkImage(
+                  imageUrl:wishItem.images!.isEmpty?"": wishItem.images?[0] ?? "",
+                  errorWidget: (context, url, error) {
+                    return SvgPicture.asset(Assets.imagesEmptyImage,fit: BoxFit.fill,);
+                  },
+                ),
               ),
             ),
           ),
