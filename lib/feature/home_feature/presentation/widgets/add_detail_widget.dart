@@ -6,26 +6,27 @@ import 'package:gap/gap.dart';
 
 class AdDetailsWidget extends StatelessWidget {
   const AdDetailsWidget(
-      {super.key, this.first,  this.image, this.last,this.imageAdvertise});
-  final String ?image;
+      {super.key, this.first, this.image, this.last, this.imageAdvertise,required this.isProfile});
+
+  final String? image;
   final String? imageAdvertise;
   final String? first;
   final String? last;
+  final bool isProfile;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-
       elevation: 5,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Row(
           children: [
             ClipOval(
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
                 height: 48,
-                imageUrl: imageAdvertise??"",
+                imageUrl: imageAdvertise ?? "",
                 width: 48,
                 errorWidget: (context, url, error) => Image.asset(
                   Assets.imagesDate,
@@ -36,8 +37,16 @@ class AdDetailsWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(first ?? "",style: AppStyle.style18(context),),
-                Text(last ?? "",style: AppStyle.style18(context),),
+                Text(
+                  isProfile?first??"":
+                  first?.substring(0, 16) ?? "",
+                  style: AppStyle.style18(context),
+                ),
+                Text(
+                  isProfile?last??"":
+                  last?.substring(0, 16) ?? "",
+                  style: AppStyle.style18(context),
+                ),
               ],
             )
           ],

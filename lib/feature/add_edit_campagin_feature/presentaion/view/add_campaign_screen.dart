@@ -157,10 +157,10 @@ class AddCampaignScreen extends StatelessWidget {
                                 campaignDescription: description.text,
                                 campaignStartDate: Helper.dateToString(
                                         ChangeDateCubit.get(context).firstDate)
-                                    .substring(0, 10),
+                                    .substring(0, 12),
                                 campaignEndDate: Helper.dateToString(
                                         ChangeDateCubit.get(context).lastDate)
-                                    .substring(0, 10),
+                                    .substring(0, 12),
                                 campaignLocation: ["cairo"],
                                 campaignName: companyName.text,
                                 campaignTargetAudience: selectedValue,

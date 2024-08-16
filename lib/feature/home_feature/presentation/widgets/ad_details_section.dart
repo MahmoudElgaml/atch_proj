@@ -20,7 +20,7 @@ class AdDetailsSection extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: MediaQuery.sizeOf(context).height * .3,
+            height: MediaQuery.sizeOf(context).height * .35,
             child: AdDetailsFistSection(campaign: campaign),
           ),
           const Gap(30),
@@ -38,6 +38,7 @@ class AdDetailsSection extends StatelessWidget {
               children: [
                 const Gap(50),
                 AdDetailsWidget(
+                  isProfile: false,
                   image: Assets.imagesDate,
                   first: campaign.startDate,
                   last: campaign.endDate,
@@ -47,11 +48,12 @@ class AdDetailsSection extends StatelessWidget {
                     Assets.imagesLocation, campaign.locations ?? []),
                 const Gap(25),
                 AdDetailsWidget(
+                  isProfile: true,
                   imageAdvertise: campaign.advertiser?.advertiserPic ?? "",
                   first: campaign.advertiser?.advertiserName,
                   last: "Advertiser",
                 ),
-                 Gap(MediaQuery.sizeOf(context).height*.1),
+                Gap(MediaQuery.sizeOf(context).height * .1),
                 const AdDetailsButton()
               ],
             ),
