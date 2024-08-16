@@ -74,7 +74,9 @@ class AdvertiseSignDrawer extends StatelessWidget {
           ),
           const Gap(20),
           CostumeTextFiled(
-            validator: (value) => ValidationService.validatePassword(value),
+            isPassword: true,
+            validator: (value) =>
+                ValidationService.validateEmpty(value, "Password"),
             title: "Password",
             textEditingController: password,
           ),

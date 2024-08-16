@@ -23,7 +23,7 @@ class LogInDrawer extends StatefulWidget {
 
 class _LogInDrawerState extends State<LogInDrawer> {
   Map<String, String> items = {
-    "advertise": "advertise",
+    "advertiser": "advertiser",
     "user": "user",
   };
   TextEditingController email = TextEditingController();
@@ -55,7 +55,8 @@ class _LogInDrawerState extends State<LogInDrawer> {
                 ),
                 const Gap(32),
                 CostumeTextFiled(
-                  validator: (value) => ValidationService.validatePassword(value),
+                  isPassword: true,
+                  validator: (value) => ValidationService.validateEmpty(value, "Password"),
                   title: "password",
                   textEditingController: password,
                 ),
