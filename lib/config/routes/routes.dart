@@ -10,6 +10,7 @@ import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/test_uplo
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/sign_up_advertise.dart';
 import 'package:atch_proj/feature/home_feature/presentation/widgets/ad_details_screen.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_layout_cubit.dart';
+import 'package:atch_proj/feature/wishlist_feature/presentation/view/wishListScreen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:go_router/go_router.dart';
@@ -38,7 +39,7 @@ class AppRoute {
       ),
       GoRoute(
         path: logInKey,
-        builder: (context, state) => const LoginScreen(),
+        builder: (context, state) => const WishlistScreen(),
       ),
       GoRoute(
         path: homeKey,
