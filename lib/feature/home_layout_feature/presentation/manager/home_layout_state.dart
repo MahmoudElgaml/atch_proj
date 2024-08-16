@@ -10,13 +10,16 @@ class HomeState extends HomeLayoutState {
   Widget viewTap() => MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => getIt<GetNormalCampaginCubit>()..getNormalCampaign(),
-
+            create: (context) =>
+                getIt<GetNormalCampaginCubit>()..getNormalCampaign(),
           ),
           BlocProvider(
             create: (context) =>
                 getIt<GetPopularCampaignCubit>()..getPopularCampaign(),
           ),
+          BlocProvider(
+            create: (context) => getIt<WishlistCubit>(),
+          )
         ],
         child: const HomeScreen(),
       );
@@ -24,19 +27,18 @@ class HomeState extends HomeLayoutState {
 
 class SearchState extends HomeLayoutState {
   @override
-  Widget viewTap() =>  BlocProvider(
-  create: (context) => getIt<SearchCubit>(),
-  child: const SearchView(),
-);
+  Widget viewTap() => BlocProvider(
+        create: (context) => getIt<SearchCubit>(),
+        child: const SearchView(),
+      );
 }
 
 class WishListState extends HomeLayoutState {
   @override
-  Widget viewTap() =>  BlocProvider(
-  create: (context) => getIt<WishlistCubit>()..getWishlist(),
-  child: const WishlistScreen(),
-
-);
+  Widget viewTap() => BlocProvider(
+        create: (context) => getIt<WishlistCubit>()..getWishlist(),
+        child: const WishlistScreen(),
+      );
 }
 
 class AccountState extends HomeLayoutState {

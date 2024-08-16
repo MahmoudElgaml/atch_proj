@@ -22,6 +22,7 @@ class WishlistScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Gap(20),
               WishlistList(),
             ],
           ),

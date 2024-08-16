@@ -8,6 +8,7 @@ class EndPoints{
   static const getNormalCampaign="/home/normalCampaigns";
   static const addCampaign="/advertiser/addCampaign";
   static const getWishlist="/user/get_wishlist";
+  static const addToWishlist="/campaign_page/add_to_wishlist";
 
 
 }

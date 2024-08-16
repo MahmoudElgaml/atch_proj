@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 
 abstract class WishlistRepo{
      Future<Either<Failure,WishlistItemModel>> getWishlist();
+     Future<Either<Failure,String>> addToWishlist(int campaignId);
 
 
 }

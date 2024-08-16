@@ -33,4 +33,23 @@ class WishlistRepoImpl implements WishlistRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, String>> addToWishlist(int campaignId) async {
+    try {
+      var id = await storageToken.getToken();
+      await aPiManger.post(EndPoints.addToWishlist, {
+        "user_id": id,
+        "campaign_id": campaignId,
+      });
+      return right("success");
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromServer(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+
+    }
+  }
 }
