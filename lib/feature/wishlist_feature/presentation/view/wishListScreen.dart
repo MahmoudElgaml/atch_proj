@@ -43,10 +43,10 @@ class WishlistList extends StatelessWidget {
           return Expanded(
             child: ListView.separated(
               itemBuilder: (context, index) => AdWishlistItem(
-                wishItem: state.wishlist![index]!,
+                campaigns: state.campaigns![index]!,
               ),
               separatorBuilder: (context, index) => const Gap(15),
-              itemCount: state.wishlist?.length ?? 0,
+              itemCount: state.campaigns?.length ?? 0,
             ),
           );
         } else if (state is WishlistEmptyState) {

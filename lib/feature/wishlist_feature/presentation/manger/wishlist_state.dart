@@ -11,9 +11,9 @@ class WishlistFailState extends WishlistState {
  WishlistFailState(this.message);
 }
 class WishlistSuccessState extends WishlistState {
- final  List<Wishlist?>? wishlist;
+ final  List<Campaigns?>? campaigns;
 
-WishlistSuccessState({this.wishlist});
+WishlistSuccessState({this.campaigns});
 }
 class WishlistEmptyState extends WishlistState {}
 

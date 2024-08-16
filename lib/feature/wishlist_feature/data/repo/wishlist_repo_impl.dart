@@ -8,6 +8,8 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../home_feature/data/model/CampaignModel.dart';
+
 @Injectable(as: WishlistRepo)
 class WishlistRepoImpl implements WishlistRepo {
   APiManger aPiManger;
@@ -16,15 +18,15 @@ class WishlistRepoImpl implements WishlistRepo {
   WishlistRepoImpl(this.aPiManger, this.storageToken);
 
   @override
-  Future<Either<Failure, WishlistItemModel>> getWishlist() async {
+  Future<Either<Failure, CampaignModel>> getWishlist() async {
     try {
       var id = await storageToken.getToken();
       var response = await aPiManger.post(EndPoints.getWishlist, {
         "user_id": id,
       });
-      WishlistItemModel wishlistItemModel =
-          WishlistItemModel.fromJson(response.data);
-      return right(wishlistItemModel);
+      CampaignModel campaignModel =
+          CampaignModel.fromJson(response.data);
+      return right(campaignModel);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromServer(e));

@@ -1,3 +1,4 @@
+import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/wishlist_feature/data/model/WishlistItemModel.dart';
 import 'package:atch_proj/feature/wishlist_feature/data/repo/wishlist_repo.dart';
 import 'package:bloc/bloc.dart';
@@ -20,10 +21,10 @@ class WishlistCubit extends Cubit<WishlistState> {
         emit(WishlistFailState(l.message));
       },
       (r) {
-        if (r.wishlist!.isEmpty) {
+        if (r.campaigns!.isEmpty) {
           emit(WishlistEmptyState());
         } else {
-          emit(WishlistSuccessState(wishlist: r.wishlist));
+          emit(WishlistSuccessState( campaigns: r.campaigns));
         }
       },
     );

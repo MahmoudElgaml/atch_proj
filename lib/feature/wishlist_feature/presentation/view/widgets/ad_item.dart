@@ -1,5 +1,6 @@
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/wishlist_feature/data/model/WishlistItemModel.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -8,9 +9,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 class AdWishlistItem extends StatelessWidget {
-  const AdWishlistItem({super.key, required this.wishItem});
+  const AdWishlistItem({super.key, required this.campaigns});
 
-  final Wishlist wishItem;
+  final Campaigns campaigns;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class AdWishlistItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
-                  imageUrl:wishItem.images!.isEmpty?"": wishItem.images?[0] ?? "",
+                  imageUrl:campaigns.images!.isEmpty?"": campaigns.images?[0] ?? "",
                   errorWidget: (context, url, error) {
                     return SvgPicture.asset(Assets.imagesEmptyImage,fit: BoxFit.fill,);
                   },
@@ -39,7 +40,7 @@ class AdWishlistItem extends StatelessWidget {
               ),
             ),
           ),
-          Gap(20),
+          const Gap(20),
           Expanded(
             flex: 3,
             child: Column(
@@ -51,7 +52,7 @@ class AdWishlistItem extends StatelessWidget {
                   style: AppStyle.style13(context)
                       .copyWith(color: AppColor.primaryColor),
                 ),
-                Gap(5),
+                const Gap(5),
                 Text(
                   "A virtual evening of smooth jazz",
                   style: AppStyle.style13(context)
@@ -60,7 +61,7 @@ class AdWishlistItem extends StatelessWidget {
               ],
             ),
           ),
-          Icon(Icons.favorite_border,color: ,)
+          const Icon(Icons.favorite_border,)
         ],
       ),
     );
