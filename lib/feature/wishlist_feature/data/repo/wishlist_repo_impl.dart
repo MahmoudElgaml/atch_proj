@@ -35,7 +35,7 @@ class WishlistRepoImpl implements WishlistRepo {
   }
 
   @override
-  Future<Either<Failure, String>> addToWishlist(int campaignId) async {
+  Future<Either<Failure, String>> addToWishlist(num campaignId) async {
     try {
       var id = await storageToken.getToken();
       await aPiManger.post(EndPoints.addToWishlist, {

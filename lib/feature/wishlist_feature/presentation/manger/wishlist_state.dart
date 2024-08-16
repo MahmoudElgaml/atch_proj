@@ -13,7 +13,7 @@ class WishlistFailState extends WishlistState {
 class WishlistSuccessState extends WishlistState {
  final  List<Wishlist?>? wishlist;
 
-WishlistSuccessState(this.wishlist);
+WishlistSuccessState({this.wishlist});
 }
 class WishlistEmptyState extends WishlistState {}
 

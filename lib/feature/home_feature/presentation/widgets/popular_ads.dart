@@ -35,7 +35,7 @@ class PopularAds extends StatelessWidget {
                   child: ListView.separated(
                     separatorBuilder: (context, index) => const Gap(10),
                     itemBuilder: (context, index) => AspectRatio(
-                        aspectRatio: 237 / 255,
+                        aspectRatio: 235 / 270,
                         child: AdsItem(
                           campaigns: popularCampaigns[index],
                         )),

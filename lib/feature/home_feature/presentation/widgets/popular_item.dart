@@ -64,9 +64,11 @@ class AdsItem extends StatelessWidget {
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.all(5.0),
-              child: SaveButton(),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: SaveButton(
+                campaignId: campaigns.id!,
+              ),
             ),
           ],
         ),

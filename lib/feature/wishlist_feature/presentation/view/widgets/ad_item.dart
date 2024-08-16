@@ -30,6 +30,7 @@ class AdWishlistItem extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: CachedNetworkImage(
+                  fit: BoxFit.fill,
                   imageUrl:wishItem.images!.isEmpty?"": wishItem.images?[0] ?? "",
                   errorWidget: (context, url, error) {
                     return SvgPicture.asset(Assets.imagesEmptyImage,fit: BoxFit.fill,);
@@ -59,7 +60,7 @@ class AdWishlistItem extends StatelessWidget {
               ],
             ),
           ),
-          Icon(Icons.favorite_border)
+          Icon(Icons.favorite_border,color: ,)
         ],
       ),
     );
