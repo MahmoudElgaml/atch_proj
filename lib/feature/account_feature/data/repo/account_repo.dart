@@ -4,5 +4,6 @@ import 'package:dartz/dartz.dart';
 
 abstract class AccountRepo {
  Future<Either<Failure,CampaignModel>> getUsedOffer();
+ Future<Either<Failure,CampaignModel>> getRecentlyView();
 
 }

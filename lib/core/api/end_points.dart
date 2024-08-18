@@ -9,6 +9,7 @@ class EndPoints{
   static const addCampaign="/advertiser/addCampaign";
   static const getWishlist="/user/get_wishlist";
   static const getUsedOffer="/user/used_offers";
+  static const getRecentlyViewed="/user/recently_viewed";
   static const addToWishlist="/campaign_page/add_to_wishlist";
 
 

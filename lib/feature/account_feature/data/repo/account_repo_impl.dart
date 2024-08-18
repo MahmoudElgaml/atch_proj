@@ -34,4 +34,24 @@ class AccountRepoImpl implements AccountRepo {
       }
     }
   }
+  @override
+  Future<Either<Failure, CampaignModel>> getRecentlyView() async {
+    try {
+      var id = await storageToken.getToken();
+      var response = await aPiManger.post(EndPoints.getRecentlyViewed, {
+        "user_id": id,
+      });
+
+      CampaignModel usedCampaigns = CampaignModel.fromJson(response.data);
+
+    return  right(usedCampaigns);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromServer(e));
+      } else {
+        print(e.toString());
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

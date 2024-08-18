@@ -13,7 +13,7 @@ class TestCubit extends Cubit<TestState> {
 static TestCubit get(context)=>BlocProvider.of(context);
   test() async {
     emit(TestLoadingState());
-    var result = await accountRepo.getUsedOffer();
+    var result = await accountRepo.getRecentlyView();
     result.fold(
       (l) {
         emit(TestFailState());
