@@ -1,4 +1,5 @@
 
+import 'package:atch_proj/feature/account_feature/advertise/data/model/EditAdvertiseData.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/repo/advertise_account_repo.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,15 +16,16 @@ class TestCubit extends Cubit<TestState> {
   TestCubit(this.advertiseAccountRepo) : super(TestInitial());
   AdvertiseAccountRepo advertiseAccountRepo;
 static TestCubit get(context)=>BlocProvider.of(context);
-  test( ) async {
+  test(EditAdvertiseData advertise ) async {
     emit(TestLoadingState());
-    var result = await advertiseAccountRepo.getAdvertiseInfo();
+    var result = await advertiseAccountRepo.editAdvertise(advertise);
     result.fold(
       (l) {
+        print(l.statusCode);
         emit(TestFailState());
       },
       (r) {
-       print(r.advertiser!.advertiserName);
+       print(r);
         emit(TestSuccessState());
       },
     );

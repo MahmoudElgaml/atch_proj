@@ -40,8 +40,7 @@ class ServerFailure extends Failure {
 
   factory ServerFailure.fromBadResponse(int statusCode, dynamic response) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 402) {
-      return ServerFailure(response["error"],
-          statusCode: statusCode.toString());
+      return ServerFailure("error",statusCode: statusCode.toString());
     } else if (statusCode == 404) {
       return ServerFailure(" not found data ",
           statusCode: statusCode.toString());

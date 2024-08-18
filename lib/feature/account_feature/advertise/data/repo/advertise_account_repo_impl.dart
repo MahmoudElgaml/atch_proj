@@ -3,6 +3,7 @@ import 'package:atch_proj/core/api/end_points.dart';
 import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/erorr/failure.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
+import 'package:atch_proj/feature/account_feature/advertise/data/model/EditAdvertiseData.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -30,6 +31,24 @@ class AdvertiseAccountRepoImpl implements AdvertiseAccountRepo {
       if (e is DioException) {
         return left(ServerFailure.fromServer(e));
       } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> editAdvertise(EditAdvertiseData advertiseData) async{
+    try {
+      var formData=advertiseData.formData();
+      await aPiManger.post(EndPoints.editProfileAdvertise, formData);
+
+      return  right("success");
+    } catch (e) {
+      if (e is DioException) {
+      print(e.toString()) ;
+        return left(ServerFailure.fromServer(e));
+      } else {
+        print(e.toString());
         return left(ServerFailure(e.toString()));
       }
     }
