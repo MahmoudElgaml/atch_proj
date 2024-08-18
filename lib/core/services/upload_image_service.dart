@@ -14,6 +14,9 @@ class UploadImageService {
     if (file != null) {
       return await file.readAsBytes();
     }
+    else{
+      selectedImage=null;
+    }
   }
 
   static selectImage(ImageSource imageSource) async {

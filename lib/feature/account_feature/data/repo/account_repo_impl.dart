@@ -2,6 +2,7 @@ import 'package:atch_proj/core/api/api_manger.dart';
 import 'package:atch_proj/core/api/end_points.dart';
 import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/erorr/failure.dart';
+import 'package:atch_proj/feature/account_feature/data/model/EditUserData.dart';
 import 'package:atch_proj/feature/account_feature/data/repo/account_repo.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:dartz/dartz.dart';
@@ -45,6 +46,24 @@ class AccountRepoImpl implements AccountRepo {
       CampaignModel usedCampaigns = CampaignModel.fromJson(response.data);
 
     return  right(usedCampaigns);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromServer(e));
+      } else {
+        print(e.toString());
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> editProfileUSer(EditUserData editUserData) async{
+    try {
+     var formData=editUserData.formData();
+       await aPiManger.post(EndPoints.editProfileUSer, formData);
+
+
+      return  right("success");
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromServer(e));

@@ -1,3 +1,4 @@
+import 'package:atch_proj/feature/account_feature/data/model/EditUserData.dart';
 import 'package:atch_proj/feature/account_feature/data/repo/account_repo.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,15 +12,15 @@ class TestCubit extends Cubit<TestState> {
   TestCubit(this.accountRepo) : super(TestInitial());
   AccountRepo accountRepo;
 static TestCubit get(context)=>BlocProvider.of(context);
-  test() async {
+  test(EditUserData user) async {
     emit(TestLoadingState());
-    var result = await accountRepo.getRecentlyView();
+    var result = await accountRepo.editProfileUSer(user);
     result.fold(
       (l) {
         emit(TestFailState());
       },
       (r) {
-        print(r.campaigns?.length);
+       print(r);
         emit(TestSuccessState());
       },
     );
