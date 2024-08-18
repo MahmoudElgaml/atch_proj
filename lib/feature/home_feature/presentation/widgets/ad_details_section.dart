@@ -50,7 +50,7 @@ class AdDetailsSection extends StatelessWidget {
                     Assets.imagesLocation, campaign.locations ?? []),
                 const Gap(25),
                 InkWell(
-                  onTap: () => context.push(AppRoute.advertiserInfoPage),
+                  onTap: () => context.push(AppRoute.advertiserInfoPage,extra: campaign.advertiser),
                   child: AdDetailsWidget(
                     isProfile: true,
                     imageAdvertise: campaign.advertiser?.advertiserPic ?? "",

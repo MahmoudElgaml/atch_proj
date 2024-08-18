@@ -2,7 +2,6 @@ import 'package:atch_proj/core/api/api_manger.dart';
 import 'package:atch_proj/core/api/end_points.dart';
 import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/erorr/failure.dart';
-import 'package:atch_proj/feature/wishlist_feature/data/model/WishlistItemModel.dart';
 import 'package:atch_proj/feature/wishlist_feature/data/repo/wishlist_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';

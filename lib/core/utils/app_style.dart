@@ -73,6 +73,14 @@ class AppStyle {
       fontWeight: FontWeight.w400,
     );
   }
+  static TextStyle style16Regular(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontFamily: "AbhayaLibre",
+      fontSize: responsiveFont(fontSize: 16, context: context),
+      fontWeight: FontWeight.w400,
+    );
+  }
 
   static TextStyle style24Regular(BuildContext context) {
     return TextStyle(

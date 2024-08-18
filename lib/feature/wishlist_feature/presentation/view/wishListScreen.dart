@@ -1,7 +1,6 @@
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_layout_cubit.dart';
-import 'package:atch_proj/feature/wishlist_feature/data/model/WishlistItemModel.dart';
 import 'package:atch_proj/feature/wishlist_feature/presentation/manger/wishlist_cubit.dart';
 import 'package:atch_proj/feature/wishlist_feature/presentation/view/widgets/ad_item.dart';
 import 'package:atch_proj/feature/wishlist_feature/presentation/view/widgets/wishlist_empty_widget.dart';
