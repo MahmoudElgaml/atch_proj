@@ -4,9 +4,9 @@ class CampaignModel {
   });
 
   CampaignModel.fromJson(dynamic json) {
-    if (json['recently_viewed'] != null) {
+    if (json['campaigns'] != null) {
       campaigns = [];
-      json['recently_viewed'].forEach((v) {
+      json['campaigns'].forEach((v) {
         campaigns?.add(Campaigns.fromJson(v));
       });
     }

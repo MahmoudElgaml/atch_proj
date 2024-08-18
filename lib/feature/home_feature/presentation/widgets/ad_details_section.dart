@@ -1,3 +1,4 @@
+import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/home_feature/presentation/widgets/ad_details_button.dart';
@@ -6,6 +7,7 @@ import 'package:atch_proj/feature/home_feature/presentation/widgets/ad_details_l
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import 'add_detail_widget.dart';
 
@@ -47,11 +49,14 @@ class AdDetailsSection extends StatelessWidget {
                 AdDetailsLocationWidget(
                     Assets.imagesLocation, campaign.locations ?? []),
                 const Gap(25),
-                AdDetailsWidget(
-                  isProfile: true,
-                  imageAdvertise: campaign.advertiser?.advertiserPic ?? "",
-                  first: campaign.advertiser?.advertiserName,
-                  last: "Advertiser",
+                InkWell(
+                  onTap: () => context.push(AppRoute.advertiserInfoPage),
+                  child: AdDetailsWidget(
+                    isProfile: true,
+                    imageAdvertise: campaign.advertiser?.advertiserPic ?? "",
+                    first: campaign.advertiser?.advertiserName,
+                    last: "Advertiser",
+                  ),
                 ),
                 Gap(MediaQuery.sizeOf(context).height * .1),
                 const AdDetailsButton()
