@@ -1,5 +1,4 @@
 import 'package:atch_proj/core/utils/service_locator/config.dart';
-import 'package:atch_proj/feature/account_feature/presentation/account_screen.dart';
 import 'package:atch_proj/feature/home_feature/presentation/manager/get_normal_campagin_cubit.dart';
 import 'package:atch_proj/feature/home_feature/presentation/manager/get_popular_campaign_cubit.dart';
 import 'package:atch_proj/feature/home_feature/presentation/view/home_screen.dart';
@@ -10,6 +9,8 @@ import 'package:atch_proj/feature/wishlist_feature/presentation/view/wishListScr
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../account_feature/user/presentation/user_account_screen.dart';
 
 part 'home_layout_state.dart';
 @injectable

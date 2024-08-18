@@ -11,6 +11,7 @@ class EndPoints{
   static const getUsedOffer="/user/used_offers";
   static const getRecentlyViewed="/user/recently_viewed";
   static const editProfileUSer="/user/edit_profile";
+  static const advertiseInfo="/advertiser/getInfo";
   static const addToWishlist="/campaign_page/add_to_wishlist";
 
 

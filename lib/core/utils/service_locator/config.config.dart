@@ -11,9 +11,14 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../../../feature/account_feature/data/repo/account_repo.dart' as _i300;
-import '../../../feature/account_feature/data/repo/account_repo_impl.dart'
-    as _i142;
+import '../../../feature/account_feature/advertise/data/repo/advertise_account_repo.dart'
+    as _i692;
+import '../../../feature/account_feature/advertise/data/repo/advertise_account_repo_impl.dart'
+    as _i92;
+import '../../../feature/account_feature/user/data/repo/user_account_repo.dart'
+    as _i645;
+import '../../../feature/account_feature/user/data/repo/user_account_repo_impl.dart'
+    as _i463;
 import '../../../feature/add_edit_campagin_feature/data/repo/add_campaign_repo.dart'
     as _i793;
 import '../../../feature/add_edit_campagin_feature/data/repo/add_campaign_repo_impl.dart'
@@ -71,7 +76,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i395.ChangeDateCubit>(() => _i395.ChangeDateCubit());
     gh.singleton<_i254.APiManger>(() => _i254.APiManger());
     gh.singleton<_i353.StorageToken>(() => _i353.StorageToken());
-    gh.factory<_i300.AccountRepo>(() => _i142.AccountRepoImpl(
+    gh.factory<_i692.AdvertiseAccountRepo>(() => _i92.AdvertiseAccountRepoImpl(
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
         ));
@@ -83,7 +88,12 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
         ));
-    gh.factory<_i552.TestCubit>(() => _i552.TestCubit(gh<_i300.AccountRepo>()));
+    gh.factory<_i645.AccountRepo>(() => _i463.AccountRepoImpl(
+          gh<_i254.APiManger>(),
+          gh<_i353.StorageToken>(),
+        ));
+    gh.factory<_i552.TestCubit>(
+        () => _i552.TestCubit(gh<_i692.AdvertiseAccountRepo>()));
     gh.factory<_i651.HomeRepo>(() => _i766.HomeRepoImpl(gh<_i254.APiManger>()));
     gh.factory<_i878.WishlistCubit>(
         () => _i878.WishlistCubit(gh<_i965.WishlistRepo>()));
