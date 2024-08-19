@@ -1,5 +1,6 @@
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/advertise_campignes_list.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/search_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -81,7 +82,7 @@ class AdvertiserInfoPage extends StatelessWidget {
                                     advertiser.about ?? "",
                                     style: AppStyle.style16Regular(context),
                                   ),
-                                  const AdvertiseCampaignList(),
+                                  const AdvertiseCampaignsList(),
                                 ],
                               ),
                             ),
@@ -91,7 +92,7 @@ class AdvertiserInfoPage extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -100,79 +101,5 @@ class AdvertiserInfoPage extends StatelessWidget {
   }
 }
 
-class AdvertiseCampaignList extends StatelessWidget {
-  const AdvertiseCampaignList({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-        itemBuilder: (context, index) => const TestItem(),
-        separatorBuilder: (context, index) => Gap(10),
-        itemCount: 10);
-  }
-}
 
-class TestItem extends StatelessWidget {
-  const TestItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 20,
-      shadowColor: Colors.white24,
-      color: Colors.white24,
-      shape: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: Colors.transparent)),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 92,
-              width: 79,
-              child: AspectRatio(
-                aspectRatio: 79 / 92,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.asset(
-                    width: 79,
-                    Assets.imagesSearchImageTest,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
-            const Gap(18),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  " No Date",
-                  style: AppStyle.style12Regular(context),
-                ),
-                Text(
-                  "46546464",
-                  style: AppStyle.style18(context),
-                ),
-                const Gap(7),
-                FittedBox(
-                  child: SizedBox(
-                    width: 170,
-                    child: Text(
-                      overflow: TextOverflow.ellipsis,
-                      "A virtual evening of smooth jazz",
-                      maxLines: 2,
-                      style: AppStyle.style18(context),
-                    ),
-                  ),
-                )
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}

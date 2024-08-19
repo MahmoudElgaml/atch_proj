@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) =>getIt<AuthCubit>() ,
       child: MaterialApp.router(
-        theme: ThemeData(
+        theme: ThemeData( 
 
            iconTheme: const IconThemeData(
              color: Colors.black
