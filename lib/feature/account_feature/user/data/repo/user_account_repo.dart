@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 
 import '../model/EditUserData.dart';
 
-abstract class AccountRepo {
+abstract class UserAccountRepo {
  Future<Either<Failure,CampaignModel>> getUsedOffer();
  Future<Either<Failure,CampaignModel>> getRecentlyView();
  Future<Either<Failure,String>> editProfileUSer(EditUserData editUserData);

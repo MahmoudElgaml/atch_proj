@@ -17,7 +17,7 @@ class AccountScreen extends StatelessWidget {
               "Account",
               style: AppStyle.style24Regular(context),
             ),
-            Gap(32),
+            const Gap(32),
             const UserAccountScreen()
 
           ],

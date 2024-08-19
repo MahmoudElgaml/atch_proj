@@ -11,8 +11,8 @@ import 'package:injectable/injectable.dart';
 
 import '../model/EditUserData.dart';
 import 'user_account_repo.dart';
-@Injectable(as:  AccountRepo)
-class AccountRepoImpl implements AccountRepo {
+@Injectable(as:  UserAccountRepo)
+class AccountRepoImpl implements UserAccountRepo {
   APiManger aPiManger;
   StorageToken storageToken;
 
@@ -23,7 +23,7 @@ class AccountRepoImpl implements AccountRepo {
     try {
       var id = await storageToken.getToken();
       var response = await aPiManger.post(EndPoints.getUsedOffer, {
-        "user_id": id,
+        "user_id": 6,
       });
 
       CampaignModel usedCampaigns = CampaignModel.fromJson(response.data);

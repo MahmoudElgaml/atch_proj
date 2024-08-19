@@ -19,6 +19,10 @@ import '../../../feature/account_feature/user/data/repo/user_account_repo.dart'
     as _i645;
 import '../../../feature/account_feature/user/data/repo/user_account_repo_impl.dart'
     as _i463;
+import '../../../feature/account_feature/user/presentation/manager/recently_viewed_cubit.dart'
+    as _i830;
+import '../../../feature/account_feature/user/presentation/manager/used_offer_cubit.dart'
+    as _i539;
 import '../../../feature/add_edit_campagin_feature/data/repo/add_campaign_repo.dart'
     as _i793;
 import '../../../feature/add_edit_campagin_feature/data/repo/add_campaign_repo_impl.dart'
@@ -98,7 +102,7 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
         ));
-    gh.factory<_i645.AccountRepo>(() => _i463.AccountRepoImpl(
+    gh.factory<_i645.UserAccountRepo>(() => _i463.AccountRepoImpl(
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
         ));
@@ -119,6 +123,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i11.AddCampaignRepoImpl(gh<_i254.APiManger>()));
     gh.factory<_i341.SearchRepo>(
         () => _i523.SearchRepoImpl(gh<_i254.APiManger>()));
+    gh.factory<_i830.RecentlyViewedCubit>(
+        () => _i830.RecentlyViewedCubit(gh<_i645.UserAccountRepo>()));
+    gh.factory<_i539.UsedOfferCubit>(
+        () => _i539.UsedOfferCubit(gh<_i645.UserAccountRepo>()));
     gh.factory<_i376.AddCampaignCubit>(
         () => _i376.AddCampaignCubit(gh<_i793.AddCampaignRepo>()));
     gh.factory<_i694.SearchCubit>(
