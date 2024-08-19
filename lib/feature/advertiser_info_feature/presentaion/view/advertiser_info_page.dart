@@ -2,7 +2,7 @@ import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/advertise_campignes_list.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
-import 'package:atch_proj/feature/search_feature/presentation/view/widgets/search_item.dart';
+import 'package:atch_proj/feature/search_feature/presentation/view/widgets/campaign_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

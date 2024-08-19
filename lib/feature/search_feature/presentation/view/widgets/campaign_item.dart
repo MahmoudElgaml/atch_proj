@@ -1,13 +1,13 @@
 import 'package:atch_proj/core/utils/app_style.dart';
-import 'package:atch_proj/feature/search_feature/data/model/SearchItemModel.dart';
+import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class SearchItem extends StatelessWidget {
-  const SearchItem({super.key, required this.campaigns});
+class CampaignItem extends StatelessWidget {
+  const CampaignItem({super.key, required this.campaigns});
 
-  final SearchCampaigns campaigns;
+  final Campaigns campaigns;
 
   @override
   Widget build(BuildContext context) {

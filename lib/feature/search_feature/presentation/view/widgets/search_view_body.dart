@@ -1,7 +1,7 @@
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/search_feature/presentation/manger/search_cubit.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/filter_button.dart';
-import 'package:atch_proj/feature/search_feature/presentation/view/widgets/search_item.dart';
+import 'package:atch_proj/feature/search_feature/presentation/view/widgets/campaign_item.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/search_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,7 +55,7 @@ class SearchList extends StatelessWidget {
           return Expanded(
             child: ListView.separated(
               separatorBuilder: (context, index) => const Gap(10),
-              itemBuilder: (context, index) => SearchItem(
+              itemBuilder: (context, index) => CampaignItem(
                 campaigns: state.searchItemModel.campaigns![index],
               ),
               itemCount: state.searchItemModel.campaigns?.length ?? 0,

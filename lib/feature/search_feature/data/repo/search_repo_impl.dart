@@ -1,7 +1,10 @@
 import 'package:atch_proj/core/api/api_manger.dart';
 import 'package:atch_proj/core/api/end_points.dart';
 import 'package:atch_proj/core/erorr/failure.dart';
-import 'package:atch_proj/feature/search_feature/data/model/SearchItemModel.dart';
+import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
+import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
+import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
+import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/search_feature/data/repo/search_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -14,7 +17,7 @@ class SearchRepoImpl implements SearchRepo {
   SearchRepoImpl(this.aPiManger);
 
   @override
-  Future<Either<Failure, SearchItemModel>> search(String searchWord) async {
+  Future<Either<Failure, CampaignModel>> search(String searchWord) async {
     try {
       var response = await aPiManger.post(
         EndPoints.search,
@@ -22,7 +25,7 @@ class SearchRepoImpl implements SearchRepo {
           "search": searchWord,
         },
       );
-      SearchItemModel searchItemModel = SearchItemModel.fromJson(response.data);
+      CampaignModel searchItemModel = CampaignModel.fromJson(response.data);
       return right(searchItemModel);
     } catch (e) {
       if (e is DioException) {
