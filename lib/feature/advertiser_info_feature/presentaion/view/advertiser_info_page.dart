@@ -1,5 +1,6 @@
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/advertise_campignes_list.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/campaign_item.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/utils/service_locator/config.dart';
 import '../../../../generated/assets.dart';
 
 class AdvertiserInfoPage extends StatelessWidget {
@@ -19,6 +21,7 @@ class AdvertiserInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Advertiser advertiser =
         GoRouterState.of(context).extra! as Advertiser;
+    AdvInfoCubit advInfoCubit = getIt<AdvInfoCubit>();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
@@ -82,7 +85,10 @@ class AdvertiserInfoPage extends StatelessWidget {
                                     advertiser.about ?? "",
                                     style: AppStyle.style16Regular(context),
                                   ),
-                                  const AdvertiseCampaignsList(),
+                                  AdvertiseCampaignsList(
+                                    advId: advertiser.id,
+                                    advInfoCubit: advInfoCubit,
+                                  ),
                                 ],
                               ),
                             ),
@@ -100,6 +106,3 @@ class AdvertiserInfoPage extends StatelessWidget {
     );
   }
 }
-
-
-

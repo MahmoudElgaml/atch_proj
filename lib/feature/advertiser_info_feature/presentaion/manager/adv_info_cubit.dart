@@ -13,7 +13,7 @@ class AdvInfoCubit extends Cubit<AdvInfoState> {
   AdvInfoRepo advInfoRepo;
   List<Campaigns> advCampaigns = [];
 static AdvInfoCubit get(context)=>BlocProvider.of(context);
-  getAdvCampaigns(int advId) async {
+  getAdvCampaigns(num? advId) async {
     emit(AdvInfoLoadingState());
     var result = await advInfoRepo.gerAdvCampaign(advId);
     result.fold(

@@ -16,7 +16,7 @@ class AdvInfoImpl implements AdvInfoRepo {
   AdvInfoImpl(this.aPiManger, this.storageToken);
 
   @override
-  Future<Either<Failure, CampaignModel>> gerAdvCampaign(int advId) async {
+  Future<Either<Failure, CampaignModel>> gerAdvCampaign(num? advId) async {
     try {
       var response = await aPiManger.post(EndPoints.getAdvCampaigns, {
         "advertiser_id": advId,

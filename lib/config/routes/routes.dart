@@ -4,6 +4,7 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/change_date_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/link_feature_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/add_campaign_screen.dart';
+import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/advertiser_info_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_screen.dart';
@@ -89,7 +90,7 @@ class AppRoute {
       ),
       GoRoute(
         path: advertiserInfoPage,
-        builder: (context, state) => const AdvertiserInfoPage(),
+        builder: (context, state) =>  const AdvertiserInfoPage(),
       ),
     ],
   );

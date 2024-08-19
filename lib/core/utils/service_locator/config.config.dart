@@ -31,6 +31,12 @@ import '../../../feature/add_edit_campagin_feature/presentaion/manager/change_da
     as _i395;
 import '../../../feature/add_edit_campagin_feature/presentaion/manager/link_feature_cubit.dart'
     as _i973;
+import '../../../feature/advertiser_info_feature/data/repo/adv_info_impl.dart'
+    as _i509;
+import '../../../feature/advertiser_info_feature/data/repo/adv_info_repo.dart'
+    as _i513;
+import '../../../feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart'
+    as _i553;
 import '../../../feature/auth_feature/auth/data/repo/auth_repo.dart' as _i283;
 import '../../../feature/auth_feature/auth/data/repo/auth_repo_impl.dart'
     as _i188;
@@ -88,10 +94,16 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
         ));
+    gh.factory<_i513.AdvInfoRepo>(() => _i509.AdvInfoImpl(
+          gh<_i254.APiManger>(),
+          gh<_i353.StorageToken>(),
+        ));
     gh.factory<_i645.AccountRepo>(() => _i463.AccountRepoImpl(
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
         ));
+    gh.factory<_i553.AdvInfoCubit>(
+        () => _i553.AdvInfoCubit(gh<_i513.AdvInfoRepo>()));
     gh.factory<_i552.TestCubit>(
         () => _i552.TestCubit(gh<_i692.AdvertiseAccountRepo>()));
     gh.factory<_i651.HomeRepo>(() => _i766.HomeRepoImpl(gh<_i254.APiManger>()));

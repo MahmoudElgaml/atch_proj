@@ -65,11 +65,11 @@ class AppStyle {
     );
   }
 
-  static TextStyle style12Regular(BuildContext context) {
+  static TextStyle style18Regular(BuildContext context) {
     return TextStyle(
       color: const Color(0xff5669FF),
       fontFamily: "AbhayaLibre",
-      fontSize: responsiveFont(fontSize: 15, context: context),
+      fontSize: responsiveFont(fontSize: 18, context: context),
       fontWeight: FontWeight.w400,
     );
   }
