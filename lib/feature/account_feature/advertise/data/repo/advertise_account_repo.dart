@@ -4,7 +4,7 @@ import 'package:atch_proj/feature/account_feature/advertise/data/model/EditAdver
 import 'package:dartz/dartz.dart';
 
 abstract class AdvertiseAccountRepo{
- Future<Either<Failure,AdvertiseInfo>> getAdvertiseInfo();
+ Future<Either<Failure,AdvertiseInfoModel>> getAdvertiseInfo();
  Future<Either<Failure,String>> editAdvertise(EditAdvertiseData advertiseData);
 
 

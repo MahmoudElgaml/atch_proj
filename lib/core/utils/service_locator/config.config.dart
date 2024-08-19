@@ -15,6 +15,8 @@ import '../../../feature/account_feature/advertise/data/repo/advertise_account_r
     as _i692;
 import '../../../feature/account_feature/advertise/data/repo/advertise_account_repo_impl.dart'
     as _i92;
+import '../../../feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart'
+    as _i959;
 import '../../../feature/account_feature/user/data/repo/user_account_repo.dart'
     as _i645;
 import '../../../feature/account_feature/user/data/repo/user_account_repo_impl.dart'
@@ -81,9 +83,9 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.factory<_i864.AddImageCubit>(() => _i864.AddImageCubit());
+    gh.factory<_i395.ChangeDateCubit>(() => _i395.ChangeDateCubit());
     gh.factory<_i973.LinkFeatureCubit>(() => _i973.LinkFeatureCubit());
     gh.factory<_i637.HomeLayoutCubit>(() => _i637.HomeLayoutCubit());
-    gh.factory<_i395.ChangeDateCubit>(() => _i395.ChangeDateCubit());
     gh.singleton<_i254.APiManger>(() => _i254.APiManger());
     gh.singleton<_i353.StorageToken>(() => _i353.StorageToken());
     gh.factory<_i692.AdvertiseAccountRepo>(() => _i92.AdvertiseAccountRepoImpl(
@@ -108,6 +110,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i553.AdvInfoCubit>(
         () => _i553.AdvInfoCubit(gh<_i513.AdvInfoRepo>()));
+    gh.factory<_i959.AdvertiseInfoCubit>(
+        () => _i959.AdvertiseInfoCubit(gh<_i692.AdvertiseAccountRepo>()));
     gh.factory<_i552.TestCubit>(
         () => _i552.TestCubit(gh<_i692.AdvertiseAccountRepo>()));
     gh.factory<_i651.HomeRepo>(() => _i766.HomeRepoImpl(gh<_i254.APiManger>()));

@@ -43,5 +43,8 @@ class WishListState extends HomeLayoutState {
 
 class AccountState extends HomeLayoutState {
   @override
-  Widget viewTap() => const AccountScreen();
+  Widget viewTap() => BlocProvider(
+        create: (context) => getIt<AdvertiseInfoCubit>()..getAdvertiseInfo(),
+        child: const AccountScreen(),
+      );
 }

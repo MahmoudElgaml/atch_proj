@@ -1,23 +1,23 @@
-class AdvertiseInfo {
-  AdvertiseInfo({
+class AdvertiseInfoModel {
+  AdvertiseInfoModel({
     this.advertiser,
     this.campaigns,
   });
 
-  AdvertiseInfo.fromJson(dynamic json) {
+  AdvertiseInfoModel.fromJson(dynamic json) {
     advertiser = json['advertiser'] != null
         ? Advertiser.fromJson(json['advertiser'])
         : null;
     if (json['campaigns'] != null) {
       campaigns = [];
       json['campaigns'].forEach((v) {
-        campaigns?.add(Campaigns.fromJson(v));
+        campaigns?.add(AdvertiseCampaigns.fromJson(v));
       });
     }
   }
 
   Advertiser? advertiser;
-  List<Campaigns>? campaigns;
+  List<AdvertiseCampaigns>? campaigns;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -31,8 +31,8 @@ class AdvertiseInfo {
   }
 }
 
-class Campaigns {
-  Campaigns({
+class AdvertiseCampaigns {
+  AdvertiseCampaigns({
     this.advertiserId,
     this.campaignName,
     this.description,
@@ -48,7 +48,7 @@ class Campaigns {
     this.winner,
   });
 
-  Campaigns.fromJson(dynamic json) {
+  AdvertiseCampaigns.fromJson(dynamic json) {
     advertiserId = json['advertiser_id'];
     campaignName = json['campaign_name'];
     description = json['description'];

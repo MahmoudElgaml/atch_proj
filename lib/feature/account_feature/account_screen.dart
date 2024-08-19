@@ -1,4 +1,5 @@
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/account_feature/advertise/presentation/view/advertise_account_screen.dart';
 import 'package:atch_proj/feature/account_feature/user/presentation/view/user_account_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -18,7 +19,7 @@ class AccountScreen extends StatelessWidget {
               style: AppStyle.style24Regular(context),
             ),
             const Gap(32),
-            const UserAccountScreen()
+            const AdvertiseAccountScreen()
 
           ],
         ),
