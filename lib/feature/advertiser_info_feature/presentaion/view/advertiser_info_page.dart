@@ -2,6 +2,9 @@ import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/advertise_campignes_list.dart';
+import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/custom_tabs_widget.dart';
+import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/info_section.dart';
+import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/info_tabs_section.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/campaign_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -21,7 +24,8 @@ class AdvertiserInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Advertiser advertiser =
         GoRouterState.of(context).extra! as Advertiser;
-    AdvInfoCubit advInfoCubit = getIt<AdvInfoCubit>()..getAdvCampaigns(advertiser.id);
+    AdvInfoCubit advInfoCubit = getIt<AdvInfoCubit>()
+      ..getAdvCampaigns(advertiser.id);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
@@ -29,75 +33,12 @@ class AdvertiserInfoPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              SizedBox(
-                height: MediaQuery.sizeOf(context).height * .3,
-                child: Center(
-                  child: Column(
-                    children: [
-                      CircleAvatar(
-                        radius: 60,
-                        child: ClipOval(
-                          child: CachedNetworkImage(
-                            fit: BoxFit.fill,
-                            width: double.infinity,
-                            imageUrl: advertiser.advertiserPic ?? "",
-                            errorWidget: (context, url, error) =>
-                                Image.asset(Assets.assetsImagesEmptyImage),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              InfoSection(
+                advertiser: advertiser,
               ),
-              Expanded(
-                flex: 2,
-                child: SingleChildScrollView(
-                  child: SizedBox(
-                    height: MediaQuery.sizeOf(context).height * .53,
-                    child: DefaultTabController(
-                      length: 2,
-                      child: Column(
-                        children: [
-                          TabBar(
-                            tabs: const [
-                              Tab(
-                                child: Text(
-                                  "About",
-                                ),
-                              ),
-                              Tab(
-                                child: Text("campaigns"),
-                              ),
-                            ],
-                            dividerColor: AppColor.primaryColor,
-                            tabAlignment: TabAlignment.start,
-                            isScrollable: true,
-                            labelStyle: AppStyle.style16Regular(context),
-                            indicatorColor: AppColor.primaryColor,
-                          ),
-                          Flexible(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: TabBarView(
-                                children: [
-                                  Text(
-                                    advertiser.about ?? "",
-                                    style: AppStyle.style16Regular(context),
-                                  ),
-                                  AdvertiseCampaignsList(
-                                    advId: advertiser.id,
-                                    advInfoCubit: advInfoCubit,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+              InfoTabsSection(
+                advInfoCubit: advInfoCubit,
+                advertiser: advertiser,
               ),
             ],
           ),
