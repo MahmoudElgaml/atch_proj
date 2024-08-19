@@ -1,4 +1,5 @@
 import 'package:atch_proj/config/routes/routes.dart';
+import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:device_preview/device_preview.dart';
@@ -32,11 +33,12 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) =>getIt<AuthCubit>() ,
       child: MaterialApp.router(
-        theme: ThemeData( 
-
-           iconTheme: const IconThemeData(
-             color: Colors.black
-           ),
+        theme: ThemeData(
+            appBarTheme: const AppBarTheme(
+              iconTheme: IconThemeData(
+                  color: AppColor.primaryColor
+              ),
+            ),
           primarySwatch: Colors.blue,
         ),
         useInheritedMediaQuery: true,

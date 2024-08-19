@@ -21,56 +21,59 @@ class AdsItem extends StatelessWidget {
       onTap: () {
         GoRouter.of(context).push(AppRoute.adDetails, extra: campaigns);
       },
-      child: Card(
-        borderOnForeground: true,
-        shadowColor: Colors.black26,
-        color: Colors.white,
-        elevation: 20,
-        shape: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
-          borderSide: const BorderSide(
-            color: Color(0xff8c8c8c),
+      child: AspectRatio(
+        aspectRatio: 235 / 275,
+        child: Card(
+          borderOnForeground: true,
+          shadowColor: Colors.black26,
+          color: Colors.white,
+          elevation: 20,
+          shape: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(18),
+            borderSide: const BorderSide(
+              color: Color(0xff8c8c8c),
+            ),
           ),
-        ),
-        child: Stack(
-          alignment: AlignmentDirectional.topEnd,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AspectRatio(
-                  aspectRatio: 218 / 113,
-                  child: SizedBox(
-                    width: 218,
-                    height: 113,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(18),
-                      child: CachedNetworkImage(
-                        fit: BoxFit.fill,
-                        imageUrl: campaigns.images!.isEmpty
-                            ? ""
-                            : campaigns.images?[0] ?? "",
-                        errorWidget: (context, url, error) => SvgPicture.asset(
-                          Assets.imagesEmptyImage,
+          child: Stack(
+            alignment: AlignmentDirectional.topEnd,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AspectRatio(
+                    aspectRatio: 200 / 120,
+                    child: SizedBox(
+                      width: 218,
+                      height: 113,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(18),
+                        child: CachedNetworkImage(
                           fit: BoxFit.fill,
+                          imageUrl: campaigns.images!.isEmpty
+                              ? ""
+                              : campaigns.images?[0] ?? "",
+                          errorWidget: (context, url, error) => SvgPicture.asset(
+                            Assets.imagesEmptyImage,
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                const Gap(14),
-                AdsItemDetails(
-                  campaigns: campaigns,
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: SaveButton(
-                campaignId: campaigns.id!,
+                  const Gap(14),
+                  AdsItemDetails(
+                    campaigns: campaigns,
+                  ),
+                ],
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: SaveButton(
+                  campaignId: campaigns.id!,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

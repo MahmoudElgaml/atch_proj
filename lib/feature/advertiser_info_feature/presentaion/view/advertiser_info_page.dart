@@ -21,7 +21,7 @@ class AdvertiserInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Advertiser advertiser =
         GoRouterState.of(context).extra! as Advertiser;
-    AdvInfoCubit advInfoCubit = getIt<AdvInfoCubit>();
+    AdvInfoCubit advInfoCubit = getIt<AdvInfoCubit>()..getAdvCampaigns(advertiser.id);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),

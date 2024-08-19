@@ -18,7 +18,7 @@ class AdvertiseCampaignsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AdvInfoCubit, AdvInfoState>(
-      bloc: advInfoCubit..getAdvCampaigns(advId),
+      bloc: advInfoCubit,
       builder: (context, state) {
         if (state is AdvInfoFailState) {
           return Center(

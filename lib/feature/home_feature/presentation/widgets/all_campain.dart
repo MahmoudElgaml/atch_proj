@@ -35,11 +35,9 @@ class AllAds extends StatelessWidget {
                   height: 250,
                   child: ListView.separated(
                     separatorBuilder: (context, index) => const Gap(10),
-                    itemBuilder: (context, index) => AspectRatio(
-                        aspectRatio: 237 / 255,
-                        child: AdsItem(
-                          campaigns: campaigns[index],
-                        )),
+                    itemBuilder: (context, index) => AdsItem(
+                      campaigns: campaigns[index],
+                    ),
                     itemCount: campaigns.length,
                     scrollDirection: Axis.horizontal,
                   ),
