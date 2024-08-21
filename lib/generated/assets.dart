@@ -10,6 +10,7 @@ class Assets {
   static const String imagesBubbleText = 'assets/images/bubble_text.png';
   static const String imagesBubbleTextSign = 'assets/images/bubble_text_sign.png';
   static const String imagesDate = 'assets/images/Date.png';
+  static const String imagesEdit = 'assets/images/edit.svg';
   static const String imagesEmptyImage = 'assets/images/EmptyImage.svg';
   static const String imagesFacebook = 'assets/images/facebook.png';
   static const String imagesFavIcon = 'assets/images/Fav_icon.png';

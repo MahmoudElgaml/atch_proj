@@ -35,8 +35,10 @@ class MyApp extends StatelessWidget {
       create: (context) => getIt<AuthCubit>(),
       child: MaterialApp.router(
         theme: ThemeData(
+
           primarySwatch: Colors.blue,
         ),
+
         useInheritedMediaQuery: true,
         locale: DevicePreview.locale(context),
         builder: EasyLoading.init(builder: DevicePreview.appBuilder),

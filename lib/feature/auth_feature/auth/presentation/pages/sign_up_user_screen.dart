@@ -23,7 +23,7 @@ class SignUpScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       Expanded(child: Image.asset(Assets.imagesGLogo)),
-                      const Expanded(child: TestUploadImage()),
+                      const Expanded(child: TestUploadImage(isEdit: false,)),
                     ],
                   ),
                 )

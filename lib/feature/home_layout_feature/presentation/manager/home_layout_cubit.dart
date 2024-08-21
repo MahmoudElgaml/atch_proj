@@ -11,7 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../account_feature/account_screen.dart';
+import '../../../account_feature/page/account_screen.dart';
 
 part 'home_layout_state.dart';
 @injectable

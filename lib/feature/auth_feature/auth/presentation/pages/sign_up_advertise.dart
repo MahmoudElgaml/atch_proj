@@ -45,7 +45,7 @@ class _SignUpAdvertiseState extends State<SignUpAdvertise> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(child: LogoWidget()),
-                  Expanded(child: TestUploadImage()),
+                  Expanded(child: TestUploadImage(isEdit: false)),
                 ],
               ),
               AdvertiseSignDrawer()

@@ -1,4 +1,5 @@
 import 'package:atch_proj/core/utils/service_locator/config.dart';
+import 'package:atch_proj/feature/account_feature/page/edit_account_screen.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_campaign_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_image_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/change_date_cubit.dart';
@@ -31,6 +32,7 @@ class AppRoute {
   static const String signUpAsAdvertise = "/advertise";
   static const String addCampaign = "/addCampaign";
   static const String advertiserInfoPage = "/adver";
+  static const String editUserPage = "/edituser";
   static const String test = "/test";
 
   static final router = GoRouter(
@@ -91,6 +93,10 @@ class AppRoute {
       GoRoute(
         path: advertiserInfoPage,
         builder: (context, state) =>  const AdvertiserInfoPage(),
+      ),
+      GoRoute(
+        path: editUserPage,
+        builder: (context, state) =>  const EditAccountScreen(),
       ),
     ],
   );

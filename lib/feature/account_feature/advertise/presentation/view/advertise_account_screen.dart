@@ -1,11 +1,16 @@
+import 'package:atch_proj/config/routes/routes.dart';
+import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
 import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/custom_tabs_widget.dart';
+import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/app_style.dart';
 import '../../../../search_feature/presentation/view/widgets/campaign_item.dart';
@@ -123,7 +128,8 @@ class AdvAccountCampaignItem extends StatelessWidget {
                           ? ""
                           : campaigns.images?[0] ?? "",
                       fit: BoxFit.fill,
-                      errorWidget: (context, url, error) => const Text("error"),
+                      errorWidget: (context, url, error) =>
+                          const Center(child: Text("Error")),
                     ),
                   ),
                 ),
@@ -132,27 +138,46 @@ class AdvAccountCampaignItem extends StatelessWidget {
             const Gap(18),
             Expanded(
               flex: 3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    campaigns.endDate?.substring(0, 16) ?? " No Date",
-                    style: AppStyle.style18Regular(context),
-                  ),
-                  Text(
-                    campaigns.campaignName ?? "",
-                    style: AppStyle.style18(context),
-                  ),
-                  const Gap(7),
-                  FittedBox(
-                    child: SizedBox(
-                      width: 170,
-                      child: Text(
-                        overflow: TextOverflow.ellipsis,
-                        campaigns.description ?? "",
-                        maxLines: 2,
+              child: Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        campaigns.endDate?.substring(0, 16) ?? " No Date",
+                        style: AppStyle.style18Regular(context),
+                      ),
+                      Text(
+                        campaigns.campaignName ?? "",
                         style: AppStyle.style18(context),
                       ),
+                      const Gap(7),
+                      FittedBox(
+                        child: SizedBox(
+                          width: 170,
+                          child: Text(
+                            overflow: TextOverflow.ellipsis,
+                            campaigns.description ?? "",
+                            maxLines: 2,
+                            style: AppStyle.style18(context),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () =>  context.push(AppRoute.editUserPage),
+                    child: SvgPicture.asset(Assets.imagesEdit),
+                  ),
+                  IconButton(
+                    onPressed: () {
+
+                    },
+                    icon: const Icon(
+                      size: 26,
+                      Icons.delete_outline,
+                      color: AppColor.primaryColor,
                     ),
                   )
                 ],

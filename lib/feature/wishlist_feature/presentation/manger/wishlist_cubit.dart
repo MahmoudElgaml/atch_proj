@@ -12,6 +12,7 @@ class WishlistCubit extends Cubit<WishlistState> {
   WishlistCubit(this.wishlistRepo) : super(WishlistInitial());
   WishlistRepo wishlistRepo;
   static WishlistCubit get(context)=>BlocProvider.of(context);
+
      List<Campaigns?> campaigns=[];
   getWishlist() async {
     emit(WishlistLoadingState());

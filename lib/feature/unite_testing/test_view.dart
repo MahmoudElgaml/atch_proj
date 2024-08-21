@@ -21,7 +21,7 @@ class TestView extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const TestUploadImage(),
+          const TestUploadImage(isEdit: false),
           ElevatedButton(
             onPressed: () {
               EditAdvertiseData advertise = EditAdvertiseData(

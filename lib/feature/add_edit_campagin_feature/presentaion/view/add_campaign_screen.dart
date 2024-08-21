@@ -45,7 +45,7 @@ class AddCampaignScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           surfaceTintColor: Colors.transparent,
-          backgroundColor: Colors.white,
+
         ),
         body: Form(
           key: validateState,

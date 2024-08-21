@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+
+import '../../../../../core/utils/helper.dart';
 
 class CostumeTextFiled extends StatelessWidget {
   const CostumeTextFiled({
@@ -25,13 +28,16 @@ class CostumeTextFiled extends StatelessWidget {
           title,
           style: const TextStyle(fontSize: 13),
         ),
+        Gap(10),
         TextFormField(
-          obscureText: isPassword??false,
+          obscureText: isPassword ?? false,
           keyboardType: keyboardType,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: validator,
           controller: textEditingController,
-          decoration: const InputDecoration(),
+          decoration: InputDecoration(
+              focusedBorder: Helper.buildOutlineInputBorder(),
+              enabledBorder: Helper.buildOutlineInputBorder()),
         )
       ],
     );

@@ -7,7 +7,7 @@ import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../core/utils/service_locator/config.dart';
+import '../../../core/utils/service_locator/config.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});

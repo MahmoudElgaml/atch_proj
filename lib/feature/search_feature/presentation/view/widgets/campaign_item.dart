@@ -38,7 +38,8 @@ class CampaignItem extends StatelessWidget {
                           ? ""
                           : campaigns.images?[0] ?? "",
                       fit: BoxFit.fill,
-                      errorWidget: (context, url, error) => const Text("error"),
+                      errorWidget: (context, url, error) =>
+                          Image.asset(Assets.assetsImagesEmptyImage)
                     ),
                   ),
                 ),
@@ -51,7 +52,7 @@ class CampaignItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    campaigns.endDate?.substring(0,16) ?? " No Date",
+                    campaigns.endDate?.substring(0, 16) ?? " No Date",
                     style: AppStyle.style18Regular(context),
                   ),
                   Text(
