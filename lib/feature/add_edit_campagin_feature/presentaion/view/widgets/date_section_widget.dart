@@ -8,10 +8,15 @@ import '../../../../../core/utils/helper.dart';
 import 'custom_date_time_text_filed.dart';
 
 class DateSectionWidget extends StatelessWidget {
-  const DateSectionWidget({super.key});
+  const DateSectionWidget({super.key, this.lastDate, this.firstDate});
+
+  final String? firstDate;
+  final String? lastDate;
 
   @override
   Widget build(BuildContext context) {
+    bool isFirst = false;
+    bool isLast = false;
     var dateCubit = ChangeDateCubit.get(context);
     return BlocBuilder<ChangeDateCubit, ChangeDateState>(
       builder: (context, state) {
@@ -28,8 +33,11 @@ class DateSectionWidget extends StatelessWidget {
                   child: CustomDateTimeTextFiled(
                     onTap: () {
                       dateCubit.showFirstDate(context);
+                      isFirst = true;
                     },
-                    hintText: Helper.dateToString(dateCubit.firstDate),
+                    hintText: isFirst
+                        ? firstDate ?? Helper.dateToString(dateCubit.firstDate)
+                        : Helper.dateToString(dateCubit.firstDate),
                     icon: const Icon(Icons.date_range),
                   ),
                 ),
@@ -45,8 +53,13 @@ class DateSectionWidget extends StatelessWidget {
                 const Gap(10),
                 Expanded(
                   child: CustomDateTimeTextFiled(
-                    onTap: () => dateCubit.showLastDate(context),
-                    hintText: Helper.dateToString(dateCubit.lastDate),
+                    onTap: () {
+                      dateCubit.showLastDate(context);
+                      isLast = true;
+                    },
+                    hintText: isLast
+                        ? lastDate ?? Helper.dateToString(dateCubit.lastDate)
+                        : Helper.dateToString(dateCubit.lastDate),
                     icon: const Icon(Icons.date_range),
                   ),
                 ),

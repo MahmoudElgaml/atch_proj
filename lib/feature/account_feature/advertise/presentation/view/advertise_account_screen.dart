@@ -167,7 +167,7 @@ class AdvAccountCampaignItem extends StatelessWidget {
                   ),
                   const Spacer(),
                   InkWell(
-                    onTap: () =>  context.push(AppRoute.editUserPage),
+                    onTap: () =>  context.push(AppRoute.editCampaign,extra: campaigns),
                     child: SvgPicture.asset(Assets.imagesEdit),
                   ),
                   IconButton(

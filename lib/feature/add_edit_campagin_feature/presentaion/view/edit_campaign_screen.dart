@@ -1,28 +1,28 @@
-import 'package:atch_proj/core/cache/storage_token.dart';
-import 'package:atch_proj/core/services/validation_service.dart';
-import 'package:atch_proj/core/utils/app_color.dart';
-import 'package:atch_proj/core/utils/app_style.dart';
-import 'package:atch_proj/core/utils/helper.dart';
-import 'package:atch_proj/feature/add_edit_campagin_feature/data/model/AddCampaignModel.dart';
-import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_campaign_cubit.dart';
-import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_image_cubit.dart';
-import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/change_date_cubit.dart';
+import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/add_link_section.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/add_photo_section.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_add_campaign_button.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_camapaign_textfiled.dart';
-import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_date_time_text_filed.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/date_section_widget.dart';
-import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
-import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../core/cache/storage_token.dart';
+import '../../../../core/services/validation_service.dart';
+import '../../../../core/utils/app_style.dart';
+import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/service_locator/config.dart';
+import '../../../../generated/assets.dart';
+import '../../../auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
+import '../../data/model/AddCampaignModel.dart';
+import '../manager/add_campaign_cubit.dart';
+import '../manager/add_image_cubit.dart';
+import '../manager/change_date_cubit.dart';
 import '../manager/link_feature_cubit.dart';
 
-class AddCampaignScreen extends StatelessWidget {
-  AddCampaignScreen({super.key});
+class EditCampaignScreen extends StatefulWidget {
+  const EditCampaignScreen({super.key});
 
   static const Map<String, String> items = {
     "kids (1-3)": "Babies",
@@ -31,22 +31,35 @@ class AddCampaignScreen extends StatelessWidget {
     "adults(20-40)": "Adults",
     "elder(+40)": "Elder",
   };
+
+  @override
+  State<EditCampaignScreen> createState() => _EditCampaignScreenState();
+}
+
+class _EditCampaignScreenState extends State<EditCampaignScreen> {
   String selectedValue = "Babies";
+
   final TextEditingController companyName = TextEditingController();
+
   final TextEditingController description = TextEditingController();
+
   final TextEditingController price = TextEditingController();
+
   final TextEditingController offer = TextEditingController();
+
   final LinkFeatureCubit linkCubit = getIt<LinkFeatureCubit>();
+
   var validateState = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-
+    final AdvertiseCampaigns campaign =
+        GoRouterState.of(context).extra! as AdvertiseCampaigns;
+    setController(campaign);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           surfaceTintColor: Colors.transparent,
-
         ),
         body: Form(
           key: validateState,
@@ -105,7 +118,7 @@ class AddCampaignScreen extends StatelessWidget {
                                 setValue: (value) {
                                   selectedValue = value;
                                 },
-                                items: items,
+                                items: EditCampaignScreen.items,
                                 selectedValue: selectedValue,
                                 isAuth: false,
                               ),
@@ -113,7 +126,10 @@ class AddCampaignScreen extends StatelessWidget {
                           ],
                         ),
                         const Gap(19),
-                        const DateSectionWidget(),
+                        DateSectionWidget(
+                          firstDate: campaign.startDate?.substring(0,16),
+                          lastDate: campaign.endDate?.substring(0,16),
+                        ),
                         const Gap(19),
                         CustomCampaignTextFiled(
                           validator: (value) =>
@@ -137,43 +153,12 @@ class AddCampaignScreen extends StatelessWidget {
                           icon: const Icon(Icons.attach_money_sharp),
                         ),
                         const Gap(19),
-                        const AddPhotoSection(),
+                        //   const AddPhotoSection(),
                         const Gap(20),
-                        AddLinkSection(
-                          linkCubit: linkCubit,
-                        ),
+                        //    AddLinkSection(
+                        //   linkCubit: linkCubit,
+                        //   ),
                         const Gap(20),
-                        CustomAddCampaignButton(
-                          onPressed: () async {
-                            print(selectedValue);
-                            if (validateState.currentState!.validate()) {
-                              var adToken = await StorageToken().getToken();
-                              var adId = int.parse(adToken!);
-
-                              AddCampaignModel addCampaignModel =
-                                  AddCampaignModel(
-                                advertiserId: adId,
-                                campaignPrice: int.parse(price.text),
-                                campaignOffer: int.parse(offer.text),
-                                campaignDescription: description.text,
-                                campaignStartDate: Helper.dateToString(
-                                        ChangeDateCubit.get(context).firstDate)
-                                    .substring(0, 12),
-                                campaignEndDate: Helper.dateToString(
-                                        ChangeDateCubit.get(context).lastDate)
-                                    .substring(0, 12),
-                                campaignLocation: ["cairo"],
-                                campaignName: companyName.text,
-                                campaignTargetAudience: selectedValue,
-                                campaignVideos: linkCubit.links,
-                                images:
-                                    AddImageCubit.get(context).backendImages,
-                              );
-                              AddCampaignCubit.get(context)
-                                  .addCampaign(addCampaignModel);
-                            }
-                          },
-                        ),
                       ],
                     ),
                   ],
@@ -186,5 +171,11 @@ class AddCampaignScreen extends StatelessWidget {
     );
   }
 
-
+  setController(AdvertiseCampaigns campaign) {
+    companyName.text = campaign.campaignName ?? "";
+    description.text = campaign.description ?? "";
+    price.text = campaign.price.toString();
+    offer.text = campaign.offer.toString();
+    selectedValue = campaign.targetAudience ?? "";
+  }
 }

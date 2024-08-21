@@ -5,6 +5,7 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/change_date_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/link_feature_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/add_campaign_screen.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/edit_campaign_screen.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/advertiser_info_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
@@ -34,6 +35,7 @@ class AppRoute {
   static const String advertiserInfoPage = "/adver";
   static const String editUserPage = "/edituser";
   static const String test = "/test";
+  static const String editCampaign = "/editCampaign";
 
   static final router = GoRouter(
     routes: [
@@ -92,11 +94,22 @@ class AppRoute {
       ),
       GoRoute(
         path: advertiserInfoPage,
-        builder: (context, state) =>  const AdvertiserInfoPage(),
+        builder: (context, state) => const AdvertiserInfoPage(),
       ),
       GoRoute(
         path: editUserPage,
-        builder: (context, state) =>  const EditAccountScreen(),
+        builder: (context, state) => const EditAccountScreen(),
+      ),
+      GoRoute(
+        path: editCampaign,
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<ChangeDateCubit>(),
+            ),
+          ],
+          child: EditCampaignScreen(),
+        ),
       ),
     ],
   );

@@ -14,7 +14,9 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String role= getIt<HiveManager>().retrieveData<Person>(HiveKeys.userBox)[0].role??"user";
+    String role =
+        getIt<HiveManager>().retrieveData<Person>(HiveKeys.userBox)[0].role ??
+            "user";
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -25,12 +27,12 @@ class AccountScreen extends StatelessWidget {
               style: AppStyle.style24Regular(context),
             ),
             const Gap(32),
-           role=="user"? const UserAccountScreen():const AdvertiseAccountScreen()
-
+            role == "user"
+                ? const UserAccountScreen()
+                : const AdvertiseAccountScreen(),
           ],
         ),
       ),
     );
   }
 }
-
