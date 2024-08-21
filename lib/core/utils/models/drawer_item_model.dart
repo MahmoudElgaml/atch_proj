@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 
 class DrawerItemModel{
-   String title;
-   IconData iconData;
+  final  String title;
+ final   IconData iconData;
 
-   DrawerItemModel(this.title, this.iconData);
+ const  DrawerItemModel(this.title, this.iconData);
 }

@@ -1,8 +1,11 @@
 import 'package:atch_proj/config/routes/routes.dart';
+import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
+import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/models/drawer_item_model.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
+import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/drawer_item.dart';
 import 'package:atch_proj/generated/assets.dart';
@@ -13,15 +16,15 @@ import 'package:go_router/go_router.dart';
 
 class HomeDrawer extends StatelessWidget {
   const HomeDrawer({super.key});
-
+static const  List<DrawerItemModel> items = [
+  DrawerItemModel("Contact Us", Icons.mail_outline_outlined),
+  DrawerItemModel("Settings", Icons.settings),
+  DrawerItemModel("All Ads ", Icons.verified_user_rounded),
+];
   @override
   Widget build(BuildContext context) {
-    var userData = AuthCubit.get(context).userData.person;
-    List<DrawerItemModel> items = [
-      DrawerItemModel("Contact Us", Icons.mail_outline_outlined),
-      DrawerItemModel("Settings", Icons.settings),
-      DrawerItemModel("All Ads ", Icons.verified_user_rounded),
-    ];
+  Person userData = HiveManager().retrieveData<Person>(HiveKeys.userBox)[0];
+
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.only(top: 45, left: 24),
@@ -31,18 +34,18 @@ class HomeDrawer extends StatelessWidget {
             Container(
               width: 70,
               height: 70,
-              decoration: BoxDecoration(
+              decoration:  BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     image: CachedNetworkImageProvider(
-                      userData?.profilePic ?? "",
+                      userData.profilePic ?? "",
                     ),
                     fit: BoxFit.fill,
                   )),
             ),
             const Gap(12),
             Text(
-              userData?.username ?? "",
+              userData.username ?? "",
               style: AppStyle.style18ExtraBold(context),
             ),
             const Gap(40),
@@ -59,9 +62,10 @@ class HomeDrawer extends StatelessWidget {
             DrawerItem(
               onPressed: () {
                 getIt<StorageToken>().deleteToken();
+                getIt<HiveManager>().retrieveData<Person>(HiveKeys.userBox)[0].delete();
                 context.go(AppRoute.logInKey);
               },
-              drawerItemModel: DrawerItemModel("Sign Out", Icons.login),
+              drawerItemModel: const DrawerItemModel("Sign Out", Icons.login),
             )
           ],
         ),

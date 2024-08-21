@@ -25,7 +25,7 @@ class UserData {
 }
 
 @HiveType(typeId: 1)
-class Person {
+class Person extends HiveObject{
   Person({
     this.age,
     this.about,

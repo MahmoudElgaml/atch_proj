@@ -1,22 +1,24 @@
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../feature/auth_feature/auth/data/model/UserData.dart';
-
+@singleton
+@injectable
 class HiveManager{
    void inti()async{
     await  Hive.initFlutter();
    _registerAdapter();
-   _openBox();
+   await _openBox();
 
 }
 
 void _registerAdapter(){
    Hive.registerAdapter(PersonAdapter());
 }
-void _openBox(){
- Hive.openBox<Person>(HiveKeys.userBox);
+Future<void> _openBox()async{
+await Hive.openBox<Person>(HiveKeys.userBox);
 
 
 
@@ -37,6 +39,12 @@ void _openBox(){
 
      return box.values.toList();
    }
+   deleteData<T>(String boxKey){
+     var box=Hive.box<T>(boxKey);
+
+   }
+
+
 
 
 }

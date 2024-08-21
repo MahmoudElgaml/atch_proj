@@ -69,6 +69,7 @@ import '../../../feature/wishlist_feature/data/repo/wishlist_repo_impl.dart'
 import '../../../feature/wishlist_feature/presentation/manger/wishlist_cubit.dart'
     as _i878;
 import '../../api/api_manger.dart' as _i254;
+import '../../cache/hive/hive_manager.dart' as _i125;
 import '../../cache/storage_token.dart' as _i353;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -87,16 +88,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i973.LinkFeatureCubit>(() => _i973.LinkFeatureCubit());
     gh.factory<_i637.HomeLayoutCubit>(() => _i637.HomeLayoutCubit());
     gh.singleton<_i254.APiManger>(() => _i254.APiManger());
+    gh.singleton<_i125.HiveManager>(() => _i125.HiveManager());
     gh.singleton<_i353.StorageToken>(() => _i353.StorageToken());
     gh.factory<_i692.AdvertiseAccountRepo>(() => _i92.AdvertiseAccountRepoImpl(
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
         ));
     gh.factory<_i965.WishlistRepo>(() => _i325.WishlistRepoImpl(
-          gh<_i254.APiManger>(),
-          gh<_i353.StorageToken>(),
-        ));
-    gh.factory<_i283.AuthRepo>(() => _i188.AuthRepoImpl(
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
         ));
@@ -117,8 +115,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i651.HomeRepo>(() => _i766.HomeRepoImpl(gh<_i254.APiManger>()));
     gh.factory<_i878.WishlistCubit>(
         () => _i878.WishlistCubit(gh<_i965.WishlistRepo>()));
-    gh.singleton<_i1035.AuthCubit>(
-        () => _i1035.AuthCubit(gh<_i283.AuthRepo>()));
     gh.factory<_i369.GetNormalCampaginCubit>(
         () => _i369.GetNormalCampaginCubit(gh<_i651.HomeRepo>()));
     gh.factory<_i401.GetPopularCampaignCubit>(
@@ -127,6 +123,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i11.AddCampaignRepoImpl(gh<_i254.APiManger>()));
     gh.factory<_i341.SearchRepo>(
         () => _i523.SearchRepoImpl(gh<_i254.APiManger>()));
+    gh.factory<_i283.AuthRepo>(() => _i188.AuthRepoImpl(
+          gh<_i254.APiManger>(),
+          gh<_i353.StorageToken>(),
+          gh<_i125.HiveManager>(),
+        ));
     gh.factory<_i830.RecentlyViewedCubit>(
         () => _i830.RecentlyViewedCubit(gh<_i645.UserAccountRepo>()));
     gh.factory<_i539.UsedOfferCubit>(
@@ -135,6 +136,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i376.AddCampaignCubit(gh<_i793.AddCampaignRepo>()));
     gh.factory<_i694.SearchCubit>(
         () => _i694.SearchCubit(gh<_i341.SearchRepo>()));
+    gh.singleton<_i1035.AuthCubit>(
+        () => _i1035.AuthCubit(gh<_i283.AuthRepo>()));
     return this;
   }
 }
