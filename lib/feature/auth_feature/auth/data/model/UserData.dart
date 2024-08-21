@@ -1,79 +1,76 @@
 class UserData {
   UserData({
     this.message,
-    this.user,
+    this.person,
   });
 
   UserData.fromJson(dynamic json) {
     message = json['message'];
-    user = json['person'] != null
-        ? UserInformation.fromJson(json['person'])
-        : null;
+    person = json['person'] != null ? Person.fromJson(json['person']) : null;
   }
 
   String? message;
-  UserInformation? user;
+  Person? person;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['message'] = message;
-    if (user != null) {
-      map['person'] = user?.toJson();
+    if (person != null) {
+      map['person'] = person?.toJson();
     }
     return map;
   }
 }
 
-class UserInformation {
-  UserInformation({
+class Person {
+  Person({
+    this.age,
     this.about,
-    this.advertiserName,
-    this.advertiserPic,
     this.advertiserType,
-    this.companyName,
     this.email,
     this.id,
-    this.password,
+    this.name,
+    this.profilePic,
     this.referralCode,
-    this.visaNumber,
+    this.role,
+    this.username,
   });
 
-  UserInformation.fromJson(dynamic json) {
+  Person.fromJson(dynamic json) {
     about = json['about'];
-    advertiserName = json['advertiser_name'];
-    advertiserPic = json['advertiser_pic'];
+    age=json["age"];
     advertiserType = json['advertiser_type'];
-    companyName = json['company_name'];
-    email = json['contact_email'];
+    email = json['email'];
     id = json['id'];
-    password = json['password'];
+    name = json['name'];
+    profilePic = json['profile_pic'];
     referralCode = json['referral_code'];
-    visaNumber = json['visa_number'];
+    role = json['role'];
+    username = json['username'];
   }
 
   String? about;
-  String? advertiserName;
-  String? advertiserPic;
   String? advertiserType;
-  String? companyName;
   String? email;
   num? id;
-  String? password;
-  String? referralCode;
-  String? visaNumber;
+  String? name;
+  String? profilePic;
+  dynamic referralCode;
+  String? role;
+  String? username;
+  int?age;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['about'] = about;
-    map['advertiser_name'] = advertiserName;
-    map['advertiser_pic'] = advertiserPic;
     map['advertiser_type'] = advertiserType;
-    map['company_name'] = companyName;
-    map['contact_email'] = email;
+    map['email'] = email;
     map['id'] = id;
-    map['password'] = password;
+    map['name'] = name;
+    map['profile_pic'] = profilePic;
     map['referral_code'] = referralCode;
-    map['visa_number'] = visaNumber;
+    map['role'] = role;
+    map['username'] = username;
     return map;
   }
 }

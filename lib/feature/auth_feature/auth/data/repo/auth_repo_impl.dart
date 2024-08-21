@@ -42,7 +42,7 @@ StorageToken storageToken;
           body: {"email": email, "password": password, "role": role});
 
       UserData userData = UserData.fromJson(response.data);
-      storageToken.setToken(userData.user!.id.toString());
+      storageToken.setToken(userData.person!.id.toString());
       return right(userData);
     } catch (e) {
       if (e is DioException) {

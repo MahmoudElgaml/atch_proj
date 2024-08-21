@@ -16,7 +16,7 @@ class HomeDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var userData = AuthCubit.get(context).userData.user;
+    var userData = AuthCubit.get(context).userData.person;
     List<DrawerItemModel> items = [
       DrawerItemModel("Contact Us", Icons.mail_outline_outlined),
       DrawerItemModel("Settings", Icons.settings),
@@ -35,14 +35,14 @@ class HomeDrawer extends StatelessWidget {
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     image: CachedNetworkImageProvider(
-                      userData?.advertiserPic ?? "",
+                      userData?.profilePic ?? "",
                     ),
                     fit: BoxFit.fill,
                   )),
             ),
             const Gap(12),
             Text(
-              userData?.advertiserName ?? "",
+              userData?.username ?? "",
               style: AppStyle.style18ExtraBold(context),
             ),
             const Gap(40),
