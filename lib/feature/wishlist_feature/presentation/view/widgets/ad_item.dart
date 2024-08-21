@@ -1,6 +1,7 @@
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
+import 'package:atch_proj/feature/wishlist_feature/presentation/manger/wishlist_cubit.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +9,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 class AdWishlistItem extends StatelessWidget {
-  const AdWishlistItem({super.key, required this.campaigns});
+  const AdWishlistItem({super.key, required this.campaign});
 
-  final Campaigns campaigns;
+  final Campaigns campaign;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +32,14 @@ class AdWishlistItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
-                  imageUrl:campaigns.images!.isEmpty?"": campaigns.images?[0] ?? "",
+                  imageUrl: campaign.images!.isEmpty
+                      ? ""
+                      : campaign.images?[0] ?? "",
                   errorWidget: (context, url, error) {
-                    return SvgPicture.asset(Assets.imagesEmptyImage,fit: BoxFit.fill,);
+                    return SvgPicture.asset(
+                      Assets.imagesEmptyImage,
+                      fit: BoxFit.fill,
+                    );
                   },
                 ),
               ),
@@ -60,7 +66,12 @@ class AdWishlistItem extends StatelessWidget {
               ],
             ),
           ),
-          const Icon(Icons.favorite_border,)
+           InkWell(
+            onTap: () => WishlistCubit.get(context).addToWishList(campaign.id!),
+              child: const Icon(
+            Icons.favorite_outlined,
+            color: Colors.pink,
+          ))
         ],
       ),
     );

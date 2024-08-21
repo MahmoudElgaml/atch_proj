@@ -4,16 +4,15 @@ part of 'wishlist_cubit.dart';
 abstract class WishlistState {}
 
 class WishlistInitial extends WishlistState {}
+
 class WishlistLoadingState extends WishlistState {}
+
 class WishlistFailState extends WishlistState {
- final  String message;
+  final String message;
 
- WishlistFailState(this.message);
+  WishlistFailState(this.message);
 }
-class WishlistSuccessState extends WishlistState {
- final  List<Campaigns?>? campaigns;
 
-WishlistSuccessState({this.campaigns});
-}
+class WishlistSuccessState extends WishlistState {}
+
 class WishlistEmptyState extends WishlistState {}
-

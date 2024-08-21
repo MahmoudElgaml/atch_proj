@@ -12,6 +12,7 @@ class WishlistCubit extends Cubit<WishlistState> {
   WishlistCubit(this.wishlistRepo) : super(WishlistInitial());
   WishlistRepo wishlistRepo;
   static WishlistCubit get(context)=>BlocProvider.of(context);
+     List<Campaigns?> campaigns=[];
   getWishlist() async {
     emit(WishlistLoadingState());
     var result = await wishlistRepo.getWishlist();
@@ -23,7 +24,8 @@ class WishlistCubit extends Cubit<WishlistState> {
         if (r.campaigns!.isEmpty) {
           emit(WishlistEmptyState());
         } else {
-          emit(WishlistSuccessState( campaigns: r.campaigns));
+          campaigns=r.campaigns??[];
+          emit(WishlistSuccessState());
         }
       },
     );
@@ -37,7 +39,7 @@ class WishlistCubit extends Cubit<WishlistState> {
         emit(WishlistFailState(l.message));
       },
       (r) {
-        emit(WishlistSuccessState());
+        getWishlist();
       },
     );
   }

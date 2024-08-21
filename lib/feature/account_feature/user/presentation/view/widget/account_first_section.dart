@@ -1,3 +1,6 @@
+import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
+import 'package:atch_proj/core/cache/hive/hive_manager.dart';
+import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -5,6 +8,7 @@ import 'package:gap/gap.dart';
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_style.dart';
 import '../../../../../../generated/assets.dart';
+import '../../../../../auth_feature/auth/data/model/UserData.dart';
 import '../user_account_screen.dart';
 
 class AccountFirstSection extends StatelessWidget {
@@ -12,8 +16,13 @@ class AccountFirstSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String image = getIt<HiveManager>().retrieveData<Person>(
+        HiveKeys.userBox)[0].profilePic ??
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlie4MsQ9pJSSKY7DoEpxn3uBAq-rT7in1sA&s";
     return SizedBox(
-      height: MediaQuery.sizeOf(context).height * .3,
+      height: MediaQuery
+          .sizeOf(context)
+          .height * .3,
       child: Center(
         child: Column(
           children: [
@@ -23,8 +32,7 @@ class AccountFirstSection extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
                   width: double.infinity,
-                  imageUrl:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlie4MsQ9pJSSKY7DoEpxn3uBAq-rT7in1sA&s",
+                  imageUrl:image,
                   errorWidget: (context, url, error) =>
                       Image.asset(Assets.assetsImagesEmptyImage),
                 ),
