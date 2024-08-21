@@ -1,3 +1,5 @@
+import 'package:hive/hive.dart';
+part 'UserData.g.dart';
 class UserData {
   UserData({
     this.message,
@@ -22,6 +24,7 @@ class UserData {
   }
 }
 
+@HiveType(typeId: 1)
 class Person {
   Person({
     this.age,
@@ -38,7 +41,7 @@ class Person {
 
   Person.fromJson(dynamic json) {
     about = json['about'];
-    age=json["age"];
+    age = json["age"];
     advertiserType = json['advertiser_type'];
     email = json['email'];
     id = json['id'];
@@ -49,16 +52,26 @@ class Person {
     username = json['username'];
   }
 
+  @HiveField(1)
   String? about;
+  @HiveField(2)
   String? advertiserType;
+  @HiveField(3)
   String? email;
+  @HiveField(4)
   num? id;
+  @HiveField(5)
   String? name;
+  @HiveField(6)
   String? profilePic;
+  @HiveField(7)
   dynamic referralCode;
+  @HiveField(8)
   String? role;
+  @HiveField(9)
   String? username;
-  int?age;
+  @HiveField(10)
+  int? age;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
