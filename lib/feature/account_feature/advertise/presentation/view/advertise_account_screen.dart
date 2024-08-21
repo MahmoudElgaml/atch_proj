@@ -19,12 +19,8 @@ class AdvertiseAccountScreen extends StatelessWidget {
     return const Column(
       children: [
         AccountFirstSection(),
-        AdvertiseAccountTaps()
-
-
+        AdvertiseAccountTaps(),
       ],
-
-
     );
   }
 }
@@ -35,10 +31,8 @@ class AdvertiseAccountTaps extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery
-          .sizeOf(context)
-          .height * .43,
-      child:  DefaultTabController(
+      height: MediaQuery.sizeOf(context).height * .43,
+      child: DefaultTabController(
         length: 2,
         child: Column(
           children: [
@@ -49,14 +43,21 @@ class AdvertiseAccountTaps extends StatelessWidget {
                 child: BlocBuilder<AdvertiseInfoCubit, AdvertiseInfoState>(
                   builder: (context, state) {
                     if (state is AdvertiseAccountFailState) {
-                      return Center(child: Text(state.message,),);
-                    }
-                    else if (state is AdvertiseAccountSuccessState) {
-                      var advertiserInfo=AdvertiseInfoCubit.get(context).advertiseInfoModel;
-                      return  TabBarView(
+                      return Center(
+                        child: Text(
+                          state.message,
+                        ),
+                      );
+                    } else if (state is AdvertiseAccountSuccessState) {
+                      var advertiserInfo =
+                          AdvertiseInfoCubit.get(context).advertiseInfoModel;
+                      return TabBarView(
                         children: [
-                          Text(advertiserInfo?.advertiser?.about??"",style: AppStyle.style16Bold(context)),
-                          AdvAccountCampaignList(advertiseCampaigns:advertiserInfo?.campaigns??[] )
+                          Text(advertiserInfo?.advertiser?.about ?? "",
+                              style: AppStyle.style16Bold(context)),
+                          AdvAccountCampaignList(
+                              advertiseCampaigns:
+                                  advertiserInfo?.campaigns ?? [])
                         ],
                       );
                     }
@@ -72,8 +73,6 @@ class AdvertiseAccountTaps extends StatelessWidget {
   }
 }
 
-
-
 class AdvAccountCampaignList extends StatelessWidget {
   const AdvAccountCampaignList({super.key, required this.advertiseCampaigns});
 
@@ -82,8 +81,9 @@ class AdvAccountCampaignList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemBuilder: (context, index) =>
-          AdvAccountCampaignItem(campaigns: advertiseCampaigns[index],),
+      itemBuilder: (context, index) => AdvAccountCampaignItem(
+        campaigns: advertiseCampaigns[index],
+      ),
       separatorBuilder: (context, index) => const Gap(10),
       itemCount: advertiseCampaigns.length,
     );
@@ -164,8 +164,3 @@ class AdvAccountCampaignItem extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
