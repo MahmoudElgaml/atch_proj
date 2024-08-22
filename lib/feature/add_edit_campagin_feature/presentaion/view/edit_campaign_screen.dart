@@ -55,12 +55,11 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
   Widget build(BuildContext context) {
     final AdvertiseCampaigns campaign =
         GoRouterState.of(context).extra! as AdvertiseCampaigns;
+    linkCubit.setOldLink(campaign.videos??[]);
     setController(campaign);
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-
-        ),
+        appBar: AppBar(),
         body: Form(
           key: validateState,
           child: SizedBox(
@@ -153,11 +152,11 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
                           icon: const Icon(Icons.attach_money_sharp),
                         ),
                         const Gap(19),
-                        //   const AddPhotoSection(),
+                        const AddPhotoSection(),
                         const Gap(20),
-                        //    AddLinkSection(
-                        //   linkCubit: linkCubit,
-                        //   ),
+                        AddLinkSection(
+                          linkCubit: linkCubit,
+                        ),
                         const Gap(20),
                       ],
                     ),

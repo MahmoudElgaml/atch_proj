@@ -1,3 +1,5 @@
+import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
+import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/services/validation_service.dart';
 import 'package:atch_proj/core/utils/app_color.dart';
@@ -13,16 +15,18 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/wid
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_camapaign_textfiled.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_date_time_text_filed.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/date_section_widget.dart';
+import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../../core/utils/service_locator/config.dart';
 import '../manager/link_feature_cubit.dart';
 
 class AddCampaignScreen extends StatelessWidget {
-  AddCampaignScreen({super.key});
+   AddCampaignScreen({super.key});
 
   static const Map<String, String> items = {
     "kids (1-3)": "Babies",
@@ -31,12 +35,19 @@ class AddCampaignScreen extends StatelessWidget {
     "adults(20-40)": "Adults",
     "elder(+40)": "Elder",
   };
+
   String selectedValue = "Babies";
+
   final TextEditingController companyName = TextEditingController();
+
   final TextEditingController description = TextEditingController();
+
   final TextEditingController price = TextEditingController();
+
   final TextEditingController offer = TextEditingController();
+
   final LinkFeatureCubit linkCubit = getIt<LinkFeatureCubit>();
+
   var validateState = GlobalKey<FormState>();
 
   @override
@@ -145,12 +156,13 @@ class AddCampaignScreen extends StatelessWidget {
                           onPressed: () async {
                             print(selectedValue);
                             if (validateState.currentState!.validate()) {
-                              var adToken = await StorageToken().getToken();
-                              var adId = int.parse(adToken!);
+                              var adToken = getIt<HiveManager>()
+                                  .retrieveData<Person>(HiveKeys.userBox)[0]
+                                  .id;
 
                               AddCampaignModel addCampaignModel =
                                   AddCampaignModel(
-                                advertiserId: adId,
+                                advertiserId: adToken,
                                 campaignPrice: int.parse(price.text),
                                 campaignOffer: int.parse(offer.text),
                                 campaignDescription: description.text,

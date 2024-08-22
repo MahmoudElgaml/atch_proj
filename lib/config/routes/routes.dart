@@ -107,8 +107,14 @@ class AppRoute {
             BlocProvider(
               create: (context) => getIt<ChangeDateCubit>(),
             ),
+            BlocProvider(
+              create: (context) => getIt<AddImageCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<LinkFeatureCubit>(),
+            ),
           ],
-          child: EditCampaignScreen(),
+          child: const EditCampaignScreen(),
         ),
       ),
     ],
