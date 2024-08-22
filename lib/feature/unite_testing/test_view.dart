@@ -26,16 +26,17 @@ class TestView extends StatelessWidget {
             onPressed: () {
               EditAdvertiseData advertise = EditAdvertiseData(
                   password: "1235789",
-                  advertiserName: "fathy",
-                  advertiserId: 12,
+                  advertiserName: "ana crazy",
+                  advertiserId:12,
                   image: UploadImageService.imageFile,
                   about: "ss",
-                  advertiserLocations: ["cairo"],
-                  advertiserPhones: ["010098999898"],
+                  advertiserLocations: ["faisal"],
+                  visa: "50165405463",
+                  advertiserPhones: ["0123456789","01254"],
                   advertiserType: "Shop",
-                  companyName: "hodalolololo",
-                  contactEmail: "lolplplplpo@gmail.com",
-                  visa: "333",
+                  companyName: "Mesho",
+                  contactEmail: "testttoo@gmail.com",
+
               );
               TestCubit.get(context).test(advertise);
             },

@@ -16,6 +16,6 @@ class APiManger {
   }
 
   Future<Response> post(String endPoint, dynamic body) {
-    return dio.post(EndPoints.baseUrl + endPoint, data: body, );
+    return dio.post(EndPoints.baseUrl + endPoint, data: body,  );
   }
 }

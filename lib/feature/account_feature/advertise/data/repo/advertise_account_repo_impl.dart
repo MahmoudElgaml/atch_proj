@@ -39,7 +39,7 @@ class AdvertiseAccountRepoImpl implements AdvertiseAccountRepo {
   @override
   Future<Either<Failure, String>> editAdvertise(EditAdvertiseData advertiseData) async{
     try {
-      var formData=advertiseData.formData();
+      var formData= advertiseData.formData();
       await aPiManger.post(EndPoints.editProfileAdvertise, formData);
 
       return  right("success");

@@ -6,6 +6,7 @@ class EndPoints{
   static const logIn="/login";
   static const getPopularCampaign="/home/popularCampaigns";
   static const getNormalCampaign="/home/normalCampaigns";
+  static const detailCampaign="/home/getCampaign";
   static const addCampaign="/advertiser/addCampaign";
   static const editCampaign="/advertiser/editCampaign";
   static const getWishlist="/user/get_wishlist";

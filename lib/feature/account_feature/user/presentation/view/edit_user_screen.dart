@@ -45,16 +45,14 @@ class _UserEditScreenState extends State<UserEditScreen> {
       isFirst = false;
     }
     return BlocConsumer<EditUserCubit, EditUserState>(
-      listener: (context, state) async{
-        if(state is EditUserLoadingState){
+      listener: (context, state) async {
+        if (state is EditUserLoadingState) {
           EasyLoading.show();
-        }
-        else if(state is EditUserFailState){
+        } else if (state is EditUserFailState) {
           EasyLoading.dismiss();
           EasyLoading.showError("");
-        }
-        else if (state is EditUserSuccessState){
-         await EasyLoading.showSuccess("");
+        } else if (state is EditUserSuccessState) {
+          await EasyLoading.showSuccess("");
           context.pop();
         }
         // TODO: implement listener
@@ -103,7 +101,7 @@ class _UserEditScreenState extends State<UserEditScreen> {
                       .retrieveData<Person>(HiveKeys.userBox)[0]
                       .id;
                   EditUserData editUser = EditUserData(
-                    image: UploadImageService.imageFile?? null,
+                    image: UploadImageService.imageFile ?? null,
                     password: password.text,
                     username: username.text,
                     age: age.text,
@@ -111,7 +109,6 @@ class _UserEditScreenState extends State<UserEditScreen> {
                     email: email.text,
                     userId: userId,
                   );
-
 
                   EditUserCubit.get(context).editUser(editUser);
                 },
