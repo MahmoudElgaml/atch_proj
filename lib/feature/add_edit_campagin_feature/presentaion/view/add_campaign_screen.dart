@@ -26,7 +26,7 @@ import '../../../../core/utils/service_locator/config.dart';
 import '../manager/link_feature_cubit.dart';
 
 class AddCampaignScreen extends StatelessWidget {
-   AddCampaignScreen({super.key});
+  AddCampaignScreen({super.key});
 
   static const Map<String, String> items = {
     "kids (1-3)": "Babies",
@@ -153,32 +153,15 @@ class AddCampaignScreen extends StatelessWidget {
                         ),
                         const Gap(20),
                         CustomAddCampaignButton(
+                          title: "Add Campaign",
                           onPressed: () async {
                             print(selectedValue);
                             if (validateState.currentState!.validate()) {
                               var adToken = getIt<HiveManager>()
                                   .retrieveData<Person>(HiveKeys.userBox)[0]
                                   .id;
-
                               AddCampaignModel addCampaignModel =
-                                  AddCampaignModel(
-                                advertiserId: adToken,
-                                campaignPrice: int.parse(price.text),
-                                campaignOffer: int.parse(offer.text),
-                                campaignDescription: description.text,
-                                campaignStartDate: ChangeDateCubit.get(context)
-                                    .firstDate
-                                    .substring(0, 12),
-                                campaignEndDate: ChangeDateCubit.get(context)
-                                    .lastDate
-                                    .substring(0, 12),
-                                campaignLocation: ["cairo"],
-                                campaignName: companyName.text,
-                                campaignTargetAudience: selectedValue,
-                                campaignVideos: linkCubit.links,
-                                images:
-                                    AddImageCubit.get(context).backendImages,
-                              );
+                                  createAddCampaignModel(adToken, context);
                               AddCampaignCubit.get(context)
                                   .addCampaign(addCampaignModel);
                             }
@@ -194,5 +177,23 @@ class AddCampaignScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  AddCampaignModel createAddCampaignModel(num? adToken, BuildContext context) {
+    AddCampaignModel addCampaignModel = AddCampaignModel(
+      advertiserId: adToken,
+      campaignPrice: int.parse(price.text),
+      campaignOffer: int.parse(offer.text),
+      campaignDescription: description.text,
+      campaignStartDate:
+          ChangeDateCubit.get(context).firstDate.substring(0, 12),
+      campaignEndDate: ChangeDateCubit.get(context).lastDate.substring(0, 12),
+      campaignLocation: ["cairo"],
+      campaignName: companyName.text,
+      campaignTargetAudience: selectedValue,
+      campaignVideos: linkCubit.links,
+      images: AddImageCubit.get(context).backendImages,
+    );
+    return addCampaignModel;
   }
 }

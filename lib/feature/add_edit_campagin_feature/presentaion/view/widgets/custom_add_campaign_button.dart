@@ -9,10 +9,10 @@ import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
 
 class CustomAddCampaignButton extends StatelessWidget {
-  const CustomAddCampaignButton({super.key, this.onPressed,});
+  const CustomAddCampaignButton({super.key, this.onPressed,required this.title});
 
   final void Function()? onPressed;
-
+  final String title;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -50,7 +50,7 @@ class CustomAddCampaignButton extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Add Campaign",
+                  title,
                   style: AppStyle.style24Regular(context).copyWith(
                     color: Colors.white,
                   ),

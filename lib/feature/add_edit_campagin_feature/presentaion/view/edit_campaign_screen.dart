@@ -167,6 +167,7 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
                           linkCubit: linkCubit,
                         ),
                         CustomAddCampaignButton(
+                          title: "Update",
                           onPressed: () {
                             EditCampignModel editModel =
                                 createEditCampaignModel(campaign, context);
