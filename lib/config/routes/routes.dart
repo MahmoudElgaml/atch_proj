@@ -106,6 +106,9 @@ class AppRoute {
         builder: (context, state) => MultiBlocProvider(
           providers: [
             BlocProvider(
+              create: (context) => getIt<AddCampaignCubit>(),
+            ),
+            BlocProvider(
               create: (context) => getIt<ChangeDateCubit>(),
             ),
             BlocProvider(

@@ -1,4 +1,6 @@
 import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/data/model/EditCampignModel.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/old_image_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/add_link_section.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/add_photo_section.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_add_campaign_button.dart';
@@ -52,10 +54,9 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
   bool setValues = true;
   var validateState = GlobalKey<FormState>();
 
-
   @override
   Widget build(BuildContext context) {
-    final  AdvertiseCampaigns campaign =
+    final AdvertiseCampaigns campaign =
         GoRouterState.of(context).extra as AdvertiseCampaigns;
     if (setValues) {
       linkCubit.setOldLink(campaign.videos ?? []);
@@ -158,12 +159,20 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
                           icon: const Icon(Icons.attach_money_sharp),
                         ),
                         const Gap(19),
-                        OldImageSection(oldImages:campaign.images??[] ),
+                        OldImageSection(oldImages: campaign.images ?? []),
                         const Gap(19),
                         const AddPhotoSection(),
                         const Gap(20),
                         AddLinkSection(
                           linkCubit: linkCubit,
+                        ),
+                        CustomAddCampaignButton(
+                          onPressed: () {
+                            EditCampignModel editModel =
+                                createEditCampaignModel(campaign, context);
+                            AddCampaignCubit.get(context)
+                                .editCampaign(editModel);
+                          },
                         ),
                         const Gap(20),
                       ],
@@ -176,6 +185,23 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
         ),
       ),
     );
+  }
+
+  EditCampignModel createEditCampaignModel(
+      AdvertiseCampaigns campaign, BuildContext context) {
+    EditCampignModel editModel = EditCampignModel(
+      campaignId: campaign.id,
+      oldCampaignImages: OldImageCubit.get(context).myImages,
+      campaignPrice: int.parse(price.text),
+      campaignOffer: int.parse(offer.text),
+      campaignDescription: description.text,
+      campaignEndDate: ChangeDateCubit.get(context).lastDate.substring(0, 12),
+      campaignLocation: ["cairo"],
+      campaignName: companyName.text,
+      campaignVideos: linkCubit.links,
+      images: AddImageCubit.get(context).backendImages,
+    );
+    return editModel;
   }
 
   setController(AdvertiseCampaigns campaign) {
