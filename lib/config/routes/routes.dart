@@ -4,6 +4,7 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_image_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/change_date_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/link_feature_cubit.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/old_image_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/add_campaign_screen.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/edit_campaign_screen.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
@@ -112,6 +113,9 @@ class AppRoute {
             ),
             BlocProvider(
               create: (context) => getIt<LinkFeatureCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<OldImageCubit>(),
             ),
           ],
           child: const EditCampaignScreen(),

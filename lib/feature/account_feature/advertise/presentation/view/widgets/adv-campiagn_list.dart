@@ -26,6 +26,7 @@ class AdvAccountCampaignList extends StatelessWidget {
     );
   }
 }
+
 class AdvAccountCampaignItem extends StatelessWidget {
   const AdvAccountCampaignItem({super.key, required this.campaigns});
 
@@ -33,6 +34,7 @@ class AdvAccountCampaignItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(campaigns.images);
     return Card(
       elevation: 10,
       shadowColor: Colors.white24,
@@ -60,7 +62,7 @@ class AdvAccountCampaignItem extends StatelessWidget {
                           : campaigns.images?[0] ?? "",
                       fit: BoxFit.fill,
                       errorWidget: (context, url, error) =>
-                      const Center(child: Text("Error")),
+                          const Center(child: Text("Error")),
                     ),
                   ),
                 ),
@@ -98,13 +100,17 @@ class AdvAccountCampaignItem extends StatelessWidget {
                   ),
                   const Spacer(),
                   InkWell(
-                    onTap: () =>  context.push(AppRoute.editCampaign,extra: campaigns),
+                    onTap: () {
+                      final copiedData = campaigns.copyWith();
+                      context.push(
+                        AppRoute.editCampaign,
+                        extra: copiedData,
+                      );
+                    },
                     child: SvgPicture.asset(Assets.imagesEdit),
                   ),
                   IconButton(
-                    onPressed: () {
-
-                    },
+                    onPressed: () {},
                     icon: Icon(
                       size: 26,
                       Icons.delete_outline,

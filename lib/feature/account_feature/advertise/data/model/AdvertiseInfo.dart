@@ -1,4 +1,7 @@
 class AdvertiseInfoModel {
+  Advertiser? advertiser;
+  List<AdvertiseCampaigns>? campaigns;
+
   AdvertiseInfoModel({
     this.advertiser,
     this.campaigns,
@@ -16,8 +19,17 @@ class AdvertiseInfoModel {
     }
   }
 
-  Advertiser? advertiser;
-  List<AdvertiseCampaigns>? campaigns;
+  AdvertiseInfoModel copyWith({
+    Advertiser? advertiser,
+    List<AdvertiseCampaigns>? campaigns,
+  }) {
+    return AdvertiseInfoModel(
+      advertiser: advertiser?.copyWith() ?? this.advertiser?.copyWith(),
+      campaigns: campaigns != null
+          ? campaigns.map((campaign) => campaign.copyWith()).toList()
+          : this.campaigns?.map((campaign) => campaign.copyWith()).toList(),
+    );
+  }
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -32,6 +44,20 @@ class AdvertiseInfoModel {
 }
 
 class AdvertiseCampaigns {
+  num? advertiserId;
+  String? campaignName;
+  String? description;
+  String? endDate;
+  num? id;
+  List<String>? images;
+  List<String>? locations;
+  num? offer;
+  num? price;
+  String? startDate;
+  String? targetAudience;
+  List<String>? videos;
+  dynamic winner;
+
   AdvertiseCampaigns({
     this.advertiserId,
     this.campaignName,
@@ -65,19 +91,43 @@ class AdvertiseCampaigns {
     winner = json['winner'];
   }
 
-  num? advertiserId;
-  String? campaignName;
-  String? description;
-  String? endDate;
-  num? id;
-  List<String>? images;
-  List<String>? locations;
-  num? offer;
-  num? price;
-  String? startDate;
-  String? targetAudience;
-  List<String>? videos;
-  dynamic winner;
+  AdvertiseCampaigns copyWith({
+    num? advertiserId,
+    String? campaignName,
+    String? description,
+    String? endDate,
+    num? id,
+    List<String>? images,
+    List<String>? locations,
+    num? offer,
+    num? price,
+    String? startDate,
+    String? targetAudience,
+    List<String>? videos,
+    dynamic winner,
+  }) {
+    return AdvertiseCampaigns(
+      advertiserId: advertiserId ?? this.advertiserId,
+      campaignName: campaignName ?? this.campaignName,
+      description: description ?? this.description,
+      endDate: endDate ?? this.endDate,
+      id: id ?? this.id,
+      images: images != null
+          ? List<String>.from(images)
+          : List<String>.from(this.images ?? []),
+      locations: locations != null
+          ? List<String>.from(locations)
+          : List<String>.from(this.locations ?? []),
+      offer: offer ?? this.offer,
+      price: price ?? this.price,
+      startDate: startDate ?? this.startDate,
+      targetAudience: targetAudience ?? this.targetAudience,
+      videos: videos != null
+          ? List<String>.from(videos)
+          : List<String>.from(this.videos ?? []),
+      winner: winner ?? this.winner,
+    );
+  }
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -99,60 +149,86 @@ class AdvertiseCampaigns {
 }
 
 class Advertiser {
+  String? about;
+  String? advertiserType;
+  String? email;
+  num? id;
+  List<String>? locations;
+  String? name;
+  List<String>? phones;
+  String? profilePic;
+  dynamic referralCode;
+  String? username;
+
   Advertiser({
     this.about,
-    this.advertiserName,
-    this.advertiserPic,
     this.advertiserType,
-    this.companyName,
-    this.contactEmail,
+    this.email,
     this.id,
     this.locations,
+    this.name,
     this.phones,
+    this.profilePic,
     this.referralCode,
-    this.visaNumber,
+    this.username,
   });
 
   Advertiser.fromJson(dynamic json) {
     about = json['about'];
-    advertiserName = json['advertiser_name'];
-    advertiserPic = json['advertiser_pic'];
     advertiserType = json['advertiser_type'];
-    companyName = json['company_name'];
-    contactEmail = json['contact_email'];
+    email = json['email'];
     id = json['id'];
     locations =
         json['locations'] != null ? json['locations'].cast<String>() : [];
+    name = json['name'];
     phones = json['phones'] != null ? json['phones'].cast<String>() : [];
+    profilePic = json['profile_pic'];
     referralCode = json['referral_code'];
-    visaNumber = json['visa_number'];
+    username = json['username'];
   }
 
-  String? about;
-  String? advertiserName;
-  String? advertiserPic;
-  String? advertiserType;
-  String? companyName;
-  String? contactEmail;
-  num? id;
-  List<String>? locations;
-  List<String>? phones;
-  num? referralCode;
-  String? visaNumber;
+  Advertiser copyWith({
+    String? about,
+    String? advertiserType,
+    String? email,
+    num? id,
+    List<String>? locations,
+    String? name,
+    List<String>? phones,
+    String? profilePic,
+    dynamic referralCode,
+    String? username,
+  }) {
+    return Advertiser(
+      about: about ?? this.about,
+      advertiserType: advertiserType ?? this.advertiserType,
+      email: email ?? this.email,
+      id: id ?? this.id,
+      locations: locations != null
+          ? List<String>.from(locations)
+          : List<String>.from(this.locations ?? []),
+      name: name ?? this.name,
+      phones: phones != null
+          ? List<String>.from(phones)
+          : List<String>.from(this.phones ?? []),
+      profilePic: profilePic ?? this.profilePic,
+      referralCode: referralCode ?? this.referralCode,
+      username: username ?? this.username,
+    );
+  }
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['about'] = about;
-    map['advertiser_name'] = advertiserName;
-    map['advertiser_pic'] = advertiserPic;
     map['advertiser_type'] = advertiserType;
-    map['company_name'] = companyName;
-    map['contact_email'] = contactEmail;
+    map['email'] = email;
     map['id'] = id;
     map['locations'] = locations;
+    map['name'] = name;
     map['phones'] = phones;
+    map['profile_pic'] = profilePic;
     map['referral_code'] = referralCode;
-    map['visa_number'] = visaNumber;
+    map['username'] = username;
     return map;
   }
 }

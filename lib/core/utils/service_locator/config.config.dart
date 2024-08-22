@@ -37,6 +37,8 @@ import '../../../feature/add_edit_campagin_feature/presentaion/manager/change_da
     as _i395;
 import '../../../feature/add_edit_campagin_feature/presentaion/manager/link_feature_cubit.dart'
     as _i973;
+import '../../../feature/add_edit_campagin_feature/presentaion/manager/old_image_cubit.dart'
+    as _i216;
 import '../../../feature/advertiser_info_feature/data/repo/adv_info_impl.dart'
     as _i509;
 import '../../../feature/advertiser_info_feature/data/repo/adv_info_repo.dart'
@@ -87,6 +89,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i395.ChangeDateCubit>(() => _i395.ChangeDateCubit());
     gh.factory<_i973.LinkFeatureCubit>(() => _i973.LinkFeatureCubit());
     gh.factory<_i637.HomeLayoutCubit>(() => _i637.HomeLayoutCubit());
+    gh.factory<_i216.OldImageCubit>(() => _i216.OldImageCubit());
     gh.singleton<_i254.APiManger>(() => _i254.APiManger());
     gh.singleton<_i125.HiveManager>(() => _i125.HiveManager());
     gh.singleton<_i353.StorageToken>(() => _i353.StorageToken());

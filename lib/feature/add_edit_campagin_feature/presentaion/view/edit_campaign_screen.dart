@@ -4,6 +4,7 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/wid
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_add_campaign_button.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_camapaign_textfiled.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/date_section_widget.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/old_image_section.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -51,10 +52,11 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
   bool setValues = true;
   var validateState = GlobalKey<FormState>();
 
+
   @override
   Widget build(BuildContext context) {
-    final AdvertiseCampaigns campaign =
-        GoRouterState.of(context).extra! as AdvertiseCampaigns;
+    final  AdvertiseCampaigns campaign =
+        GoRouterState.of(context).extra as AdvertiseCampaigns;
     if (setValues) {
       linkCubit.setOldLink(campaign.videos ?? []);
       setController(campaign);
@@ -155,6 +157,8 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
                           labelText: "Offer",
                           icon: const Icon(Icons.attach_money_sharp),
                         ),
+                        const Gap(19),
+                        OldImageSection(oldImages:campaign.images??[] ),
                         const Gap(19),
                         const AddPhotoSection(),
                         const Gap(20),
