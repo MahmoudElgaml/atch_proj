@@ -19,7 +19,7 @@ class AdsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRoute.adDetails, extra: campaigns);
+        GoRouter.of(context).push(AppRoute.adDetails, extra: campaigns.id);
       },
       child: AspectRatio(
         aspectRatio: 235 / 275,

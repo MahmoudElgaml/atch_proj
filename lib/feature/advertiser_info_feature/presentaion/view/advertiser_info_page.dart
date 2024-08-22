@@ -1,5 +1,6 @@
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/advertise_campignes_list.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/custom_tabs_widget.dart';
@@ -22,8 +23,8 @@ class AdvertiserInfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Advertiser advertiser =
-        GoRouterState.of(context).extra! as Advertiser;
+    final DetailAdvertiser advertiser =
+        GoRouterState.of(context).extra! as DetailAdvertiser;
     AdvInfoCubit advInfoCubit = getIt<AdvInfoCubit>()
       ..getAdvCampaigns(advertiser.id);
     return SafeArea(

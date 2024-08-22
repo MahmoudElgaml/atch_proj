@@ -3,7 +3,7 @@ import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignMo
 import 'package:dartz/dartz.dart';
 
 abstract class CampaignDetailRepo{
-  Future<Either<Failure,DetailCampaignModel>> getDetails(String campaignId);
+  Future<Either<Failure,DetailCampaignModel>> getDetails(num campaignId);
 
 
 }

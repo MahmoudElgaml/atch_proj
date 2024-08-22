@@ -1,5 +1,6 @@
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/adv_detail_feature/prsentation/view/widget/ad_details_fist_section.dart';
 import 'package:atch_proj/generated/assets.dart';
@@ -14,7 +15,7 @@ import 'add_detail_widget.dart';
 class AdDetailsSection extends StatelessWidget {
   const AdDetailsSection({super.key, required this.campaign});
 
-  final Campaigns campaign;
+  final DetailCampaigns? campaign;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class AdDetailsSection extends StatelessWidget {
           const Gap(30),
           Center(
             child: Text(
-              campaign.campaignName ?? "",
+              campaign?.campaignName ?? "",
               style: AppStyle.style34(context).copyWith(
                 color: Colors.black,
               ),
@@ -42,19 +43,19 @@ class AdDetailsSection extends StatelessWidget {
                 AdDetailsWidget(
                   isProfile: false,
                   image: Assets.imagesDate,
-                  first: campaign.startDate,
-                  last: campaign.endDate,
+                  first: campaign?.startDate,
+                  last: campaign?.endDate,
                 ),
                 const Gap(25),
                 AdDetailsLocationWidget(
-                    Assets.imagesLocation, campaign.locations ?? []),
+                    Assets.imagesLocation, campaign?.locations ?? []),
                 const Gap(25),
                 InkWell(
-                  onTap: () => context.push(AppRoute.advertiserInfoPage,extra: campaign.advertiser),
+                  onTap: () => context.push(AppRoute.advertiserInfoPage,extra: campaign?.advertiser),
                   child: AdDetailsWidget(
                     isProfile: true,
-                    imageAdvertise: campaign.advertiser?.advertiserPic ?? "",
-                    first: campaign.advertiser?.advertiserName,
+                    imageAdvertise: campaign?.advertiser?.profilePic ?? "",
+                    first: campaign?.advertiser?.name,
                     last: "Advertiser",
                   ),
                 ),

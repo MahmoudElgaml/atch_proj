@@ -3,12 +3,13 @@ import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_style.dart';
+import '../../../../adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'advertise_campignes_list.dart';
 import 'custom_tabs_widget.dart';
 
 class InfoTabsSection extends StatelessWidget {
   const InfoTabsSection({super.key,required this.advInfoCubit,required this.advertiser});
-final  Advertiser advertiser;
+final  DetailAdvertiser advertiser;
 final AdvInfoCubit advInfoCubit;
   @override
   Widget build(BuildContext context) {

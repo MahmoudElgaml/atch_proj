@@ -39,7 +39,7 @@ class DetailCampaigns {
 
   DetailCampaigns.fromJson(dynamic json) {
     advertiser =
-    json['advertiser'] != null ? Advertiser.fromJson(json['advertiser']) : null;
+    json['advertiser'] != null ? DetailAdvertiser.fromJson(json['advertiser']) : null;
     advertiserId = json['advertiser_id'];
     campaignName = json['campaign_name'];
     description = json['description'];
@@ -56,7 +56,7 @@ class DetailCampaigns {
     winner = json['winner'];
   }
 
-  Advertiser? advertiser;
+  DetailAdvertiser? advertiser;
   num? advertiserId;
   String? campaignName;
   String? description;
@@ -94,8 +94,8 @@ class DetailCampaigns {
 
 }
 
-class Advertiser {
-  Advertiser({
+class DetailAdvertiser {
+  DetailAdvertiser({
     this.about,
     this.advertiserType,
     this.email,
@@ -105,7 +105,7 @@ class Advertiser {
     this.referralCode,
     this.username,});
 
-  Advertiser.fromJson(dynamic json) {
+  DetailAdvertiser.fromJson(dynamic json) {
     about = json['about'];
     advertiserType = json['advertiser_type'];
     email = json['email'];

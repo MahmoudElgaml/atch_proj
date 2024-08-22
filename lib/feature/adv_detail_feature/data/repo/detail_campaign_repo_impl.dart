@@ -18,7 +18,7 @@ class CampaignDetailRepoImpl implements CampaignDetailRepo {
   CampaignDetailRepoImpl(this.aPiManger,this.storageToken);
 
   @override
-  Future<Either<Failure, DetailCampaignModel>> getDetails(String campaignId)async {
+  Future<Either<Failure, DetailCampaignModel>> getDetails(num campaignId)async {
  try{
    var id=await storageToken.getToken();
    var response=await aPiManger.post(EndPoints.detailCampaign, {
