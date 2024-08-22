@@ -48,15 +48,19 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
   final TextEditingController offer = TextEditingController();
 
   final LinkFeatureCubit linkCubit = getIt<LinkFeatureCubit>();
-
+  bool setValues = true;
   var validateState = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     final AdvertiseCampaigns campaign =
         GoRouterState.of(context).extra! as AdvertiseCampaigns;
-    linkCubit.setOldLink(campaign.videos??[]);
-    setController(campaign);
+    if (setValues) {
+      linkCubit.setOldLink(campaign.videos ?? []);
+      setController(campaign);
+      setValues = false;
+    }
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
