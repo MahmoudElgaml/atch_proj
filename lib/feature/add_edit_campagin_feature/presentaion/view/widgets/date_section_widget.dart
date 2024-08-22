@@ -7,16 +7,23 @@ import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/utils/helper.dart';
 import 'custom_date_time_text_filed.dart';
 
-class DateSectionWidget extends StatelessWidget {
+class DateSectionWidget extends StatefulWidget {
   const DateSectionWidget({super.key, this.lastDate, this.firstDate});
 
   final String? firstDate;
   final String? lastDate;
 
   @override
+  State<DateSectionWidget> createState() => _DateSectionWidgetState();
+}
+
+class _DateSectionWidgetState extends State<DateSectionWidget> {
+  bool isFirst = true;
+
+  bool isLast = true;
+
+  @override
   Widget build(BuildContext context) {
-    bool isFirst = false;
-    bool isLast = false;
     var dateCubit = ChangeDateCubit.get(context);
     return BlocBuilder<ChangeDateCubit, ChangeDateState>(
       builder: (context, state) {
@@ -32,12 +39,13 @@ class DateSectionWidget extends StatelessWidget {
                 Expanded(
                   child: CustomDateTimeTextFiled(
                     onTap: () {
+                      isFirst = false;
                       dateCubit.showFirstDate(context);
-                      isFirst = true;
+
                     },
                     hintText: isFirst
-                        ? firstDate ?? Helper.dateToString(dateCubit.firstDate)
-                        : Helper.dateToString(dateCubit.firstDate),
+                        ? widget.firstDate ?? dateCubit.firstDate
+                        : dateCubit.firstDate,
                     icon: const Icon(Icons.date_range),
                   ),
                 ),
@@ -54,12 +62,13 @@ class DateSectionWidget extends StatelessWidget {
                 Expanded(
                   child: CustomDateTimeTextFiled(
                     onTap: () {
+                      isLast = false;
                       dateCubit.showLastDate(context);
-                      isLast = true;
+
                     },
                     hintText: isLast
-                        ? lastDate ?? Helper.dateToString(dateCubit.lastDate)
-                        : Helper.dateToString(dateCubit.lastDate),
+                        ? widget.lastDate ?? dateCubit.lastDate
+                        : dateCubit.lastDate,
                     icon: const Icon(Icons.date_range),
                   ),
                 ),

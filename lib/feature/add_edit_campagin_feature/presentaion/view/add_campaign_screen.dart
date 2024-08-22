@@ -41,12 +41,10 @@ class AddCampaignScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           surfaceTintColor: Colors.transparent,
-
         ),
         body: Form(
           key: validateState,
@@ -156,11 +154,11 @@ class AddCampaignScreen extends StatelessWidget {
                                 campaignPrice: int.parse(price.text),
                                 campaignOffer: int.parse(offer.text),
                                 campaignDescription: description.text,
-                                campaignStartDate: Helper.dateToString(
-                                        ChangeDateCubit.get(context).firstDate)
+                                campaignStartDate: ChangeDateCubit.get(context)
+                                    .firstDate
                                     .substring(0, 12),
-                                campaignEndDate: Helper.dateToString(
-                                        ChangeDateCubit.get(context).lastDate)
+                                campaignEndDate: ChangeDateCubit.get(context)
+                                    .lastDate
                                     .substring(0, 12),
                                 campaignLocation: ["cairo"],
                                 campaignName: companyName.text,
@@ -185,6 +183,4 @@ class AddCampaignScreen extends StatelessWidget {
       ),
     );
   }
-
-
 }

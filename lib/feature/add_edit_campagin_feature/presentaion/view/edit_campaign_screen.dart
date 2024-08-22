@@ -59,7 +59,7 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          surfaceTintColor: Colors.transparent,
+
         ),
         body: Form(
           key: validateState,
@@ -127,8 +127,8 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
                         ),
                         const Gap(19),
                         DateSectionWidget(
-                          firstDate: campaign.startDate?.substring(0,16),
-                          lastDate: campaign.endDate?.substring(0,16),
+                          firstDate: campaign.startDate?.substring(0, 16),
+                          lastDate: campaign.endDate?.substring(0, 16),
                         ),
                         const Gap(19),
                         CustomCampaignTextFiled(

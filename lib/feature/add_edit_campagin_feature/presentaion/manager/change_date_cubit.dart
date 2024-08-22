@@ -5,29 +5,40 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../core/utils/helper.dart';
+
 part 'change_date_state.dart';
+
 @injectable
 class ChangeDateCubit extends Cubit<ChangeDateState> {
   ChangeDateCubit() : super(ChangeDateInitial());
-  DateTime firstDate = DateTime.now();
-  DateTime lastDate = DateTime.now();
-  static ChangeDateCubit get(context)=>BlocProvider.of(context);
+  String firstDate = Helper.dateToString(DateTime.now()) ;
+  String lastDate = Helper.dateToString(DateTime.now()) ;
+  DateTime firstSelectDate=DateTime.now();
+  DateTime seconedSelectDate=DateTime.now();
+
+  static ChangeDateCubit get(context) => BlocProvider.of(context);
 
   Future<void> showFirstDate(BuildContext context) async {
-    firstDate = await showDatePicker(
-        context: context,
-        firstDate: DateTime.now(),
-        lastDate: DateTime(2040),
-        initialDate: firstDate)??firstDate;
+     firstSelectDate = await showDatePicker(
+            context: context,
+            firstDate: DateTime.now(),
+            lastDate: DateTime(2040),
+            initialDate: DateTime.now()) ??
+        firstSelectDate;
+    firstDate=Helper.dateToString(firstSelectDate);
     emit(ChangeDateSuccess());
     emit(ChangeDateInitial());
   }
+
   Future<void> showLastDate(BuildContext context) async {
-    lastDate = await showDatePicker(
-        context: context,
-        firstDate: DateTime.now(),
-        lastDate: DateTime(2040),
-        initialDate: lastDate)??lastDate;
+    seconedSelectDate = await showDatePicker(
+            context: context,
+            firstDate: DateTime.now(),
+            lastDate: DateTime(2040),
+            initialDate: DateTime.now()) ??
+        seconedSelectDate;
+    lastDate=Helper.dateToString(seconedSelectDate);
     emit(ChangeDateSuccess());
     emit(ChangeDateInitial());
   }
