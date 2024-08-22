@@ -21,6 +21,8 @@ import '../../../feature/account_feature/user/data/repo/user_account_repo.dart'
     as _i645;
 import '../../../feature/account_feature/user/data/repo/user_account_repo_impl.dart'
     as _i463;
+import '../../../feature/account_feature/user/presentation/manager/edit_user_cubit.dart'
+    as _i851;
 import '../../../feature/account_feature/user/presentation/manager/recently_viewed_cubit.dart'
     as _i830;
 import '../../../feature/account_feature/user/presentation/manager/used_offer_cubit.dart'
@@ -135,6 +137,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i830.RecentlyViewedCubit(gh<_i645.UserAccountRepo>()));
     gh.factory<_i539.UsedOfferCubit>(
         () => _i539.UsedOfferCubit(gh<_i645.UserAccountRepo>()));
+    gh.factory<_i851.EditUserCubit>(
+        () => _i851.EditUserCubit(gh<_i645.UserAccountRepo>()));
     gh.factory<_i376.AddCampaignCubit>(
         () => _i376.AddCampaignCubit(gh<_i793.AddCampaignRepo>()));
     gh.factory<_i694.SearchCubit>(

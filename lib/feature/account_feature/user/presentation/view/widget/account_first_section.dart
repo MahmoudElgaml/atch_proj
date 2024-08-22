@@ -1,9 +1,11 @@
+import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_style.dart';
@@ -16,13 +18,12 @@ class AccountFirstSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String image = getIt<HiveManager>().retrieveData<Person>(
-        HiveKeys.userBox)[0].profilePic ??
+    String image = getIt<HiveManager>()
+            .retrieveData<Person>(HiveKeys.userBox)[0]
+            .profilePic ??
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlie4MsQ9pJSSKY7DoEpxn3uBAq-rT7in1sA&s";
     return SizedBox(
-      height: MediaQuery
-          .sizeOf(context)
-          .height * .3,
+      height: MediaQuery.sizeOf(context).height * .3,
       child: Center(
         child: Column(
           children: [
@@ -32,14 +33,17 @@ class AccountFirstSection extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
                   width: double.infinity,
-                  imageUrl:image,
+                  imageUrl: image,
                   errorWidget: (context, url, error) =>
                       Image.asset(Assets.assetsImagesEmptyImage),
                 ),
               ),
             ),
             const Gap(16),
-            const EditButton()
+            InkWell(
+              onTap: () => context.push(AppRoute.editUserPage),
+              child: const EditButton(),
+            )
           ],
         ),
       ),
