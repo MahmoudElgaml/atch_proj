@@ -13,6 +13,12 @@ class AdvertiseInfoCubit extends Cubit<AdvertiseInfoState> {
   AdvertiseAccountRepo advertiseAccountRepo;
   AdvertiseInfoModel? advertiseInfoModel;
   static AdvertiseInfoCubit get(context)=>BlocProvider.of(context);
+  @override
+  void emit(AdvertiseInfoState state) {
+    if (!isClosed) {
+      super.emit(state);
+    }
+  }
   getAdvertiseInfo() async {
     emit(AdvertiseAccountLoadingState());
     var result = await advertiseAccountRepo.getAdvertiseInfo();
