@@ -5,28 +5,30 @@ import 'package:image_picker/image_picker.dart';
 
 class SignDataTest {
   SignDataTest({
-    this.contactEmail,
+    this.email,
     this.password,
-    this.companyName,
+    this.name,
+    this.age,
     this.role,
     this.referralCode,
     this.about,
     this.visa,
-    this.advertiserName,
+    this.username,
     this.advertiserType,
     this.advertiserPhones,
     this.advertiserLocation,
   });
 
   SignDataTest.fromJson(dynamic json) {
-    contactEmail = json['contact_email'];
+    email = json['email'];
     password = json['password'];
-    companyName = json['company_name'];
+    name = json['name'];
+    age = json['age'];
     role = json['role'];
     referralCode = json['referral_code'];
     about = json['about'];
     visa = json['visa'];
-    advertiserName = json['advertiser_name'];
+    username = json['username'];
     advertiserType = json['advertiser_type'];
     advertiserPhones = json['advertiser_phones'] != null
         ? json['advertiser_phones'].cast<String>()
@@ -36,14 +38,15 @@ class SignDataTest {
         : [];
   }
 
-  String? contactEmail;
+  String? email;
   String? password;
-  String? companyName;
+  String? name;
+  String? age;
   String? role;
   num? referralCode;
   String? about;
   String? visa;
-  String? advertiserName;
+  String? username;
   String? advertiserType;
   List<String>? advertiserPhones;
   List<String>? advertiserLocation;
@@ -51,26 +54,27 @@ class SignDataTest {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['contact_email'] = contactEmail;
+    map['email'] = email;
     map['password'] = password;
-    map['company_name'] = companyName;
+    map['name'] = name;
+    map['age'] = age;
     map['role'] = role;
     map['referral_code'] = referralCode;
     map['about'] = about;
     map['visa'] = visa;
-    map['advertiser_name'] = advertiserName;
+    map['username'] = username;
     map['advertiser_type'] = advertiserType;
     map['advertiser_phones'] = advertiserPhones;
     map['advertiser_location'] = advertiserLocation;
     return map;
   }
 
-  Future<FormData> formData() async{
-
-  return   FormData.fromMap({
+  Future<FormData> formData() async {
+    return FormData.fromMap({
       "data": jsonEncode(toJson()),
-      "image":  image==null? null:await MultipartFile.fromFile(image!.path, filename: image!.name)
+      "image": image == null
+          ? null
+          : await MultipartFile.fromFile(image!.path, filename: image!.name)
     });
-
   }
 }

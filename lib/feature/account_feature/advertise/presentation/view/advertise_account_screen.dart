@@ -1,5 +1,6 @@
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/utils/app_color.dart';
+import 'package:atch_proj/core/utils/components/loading_rectangle.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
 import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
@@ -68,7 +69,7 @@ class AdvertiseAccountTaps extends StatelessWidget {
                         ],
                       );
                     }
-                    return const WishListLoadingWidget();
+                    return const LoadingRectangleComponent();
                   },
                 ),
               ),

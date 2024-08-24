@@ -1,6 +1,7 @@
 import 'package:atch_proj/core/services/rectangle_shimmer.dart';
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/core/utils/components/loading_rectangle.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_layout_cubit.dart';
 import 'package:atch_proj/feature/wishlist_feature/presentation/manger/wishlist_cubit.dart';
 import 'package:atch_proj/feature/wishlist_feature/presentation/view/widgets/ad_item.dart';
@@ -56,30 +57,10 @@ class WishlistList extends StatelessWidget {
         } else if (state is WishlistFailState) {
           return Center(child: Text(state.message));
         }
-        return const WishListLoadingWidget();
+        return const LoadingRectangleComponent();
       },
     );
   }
 }
 
-class WishListLoadingWidget extends StatelessWidget {
-  const WishListLoadingWidget({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Shimmer.fromColors(
-        baseColor: Colors.black,
-        highlightColor: Colors.grey[100]!,
-        child: ListView.separated(
-          itemBuilder: (context, index) => const Skeleton(
-            height: 90,
-            width: double.infinity,
-          ),
-          separatorBuilder: (context, index) => const Gap(10),
-          itemCount: 10,
-        ),
-      ),
-    );
-  }
-}

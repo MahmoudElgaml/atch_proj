@@ -111,9 +111,9 @@ class AdvertiseSignDrawer extends StatelessWidget {
                 List<String> phones = [phone.text];
                 List<String> locations = [location.text];
                 SignDataTest signData = SignDataTest();
-                signData.companyName = companyName.text;
-                signData.advertiserName = advertiseName.text;
-                signData.contactEmail = email.text;
+                signData.name = companyName.text;
+                signData.username = advertiseName.text;
+                signData.email = email.text;
                 signData.about = about.text;
                 signData.password = password.text;
                 signData.advertiserPhones = phones;

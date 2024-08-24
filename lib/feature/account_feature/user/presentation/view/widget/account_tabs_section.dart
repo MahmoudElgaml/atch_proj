@@ -1,5 +1,6 @@
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/core/utils/components/loading_rectangle.dart';
 import 'package:atch_proj/feature/account_feature/user/presentation/manager/recently_viewed_cubit.dart';
 import 'package:atch_proj/feature/account_feature/user/presentation/manager/used_offer_cubit.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/campaign_item.dart';
@@ -100,7 +101,7 @@ class RecentlyCampaignList extends StatelessWidget {
             itemCount: state.campaigns.length,
           );
         }
-        return const Center(child: CircularProgressIndicator());
+        return const LoadingRectangleComponent();
       },
     );
   }
@@ -132,7 +133,7 @@ class UsedCampaignList extends StatelessWidget {
             itemCount: state.campaigns.length,
           );
         }
-        return const Center(child: CircularProgressIndicator());
+        return const LoadingRectangleComponent();
       },
     );
   }

@@ -17,20 +17,20 @@ import '../../../../../core/utils/app_style.dart';
 import 'coatume_auth_button.dart';
 import 'costume_text_filed.dart';
 
-class SignUpDrawer extends StatefulWidget {
-  const SignUpDrawer({super.key});
+class UserSignUpDrawer extends StatefulWidget {
+  const UserSignUpDrawer({super.key});
 
   @override
-  State<SignUpDrawer> createState() => _SignUpDrawerState();
+  State<UserSignUpDrawer> createState() => _SignUpDrawerState();
 }
 
-class _SignUpDrawerState extends State<SignUpDrawer> {
-  TextEditingController name=TextEditingController();
-  TextEditingController username=TextEditingController();
-  TextEditingController age=TextEditingController();
-  TextEditingController password=TextEditingController();
-  TextEditingController email=TextEditingController();
-  String selectedValue="user";
+class _SignUpDrawerState extends State<UserSignUpDrawer> {
+  TextEditingController name = TextEditingController();
+  TextEditingController username = TextEditingController();
+  TextEditingController age = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController email = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,7 @@ class _SignUpDrawerState extends State<SignUpDrawer> {
             textEditingController: password,
           ),
           const Gap(30),
-       //   CustomDropMenu(selectedValue: selectedValue,),
+          //   CustomDropMenu(selectedValue: selectedValue,),
           const Gap(25),
           Align(
             alignment: Alignment.centerRight,
@@ -84,14 +84,17 @@ class _SignUpDrawerState extends State<SignUpDrawer> {
           CostumeButton(
             title: "SignUP",
             onPressed: () {
+              SignDataTest signData = SignDataTest(
 
-               SignDataTest signData = SignDataTest();
-               signData.password = password.text;
-               signData.advertiserName=username.text;
-               signData.contactEmail = email.text;
-               signData.role="user";
-               signData.image=UploadImageService.imageFile;
-               AuthCubit.get(context).signIn(signData);
+              );
+              signData.password = password.text;
+              signData.username = username.text;
+              signData.name=name.text;
+              signData.email = email.text;
+              signData.age=age.text;
+              signData.role = "user";
+              signData.image = UploadImageService.imageFile;
+              AuthCubit.get(context).signIn(signData);
             },
             isLoading: false,
           ),

@@ -49,14 +49,16 @@ class _LogInDrawerState extends State<LogInDrawer> {
                 ),
                 const Gap(32),
                 CostumeTextFiled(
-                  validator: (value) => ValidationService.validateEmail(value),
+                  validator: (value) =>
+                      ValidationService.validateEmpty(value, "Email"),
                   title: "Email",
                   textEditingController: email,
                 ),
                 const Gap(32),
                 CostumeTextFiled(
                   isPassword: true,
-                  validator: (value) => ValidationService.validateEmpty(value, "Password"),
+                  validator: (value) =>
+                      ValidationService.validateEmpty(value, "Password"),
                   title: "password",
                   textEditingController: password,
                 ),
@@ -81,11 +83,10 @@ class _LogInDrawerState extends State<LogInDrawer> {
                   title: 'Login',
                   isLoading: true,
                   onPressed: () {
-                    if(formKey.currentState!.validate()){
+                    if (formKey.currentState!.validate()) {
                       AuthCubit.get(context)
                           .logIn(email.text, password.text, selectedValue);
                     }
-
                   },
                 ),
                 const Gap(32),
@@ -115,7 +116,8 @@ class _LogInDrawerState extends State<LogInDrawer> {
                           style: TextStyle(color: Colors.black),
                         ),
                         TextButton(
-                          onPressed: () => context.go(AppRoute.signUpAsAdvertise),
+                          onPressed: () =>
+                              context.go(AppRoute.signUpAsAdvertise),
                           child: const Text(
                             "Advertise",
                             style: TextStyle(color: AppColor.authColor),

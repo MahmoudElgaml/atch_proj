@@ -1,6 +1,7 @@
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
+import 'package:atch_proj/core/utils/constants.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,9 @@ class AccountFirstSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String image = getIt<HiveManager>()
-            .retrieveData<Person>(HiveKeys.userBox)[0]
-            .profilePic ??
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlie4MsQ9pJSSKY7DoEpxn3uBAq-rT7in1sA&s";
+    Person person =
+        getIt<HiveManager>().retrieveData<Person>(HiveKeys.userBox)[0];
+
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * .3,
       child: Center(
@@ -33,11 +33,16 @@ class AccountFirstSection extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
                   width: double.infinity,
-                  imageUrl: image,
+                  imageUrl: person.profilePic ?? ConstValue.emptyImage,
                   errorWidget: (context, url, error) =>
                       Image.asset(Assets.assetsImagesEmptyImage),
                 ),
               ),
+            ),
+            const Gap(10),
+            Text(
+              person.username ?? "",
+              style: AppStyle.style24Regular(context),
             ),
             const Gap(16),
             InkWell(
