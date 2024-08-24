@@ -28,6 +28,7 @@ StorageToken storageToken;
       return right("success");
     } catch (e) {
       if (e is DioException) {
+
         return left(ServerFailure.fromServer(e));
       } else {
         return left(ServerFailure(e.toString()));

@@ -5,27 +5,26 @@ import 'package:image_picker/image_picker.dart';
 
 class EditAdvertiseData {
   EditAdvertiseData({
-    this.contactEmail,
+    this.email,
     this.advertiserId,
     this.about,
     this.password,
-    this.companyName,
+    this.name,
     this.visa,
-    this.advertiserName,
+    this.username,
     this.advertiserType,
     this.advertiserPhones,
     this.advertiserLocations,
-    this.image
   });
 
   EditAdvertiseData.fromJson(dynamic json) {
-    contactEmail = json['contact_email'];
+    email = json['email'];
     advertiserId = json['advertiser_id'];
     about = json['about'];
     password = json['password'];
-    companyName = json['company_name'];
+    name = json['name'];
     visa = json['visa'];
-    advertiserName = json['advertiser_name'];
+    username = json['username'];
     advertiserType = json['advertiser_type'];
     advertiserPhones = json['advertiser_phones'] != null
         ? json['advertiser_phones'].cast<String>()
@@ -35,13 +34,13 @@ class EditAdvertiseData {
         : [];
   }
 
-  String? contactEmail;
+  String? email;
   num? advertiserId;
   String? about;
   String? password;
-  String? companyName;
+  String? name;
   String? visa;
-  String? advertiserName;
+  String? username;
   String? advertiserType;
   List<String>? advertiserPhones;
   List<String>? advertiserLocations;
@@ -49,13 +48,13 @@ class EditAdvertiseData {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['contact_email'] = contactEmail;
+    map['email'] = email;
     map['advertiser_id'] = advertiserId;
     map['about'] = about;
     map['password'] = password;
-    map['company_name'] = companyName;
+    map['name'] = name;
     map['visa'] = visa;
-    map['advertiser_name'] = advertiserName;
+    map['username'] = username;
     map['advertiser_type'] = advertiserType;
     map['advertiser_phones'] = advertiserPhones;
     map['advertiser_locations'] = advertiserLocations;
@@ -70,3 +69,5 @@ class EditAdvertiseData {
     });
   }
 }
+
+

@@ -45,7 +45,7 @@ class AdvertiseAccountRepoImpl implements AdvertiseAccountRepo {
       return  right("success");
     } catch (e) {
       if (e is DioException) {
-      print(e.toString()) ;
+
         return left(ServerFailure.fromServer(e));
       } else {
         print(e.toString());
