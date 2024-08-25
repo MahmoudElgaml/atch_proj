@@ -96,16 +96,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i864.AddImageCubit>(() => _i864.AddImageCubit());
     gh.factory<_i395.ChangeDateCubit>(() => _i395.ChangeDateCubit());
     gh.factory<_i973.LinkFeatureCubit>(() => _i973.LinkFeatureCubit());
-    gh.factory<_i637.HomeLayoutCubit>(() => _i637.HomeLayoutCubit());
     gh.factory<_i216.OldImageCubit>(() => _i216.OldImageCubit());
+    gh.factory<_i637.HomeLayoutCubit>(() => _i637.HomeLayoutCubit());
     gh.singleton<_i254.APiManger>(() => _i254.APiManger());
     gh.singleton<_i125.HiveManager>(() => _i125.HiveManager());
     gh.singleton<_i353.StorageToken>(() => _i353.StorageToken());
     gh.factory<_i692.AdvertiseAccountRepo>(() => _i92.AdvertiseAccountRepoImpl(
-          gh<_i254.APiManger>(),
-          gh<_i353.StorageToken>(),
-        ));
-    gh.factory<_i965.WishlistRepo>(() => _i325.WishlistRepoImpl(
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
         ));
@@ -127,6 +123,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i959.AdvertiseInfoCubit(gh<_i692.AdvertiseAccountRepo>()));
     gh.factory<_i552.TestCubit>(
         () => _i552.TestCubit(gh<_i692.AdvertiseAccountRepo>()));
+    gh.factory<_i965.WishlistRepo>(() => _i325.WishlistRepoImpl(
+          gh<_i254.APiManger>(),
+          gh<_i353.StorageToken>(),
+          gh<_i125.HiveManager>(),
+        ));
     gh.factory<_i651.HomeRepo>(() => _i766.HomeRepoImpl(gh<_i254.APiManger>()));
     gh.factory<_i878.WishlistCubit>(
         () => _i878.WishlistCubit(gh<_i965.WishlistRepo>()));
@@ -145,12 +146,12 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i929.GetDetailCampaignCubit>(
         () => _i929.GetDetailCampaignCubit(gh<_i338.CampaignDetailRepo>()));
+    gh.factory<_i851.EditUserCubit>(
+        () => _i851.EditUserCubit(gh<_i645.UserAccountRepo>()));
     gh.factory<_i830.RecentlyViewedCubit>(
         () => _i830.RecentlyViewedCubit(gh<_i645.UserAccountRepo>()));
     gh.factory<_i539.UsedOfferCubit>(
         () => _i539.UsedOfferCubit(gh<_i645.UserAccountRepo>()));
-    gh.factory<_i851.EditUserCubit>(
-        () => _i851.EditUserCubit(gh<_i645.UserAccountRepo>()));
     gh.factory<_i376.AddCampaignCubit>(
         () => _i376.AddCampaignCubit(gh<_i793.AddCampaignRepo>()));
     gh.factory<_i694.SearchCubit>(

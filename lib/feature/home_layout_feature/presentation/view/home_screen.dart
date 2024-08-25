@@ -28,7 +28,7 @@ class HomeScreenLayout extends StatelessWidget {
         ),
         bottomNavigationBar: const BottomNaviBar(),
         floatingActionButton: getIt<HiveManager>()
-                    .retrieveData<Person>(HiveKeys.userBox)[0]
+                    .retrieveSingleData<Person>(HiveKeys.userBox)
                     .role ==
                 "advertiser"
             ? FloatingActionButton(

@@ -30,17 +30,17 @@ class HiveManager {
     if (dataList != null) {
       box.addAll(dataList);
     } else if (dataItem != null) {
-      box.add(dataItem);
+      box.putAt(0,dataItem);
     }
   }
 
-  List<T> retrieveData<T>(String boxKey) {
+  T retrieveSingleData<T>(String boxKey) {
     var box = Hive.box<T>(boxKey);
-
-    return box.values.toList();
+    return box.getAt(0)!;
   }
 
-  deleteData<T>(String boxKey) {
+  Future<void> deleteData<T>(String boxKey) async {
     var box = Hive.box<T>(boxKey);
+    await box.clear();
   }
 }

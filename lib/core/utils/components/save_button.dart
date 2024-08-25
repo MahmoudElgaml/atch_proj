@@ -21,7 +21,7 @@ class _SaveButtonState extends State<SaveButton> {
       listener: (context, state) {
         if (state is WishlistLoadingState) {
           EasyLoading.show();
-        } else if (state is WishlistSuccessState) {
+        } else if (state is WishlistAddedSuccessState) {
           EasyLoading.dismiss();
         } else if (state is WishlistFailState) {
           EasyLoading.showError(state.message);

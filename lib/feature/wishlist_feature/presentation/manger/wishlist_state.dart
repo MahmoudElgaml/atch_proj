@@ -14,5 +14,6 @@ class WishlistFailState extends WishlistState {
 }
 
 class WishlistSuccessState extends WishlistState {}
+class WishlistAddedSuccessState extends WishlistState {}
 
 class WishlistEmptyState extends WishlistState {}

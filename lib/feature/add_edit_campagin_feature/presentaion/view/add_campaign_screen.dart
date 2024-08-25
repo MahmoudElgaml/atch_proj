@@ -158,7 +158,7 @@ class AddCampaignScreen extends StatelessWidget {
                             print(selectedValue);
                             if (validateState.currentState!.validate()) {
                               var adToken = getIt<HiveManager>()
-                                  .retrieveData<Person>(HiveKeys.userBox)[0]
+                                  .retrieveSingleData<Person>(HiveKeys.userBox)
                                   .id;
                               AddCampaignModel addCampaignModel =
                                   createAddCampaignModel(adToken, context);

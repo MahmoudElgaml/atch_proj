@@ -40,7 +40,7 @@ class WishlistCubit extends Cubit<WishlistState> {
         emit(WishlistFailState(l.message));
       },
       (r) {
-        getWishlist();
+        emit(WishlistAddedSuccessState());
       },
     );
   }

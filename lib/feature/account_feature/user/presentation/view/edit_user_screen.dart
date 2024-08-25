@@ -98,7 +98,7 @@ class _UserEditScreenState extends State<UserEditScreen> {
                 ),
                 onPressed: () {
                   var userId = getIt<HiveManager>()
-                      .retrieveData<Person>(HiveKeys.userBox)[0]
+                      .retrieveSingleData<Person>(HiveKeys.userBox)
                       .id;
                   EditUserData editUser = EditUserData(
                     image: UploadImageService.imageFile ?? null,
@@ -129,7 +129,7 @@ class _UserEditScreenState extends State<UserEditScreen> {
   }
 
   setData() {
-    var person = getIt<HiveManager>().retrieveData<Person>(HiveKeys.userBox)[0];
+    var person = getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox);
     username.text = person.name ?? "";
     email.text = person.email ?? "";
     name.text = person.name ?? "";

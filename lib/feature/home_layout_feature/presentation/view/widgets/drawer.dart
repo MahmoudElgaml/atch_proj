@@ -23,7 +23,7 @@ static const  List<DrawerItemModel> items = [
 ];
   @override
   Widget build(BuildContext context) {
-  Person userData = HiveManager().retrieveData<Person>(HiveKeys.userBox)[0];
+  Person userData = HiveManager().retrieveSingleData<Person>(HiveKeys.userBox);
 
     return Drawer(
       child: Padding(
@@ -62,7 +62,7 @@ static const  List<DrawerItemModel> items = [
             DrawerItem(
               onPressed: () {
                 getIt<StorageToken>().deleteToken();
-                getIt<HiveManager>().retrieveData<Person>(HiveKeys.userBox)[0].delete();
+                getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox).delete();
                 context.go(AppRoute.logInKey);
               },
               drawerItemModel: const DrawerItemModel("Sign Out", Icons.login),

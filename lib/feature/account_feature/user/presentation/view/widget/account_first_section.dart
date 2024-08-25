@@ -23,7 +23,7 @@ class AccountFirstSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Person person =
-        getIt<HiveManager>().retrieveData<Person>(HiveKeys.userBox)[0];
+        getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox);
 
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * .3,

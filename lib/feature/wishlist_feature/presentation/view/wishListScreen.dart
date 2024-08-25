@@ -40,7 +40,12 @@ class WishlistList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WishlistCubit, WishlistState>(
+    return BlocConsumer<WishlistCubit, WishlistState>(
+      listener: (context, state) {
+        if(state is WishlistAddedSuccessState){
+          WishlistCubit.get(context).getWishlist();
+        }
+      },
       builder: (context, state) {
         if (state is WishlistSuccessState) {
           return Expanded(

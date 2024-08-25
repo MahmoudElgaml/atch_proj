@@ -15,7 +15,7 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String role =
-        getIt<HiveManager>().retrieveData<Person>(HiveKeys.userBox)[0].role ??
+        getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox).role ??
             "user";
     return SafeArea(
       child: Padding(
