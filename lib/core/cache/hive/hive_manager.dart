@@ -23,20 +23,20 @@ class HiveManager {
     await Hive.openBox<Person>(HiveKeys.userBox);
   }
 
-  void cacheData<T>(
+  Future<void> cacheData<T>(
       {required String boxKey, List<T>? dataList, T? dataItem}) async {
     var box = Hive.box<T>(boxKey);
 
     if (dataList != null) {
       box.addAll(dataList);
     } else if (dataItem != null) {
-      box.putAt(0,dataItem);
+     await box.put(0,dataItem);
     }
   }
 
   T retrieveSingleData<T>(String boxKey) {
     var box = Hive.box<T>(boxKey);
-    return box.getAt(0)!;
+    return box.get(0)!;
   }
 
   Future<void> deleteData<T>(String boxKey) async {

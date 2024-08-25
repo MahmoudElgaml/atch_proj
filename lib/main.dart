@@ -22,7 +22,7 @@ void main() async {
   configureEasyLoading();
   await HiveManager().inti();
  StorageToken().deleteToken();
-  await HiveManager().deleteData<Person>(HiveKeys.userBox);
+
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     DevicePreview(

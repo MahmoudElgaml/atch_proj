@@ -51,7 +51,10 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
           EasyLoading.showError("");
         } else if (state is AdvertiseAccountSuccessState) {
           await EasyLoading.showSuccess("");
-          context.go(AppRoute.logInKey);
+          if (context.mounted) {
+            context.go(AppRoute.logInKey);
+          }
+
         }
       },
       child: Column(

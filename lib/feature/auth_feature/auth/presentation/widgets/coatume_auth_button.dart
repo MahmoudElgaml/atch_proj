@@ -43,7 +43,7 @@ class CostumeButton extends StatelessWidget {
             if (state is AuthSuccessState) {
               UploadImageService.selectedImage = null;
               isLoading
-                  ? context.push(AppRoute.homeKey,
+                  ? context.go(AppRoute.homeKey,
                       extra: AuthCubit.get(context).userData)
                   : context.go(AppRoute.logInKey);
             }

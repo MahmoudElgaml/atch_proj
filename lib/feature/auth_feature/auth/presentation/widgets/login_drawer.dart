@@ -30,7 +30,15 @@ class _LogInDrawerState extends State<LogInDrawer> {
   TextEditingController password = TextEditingController();
   String selectedValue = "user";
   var formKey = GlobalKey<FormState>();
+@override
+  void dispose() {
+  super.dispose();
+  email.text="";
+  password.text="";
+    email.dispose();
+    password.dispose();
 
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
