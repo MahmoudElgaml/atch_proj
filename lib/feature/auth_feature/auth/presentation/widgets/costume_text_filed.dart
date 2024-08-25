@@ -11,6 +11,7 @@ class CostumeTextFiled extends StatelessWidget {
     this.validator,
     this.keyboardType,
     this.isPassword,
+    this.maxLine
   });
 
   final TextEditingController? textEditingController;
@@ -18,6 +19,7 @@ class CostumeTextFiled extends StatelessWidget {
   final String? Function(String? value)? validator;
   final TextInputType? keyboardType;
   final bool? isPassword;
+  final int? maxLine;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class CostumeTextFiled extends StatelessWidget {
         ),
         Gap(10),
         TextFormField(
+           maxLines: maxLine??1,
           obscureText: isPassword ?? false,
           keyboardType: keyboardType,
           autovalidateMode: AutovalidateMode.onUserInteraction,

@@ -1,4 +1,5 @@
 import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
+import 'package:atch_proj/feature/account_feature/advertise/data/model/EditAdvertiseData.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/repo/advertise_account_repo.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,4 +35,5 @@ class AdvertiseInfoCubit extends Cubit<AdvertiseInfoState> {
       },
     );
   }
+
 }

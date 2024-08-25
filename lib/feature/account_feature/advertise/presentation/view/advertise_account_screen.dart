@@ -64,8 +64,8 @@ class AdvertiseAccountTaps extends StatelessWidget {
                           Text(advertiserInfo?.advertiser?.about ?? "",
                               style: AppStyle.style16Bold(context)),
                           AdvAccountCampaignList(
-                              advertiseCampaigns:
-                                  advertiserInfo?.campaigns ?? [])
+                            advertiseCampaigns: advertiserInfo?.campaigns ?? [],
+                          )
                         ],
                       );
                     }

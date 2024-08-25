@@ -3,6 +3,8 @@ import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/utils/constants.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
+import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
+import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -46,7 +48,13 @@ class AccountFirstSection extends StatelessWidget {
             ),
             const Gap(16),
             InkWell(
-              onTap: () => context.push(AppRoute.editUserPage),
+              onTap: () {
+                Advertiser? advertiser = AdvertiseInfoCubit.get(context)
+                    .advertiseInfoModel
+                    ?.advertiser
+                    ?.copyWith();
+                context.push(AppRoute.editUserPage,extra: advertiser);
+              },
               child: const EditButton(),
             )
           ],

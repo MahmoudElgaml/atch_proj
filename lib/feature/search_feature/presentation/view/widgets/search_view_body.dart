@@ -1,4 +1,5 @@
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/core/utils/components/loading_rectangle.dart';
 import 'package:atch_proj/feature/search_feature/presentation/manger/search_cubit.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/filter_button.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/campaign_item.dart';
@@ -61,13 +62,15 @@ class SearchList extends StatelessWidget {
               itemCount: state.searchItemModel.campaigns?.length ?? 0,
             ),
           );
+        } else if (state is SearchLoadingState) {
+          return const LoadingRectangleComponent();
         }
-        else if(state is SearchLoadingState){
-          return const Center(child: CircularProgressIndicator(),);
-        }
-        return  Expanded(
+        return Expanded(
           child: Center(
-            child: Text("Type to Search",style: AppStyle.style34(context),),
+            child: Text(
+              "Type to Search",
+              style: AppStyle.style34(context),
+            ),
           ),
         );
       },
