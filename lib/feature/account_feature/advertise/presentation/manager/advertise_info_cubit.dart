@@ -13,27 +13,44 @@ class AdvertiseInfoCubit extends Cubit<AdvertiseInfoState> {
   AdvertiseInfoCubit(this.advertiseAccountRepo) : super(AdvertiseInfoInitial());
   AdvertiseAccountRepo advertiseAccountRepo;
   AdvertiseInfoModel? advertiseInfoModel;
-  static AdvertiseInfoCubit get(context)=>BlocProvider.of(context);
+  bool isDone =false;
+
+  static AdvertiseInfoCubit get(context) => BlocProvider.of(context);
+
   @override
   void emit(AdvertiseInfoState state) {
     if (!isClosed) {
       super.emit(state);
     }
   }
+
   getAdvertiseInfo() async {
     emit(AdvertiseAccountLoadingState());
     var result = await advertiseAccountRepo.getAdvertiseInfo();
     result.fold(
       (l) {
         emit(AdvertiseAccountFailState(l.message));
-
       },
       (advertise) {
-        advertiseInfoModel=advertise;
-        emit(AdvertiseAccountSuccessState());
 
+        advertiseInfoModel = advertise;
+        isDone=true;
+        emit(AdvertiseAccountSuccessState());
       },
     );
   }
 
+  editAdvertiser(EditAdvertiseData advertise) async {
+    emit(AdvertiseAccountLoadingState());
+    var result = await advertiseAccountRepo.editAdvertise(advertise);
+    result.fold(
+      (l) {
+        emit(AdvertiseAccountFailState(l.message));
+      },
+      (r) {
+
+        emit(AdvertiseAccountSuccessState());
+      },
+    );
+  }
 }

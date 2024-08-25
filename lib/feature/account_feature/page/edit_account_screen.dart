@@ -2,6 +2,7 @@ import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
 import 'package:atch_proj/feature/account_feature/user/presentation/manager/edit_user_cubit.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/test_upload_image.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/costume_text_filed.dart';
@@ -44,7 +45,10 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
             create: (context) => getIt<EditUserCubit>(),
             child: const UserEditScreen(),
           )
-              : const AdvertiseEditScreen(),
+              : BlocProvider(
+            create: (context) => getIt<AdvertiseInfoCubit>(),
+            child: const AdvertiseEditScreen(),
+          ),
         ),
       ),
     );

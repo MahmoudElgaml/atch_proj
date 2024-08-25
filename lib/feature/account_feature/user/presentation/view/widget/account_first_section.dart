@@ -7,6 +7,7 @@ import 'package:atch_proj/feature/account_feature/advertise/data/model/Advertise
 import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -47,15 +48,23 @@ class AccountFirstSection extends StatelessWidget {
               style: AppStyle.style24Regular(context),
             ),
             const Gap(16),
-            InkWell(
-              onTap: () {
-                Advertiser? advertiser = AdvertiseInfoCubit.get(context)
-                    .advertiseInfoModel
-                    ?.advertiser
-                    ?.copyWith();
-                context.push(AppRoute.editUserPage,extra: advertiser);
+            BlocBuilder<AdvertiseInfoCubit, AdvertiseInfoState>(
+              builder: (context, state) {
+                return InkWell(
+                  onTap: AdvertiseInfoCubit.get(context).isDone
+                      ? () {
+                          Advertiser? advertiser =
+                              AdvertiseInfoCubit.get(context)
+                                  .advertiseInfoModel
+                                  ?.advertiser
+                                  ?.copyWith();
+                          context.push(AppRoute.editUserPage,
+                              extra: advertiser);
+                        }
+                      : null,
+                  child: const EditButton(),
+                );
               },
-              child: const EditButton(),
             )
           ],
         ),
