@@ -12,11 +12,12 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'core/services/loading_service.dart';
 import 'core/utils/bloc_observer.dart';
 
-void main() {
+void main() async{
   Bloc.observer = MyBlocObserver();
   configureDependencies();
   configureEasyLoading();
-  HiveManager().inti();
+ await HiveManager().inti();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,

@@ -54,9 +54,10 @@ class AppRoute {
       ),
       GoRoute(
         path: homeKey,
-        builder: (context, state) => BlocProvider(
-            create: (context) => getIt<HomeLayoutCubit>(),
-            child: const HomeScreenLayout()),
+        builder: (context, state) =>
+            BlocProvider(
+                create: (context) => getIt<HomeLayoutCubit>(),
+                child: const HomeScreenLayout()),
       ),
       GoRoute(
         path: adDetails,
@@ -68,30 +69,32 @@ class AppRoute {
       ),
       GoRoute(
         path: addCampaign,
-        builder: (context, state) => MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => getIt<AddImageCubit>(),
+        builder: (context, state) =>
+            MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => getIt<AddImageCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<LinkFeatureCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<ChangeDateCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<AddCampaignCubit>(),
+                ),
+              ],
+              child: AddCampaignScreen(),
             ),
-            BlocProvider(
-              create: (context) => getIt<LinkFeatureCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt<ChangeDateCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt<AddCampaignCubit>(),
-            ),
-          ],
-          child: AddCampaignScreen(),
-        ),
       ),
       GoRoute(
         path: test,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<TestCubit>(),
-          child: const TestView(),
-        ),
+        builder: (context, state) =>
+            BlocProvider(
+              create: (context) => getIt<TestCubit>(),
+              child: const TestView(),
+            ),
       ),
       GoRoute(
         path: advertiserInfoPage,
@@ -103,26 +106,27 @@ class AppRoute {
       ),
       GoRoute(
         path: editCampaign,
-        builder: (context, state) => MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => getIt<AddCampaignCubit>(),
+        builder: (context, state) =>
+            MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => getIt<AddCampaignCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<ChangeDateCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<AddImageCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<LinkFeatureCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<OldImageCubit>(),
+                ),
+              ],
+              child: const EditCampaignScreen(),
             ),
-            BlocProvider(
-              create: (context) => getIt<ChangeDateCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt<AddImageCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt<LinkFeatureCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt<OldImageCubit>(),
-            ),
-          ],
-          child: const EditCampaignScreen(),
-        ),
       ),
     ],
   );
