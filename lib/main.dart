@@ -21,7 +21,8 @@ void main() async {
   configureDependencies();
   configureEasyLoading();
   await HiveManager().inti();
- StorageToken().deleteToken();
+ await HiveManager().deleteAllData<num>(HiveKeys.wishlistBox);
+  print(HiveManager().retrieveListData<num>(HiveKeys.wishlistBox));
 
   WidgetsFlutterBinding.ensureInitialized();
   runApp(

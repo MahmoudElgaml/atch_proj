@@ -21,6 +21,7 @@ class HiveManager {
 
   Future<void> _openBox() async {
     await Hive.openBox<Person>(HiveKeys.userBox);
+    await Hive.openBox<num>(HiveKeys.wishlistBox);
   }
 
   Future<void> cacheData<T>(
@@ -38,9 +39,30 @@ class HiveManager {
     var box = Hive.box<T>(boxKey);
     return box.get(0)!;
   }
-
-  Future<void> deleteData<T>(String boxKey) async {
+  List<T> retrieveListData<T>(String boxKey) {
     var box = Hive.box<T>(boxKey);
-    await box.clear();
+    return box.values.toList();
   }
+  Future<void> cacheNormalData<T>(
+      {required String boxKey, List<T>? dataList, T? dataItem}) async {
+    var box = Hive.box<T>(boxKey);
+
+    if (dataList != null) {
+      box.addAll(dataList);
+    } else if (dataItem != null) {
+      await box.put(dataItem,dataItem);
+    }
+  }
+
+
+
+  Future<void> deleteAllData<T>(String boxKey) async {
+    await Hive.box<T>(boxKey).clear();
+
+  }
+  Future<void> deleteSpecificData<T>(String boxKey,T key) async {
+    var box = Hive.box<T>(boxKey);
+    await box.delete(key);
+  }
+
 }
