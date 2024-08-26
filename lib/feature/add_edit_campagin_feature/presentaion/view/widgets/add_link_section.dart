@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:validators/validators.dart';
 
 import '../../manager/link_feature_cubit.dart';
 
@@ -30,10 +31,12 @@ final LinkFeatureCubit linkCubit;
                   builder: (context) {
                     return Dialog(
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(20.0),
                         child: TextField(
                           onSubmitted: (value) {
+                          if(isURL(value)){
                             linkCubit.addLink(value);
+                          }
                             context.pop();
                           },
                         ),
