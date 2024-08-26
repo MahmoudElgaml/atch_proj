@@ -35,12 +35,9 @@ class AdDetailsFistSection extends StatelessWidget {
           )
           .toList(),
       options: CarouselOptions(
-        animateToClosest: true,
-        enlargeCenterPage: true,
-       enableInfiniteScroll: false
-
-
-      ),
+          animateToClosest: true,
+          enlargeCenterPage: true,
+          enableInfiniteScroll: false),
     );
   }
 }

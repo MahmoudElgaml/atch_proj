@@ -17,7 +17,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/app_style.dart';
 import '../../../../search_feature/presentation/view/widgets/campaign_item.dart';
-import '../../../user/presentation/view/widget/account_first_section.dart';
+import '../../../page/widgets/account_first_section.dart';
 
 class AdvertiseAccountScreen extends StatelessWidget {
   const AdvertiseAccountScreen({super.key});

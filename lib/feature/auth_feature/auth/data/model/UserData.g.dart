@@ -27,7 +27,7 @@ class PersonAdapter extends TypeAdapter<Person> {
       referralCode: fields[7] as dynamic,
       role: fields[8] as String?,
       username: fields[9] as String?,
-      wishlistIds: (fields[11] as List?)?.cast<num>(),
+      wishlist: (fields[11] as List?)?.cast<num>(),
     );
   }
 
@@ -56,7 +56,7 @@ class PersonAdapter extends TypeAdapter<Person> {
       ..writeByte(10)
       ..write(obj.age)
       ..writeByte(11)
-      ..write(obj.wishlistIds);
+      ..write(obj.wishlist);
   }
 
   @override

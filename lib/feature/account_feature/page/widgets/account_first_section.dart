@@ -2,6 +2,7 @@ import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/utils/constants.dart';
+import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
 import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
@@ -11,11 +12,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../../core/utils/app_color.dart';
-import '../../../../../../core/utils/app_style.dart';
-import '../../../../../../generated/assets.dart';
-import '../../../../../auth_feature/auth/data/model/UserData.dart';
-import '../user_account_screen.dart';
+import '../../../../core/utils/app_color.dart';
+import '../../../../core/utils/app_style.dart';
+import '../../../../generated/assets.dart';
+import '../../../auth_feature/auth/data/model/UserData.dart';
+import '../../advertise/presentation/view/widgets/edit_button_for_adv.dart';
+import '../../user/presentation/view/user_account_screen.dart';
 
 class AccountFirstSection extends StatelessWidget {
   const AccountFirstSection({super.key});
@@ -48,24 +50,12 @@ class AccountFirstSection extends StatelessWidget {
               style: AppStyle.style24Regular(context),
             ),
             const Gap(16),
-            BlocBuilder<AdvertiseInfoCubit, AdvertiseInfoState>(
-              builder: (context, state) {
-                return InkWell(
-                  onTap: AdvertiseInfoCubit.get(context).isDone
-                      ? () {
-                          Advertiser? advertiser =
-                              AdvertiseInfoCubit.get(context)
-                                  .advertiseInfoModel
-                                  ?.advertiser
-                                  ?.copyWith();
-                          context.push(AppRoute.editUserPage,
-                              extra: advertiser);
-                        }
-                      : null,
-                  child: const EditButton(),
-                );
-              },
-            )
+            Helper.retrieveRole() == "user"
+                ? InkWell(
+                    onTap: () => context.push(AppRoute.editUserPage),
+                    child: const EditButton(),
+                  )
+                : const EditButtonBuilderForAdv()
           ],
         ),
       ),
@@ -111,3 +101,5 @@ class EditButton extends StatelessWidget {
     );
   }
 }
+
+
