@@ -1,3 +1,4 @@
+import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -16,9 +17,19 @@ import 'coatume_auth_button.dart';
 import 'costume_text_filed.dart';
 import 'logo_widget.dart';
 
-class AdvertiseSignDrawer extends StatelessWidget {
-  AdvertiseSignDrawer({super.key});
+class AdvertiseSignDrawer extends StatefulWidget {
+ const AdvertiseSignDrawer({super.key});
 
+  static const Map<String, String> items = {
+    "Factory": "Factory",
+    "Shop": "Shop",
+  };
+
+  @override
+  State<AdvertiseSignDrawer> createState() => _AdvertiseSignDrawerState();
+}
+
+class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
   TextEditingController companyName = TextEditingController();
 
   TextEditingController advertiseName = TextEditingController();
@@ -28,9 +39,13 @@ class AdvertiseSignDrawer extends StatelessWidget {
   TextEditingController password = TextEditingController();
 
   TextEditingController email = TextEditingController();
+
   TextEditingController phone = TextEditingController();
+
   TextEditingController location = TextEditingController();
+
   String selectedValue = "Factory";
+
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -38,8 +53,8 @@ class AdvertiseSignDrawer extends StatelessWidget {
     return Form(
       key: formKey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           const Gap(20),
           Center(
             child: Text(
@@ -82,8 +97,7 @@ class AdvertiseSignDrawer extends StatelessWidget {
           ),
           const Gap(20),
           CostumeTextFiled(
-            validator: (value) =>
-                ValidationService.validateEmpty(value, "Your Phone"),
+            validator: (value) => ValidationService.validatePhoneNumber(value),
             keyboardType: TextInputType.phone,
             title: "phone",
             textEditingController: phone,
@@ -103,24 +117,18 @@ class AdvertiseSignDrawer extends StatelessWidget {
               AppString.helpMessage,
             ),
           ),
+          CustomDropMenu(
+            items: AdvertiseSignDrawer.items,
+            selectedValue: selectedValue,
+            isAuth: true,
+            setValue: (value) => selectedValue = value,
+          ),
           const Gap(20),
           CostumeButton(
             title: "SignUP",
             onPressed: () {
               if (formKey.currentState!.validate()) {
-                List<String> phones = [phone.text];
-                List<String> locations = [location.text];
-                SignDataTest signData = SignDataTest();
-                signData.name = companyName.text;
-                signData.username = advertiseName.text;
-                signData.email = email.text;
-                signData.about = about.text;
-                signData.password = password.text;
-                signData.advertiserPhones = phones;
-                signData.advertiserLocation = locations;
-                signData.role = "advertiser";
-                signData.advertiserType = selectedValue;
-                signData.image = UploadImageService.imageFile;
+                SignDataTest signData = setSignData();
                 AuthCubit.get(context).signIn(signData);
               }
             },
@@ -133,8 +141,6 @@ class AdvertiseSignDrawer extends StatelessWidget {
               "or Sign Un With",
             ),
           ),
-          const Gap(28),
-          const Center(child: SocialButton()),
           const Gap(28),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -155,5 +161,22 @@ class AdvertiseSignDrawer extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  SignDataTest setSignData() {
+    List<String> phones = [phone.text];
+    List<String> locations = [location.text];
+    SignDataTest signData = SignDataTest();
+    signData.name = companyName.text;
+    signData.username = advertiseName.text;
+    signData.email = email.text;
+    signData.about = about.text;
+    signData.password = password.text;
+    signData.advertiserPhones = phones;
+    signData.advertiserLocation = locations;
+    signData.role = "advertiser";
+    signData.advertiserType = selectedValue;
+    signData.image = UploadImageService.imageFile;
+    return signData;
   }
 }

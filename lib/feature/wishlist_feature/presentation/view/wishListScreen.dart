@@ -17,14 +17,18 @@ class WishlistScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Center(child: Text("WishList",style: AppStyle.style24Regular(context),)),
+              Center(
+                  child: Text(
+                "WishList",
+                style: AppStyle.style24Regular(context),
+              )),
               const Gap(20),
               const WishlistList(),
             ],
@@ -42,7 +46,7 @@ class WishlistList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<WishlistCubit, WishlistState>(
       listener: (context, state) {
-        if(state is WishlistAddedSuccessState){
+        if (state is WishlistAddedSuccessState) {
           WishlistCubit.get(context).getWishlist();
         }
       },
@@ -60,12 +64,16 @@ class WishlistList extends StatelessWidget {
         } else if (state is WishlistEmptyState) {
           return const WishlistEmptyWidget();
         } else if (state is WishlistFailState) {
-          return Center(child: Text(state.message));
+          return Center(
+            child: Text(
+              state.message,
+            ),
+          );
         }
-        return const Expanded(child: LoadingRectangleComponent());
+        return const Expanded(
+          child: LoadingRectangleComponent(),
+        );
       },
     );
   }
 }
-
-
