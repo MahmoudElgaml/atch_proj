@@ -1,6 +1,8 @@
+import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/assets.dart';
 import '../../../../adv_detail_feature/data/model/DetailCampaignModel.dart';
@@ -27,6 +29,8 @@ final DetailAdvertiser advertiser;
                 ),
               ),
             ),
+            const Gap(20),
+            Text(advertiser.name??"",style: AppStyle.style24Regular(context),),
           ],
         ),
       ),

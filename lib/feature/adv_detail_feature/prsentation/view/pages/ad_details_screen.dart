@@ -1,3 +1,4 @@
+import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
@@ -14,21 +15,27 @@ class AdDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final int? campaignId =
-    GoRouterState
-        .of(context)
-        .extra! as int?;
+    final int? campaignId = GoRouterState.of(context).extra! as int?;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "Add Detail",
+          style: AppStyle.style24Regular(context),
+        ),
+      ),
       body: BlocProvider(
-        create: (context) =>getIt<GetDetailCampaignCubit>()..getCampaignDetail(campaignId!),
+        create: (context) =>
+            getIt<GetDetailCampaignCubit>()..getCampaignDetail(campaignId!),
         child: BlocBuilder<GetDetailCampaignCubit, GetDetailCampaignState>(
           builder: (context, state) {
             if (state is GetDetailCampaignFailState) {
               return Center(child: Text(state.message));
             } else if (state is GetDetailCampaignSuccessState) {
               return AdDetailsSection(
-                campaign: GetDetailCampaignCubit.get(context).detailCampaignModel?.campaigns,
+                campaign: GetDetailCampaignCubit.get(context)
+                    .detailCampaignModel
+                    ?.campaigns,
               );
             }
             return const Center(

@@ -21,7 +21,7 @@ void main() async {
   configureDependencies();
   configureEasyLoading();
   await HiveManager().inti();
- await HiveManager().deleteAllData<num>(HiveKeys.wishlistBox);
+  await HiveManager().deleteAllData<num>(HiveKeys.wishlistBox);
   print(HiveManager().retrieveListData<num>(HiveKeys.wishlistBox));
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +43,10 @@ class MyApp extends StatelessWidget {
       create: (context) => getIt<AuthCubit>(),
       child: MaterialApp.router(
         theme: ThemeData(
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.white
+          ),
           scaffoldBackgroundColor: Colors.white,
           primarySwatch: Colors.blue,
         ),

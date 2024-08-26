@@ -4,6 +4,7 @@ import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignMo
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -16,45 +17,30 @@ class AdDetailsFistSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        CachedNetworkImage(
-          imageUrl:
-              campaign!.images!.isEmpty ? " " : campaign?.images?.first ?? " ",
-          errorWidget: (context, url, error) => SvgPicture.asset(
-            Assets.imagesEmptyImage,
-            fit: BoxFit.fill,
-          ),
-          fit: BoxFit.fill,
-          width: double.infinity,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Row(
-            children: [
-              IconButton(
-                  onPressed: () {
-                    GoRouter.of(context).pop();
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    color: AppColor.primaryColor,
-                  )),
-              const Gap(20),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 38.0),
-                child: Text(
-                  "AD Details",
-                  style: AppStyle.style34(context).copyWith(
-                      color: Colors.white, fontWeight: FontWeight.w400),
+    return CarouselSlider(
+      items: campaign?.images
+          ?.map(
+            (e) => ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: CachedNetworkImage(
+                imageUrl: e.isEmpty ? " " : e,
+                errorWidget: (context, url, error) => SvgPicture.asset(
+                  Assets.imagesEmptyImage,
+                  fit: BoxFit.fill,
                 ),
+                fit: BoxFit.fill,
+                width: double.infinity,
               ),
-              const Gap(110),
-              Image.asset(Assets.imagesFavIcon)
-            ],
-          ),
-        ),
-      ],
+            ),
+          )
+          .toList(),
+      options: CarouselOptions(
+        animateToClosest: true,
+        enlargeCenterPage: true,
+       enableInfiniteScroll: false
+
+
+      ),
     );
   }
 }
