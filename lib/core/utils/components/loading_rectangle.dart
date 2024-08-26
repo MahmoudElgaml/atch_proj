@@ -9,18 +9,16 @@ class LoadingRectangleComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Shimmer.fromColors(
-        baseColor: Colors.black,
-        highlightColor: Colors.grey[100]!,
-        child: ListView.separated(
-          itemBuilder: (context, index) => const Skeleton(
-            height: 90,
-            width: double.infinity,
-          ),
-          separatorBuilder: (context, index) => const Gap(10),
-          itemCount: 10,
+    return Shimmer.fromColors(
+      baseColor: Colors.black,
+      highlightColor: Colors.grey[100]!,
+      child: ListView.separated(
+        itemBuilder: (context, index) => const Skeleton(
+          height: 90,
+          width: double.infinity,
         ),
+        separatorBuilder: (context, index) => const Gap(10),
+        itemCount: 10,
       ),
     );
   }

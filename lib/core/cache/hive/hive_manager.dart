@@ -43,6 +43,7 @@ class HiveManager {
     var box = Hive.box<T>(boxKey);
     return box.values.toList();
   }
+
   Future<void> cacheNormalData<T>(
       {required String boxKey, List<T>? dataList, T? dataItem}) async {
     var box = Hive.box<T>(boxKey);

@@ -62,7 +62,7 @@ class WishlistList extends StatelessWidget {
         } else if (state is WishlistFailState) {
           return Center(child: Text(state.message));
         }
-        return const LoadingRectangleComponent();
+        return const Expanded(child: LoadingRectangleComponent());
       },
     );
   }

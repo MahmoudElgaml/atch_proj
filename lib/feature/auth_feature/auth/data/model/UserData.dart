@@ -37,6 +37,7 @@ class Person extends HiveObject{
     this.referralCode,
     this.role,
     this.username,
+    this.wishlistIds,
   });
 
   Person.fromJson(dynamic json) {
@@ -72,6 +73,8 @@ class Person extends HiveObject{
   String? username;
   @HiveField(10)
   int? age;
+  @HiveField(11)
+  List<num>?wishlistIds;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

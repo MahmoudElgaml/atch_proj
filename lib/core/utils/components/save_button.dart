@@ -1,5 +1,6 @@
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
+import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/wishlist_feature/presentation/manger/wishlist_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,14 +38,18 @@ class _SaveButtonState extends State<SaveButton> {
         return InkWell(
           onTap: () async {
             if (getIt<HiveManager>()
-                .retrieveListData<num>(HiveKeys.wishlistBox)
-                .contains(widget.campaignId)) {
-              await getIt<HiveManager>().deleteSpecificData<num>(
-                  HiveKeys.wishlistBox, widget.campaignId);
+                    .retrieveSingleData<Person>(HiveKeys.userBox)
+                    .wishlistIds
+                    ?.contains(widget.campaignId) ??
+                false) {
+              getIt<HiveManager>()
+                  .retrieveSingleData<Person>(HiveKeys.userBox)
+                  .wishlistIds?.remove(widget.campaignId);
               WishlistCubit.get(context).addToWishList(widget.campaignId);
             } else {
-              await getIt<HiveManager>().cacheNormalData<num>(
-                  boxKey: HiveKeys.wishlistBox, dataItem: widget.campaignId);
+              getIt<HiveManager>()
+                  .retrieveSingleData<Person>(HiveKeys.userBox)
+                  .wishlistIds?.add(widget.campaignId);
               WishlistCubit.get(context).addToWishList(widget.campaignId);
               isSelected = !isSelected;
             }
@@ -61,9 +66,9 @@ class _SaveButtonState extends State<SaveButton> {
               child: Icon(
                 Icons.favorite,
                 color: getIt<HiveManager>()
-                        .retrieveListData<num>(HiveKeys.wishlistBox)
-                        .contains(widget.campaignId)
-                    ? Color(0xffeb5757)
+            .retrieveSingleData<Person>(HiveKeys.userBox)
+            .wishlistIds?.contains(widget.campaignId)??false
+                    ? const Color(0xffeb5757)
                     : Colors.grey,
               ),
             ),

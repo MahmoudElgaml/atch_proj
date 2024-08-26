@@ -46,6 +46,7 @@ StorageToken storageToken;
           body: {"email": email, "password": password, "role": role});
 
       UserData userData = UserData.fromJson(response.data);
+      userData.person?.wishlistIds=[];
      await hiveManager.cacheData<Person>(boxKey: HiveKeys.userBox,dataItem: userData.person);
       storageToken.setToken(userData.person!.id.toString());
 

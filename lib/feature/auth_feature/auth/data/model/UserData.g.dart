@@ -27,13 +27,14 @@ class PersonAdapter extends TypeAdapter<Person> {
       referralCode: fields[7] as dynamic,
       role: fields[8] as String?,
       username: fields[9] as String?,
+      wishlistIds: (fields[11] as List?)?.cast<num>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Person obj) {
     writer
-      ..writeByte(10)
+      ..writeByte(11)
       ..writeByte(1)
       ..write(obj.about)
       ..writeByte(2)
@@ -53,7 +54,9 @@ class PersonAdapter extends TypeAdapter<Person> {
       ..writeByte(9)
       ..write(obj.username)
       ..writeByte(10)
-      ..write(obj.age);
+      ..write(obj.age)
+      ..writeByte(11)
+      ..write(obj.wishlistIds);
   }
 
   @override
