@@ -9,6 +9,7 @@ class Assets {
   static const String imagesApple = 'assets/images/apple.png';
   static const String imagesBubbleText = 'assets/images/bubble_text.png';
   static const String imagesBubbleTextSign = 'assets/images/bubble_text_sign.png';
+  static const String imagesClose = 'assets/images/close.png';
   static const String imagesDate = 'assets/images/Date.png';
   static const String imagesEdit = 'assets/images/edit.svg';
   static const String imagesEmptyImage = 'assets/images/EmptyImage.svg';
@@ -25,6 +26,7 @@ class Assets {
   static const String imagesNotification = 'assets/images/notification.png';
   static const String imagesProfileTestImage = 'assets/images/profile_test_image.png';
   static const String imagesSearchImageTest = 'assets/images/search_image_test.png';
+  static const String imagesSuccessiconpng = 'assets/images/successiconpng.png';
   static const String imagesTestImageProfile = 'assets/images/test_image_profile.png';
   static const String imagesWishlist = 'assets/images/wishlist.png';
 

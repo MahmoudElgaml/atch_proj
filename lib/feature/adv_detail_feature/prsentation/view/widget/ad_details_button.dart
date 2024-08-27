@@ -22,7 +22,7 @@ class AdDetailsButton extends StatelessWidget {
         EasyLoading.dismiss();
       }
       else if(state is QrOfferCheckSuccessState){
-        context.push(AppRoute.qrOffer);
+        context.push(AppRoute.qrOffer,extra: campaignId);
         EasyLoading.dismiss();
       }
       },

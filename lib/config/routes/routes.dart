@@ -15,6 +15,7 @@ import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/test_uplo
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_advertise.dart';
 import 'package:atch_proj/feature/adv_detail_feature/prsentation/view/pages/ad_details_screen.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_layout_cubit.dart';
+import 'package:atch_proj/feature/qr_offer_feature/presentation/manger/qr_offer_cubit.dart';
 import 'package:atch_proj/feature/qr_offer_feature/presentation/view/pages/qr_offer_screen.dart';
 import 'package:atch_proj/feature/unite_testing/manger/test_cubit.dart';
 import 'package:atch_proj/feature/unite_testing/test_view.dart';
@@ -132,7 +133,11 @@ class AppRoute {
       ),
       GoRoute(
         path: qrOffer,
-        builder: (context, state) => const QrOfferScreen(),
+        builder: (context, state) =>
+            BlocProvider(
+              create: (context) => getIt<QrOfferCubit>(),
+              child: const QrOfferScreen(),
+            ),
       ),
     ],
   );
