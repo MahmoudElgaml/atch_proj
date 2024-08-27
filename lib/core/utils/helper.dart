@@ -42,4 +42,10 @@ abstract class Helper {
             .role ??
         "user";
   }
+  static Person retrievePerson() {
+    return getIt<HiveManager>()
+        .retrieveSingleData<Person>(HiveKeys.userBox);
+
+
+  }
 }
