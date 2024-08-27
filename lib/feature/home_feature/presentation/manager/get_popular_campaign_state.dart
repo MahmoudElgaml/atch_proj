@@ -14,3 +14,6 @@ class GetPopularCampaignFailureState extends GetPopularCampaignState {
 
   GetPopularCampaignFailureState(this.message);
 }
+class GetPopularCanselRequestState extends GetPopularCampaignState {
+
+}

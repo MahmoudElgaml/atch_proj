@@ -22,15 +22,15 @@ class AllAds extends StatelessWidget {
             style: AppStyle.style26(context),
           ),
           const Gap(17),
-          BlocBuilder<GetNormalCampaginCubit, GetNormalCampaginState>(
+          BlocBuilder<GetNormalCampaignCubit, GetNormalCampaignState>(
             builder: (context, state) {
-              if (state is GetNormalCampaginFailState) {
+              if (state is GetNormalCampaignFailState) {
                 return Center(
-                  child: Text(state.mesage),
+                  child: Text(state.message),
                 );
-              } else if (state is GetNormalCampaginSuccessState) {
+              } else if (state is GetNormalCampaignSuccessState) {
                 var campaigns =
-                    GetNormalCampaginCubit.get(context).popularCampaign;
+                    GetNormalCampaignCubit.get(context).popularCampaign;
                 return SizedBox(
                   height: 250,
                   child: ListView.separated(

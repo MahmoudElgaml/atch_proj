@@ -6,33 +6,38 @@ import '../../data/model/CampaignModel.dart';
 import '../../data/repo/home_repo.dart';
 
 part 'get_normal_campagin_state.dart';
+
 @injectable
-class GetNormalCampaginCubit extends Cubit<GetNormalCampaginState> {
-  GetNormalCampaginCubit(this.homeRepo) : super(GetNormalCampaginInitial());
+class GetNormalCampaignCubit extends Cubit<GetNormalCampaignState> {
+  GetNormalCampaignCubit(this.homeRepo) : super(GetNormalCampaignInitial());
   HomeRepo homeRepo;
-  static  GetNormalCampaginCubit get(context)=>BlocProvider.of(context);
+
+  static GetNormalCampaignCubit get(context) => BlocProvider.of(context);
+
   @override
-  void emit(GetNormalCampaginState state) {
+  void emit(GetNormalCampaignState state) {
     if (!isClosed) {
       super.emit(state);
     }
   }
-  List<Campaigns> popularCampaign=[];
+
+  List<Campaigns> popularCampaign = [];
+
   getNormalCampaign(String advType) async {
-    emit(GetNormalCampaginLoadingState());
+    emit(GetNormalCampaignLoadingState());
     var result = await homeRepo.getNormalCampaign(advType);
     result.fold(
-          (fail) {
-        emit(GetNormalCampaginFailState(fail.message));
-
+      (fail) {
+        if (fail.statusCode == "1") {
+          emit(GetNormalCampaignCanselRequestState());
+        } else {
+          emit(GetNormalCampaignFailState(fail.message));
+        }
       },
-          (success) {
-        popularCampaign=success.campaigns??[];
+      (success) {
+        popularCampaign = success.campaigns ?? [];
 
-        emit(GetNormalCampaginSuccessState());
-
-
-
+        emit(GetNormalCampaignSuccessState());
       },
     );
   }

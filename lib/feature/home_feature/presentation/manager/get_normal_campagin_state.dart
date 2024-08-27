@@ -1,14 +1,15 @@
 part of 'get_normal_campagin_cubit.dart';
 
 @immutable
-abstract class GetNormalCampaginState {}
+abstract class GetNormalCampaignState {}
 
-class GetNormalCampaginInitial extends GetNormalCampaginState {}
-class GetNormalCampaginLoadingState extends GetNormalCampaginState {}
-class GetNormalCampaginSuccessState extends GetNormalCampaginState {}
-class GetNormalCampaginFailState extends GetNormalCampaginState {
+class GetNormalCampaignInitial extends GetNormalCampaignState {}
+class GetNormalCampaignLoadingState extends GetNormalCampaignState {}
+class GetNormalCampaignSuccessState extends GetNormalCampaignState {}
+class GetNormalCampaignCanselRequestState extends GetNormalCampaignState {}
+class GetNormalCampaignFailState extends GetNormalCampaignState {
 
- final  String mesage;
+ final  String message;
 
- GetNormalCampaginFailState(this.mesage);
+ GetNormalCampaignFailState(this.message);
 }

@@ -141,8 +141,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i651.HomeRepo>(() => _i766.HomeRepoImpl(gh<_i254.APiManger>()));
     gh.factory<_i878.WishlistCubit>(
         () => _i878.WishlistCubit(gh<_i965.WishlistRepo>()));
-    gh.factory<_i369.GetNormalCampaginCubit>(
-        () => _i369.GetNormalCampaginCubit(gh<_i651.HomeRepo>()));
+    gh.factory<_i369.GetNormalCampaignCubit>(
+        () => _i369.GetNormalCampaignCubit(gh<_i651.HomeRepo>()));
     gh.factory<_i401.GetPopularCampaignCubit>(
         () => _i401.GetPopularCampaignCubit(gh<_i651.HomeRepo>()));
     gh.factory<_i238.QrOfferCubit>(

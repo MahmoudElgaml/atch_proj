@@ -24,7 +24,7 @@ class ServerFailure extends Failure {
         return ServerFailure.fromBadResponse(
             dioException.response!.statusCode!, dioException.response!.data);
       case DioExceptionType.cancel:
-        return ServerFailure("request to server is canceled");
+        return ServerFailure("request to server is canceled",statusCode: "1");
       case DioExceptionType.connectionError:
         return ServerFailure("connection Timeout");
       case DioExceptionType.unknown:

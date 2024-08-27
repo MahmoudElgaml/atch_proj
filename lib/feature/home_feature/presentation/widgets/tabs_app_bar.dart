@@ -31,7 +31,7 @@ class _TabsAppBarState extends State<TabsAppBar> {
                 if(selectedIndex==index){
                 }
                 else{
-                  GetNormalCampaginCubit.get(context)
+                  GetNormalCampaignCubit.get(context)
                       .getNormalCampaign(category[index].title);
                   GetPopularCampaignCubit.get(context).getPopularCampaign(category[index].title);
                   selectedIndex=index;

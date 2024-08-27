@@ -11,18 +11,30 @@ import 'package:injectable/injectable.dart';
 class HomeRepoImpl implements HomeRepo {
   APiManger aPiManger;
 
+  CancelToken? cancelToken;
+
   HomeRepoImpl(this.aPiManger);
 
   @override
   Future<Either<Failure, CampaignModel>> getNormalCampaign(
       String advType) async {
+    if (cancelToken != null) {
+      cancelToken!.cancel("Cancelled previous request");
+    }
+    cancelToken = CancelToken();
     try {
-      var result = await aPiManger
-          .post(EndPoints.getNormalCampaign, {"advertiser_type": advType});
+      var result = await aPiManger.post(
+        EndPoints.getNormalCampaign,
+        {"advertiser_type": advType},
+        cancelTok: cancelToken,
+      );
       CampaignModel campaignModel = CampaignModel.fromJson(result.data);
       return right(campaignModel);
     } catch (e) {
       if (e is DioException) {
+        if (CancelToken.isCancel(e)) {
+          print('Request canceled: ${e.message}');
+        }
         return left(ServerFailure.fromServer(e));
       } else {
         return left(ServerFailure(e.toString()));
@@ -33,13 +45,22 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failure, CampaignModel>> getPopularCampaign(
       String advType) async {
+    if (cancelToken != null) {
+      cancelToken!.cancel("Cancelled previous request");
+    }
+    cancelToken = CancelToken();
+
     try {
-      var result = await aPiManger
-          .post(EndPoints.getPopularCampaign, {"advertiser_type": advType});
+      var result = await aPiManger.post(
+          EndPoints.getPopularCampaign, {"advertiser_type": advType},
+          cancelTok: cancelToken);
       CampaignModel campaignModel = CampaignModel.fromJson(result.data);
       return right(campaignModel);
     } catch (e) {
       if (e is DioException) {
+        if (CancelToken.isCancel(e)) {
+          print('Request canceled: ${e.message}');
+        }
         return left(ServerFailure.fromServer(e));
       } else {
         return left(ServerFailure(e.toString()));

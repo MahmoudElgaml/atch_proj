@@ -27,7 +27,11 @@ class PopularAds extends StatelessWidget {
             builder: (context, state) {
               if (state is GetPopularCampaignFailureState) {
                 return Center(child: Text(state.message));
-              } else if (state is GetPopularCampaignSuccessState) {
+              }
+              else if(state is GetPopularCanselRequestState){
+               return  const PopularAdsLoading();
+              }
+              else if (state is GetPopularCampaignSuccessState) {
                 var popularCampaigns =
                     GetPopularCampaignCubit.get(context).popularCampaign;
                 return SizedBox(
