@@ -30,7 +30,11 @@ class AdDetailsScreen extends StatelessWidget {
         child: BlocBuilder<GetDetailCampaignCubit, GetDetailCampaignState>(
           builder: (context, state) {
             if (state is GetDetailCampaignFailState) {
-              return Center(child: Text(state.message));
+              return Center(
+                child: Text(
+                  state.message,
+                ),
+              );
             } else if (state is GetDetailCampaignSuccessState) {
               return AdDetailsSection(
                 campaign: GetDetailCampaignCubit.get(context)

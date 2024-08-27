@@ -7,7 +7,9 @@ import 'end_points.dart';
 @singleton
 @injectable
 class APiManger {
-  final Dio dio = Dio();
+  final Dio dio = Dio()..interceptors.add(
+    LogInterceptor(responseBody: true, requestBody: true),
+  );
 
   APiManger();
 

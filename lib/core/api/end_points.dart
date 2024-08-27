@@ -17,6 +17,8 @@ class EndPoints{
   static const advertiseInfo="/advertiser/getInfo";
   static const getAdvCampaigns="/advertiser/getCampaigns";
   static const addToWishlist="/campaign_page/add_to_wishlist";
+  static const checkOfferVal="/campaign_page/check_offer";
+
 
 
 }

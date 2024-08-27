@@ -3,12 +3,15 @@ import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/adv_detail_feature/prsentation/view/widget/ad_details_fist_section.dart';
+import 'package:atch_proj/feature/qr_offer_feature/presentation/manger/qr_offer_cubit.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/utils/service_locator/config.dart';
 import 'ad_details_button.dart';
 import 'ad_details_location_widget.dart';
 import 'add_detail_widget.dart';
@@ -83,7 +86,14 @@ class AdDetailsSection extends StatelessWidget {
                     itemCount: campaign?.videos?.length ?? 0,
                   ),
                 ),
-                const Center(child: AdDetailsButton())
+                BlocProvider(
+                  create: (context) => getIt<QrOfferCubit>(),
+                  child:  Center(
+                    child: AdDetailsButton(
+                      campaignId: campaign?.id,
+                    ),
+                  ),
+                )
               ],
             )
           ],
