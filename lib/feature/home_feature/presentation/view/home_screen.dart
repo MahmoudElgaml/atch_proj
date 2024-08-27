@@ -15,25 +15,14 @@ class HomeScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Stack(
-          clipBehavior: Clip.none,
-          alignment: Alignment.bottomCenter,
-          children: [
-            CustomAppBar(),
-            Positioned(
-              top: 90,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 100),
-                child: TabsAppBar(),
-              ),
-            ),
-          ],
-        ),
+        CustomAppBar(),
         Gap(17),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
               children: [
+                TabsAppBar(),
+                Gap(17),
                 PopularAds(),
                 Gap(17),
                 AllAds(),

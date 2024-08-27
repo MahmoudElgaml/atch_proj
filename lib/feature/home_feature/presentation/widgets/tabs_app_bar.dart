@@ -22,7 +22,6 @@ class _TabsAppBarState extends State<TabsAppBar> {
         DefaultTabController(
           length: category.length,
           child: TabBar(
-
               dividerColor: Colors.transparent,
               tabAlignment: TabAlignment.center,
               onTap: (index) {
@@ -30,7 +29,6 @@ class _TabsAppBarState extends State<TabsAppBar> {
                 setState(() {});
               },
               isScrollable: true,
-
               indicatorColor: Colors.transparent,
               tabs: category
                   .map(
