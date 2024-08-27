@@ -20,8 +20,9 @@ class _TabsAppBarState extends State<TabsAppBar> {
     return Column(
       children: [
         DefaultTabController(
-          length: 3,
+          length: category.length,
           child: TabBar(
+
               dividerColor: Colors.transparent,
               tabAlignment: TabAlignment.center,
               onTap: (index) {
@@ -29,10 +30,13 @@ class _TabsAppBarState extends State<TabsAppBar> {
                 setState(() {});
               },
               isScrollable: true,
+
               indicatorColor: Colors.transparent,
               tabs: category
                   .map(
-                    (e) => CustomTap(categories: e),
+                    (e) => CustomTap(
+                      categories: e,
+                    ),
                   )
                   .toList()),
         )

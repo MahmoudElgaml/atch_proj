@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 
 enum Categories {
-  sport(Color(0xffF0635A), "Sport"),
-  music(Color(0xffF59762), "Music"),
-  food(Color(0xff29D697), "Food");
+  Factory("Factory"),
+  Shop("Shop"),
+  Supermarket("Supermarket"),
+  Fashion("Fashion"),
+  HealthBeauty("Health & Beauty"),
+  BabyProducts("Baby Products"),
+  phone("Phones & Tablets"),
+  Furniture("Home & Furniture"),
+  Appliances("Appliances"),
+  TelevisionsAudio("Televisions & Audio"),
+  Computing("Computing"),
+  SportingGoods("Sporting Goods"),
+  Gaming("Gaming"),
+  Othercategories("Other categories");
 
   final String title;
 
-  final Color color;
-
-  const Categories(this.color, this.title);
-
+  const Categories(this.title);
 }

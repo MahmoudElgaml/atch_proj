@@ -83,7 +83,11 @@ class _QrOfferScreenState extends State<QrOfferScreen> {
                   style: AppStyle.style24Regular(context),
                 ),
                 backgroundColor: Colors.white,
-                icon: Image.asset(Assets.imagesSuccessiconpng),
+                icon: Image.asset(
+                  Assets.imagesSuccessiconpng,
+                  width: 100,
+                  height: 100,
+                ),
                 titlePadding: const EdgeInsets.all(8),
               ),
             );
@@ -105,7 +109,7 @@ class _QrOfferScreenState extends State<QrOfferScreen> {
                         if (context.mounted) {
                           int id = -1;
                           try {
-                             id = int.parse(scanData.code ?? "0");
+                            id = int.parse(scanData.code ?? "0");
                           } catch (e) {
                             id = -1;
                           }

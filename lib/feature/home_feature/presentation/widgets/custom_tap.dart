@@ -10,7 +10,7 @@ class CustomTap extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: categories.color,
+       color: Colors.deepOrangeAccent,
         borderRadius: BorderRadius.circular(21),
       ),
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
