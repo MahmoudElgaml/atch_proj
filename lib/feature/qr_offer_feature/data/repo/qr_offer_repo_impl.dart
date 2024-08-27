@@ -17,10 +17,30 @@ class QrOfferRepoImpl implements QrOfferRepo {
   @override
   Future<Either<Failure, String>> checkOfferValidate(num? campaignId) async {
     try {
-      var uId=await storageToken.getToken();
+      var uId = await storageToken.getToken();
       var response = await aPiManger.post(EndPoints.checkOfferVal, {
         "user_id": uId,
         "campaign_id": campaignId,
+      });
+      return right(response.data["message"]);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromServer(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> takeOffer(
+      {required num? campaignId, required num? advId}) async {
+    try {
+      var uId = await storageToken.getToken();
+      var response = await aPiManger.post(EndPoints.takeOffer, {
+        "user_id": uId,
+        "campaign_id": campaignId,
+        "qr_advertiser_id": advId
       });
       return right(response.data["message"]);
     } catch (e) {
