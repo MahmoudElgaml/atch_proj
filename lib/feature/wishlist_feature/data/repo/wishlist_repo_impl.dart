@@ -4,6 +4,7 @@ import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/erorr/failure.dart';
+import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/wishlist_feature/data/repo/wishlist_repo.dart';
 import 'package:dartz/dartz.dart';
@@ -24,8 +25,10 @@ class WishlistRepoImpl implements WishlistRepo {
   Future<Either<Failure, CampaignModel>> getWishlist() async {
     try {
       var id = await storageToken.getToken();
+      var role=Helper.retrieveRole();
       var response = await aPiManger.post(EndPoints.getWishlist, {
-        "user_id": id,
+        "user_advertiser_id": id,
+        "role":role
       });
       CampaignModel campaignModel = CampaignModel.fromJson(response.data);
       return right(campaignModel);
