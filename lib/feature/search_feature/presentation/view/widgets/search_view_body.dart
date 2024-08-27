@@ -63,7 +63,9 @@ class SearchList extends StatelessWidget {
             ),
           );
         } else if (state is SearchLoadingState) {
-          return const LoadingRectangleComponent();
+          return const Expanded(
+            child: LoadingRectangleComponent(),
+          );
         }
         return Expanded(
           child: Center(
