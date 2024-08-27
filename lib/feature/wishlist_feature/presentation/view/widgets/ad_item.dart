@@ -53,25 +53,25 @@ class AdWishlistItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "1st MAY-SAT-2.00 PM",
+                    campaign.endDate ?? "",
                     style: AppStyle.style13(context)
                         .copyWith(color: AppColor.primaryColor),
                   ),
                   const Gap(5),
                   Text(
-                    "A virtual evening of smooth jazz",
+                    campaign.campaignName ?? "",
                     style: AppStyle.style13(context)
                         .copyWith(color: AppColor.fontColor, fontSize: 16),
                   )
                 ],
               ),
             ),
-             IconButton(
-                onPressed: () {
-                  WishlistCubit.get(context).addToWishList(campaign.id!);
-                  Helper.retrievePerson().wishlist?.remove(campaign.id);
-                  Helper.retrievePerson().save();
-                },
+            IconButton(
+              onPressed: () {
+                WishlistCubit.get(context).addToWishList(campaign.id!);
+                Helper.retrievePerson().wishlist?.remove(campaign.id);
+                Helper.retrievePerson().save();
+              },
               icon: const Icon(
                 Icons.favorite_outlined,
               ),

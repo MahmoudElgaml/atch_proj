@@ -1,6 +1,7 @@
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
+import 'package:atch_proj/feature/adv_detail_feature/prsentation/view/widget/ad_detail_video_section.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/adv_detail_feature/prsentation/view/widget/ad_details_fist_section.dart';
 import 'package:atch_proj/feature/qr_offer_feature/presentation/manger/qr_offer_cubit.dart';
@@ -67,28 +68,12 @@ class AdDetailsSection extends StatelessWidget {
                   ),
                 ),
                 const Gap(25),
-                Text(
-                  "Videos:",
-                  style: AppStyle.style24Regular(context),
-                  textAlign: TextAlign.start,
-                ),
-                SizedBox(
-                  height: 150,
-                  child: ListView.separated(
-                    separatorBuilder: (context, index) => const Gap(10),
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Linkify(
-                        text: campaign?.videos?[index] ?? "",
-                        style: AppStyle.style24Regular(context),
-                      ),
-                    ),
-                    itemCount: campaign?.videos?.length ?? 0,
-                  ),
+                AdDetailVideoSection(
+                  videos: campaign?.videos,
                 ),
                 BlocProvider(
                   create: (context) => getIt<QrOfferCubit>(),
-                  child:  Center(
+                  child: Center(
                     child: AdDetailsButton(
                       campaignId: campaign?.id,
                     ),
