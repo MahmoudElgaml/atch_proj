@@ -18,9 +18,9 @@ class GetNormalCampaginCubit extends Cubit<GetNormalCampaginState> {
     }
   }
   List<Campaigns> popularCampaign=[];
-  getNormalCampaign() async {
+  getNormalCampaign(String advType) async {
     emit(GetNormalCampaginLoadingState());
-    var result = await homeRepo.getNormalCampaign();
+    var result = await homeRepo.getNormalCampaign(advType);
     result.fold(
           (fail) {
         emit(GetNormalCampaginFailState(fail.message));

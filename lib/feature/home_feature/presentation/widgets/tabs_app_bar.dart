@@ -1,4 +1,7 @@
+import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/models/categories.dart';
+import 'package:atch_proj/feature/home_feature/presentation/manager/get_normal_campagin_cubit.dart';
+import 'package:atch_proj/feature/home_feature/presentation/manager/get_popular_campaign_cubit.dart';
 
 import 'package:flutter/material.dart';
 
@@ -25,11 +28,18 @@ class _TabsAppBarState extends State<TabsAppBar> {
               dividerColor: Colors.transparent,
               tabAlignment: TabAlignment.center,
               onTap: (index) {
-                selectedIndex = index;
-                setState(() {});
+                if(selectedIndex==index){
+                }
+                else{
+                  GetNormalCampaginCubit.get(context)
+                      .getNormalCampaign(category[index].title);
+                  GetPopularCampaignCubit.get(context).getPopularCampaign(category[index].title);
+                  selectedIndex=index;
+                }
+
               },
               isScrollable: true,
-              indicatorColor: Colors.transparent,
+              indicatorColor: AppColor.primaryColor,
               tabs: category
                   .map(
                     (e) => CustomTap(

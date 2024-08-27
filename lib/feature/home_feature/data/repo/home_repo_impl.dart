@@ -14,9 +14,11 @@ class HomeRepoImpl implements HomeRepo {
   HomeRepoImpl(this.aPiManger);
 
   @override
-  Future<Either<Failure, CampaignModel>> getNormalCampaign() async {
+  Future<Either<Failure, CampaignModel>> getNormalCampaign(
+      String advType) async {
     try {
-      var result = await aPiManger.get(EndPoints.getNormalCampaign);
+      var result = await aPiManger
+          .post(EndPoints.getNormalCampaign, {"advertiser_type": advType});
       CampaignModel campaignModel = CampaignModel.fromJson(result.data);
       return right(campaignModel);
     } catch (e) {
@@ -29,9 +31,11 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, CampaignModel>> getPopularCampaign() async {
+  Future<Either<Failure, CampaignModel>> getPopularCampaign(
+      String advType) async {
     try {
-      var result = await aPiManger.get(EndPoints.getPopularCampaign);
+      var result = await aPiManger
+          .post(EndPoints.getPopularCampaign, {"advertiser_type": advType});
       CampaignModel campaignModel = CampaignModel.fromJson(result.data);
       return right(campaignModel);
     } catch (e) {

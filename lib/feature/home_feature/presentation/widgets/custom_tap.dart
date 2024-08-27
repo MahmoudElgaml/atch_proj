@@ -19,7 +19,7 @@ class CustomTap extends StatelessWidget {
       child: Center(
         child: Text(
           categories.title,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
       ),
     );

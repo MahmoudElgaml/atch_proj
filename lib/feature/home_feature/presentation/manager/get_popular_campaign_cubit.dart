@@ -18,9 +18,9 @@ class GetPopularCampaignCubit extends Cubit<GetPopularCampaignState> {
       super.emit(state);
     }
   }
-  getPopularCampaign() async {
+  getPopularCampaign(String advType) async {
     emit(GetPopularCampaignLoadingState());
-    var result = await homeRepo.getPopularCampaign();
+    var result = await homeRepo.getPopularCampaign(advType);
     result.fold(
       (fail) {
         emit(GetPopularCampaignFailureState(fail.message));

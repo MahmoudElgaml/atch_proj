@@ -11,11 +11,11 @@ class HomeState extends HomeLayoutState {
         providers: [
           BlocProvider(
             create: (context) =>
-                getIt<GetNormalCampaginCubit>()..getNormalCampaign(),
+                getIt<GetNormalCampaginCubit>()..getNormalCampaign("Factory"),
           ),
           BlocProvider(
             create: (context) =>
-                getIt<GetPopularCampaignCubit>()..getPopularCampaign(),
+                getIt<GetPopularCampaignCubit>()..getPopularCampaign("Factory"),
           ),
           BlocProvider(
             create: (context) => getIt<WishlistCubit>(),

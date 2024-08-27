@@ -4,8 +4,8 @@ import 'package:dartz/dartz.dart';
 
 abstract class HomeRepo{
 
-Future<Either<Failure,CampaignModel>>  getPopularCampaign();
-Future<Either<Failure,CampaignModel>>  getNormalCampaign();
+Future<Either<Failure,CampaignModel>>  getPopularCampaign(String advType);
+Future<Either<Failure,CampaignModel>>  getNormalCampaign(String advType);
 Future<Either<Failure, CampaignModel>> getAdDetails();
 
 }
