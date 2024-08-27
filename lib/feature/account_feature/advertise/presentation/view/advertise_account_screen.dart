@@ -48,7 +48,12 @@ class AdvertiseAccountTaps extends StatelessWidget {
             Flexible(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: BlocBuilder<AdvertiseInfoCubit, AdvertiseInfoState>(
+                child: BlocConsumer<AdvertiseInfoCubit, AdvertiseInfoState>(
+                  listener: (context, state) {
+                    if(state is AdvertiseAccountDeleteCampaignSuccessState){
+                      AdvertiseInfoCubit.get(context).getAdvertiseInfo();
+                    }
+                  },
                   builder: (context, state) {
                     if (state is AdvertiseAccountFailState) {
                       return Center(

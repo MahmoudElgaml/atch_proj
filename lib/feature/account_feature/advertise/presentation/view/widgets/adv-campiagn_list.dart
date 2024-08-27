@@ -1,3 +1,4 @@
+import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -110,8 +111,10 @@ class AdvAccountCampaignItem extends StatelessWidget {
                     child: SvgPicture.asset(Assets.imagesEdit),
                   ),
                   IconButton(
-                    onPressed: () {},
-                    icon: Icon(
+                    onPressed: () {
+                      AdvertiseInfoCubit.get(context).deleteCampaign(campaigns.id);
+                    },
+                    icon: const Icon(
                       size: 26,
                       Icons.delete_outline,
                       color: AppColor.primaryColor,

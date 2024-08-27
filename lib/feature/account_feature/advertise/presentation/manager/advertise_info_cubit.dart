@@ -13,7 +13,7 @@ class AdvertiseInfoCubit extends Cubit<AdvertiseInfoState> {
   AdvertiseInfoCubit(this.advertiseAccountRepo) : super(AdvertiseInfoInitial());
   AdvertiseAccountRepo advertiseAccountRepo;
   AdvertiseInfoModel? advertiseInfoModel;
-  bool isDone =false;
+  bool isDone = false;
 
   static AdvertiseInfoCubit get(context) => BlocProvider.of(context);
 
@@ -32,9 +32,8 @@ class AdvertiseInfoCubit extends Cubit<AdvertiseInfoState> {
         emit(AdvertiseAccountFailState(l.message));
       },
       (advertise) {
-
         advertiseInfoModel = advertise;
-        isDone=true;
+        isDone = true;
         emit(AdvertiseAccountSuccessState());
       },
     );
@@ -48,8 +47,19 @@ class AdvertiseInfoCubit extends Cubit<AdvertiseInfoState> {
         emit(AdvertiseAccountFailState(l.message));
       },
       (r) {
-
         emit(AdvertiseAccountSuccessState());
+      },
+    );
+  }
+
+  deleteCampaign(num? campaignId) async {
+    var result = await advertiseAccountRepo.deleteCampaign(campaignId);
+    result.fold(
+      (fail) {
+        emit(AdvertiseAccountFailState(fail.message));
+      },
+      (success) {
+        emit(AdvertiseAccountDeleteCampaignSuccessState());
       },
     );
   }

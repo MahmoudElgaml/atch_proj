@@ -53,4 +53,20 @@ class AdvertiseAccountRepoImpl implements AdvertiseAccountRepo {
       }
     }
   }
+  @override
+  Future<Either<Failure, String>> deleteCampaign(num? campaignId) async {
+    try {
+      var response = await aPiManger.post(EndPoints.deleteCampaign, {
+        "campaign_id": campaignId,
+      });
+
+      return right("");
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromServer(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

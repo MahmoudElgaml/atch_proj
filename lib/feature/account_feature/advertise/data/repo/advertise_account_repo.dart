@@ -6,6 +6,7 @@ import 'package:dartz/dartz.dart';
 abstract class AdvertiseAccountRepo{
  Future<Either<Failure,AdvertiseInfoModel>> getAdvertiseInfo();
  Future<Either<Failure,String>> editAdvertise(EditAdvertiseData advertiseData);
+ Future<Either<Failure, String>> deleteCampaign(num?campaignId);
 
 
 }

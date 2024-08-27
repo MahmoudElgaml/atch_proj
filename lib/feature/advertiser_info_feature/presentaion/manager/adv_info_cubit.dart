@@ -12,7 +12,9 @@ class AdvInfoCubit extends Cubit<AdvInfoState> {
   AdvInfoCubit(this.advInfoRepo) : super(AdvInfoInitial());
   AdvInfoRepo advInfoRepo;
   List<Campaigns> advCampaigns = [];
-static AdvInfoCubit get(context)=>BlocProvider.of(context);
+
+  static AdvInfoCubit get(context) => BlocProvider.of(context);
+
   getAdvCampaigns(num? advId) async {
     emit(AdvInfoLoadingState());
     var result = await advInfoRepo.gerAdvCampaign(advId);
@@ -21,16 +23,15 @@ static AdvInfoCubit get(context)=>BlocProvider.of(context);
         emit(AdvInfoFailState(fail.message));
       },
       (campaigns) {
-        advCampaigns=campaigns.campaigns??[];
-        if(advCampaigns.isEmpty){
+        advCampaigns = campaigns.campaigns ?? [];
+        if (advCampaigns.isEmpty) {
           emit(AdvInfoEmptyState());
-        }
-        else{
+        } else {
           emit(AdvInfoSuccessState());
         }
-
-
       },
     );
   }
+
+
 }
