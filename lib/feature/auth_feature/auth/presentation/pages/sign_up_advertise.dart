@@ -33,14 +33,14 @@ class _SignUpAdvertiseState extends State<SignUpAdvertise> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 30, left: 36, right: 36),
+        padding: EdgeInsets.only(top: 30, left: 36, right: 36),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Row(
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

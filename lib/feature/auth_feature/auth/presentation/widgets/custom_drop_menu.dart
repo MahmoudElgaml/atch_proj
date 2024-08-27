@@ -29,18 +29,24 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
           (item) {
             return DropdownMenuItem<String>(
               value: item.value,
-              child: Text(item.key, style: AppStyle.style18(context)),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FittedBox(
+                    child: Text(
+                  item.key,
+                  style: AppStyle.style18(context),
+                )),
+              ),
             );
           },
         ).toList(),
         value: widget.selectedValue,
         onChanged: (String? value) {
-          widget.setValue(value??"Babies");
+          widget.setValue(value ?? "Factory");
 
           setState(() {
             widget.selectedValue = value ?? "Factory";
           });
-
         },
         buttonStyleData: ButtonStyleData(
           decoration: BoxDecoration(

@@ -20,10 +20,22 @@ import 'logo_widget.dart';
 class AdvertiseSignDrawer extends StatefulWidget {
  const AdvertiseSignDrawer({super.key});
 
-  static const Map<String, String> items = {
-    "Factory": "Factory",
-    "Shop": "Shop",
-  };
+ static const Map<String, String> items = {
+   "Factory": "Factory",
+   "Shop": "Shop",
+   "Supermarket": "Supermarket",
+   "Fashion": "Fashion",
+   "Health & Beauty": "Health & Beauty",
+   "Baby Products": "Baby Products",
+   "Phones & Tablets": "Phones & Tablets",
+   "Home & Furniture": "Home & Furniture",
+   "Appliances": "Appliances",
+   "Televisions & Audio": "Televisions & Audio",
+   "Computing": "Computing",
+   "Sporting Goods": "Sporting Goods",
+   "Gaming": "Gaming",
+   "Other": "Other",
+ };
 
   @override
   State<AdvertiseSignDrawer> createState() => _AdvertiseSignDrawerState();
