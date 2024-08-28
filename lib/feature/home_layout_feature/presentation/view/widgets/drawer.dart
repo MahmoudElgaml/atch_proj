@@ -3,6 +3,7 @@ import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/core/utils/constants.dart';
 import 'package:atch_proj/core/utils/models/drawer_item_model.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
@@ -16,14 +17,17 @@ import 'package:go_router/go_router.dart';
 
 class HomeDrawer extends StatelessWidget {
   const HomeDrawer({super.key});
-static const  List<DrawerItemModel> items = [
-  DrawerItemModel("Contact Us", Icons.mail_outline_outlined),
-  DrawerItemModel("Settings", Icons.settings),
-  DrawerItemModel("All Ads ", Icons.verified_user_rounded),
-];
+
+  static const List<DrawerItemModel> items = [
+    DrawerItemModel("Contact Us", Icons.mail_outline_outlined),
+    DrawerItemModel("Settings", Icons.settings),
+    DrawerItemModel("All Ads ", Icons.verified_user_rounded),
+  ];
+
   @override
   Widget build(BuildContext context) {
-  Person userData = HiveManager().retrieveSingleData<Person>(HiveKeys.userBox);
+    Person userData =
+        HiveManager().retrieveSingleData<Person>(HiveKeys.userBox);
 
     return Drawer(
       child: Padding(
@@ -31,17 +35,17 @@ static const  List<DrawerItemModel> items = [
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 70,
-              height: 70,
-              decoration:  BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: CachedNetworkImageProvider(
-                      "http://92.113.26.243:5000${userData.profilePic}" ?? "",
-                    ),
-                    fit: BoxFit.fill,
-                  )),
+            ClipOval(
+              child: SizedBox(
+                width: 80,
+                height: 80,
+                child: CachedNetworkImage(
+                  imageUrl: userData.profilePic ?? "",
+                  errorWidget: (context, url, error) {
+                    return Image.network(ConstValue.emptyImage);
+                  },
+                ),
+              ),
             ),
             const Gap(12),
             Text(
@@ -62,11 +66,27 @@ static const  List<DrawerItemModel> items = [
             DrawerItem(
               onPressed: () {
                 getIt<StorageToken>().deleteToken();
-                getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox).delete();
+                getIt<HiveManager>()
+                    .retrieveSingleData<Person>(HiveKeys.userBox)
+                    .delete();
                 context.go(AppRoute.logInKey);
               },
               drawerItemModel: const DrawerItemModel("Sign Out", Icons.login),
-            )
+            ),
+            const Gap(20),
+            userData.referralCode == null
+                ? const SizedBox()
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Your referral_code :",
+                        style: AppStyle.style18Regular(context),
+                      ),
+                      const Gap(10),
+                      Text(userData.referralCode),
+                    ],
+                  )
           ],
         ),
       ),

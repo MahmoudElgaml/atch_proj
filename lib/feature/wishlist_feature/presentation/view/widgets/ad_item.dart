@@ -43,7 +43,7 @@ class AdWishlistItem extends StatelessWidget {
                           fit: BoxFit.fill,
                           imageUrl: campaign.images!.isEmpty
                               ? ""
-                              : campaign.images?[0] ?? "",
+                              : "http://92.113.26.243:5000${campaign.images?[0]}" ?? "",
                           errorWidget: (context, url, error) {
                             return SvgPicture.asset(
                               Assets.imagesEmptyImage,

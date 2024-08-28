@@ -53,7 +53,7 @@ class _UserEditScreenState extends State<UserEditScreen> {
           EasyLoading.showError("");
         } else if (state is EditUserSuccessState) {
           await EasyLoading.showSuccess("");
-          context.pop();
+          context.go(AppRoute.logInKey);
         }
         // TODO: implement listener
       },

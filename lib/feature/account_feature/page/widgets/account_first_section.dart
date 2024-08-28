@@ -38,10 +38,10 @@ class AccountFirstSection extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
                   width: double.infinity,
-                  imageUrl: "http://92.113.26.243:5000${person.profilePic}" ??
-                      ConstValue.emptyImage,
+                  imageUrl: "http://92.113.26.243:5000${person.profilePic}"
+                     ,
                   errorWidget: (context, url, error) =>
-                      Image.asset(Assets.assetsImagesEmptyImage),
+                      Image.network(ConstValue.emptyImage),
                 ),
               ),
             ),

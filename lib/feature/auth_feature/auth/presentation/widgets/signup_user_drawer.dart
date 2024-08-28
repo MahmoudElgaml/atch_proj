@@ -103,24 +103,13 @@ class _SignUpDrawerState extends State<UserSignUpDrawer> {
             },
             isLoading: false,
           ),
-          const Gap(32),
-          Center(
-            child: Text(
-              style: AppStyle.styleRegularOpacity,
-              "or Sign Un With",
-            ),
-          ),
-          const Gap(28),
-          const Center(child: SocialButton()),
           const Gap(28),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(style: AppStyle.styleRegularOpacity, "Existing User? "),
-              InkWell(
-                onTap: () {
-                  context.go(AppRoute.logInKey);
-                },
+              TextButton(
+                onPressed: () => context.go(AppRoute.logInKey),
                 child: const Text(
                   "Log in",
                   style: TextStyle(color: AppColor.authColor),

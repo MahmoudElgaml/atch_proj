@@ -18,8 +18,9 @@ class TestUploadImage extends StatefulWidget {
   State<TestUploadImage> createState() => _TestUploadImageState();
 }
 
-var profilepic =
-    getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox).profilePic;
+var profilepic = getIt<HiveManager>()
+    .retrieveSingleData<Person>(HiveKeys.userBox)
+    .profilePic;
 
 class _TestUploadImageState extends State<TestUploadImage> {
   @override
@@ -34,7 +35,11 @@ class _TestUploadImageState extends State<TestUploadImage> {
                   radius: 64,
                   backgroundImage: UploadImageService.selectedImage == null
                       ? widget.isEdit
-                          ? NetworkImage(profilepic ?? ConstValue.emptyImage)
+                          ? NetworkImage(
+                              profilepic != null
+                                  ? "http://92.113.26.243:5000$profilepic"
+                                  : ConstValue.emptyImage,
+                            )
                           : const AssetImage(Assets.assetsImagesEmptyImage)
                       : MemoryImage(UploadImageService.selectedImage!),
                 ),
