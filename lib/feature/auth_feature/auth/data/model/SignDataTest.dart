@@ -43,7 +43,7 @@ class SignDataTest {
   String? name;
   String? age;
   String? role;
-  num? referralCode;
+  bool? referralCode;
   String? about;
   String? visa;
   String? username;

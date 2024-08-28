@@ -2,6 +2,7 @@ import 'package:atch_proj/core/services/upload_image_service.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/SignData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/SignDataTest.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/check_box.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,7 @@ class _SignUpDrawerState extends State<UserSignUpDrawer> {
   TextEditingController password = TextEditingController();
   TextEditingController email = TextEditingController();
 
+  bool selectedValue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +73,11 @@ class _SignUpDrawerState extends State<UserSignUpDrawer> {
             textEditingController: password,
           ),
           const Gap(30),
-          //   CustomDropMenu(selectedValue: selectedValue,),
+          CheckkBox(
+            setValue: (bool? valuee) {
+              selectedValue = valuee ?? false;
+            },
+          ),
           const Gap(25),
           Align(
             alignment: Alignment.centerRight,
@@ -84,14 +90,13 @@ class _SignUpDrawerState extends State<UserSignUpDrawer> {
           CostumeButton(
             title: "SignUP",
             onPressed: () {
-              SignDataTest signData = SignDataTest(
-
-              );
+              SignDataTest signData = SignDataTest();
               signData.password = password.text;
               signData.username = username.text;
-              signData.name=name.text;
+              signData.name = name.text;
               signData.email = email.text;
-              signData.age=age.text;
+              signData.referralCode = selectedValue;
+              signData.age = age.text;
               signData.role = "user";
               signData.image = UploadImageService.imageFile;
               AuthCubit.get(context).signIn(signData);
