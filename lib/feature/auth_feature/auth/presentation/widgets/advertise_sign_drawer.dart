@@ -1,3 +1,4 @@
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_camapaign_textfiled.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';
@@ -18,24 +19,24 @@ import 'costume_text_filed.dart';
 import 'logo_widget.dart';
 
 class AdvertiseSignDrawer extends StatefulWidget {
- const AdvertiseSignDrawer({super.key});
+  const AdvertiseSignDrawer({super.key});
 
- static const Map<String, String> items = {
-   "Factory": "Factory",
-   "Shop": "Shop",
-   "Supermarket": "Supermarket",
-   "Fashion": "Fashion",
-   "Health & Beauty": "Health & Beauty",
-   "Baby Products": "Baby Products",
-   "Phones & Tablets": "Phones & Tablets",
-   "Home & Furniture": "Home & Furniture",
-   "Appliances": "Appliances",
-   "Televisions & Audio": "Televisions & Audio",
-   "Computing": "Computing",
-   "Sporting Goods": "Sporting Goods",
-   "Gaming": "Gaming",
-   "Other": "Other",
- };
+  static const Map<String, String> items = {
+    "Factory": "Factory",
+    "Shop": "Shop",
+    "Supermarket": "Supermarket",
+    "Fashion": "Fashion",
+    "Health & Beauty": "Health & Beauty",
+    "Baby Products": "Baby Products",
+    "Phones & Tablets": "Phones & Tablets",
+    "Home & Furniture": "Home & Furniture",
+    "Appliances": "Appliances",
+    "Televisions & Audio": "Televisions & Audio",
+    "Computing": "Computing",
+    "Sporting Goods": "Sporting Goods",
+    "Gaming": "Gaming",
+    "Other": "Other",
+  };
 
   @override
   State<AdvertiseSignDrawer> createState() => _AdvertiseSignDrawerState();
@@ -55,6 +56,8 @@ class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
   TextEditingController phone = TextEditingController();
 
   TextEditingController location = TextEditingController();
+  TextEditingController referralCode = TextEditingController();
+
 
   String selectedValue = "Factory";
 
@@ -121,6 +124,17 @@ class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
             title: "location",
             textEditingController: location,
           ),
+          const Gap(20),
+           SizedBox(
+             width: 200,
+             child: CustomCampaignTextFiled(
+              hint: "",
+              maxLine: 1,
+              textEditingController: referralCode,
+              labelText: "ReferralCode",
+              textInputType: TextInputType.phone,
+                       ),
+           ),
           const Gap(25),
           Align(
             alignment: Alignment.centerRight,

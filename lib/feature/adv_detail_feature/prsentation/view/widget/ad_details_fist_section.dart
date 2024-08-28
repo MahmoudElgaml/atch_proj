@@ -23,7 +23,7 @@ class AdDetailsFistSection extends StatelessWidget {
             (e) => ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: CachedNetworkImage(
-                imageUrl: e.isEmpty ? " " : e,
+                imageUrl: e.isEmpty ? " " : "http://92.113.26.243:5000$e",
                 errorWidget: (context, url, error) => SvgPicture.asset(
                   Assets.imagesEmptyImage,
                   fit: BoxFit.fill,

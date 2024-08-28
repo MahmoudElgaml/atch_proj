@@ -51,7 +51,7 @@ class AdsItem extends StatelessWidget {
                           fit: BoxFit.fill,
                           imageUrl: campaigns.images!.isEmpty
                               ? ""
-                              : campaigns.images?[0] ?? "",
+                              :"http://92.113.26.243:5000${campaigns.images?[0]}" ?? "",
                           errorWidget: (context, url, error) => SvgPicture.asset(
                             Assets.imagesEmptyImage,
                             fit: BoxFit.fill,

@@ -42,7 +42,7 @@ class CampaignItem extends StatelessWidget {
                       child: CachedNetworkImage(
                         imageUrl: campaigns.images!.isEmpty
                             ? ""
-                            : campaigns.images?[0] ?? "",
+                            : "http://92.113.26.243:5000${campaigns.images?[0]}" ?? "",
                         fit: BoxFit.fill,
                         errorWidget: (context, url, error) =>
                             SvgPicture.asset(Assets.imagesEmptyImage),

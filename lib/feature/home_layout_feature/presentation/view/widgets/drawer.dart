@@ -38,7 +38,7 @@ static const  List<DrawerItemModel> items = [
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     image: CachedNetworkImageProvider(
-                      userData.profilePic ?? "",
+                      "http://92.113.26.243:5000${userData.profilePic}" ?? "",
                     ),
                     fit: BoxFit.fill,
                   )),
