@@ -9,6 +9,7 @@ import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/drawer_item.dart';
+import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/referral_code_qr_widget.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -32,62 +33,54 @@ class HomeDrawer extends StatelessWidget {
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.only(top: 45, left: 24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipOval(
-              child: SizedBox(
-                width: 80,
-                height: 80,
-                child: CachedNetworkImage(
-                  imageUrl: userData.profilePic ?? "",
-                  errorWidget: (context, url, error) {
-                    return Image.network(ConstValue.emptyImage);
-                  },
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipOval(
+                child: SizedBox(
+                  width: 80,
+                  height: 80,
+                  child: CachedNetworkImage(
+                    imageUrl: userData.profilePic ?? "",
+                    errorWidget: (context, url, error) {
+                      return Image.network(ConstValue.emptyImage);
+                    },
+                  ),
                 ),
               ),
-            ),
-            const Gap(12),
-            Text(
-              userData.username ?? "",
-              style: AppStyle.style18ExtraBold(context),
-            ),
-            const Gap(40),
-            Column(
-              children: items
-                  .map(
-                    (e) => DrawerItem(
-                      drawerItemModel: e,
-                    ),
-                  )
-                  .toList(),
-            ),
-            const Gap(164),
-            DrawerItem(
-              onPressed: () {
-                getIt<StorageToken>().deleteToken();
-                getIt<HiveManager>()
-                    .retrieveSingleData<Person>(HiveKeys.userBox)
-                    .delete();
-                context.go(AppRoute.logInKey);
-              },
-              drawerItemModel: const DrawerItemModel("Sign Out", Icons.login),
-            ),
-            const Gap(20),
-            userData.referralCode == null
-                ? const SizedBox()
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Your referral_code :",
-                        style: AppStyle.style18Regular(context),
+              const Gap(12),
+              Text(
+                userData.username ?? "",
+                style: AppStyle.style18ExtraBold(context),
+              ),
+              const Gap(40),
+              Column(
+                children: items
+                    .map(
+                      (e) => DrawerItem(
+                        drawerItemModel: e,
                       ),
-                      const Gap(10),
-                      Text(userData.referralCode),
-                    ],
-                  )
-          ],
+                    )
+                    .toList(),
+              ),
+              const Gap(100),
+              DrawerItem(
+                onPressed: () {
+                  getIt<StorageToken>().deleteToken();
+                  getIt<HiveManager>()
+                      .retrieveSingleData<Person>(HiveKeys.userBox)
+                      .delete();
+                  context.go(AppRoute.logInKey);
+                },
+                drawerItemModel: const DrawerItemModel("Sign Out", Icons.login),
+              ),
+              const Gap(20),
+              userData.referralCode == null
+                  ? const SizedBox()
+                  : const ReferralCodeQrWidget()
+            ],
+          ),
         ),
       ),
     );

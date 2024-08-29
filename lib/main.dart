@@ -21,6 +21,10 @@ void main() async {
   configureDependencies();
   configureEasyLoading();
   await HiveManager().inti();
+  HiveManager().cacheData(boxKey: HiveKeys.userBox,dataItem: Person(
+    role: "user",
+    referralCode: "weeeeeeeee"
+  ));
 
 
   WidgetsFlutterBinding.ensureInitialized();

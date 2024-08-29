@@ -1,6 +1,6 @@
 class EndPoints{
 
-  static const baseUrl="http://92.113.26.243:5000";
+  static const baseUrl="https://great-eagle.vercel.app";
   static const search="/search_page/search";
   static const register="/register";
   static const logIn="/login";
