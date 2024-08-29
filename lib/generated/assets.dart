@@ -29,5 +29,7 @@ class Assets {
   static const String imagesSuccessiconpng = 'assets/images/successiconpng.png';
   static const String imagesTestImageProfile = 'assets/images/test_image_profile.png';
   static const String imagesWishlist = 'assets/images/wishlist.png';
+  static const String translationAr = 'assets/translation/ar.json';
+  static const String translationEn = 'assets/translation/en.json';
 
 }

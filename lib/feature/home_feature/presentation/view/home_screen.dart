@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -11,22 +12,31 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return  Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        CustomAppBar(),
-        Gap(17),
+        const CustomAppBar(),
+        const Gap(17),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
+
               children: [
-                TabsAppBar(),
-                Gap(17),
-                PopularAds(),
-                Gap(17),
-                AllAds(),
-                Gap(20),
+                const TabsAppBar(),
+                ElevatedButton(onPressed: () {
+                  if(context.locale.toString()=="ar"){
+                    context.setLocale(const Locale('en'));
+                  }else{
+                    context.setLocale(const Locale('ar'));
+                  }
+
+                }, child:const Text("change local")),
+                const Gap(17),
+                const PopularAds(),
+                const Gap(17),
+                const AllAds(),
+                const Gap(20),
               ],
             ),
           ),

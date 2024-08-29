@@ -1,6 +1,8 @@
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/models/categories.dart';
+import 'package:atch_proj/feature/home_feature/presentation/view/home_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CustomTap extends StatelessWidget {
@@ -18,7 +20,7 @@ class CustomTap extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
       child: Center(
         child: Text(
-          categories.title,
+          context.tr(categories.title),
           style: const TextStyle(color: Colors.white),
         ),
       ),

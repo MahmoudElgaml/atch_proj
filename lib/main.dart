@@ -7,6 +7,7 @@ import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,17 +22,24 @@ void main() async {
   configureDependencies();
   configureEasyLoading();
   await HiveManager().inti();
-  HiveManager().cacheData(boxKey: HiveKeys.userBox,dataItem: Person(
-    role: "user",
-    referralCode: "weeeeeeeee"
-  ));
-
+  await EasyLocalization.ensureInitialized();
+  HiveManager().cacheData(
+      boxKey: HiveKeys.userBox,
+      dataItem: Person(role: "user", referralCode: "weeeeeeeee"));
 
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     DevicePreview(
       enabled: true,
-      builder: (context) => const MyApp(), // Wrap your app
+      builder: (context) => EasyLocalization(
+        supportedLocales: const [
+          Locale("en"),
+          Locale("ar"),
+        ],
+        fallbackLocale: const Locale('ar'),
+        path: 'assets/translation/',
+        child: const MyApp(),
+      ), // Wrap your app
     ),
   );
 }
@@ -45,16 +53,16 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<AuthCubit>(),
       child: MaterialApp.router(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
         theme: ThemeData(
           appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.white,
-            surfaceTintColor: Colors.white
-          ),
+              backgroundColor: Colors.white, surfaceTintColor: Colors.white),
           scaffoldBackgroundColor: Colors.white,
           primarySwatch: Colors.blue,
         ),
         useInheritedMediaQuery: true,
-        locale: DevicePreview.locale(context),
         builder: EasyLoading.init(builder: DevicePreview.appBuilder),
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
