@@ -12,6 +12,7 @@ import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/
 import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/referral_code_qr_widget.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -20,9 +21,9 @@ class HomeDrawer extends StatelessWidget {
   const HomeDrawer({super.key});
 
   static const List<DrawerItemModel> items = [
-    DrawerItemModel("Contact Us", Icons.mail_outline_outlined),
-    DrawerItemModel("Settings", Icons.settings),
-    DrawerItemModel("All Ads ", Icons.verified_user_rounded),
+    DrawerItemModel("contact", Icons.mail_outline_outlined),
+    DrawerItemModel("setting", Icons.settings),
+    DrawerItemModel("AllAds", Icons.verified_user_rounded),
   ];
 
   @override
@@ -32,7 +33,7 @@ class HomeDrawer extends StatelessWidget {
 
     return Drawer(
       child: Padding(
-        padding: const EdgeInsets.only(top: 45, left: 24),
+        padding: const EdgeInsets.only(top: 45, left: 24,right: 24),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +74,7 @@ class HomeDrawer extends StatelessWidget {
                       .delete();
                   context.go(AppRoute.logInKey);
                 },
-                drawerItemModel: const DrawerItemModel("Sign Out", Icons.login),
+                drawerItemModel:  DrawerItemModel(context.tr("logout"), Icons.login),
               ),
               const Gap(20),
               userData.referralCode == null

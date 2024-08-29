@@ -18,6 +18,13 @@
   "navHome": "الرئيسية",
   "navSearch": "بحث",
   "navWishList": "قائمة الرغبات",
-  "navAccount": "الحساب"
+  "navAccount": "الحساب",
+  "logout": "تسجيل الخروج",
+  "setting": "الإعدادات",
+  "contact": "اتصل بنا",
+  "AllAds": "جميع الإعلانات",
+  "used": "العروض المستخدمة",
+  "recently": "تمت مشاهدتها مؤخرًا",
+  "editProfile": "تعديل الملف الشخصي"
 
 }

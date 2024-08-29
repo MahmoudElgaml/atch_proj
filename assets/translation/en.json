@@ -18,5 +18,12 @@
   "navHome": "Home",
   "navSearch": "Search",
   "navWishList": "Wishlist",
-  "navAccount": "Account"
+  "navAccount": "Account",
+  "logout":"Log out",
+  "setting": "settings",
+  "contact": "Contact Us",
+  "AllAds": "All Ads",
+  "used": "USED OFFER",
+  "recently": "RECENTLY VIEWD",
+  "editProfile": "Edit Profile"
 }

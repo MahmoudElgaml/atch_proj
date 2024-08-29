@@ -23,9 +23,6 @@ void main() async {
   configureEasyLoading();
   await HiveManager().inti();
   await EasyLocalization.ensureInitialized();
-  HiveManager().cacheData(
-      boxKey: HiveKeys.userBox,
-      dataItem: Person(role: "user", referralCode: "weeeeeeeee"));
 
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
