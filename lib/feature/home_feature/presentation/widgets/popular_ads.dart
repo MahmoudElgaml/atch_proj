@@ -22,6 +22,7 @@ class PopularAds extends StatelessWidget {
         children: [
           Text(
             context.tr("popular"),
+
             style: AppStyle.style26(context),
           ),
           const Gap(17),

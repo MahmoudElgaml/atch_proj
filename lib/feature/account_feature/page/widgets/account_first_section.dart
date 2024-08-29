@@ -7,6 +7,7 @@ import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
 import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -93,7 +94,7 @@ class EditButton extends StatelessWidget {
           ),
           const Gap(10),
           Text(
-            "Edit Profile",
+           context.tr("editProfile"),
             style: AppStyle.style16Bold(context)
                 .copyWith(color: AppColor.primaryColor),
           )

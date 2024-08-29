@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
+import 'dart:ui' as ui;
 import 'core/services/loading_service.dart';
 import 'core/utils/bloc_observer.dart';
 
@@ -34,7 +34,7 @@ void main() async {
           Locale("ar"),
         ],
         fallbackLocale: const Locale('ar'),
-        path: 'assets/translation/',
+        path: 'assets/translation',
         child: const MyApp(),
       ), // Wrap your app
     ),
@@ -55,7 +55,9 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         theme: ThemeData(
           appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.white, surfaceTintColor: Colors.white),
+            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.white,
+          ),
           scaffoldBackgroundColor: Colors.white,
           primarySwatch: Colors.blue,
         ),
