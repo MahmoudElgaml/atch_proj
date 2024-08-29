@@ -26,7 +26,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     DevicePreview(
-      enabled: !kReleaseMode,
+      enabled: true,
       builder: (context) => const MyApp(), // Wrap your app
     ),
   );
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       create: (context) => getIt<AuthCubit>(),
       child: MaterialApp.router(
         theme: ThemeData(
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
             backgroundColor: Colors.white,
             surfaceTintColor: Colors.white
           ),

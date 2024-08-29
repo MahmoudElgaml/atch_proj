@@ -1,7 +1,11 @@
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/old_image_cubit.dart';
+import 'package:atch_proj/generated/assets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../../../core/utils/app_style.dart';
 
@@ -12,7 +16,6 @@ class OldImageSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     OldImageCubit.get(context).setOldImage(oldImages);
 
     return Column(
@@ -28,9 +31,11 @@ class OldImageSection extends StatelessWidget {
         BlocBuilder<OldImageCubit, OldImageState>(
           builder: (context, state) {
             var images = OldImageCubit.get(context).myImages;
-            return OldImageList(
-              oldImage: images,
-            );
+            return images.isEmpty
+                ? const SizedBox()
+                : OldImageList(
+                    oldImage: images,
+                  );
           },
         ),
       ],
@@ -77,7 +82,12 @@ class ImageItem extends StatelessWidget {
           child: SizedBox(
             width: 200,
             height: 200,
-            child: Image.network(image),
+            child: CachedNetworkImage(
+              imageUrl: "http://92.113.26.243:5000$image",
+              fit: BoxFit.fill,
+              errorWidget: (context, url, error) =>
+                  SvgPicture.asset(Assets.imagesEmptyImage),
+            ),
           ),
         ),
         IconButton(

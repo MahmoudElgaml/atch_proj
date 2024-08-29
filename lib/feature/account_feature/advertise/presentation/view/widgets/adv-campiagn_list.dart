@@ -60,10 +60,13 @@ class AdvAccountCampaignItem extends StatelessWidget {
                     child: CachedNetworkImage(
                       imageUrl: campaigns.images!.isEmpty
                           ? ""
-                          : campaigns.images?[0] ?? "",
+                          : "http://92.113.26.243:5000${campaigns.images?[0]}" ??
+                              "",
                       fit: BoxFit.fill,
-                      errorWidget: (context, url, error) =>
-                          const Center(child: Text("Error")),
+                      errorWidget: (context, url, error) => SvgPicture.asset(
+                        Assets.imagesEmptyImage,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
@@ -112,7 +115,8 @@ class AdvAccountCampaignItem extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      AdvertiseInfoCubit.get(context).deleteCampaign(campaigns.id);
+                      AdvertiseInfoCubit.get(context)
+                          .deleteCampaign(campaigns.id);
                     },
                     icon: const Icon(
                       size: 26,
