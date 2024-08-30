@@ -32,6 +32,7 @@ class CostumeTextFiled extends StatelessWidget {
         ),
         Gap(10),
         TextFormField(
+
            maxLines: maxLine??1,
           obscureText: isPassword ?? false,
           keyboardType: keyboardType,

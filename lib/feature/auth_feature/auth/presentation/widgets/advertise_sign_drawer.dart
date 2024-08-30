@@ -53,11 +53,12 @@ class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
 
   TextEditingController email = TextEditingController();
 
-  TextEditingController phone = TextEditingController();
+  TextEditingController phone1 = TextEditingController();
+  TextEditingController phone2 = TextEditingController();
 
-  TextEditingController location = TextEditingController();
+  TextEditingController location1 = TextEditingController();
+  TextEditingController location2 = TextEditingController();
   TextEditingController referralCode = TextEditingController();
-
 
   String selectedValue = "Factory";
 
@@ -111,30 +112,57 @@ class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
             textEditingController: password,
           ),
           const Gap(20),
-          CostumeTextFiled(
-            validator: (value) => ValidationService.validatePhoneNumber(value),
-            keyboardType: TextInputType.phone,
-            title: "phone",
-            textEditingController: phone,
+          Row(
+            children: [
+              Expanded(
+                child: CostumeTextFiled(
+                  validator: (value) => ValidationService.validatePhoneNumber(value),
+                  keyboardType: TextInputType.phone,
+                  title: "Phone1",
+                  textEditingController: phone1,
+                ),
+              ),
+              const Gap(10),
+              Expanded(
+                child: CostumeTextFiled(
+                  keyboardType: TextInputType.phone,
+                  title: "Phone2",
+                  textEditingController: phone2,
+                ),
+              ),
+            ],
           ),
           const Gap(20),
-          CostumeTextFiled(
-            validator: (value) =>
-                ValidationService.validateEmpty(value, "Your Location"),
-            title: "location",
-            textEditingController: location,
+          Row(
+            children: [
+              Expanded(
+                child: CostumeTextFiled(
+                  validator: (value) =>
+                      ValidationService.validateEmpty(value, "Your Location"),
+                  title: "Location",
+                  textEditingController: location1,
+                ),
+              ),
+              const Gap(10),
+              Expanded(
+                child: CostumeTextFiled(
+                  title: "Location2",
+                  textEditingController: location2,
+                ),
+              ),
+            ],
           ),
           const Gap(20),
-           SizedBox(
-             width: 200,
-             child: CustomCampaignTextFiled(
+          SizedBox(
+            width: 200,
+            child: CustomCampaignTextFiled(
               hint: "",
               maxLine: 1,
               textEditingController: referralCode,
               labelText: "ReferralCode",
               textInputType: TextInputType.phone,
-                       ),
-           ),
+            ),
+          ),
           const Gap(25),
           Align(
             alignment: Alignment.centerRight,
@@ -190,8 +218,15 @@ class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
   }
 
   SignDataTest setSignData() {
-    List<String> phones = [phone.text];
-    List<String> locations = [location.text];
+    List<String> phones = [phone1.text];
+    if(phone2.text!=""){
+      phones.add(phone2.text);
+    }
+    List<String> locations = [location1.text];
+
+    if (location2.text != "") {
+      locations.add(location2.text);
+    }
     SignDataTest signData = SignDataTest();
     signData.name = companyName.text;
     signData.username = advertiseName.text;
