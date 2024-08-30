@@ -2,18 +2,21 @@ import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/ad
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'advertise_campignes_list.dart';
-import 'custom_tabs_widget.dart';
 
 class InfoTabsSection extends StatelessWidget {
-  const InfoTabsSection({super.key,required this.advInfoCubit,required this.advertiser});
-final  DetailAdvertiser advertiser;
-final AdvInfoCubit advInfoCubit;
+  const InfoTabsSection(
+      {super.key, required this.advInfoCubit, required this.advertiser});
+
+  final DetailAdvertiser advertiser;
+  final AdvInfoCubit advInfoCubit;
+
   @override
   Widget build(BuildContext context) {
-    return   Expanded(
+    return Expanded(
       flex: 2,
       child: SingleChildScrollView(
         child: SizedBox(
@@ -48,3 +51,30 @@ final AdvInfoCubit advInfoCubit;
     );
   }
 }
+
+
+class CustomTabsWidget extends StatelessWidget {
+  const CustomTabsWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return TabBar(
+      tabs: const [
+        Tab(
+          child: Text(
+            "About",
+          ),
+        ),
+        Tab(
+          child: Text("campaigns"),
+        ),
+      ],
+      dividerColor: AppColor.primaryColor,
+      tabAlignment: TabAlignment.start,
+      isScrollable: true,
+      labelStyle: AppStyle.style16Regular(context),
+      indicatorColor: AppColor.primaryColor,
+    );
+  }
+}
+

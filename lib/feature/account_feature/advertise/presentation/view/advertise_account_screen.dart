@@ -5,7 +5,6 @@ import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
 import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
 import 'package:atch_proj/feature/account_feature/advertise/presentation/view/widgets/adv-campiagn_list.dart';
-import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/custom_tabs_widget.dart';
 import 'package:atch_proj/feature/wishlist_feature/presentation/view/wishListScreen.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -16,6 +15,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/app_style.dart';
+import '../../../../advertiser_info_feature/presentaion/view/widgets/info_tabs_section.dart';
 import '../../../../search_feature/presentation/view/widgets/campaign_item.dart';
 import '../../../page/widgets/account_first_section.dart';
 

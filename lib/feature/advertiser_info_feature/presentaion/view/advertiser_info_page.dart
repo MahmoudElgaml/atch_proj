@@ -3,7 +3,6 @@ import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/advertise_campignes_list.dart';
-import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/custom_tabs_widget.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/info_section.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/widgets/info_tabs_section.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';

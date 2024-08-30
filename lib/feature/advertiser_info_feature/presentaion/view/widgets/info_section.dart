@@ -1,18 +1,23 @@
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../core/utils/app_color.dart';
 import '../../../../../generated/assets.dart';
 import '../../../../adv_detail_feature/data/model/DetailCampaignModel.dart';
+import 'message_button.dart';
 
 class InfoSection extends StatelessWidget {
-  const InfoSection({super.key,required this.advertiser});
-final DetailAdvertiser advertiser;
+  const InfoSection({super.key, required this.advertiser});
+
+  final DetailAdvertiser advertiser;
+
   @override
   Widget build(BuildContext context) {
-    return    SizedBox(
+    return SizedBox(
       height: MediaQuery.sizeOf(context).height * .3,
       child: Center(
         child: Column(
@@ -30,10 +35,21 @@ final DetailAdvertiser advertiser;
               ),
             ),
             const Gap(20),
-            Text(advertiser.name??"",style: AppStyle.style24Regular(context),),
+            Text(
+              advertiser.name ?? "",
+              style: AppStyle.style24Regular(context),
+            ),
+            const Gap(10),
+            InkWell(
+                onTap: () {
+
+                },
+                child: const MessageButton())
           ],
         ),
       ),
     );
   }
+
+
 }
