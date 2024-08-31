@@ -1,5 +1,7 @@
+import 'package:atch_proj/feature/account_feature/page/account_screen.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_color.dart';
@@ -52,21 +54,22 @@ class InfoTabsSection extends StatelessWidget {
   }
 }
 
-
 class CustomTabsWidget extends StatelessWidget {
   const CustomTabsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return TabBar(
-      tabs: const [
+      tabs: [
         Tab(
           child: Text(
-            "About",
+            context.tr("about"),
           ),
         ),
         Tab(
-          child: Text("campaigns"),
+          child: Text(
+            context.tr("campaigns"),
+          ),
         ),
       ],
       dividerColor: AppColor.primaryColor,
@@ -77,4 +80,3 @@ class CustomTabsWidget extends StatelessWidget {
     );
   }
 }
-

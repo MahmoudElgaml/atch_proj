@@ -40,16 +40,10 @@ class InfoSection extends StatelessWidget {
               style: AppStyle.style24Regular(context),
             ),
             const Gap(10),
-            InkWell(
-                onTap: () {
-
-                },
-                child: const MessageButton())
+            const MessageButton()
           ],
         ),
       ),
     );
   }
-
-
 }

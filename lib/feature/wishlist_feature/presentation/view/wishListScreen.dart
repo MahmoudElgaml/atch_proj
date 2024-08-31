@@ -2,11 +2,13 @@ import 'package:atch_proj/core/services/rectangle_shimmer.dart';
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/components/loading_rectangle.dart';
+import 'package:atch_proj/feature/account_feature/page/account_screen.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_layout_cubit.dart';
 import 'package:atch_proj/feature/wishlist_feature/presentation/manger/wishlist_cubit.dart';
 import 'package:atch_proj/feature/wishlist_feature/presentation/view/widgets/ad_item.dart';
 import 'package:atch_proj/feature/wishlist_feature/presentation/view/widgets/wishlist_empty_widget.dart';
 import 'package:atch_proj/generated/assets.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -18,19 +20,22 @@ class WishlistScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text(
+          context.tr("navWishList"),
+          style: AppStyle.style24Regular(context),
+        ),
+      ),
+      body: const SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Center(
-                  child: Text(
-                "WishList",
-                style: AppStyle.style24Regular(context),
-              )),
-              const Gap(20),
-              const WishlistList(),
+              Gap(20),
+              WishlistList(),
             ],
           ),
         ),

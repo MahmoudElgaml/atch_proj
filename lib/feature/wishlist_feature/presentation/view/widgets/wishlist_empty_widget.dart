@@ -1,3 +1,5 @@
+import 'package:atch_proj/feature/account_feature/page/account_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -17,11 +19,11 @@ class WishlistEmptyWidget extends StatelessWidget {
           const Gap(20),
           Image.asset(Assets.imagesWishlist),
           Text(
-            "No favourites yet",
+            context.tr("noWishlist"),
             style: AppStyle.style26(context),
           ),
           Text(
-            "Tap heart next to the product, We'll save them for you here",
+            context.tr("tipWishlist"),
             style: AppStyle.style13(context)
                 .copyWith(color: AppColor.fontColor),
           ),

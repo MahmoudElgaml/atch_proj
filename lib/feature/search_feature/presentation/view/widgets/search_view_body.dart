@@ -4,6 +4,7 @@ import 'package:atch_proj/feature/search_feature/presentation/manger/search_cubi
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/filter_button.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/campaign_item.dart';
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/search_text_field.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -70,7 +71,7 @@ class SearchList extends StatelessWidget {
         return Expanded(
           child: Center(
             child: Text(
-              "Type to Search",
+              context.tr("typeSearch"),
               style: AppStyle.style34(context),
             ),
           ),

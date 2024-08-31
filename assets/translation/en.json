@@ -25,5 +25,15 @@
   "AllAds": "All Ads",
   "used": "USED OFFER",
   "recently": "RECENTLY VIEWD",
-  "editProfile": "Edit Profile"
+  "editProfile": "Edit Profile",
+  "about": "About",
+  "campaigns": "Campaigns",
+  "videos": "Videos",
+  "AdvTitle": "Advertiser",
+  "takeOffer": "Get Offer",
+  "typeSearch": "Type To Search",
+  "noWishlist": "No favourites yet",
+  "tipWishlist":"Tap heart next to the product, We'll save them for you here"
+
+
 }
