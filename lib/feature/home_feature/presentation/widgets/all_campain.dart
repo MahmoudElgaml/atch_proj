@@ -1,7 +1,6 @@
 import 'package:atch_proj/feature/home_feature/presentation/manager/get_normal_campagin_cubit.dart';
 import 'package:atch_proj/feature/home_feature/presentation/widgets/popular_ads.dart';
 import 'package:atch_proj/feature/home_feature/presentation/widgets/popular_item.dart';
-import 'package:atch_proj/main.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

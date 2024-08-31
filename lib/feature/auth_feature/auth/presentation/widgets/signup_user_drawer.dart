@@ -1,10 +1,7 @@
 import 'package:atch_proj/core/services/upload_image_service.dart';
-import 'package:atch_proj/feature/auth_feature/auth/data/model/SignData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/SignDataTest.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/check_box.dart';
-import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
-import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';

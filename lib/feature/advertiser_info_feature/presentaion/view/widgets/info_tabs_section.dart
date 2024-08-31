@@ -1,6 +1,4 @@
-import 'package:atch_proj/feature/account_feature/page/account_screen.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
-import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 

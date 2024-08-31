@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../../core/utils/app_style.dart';
-import '../../../../../core/utils/service_locator/config.dart';
-import '../../../../../generated/assets.dart';
 
 class AdvertiseCampaignsList extends StatelessWidget {
   const AdvertiseCampaignsList(

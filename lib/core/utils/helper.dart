@@ -1,6 +1,5 @@
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
-import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:flutter/material.dart';

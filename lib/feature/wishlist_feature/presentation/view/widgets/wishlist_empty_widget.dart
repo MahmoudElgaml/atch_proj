@@ -1,4 +1,3 @@
-import 'package:atch_proj/feature/account_feature/page/account_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

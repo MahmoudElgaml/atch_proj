@@ -7,11 +7,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/cache/hive/hive_manager.dart';
 import '../../../../../core/services/upload_image_service.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../core/utils/service_locator/config.dart';
 import '../../../../auth_feature/auth/presentation/pages/test_upload_image.dart';
 import '../../../../auth_feature/auth/presentation/widgets/costume_text_filed.dart';
 import '../../data/model/EditAdvertiseData.dart';

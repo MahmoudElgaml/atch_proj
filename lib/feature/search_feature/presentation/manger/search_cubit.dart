@@ -1,7 +1,5 @@
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
-import 'package:atch_proj/feature/search_feature/data/model/SearchItemModel.dart';
 import 'package:atch_proj/feature/search_feature/data/repo/search_repo.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -25,7 +23,7 @@ class SearchCubit extends Cubit<SearchState> {
     var result = await searchRepo.search(searchWord);
     result.fold(
       (fail) {
-        print(fail.statusCode);
+
         emit(SearchFailState(fail.message));
       },
       (searchItem) {

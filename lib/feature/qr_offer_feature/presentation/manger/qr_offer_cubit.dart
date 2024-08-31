@@ -1,5 +1,4 @@
 import 'package:atch_proj/feature/qr_offer_feature/data/repo/qr_offer_repo.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';

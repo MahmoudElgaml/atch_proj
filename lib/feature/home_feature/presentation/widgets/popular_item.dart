@@ -1,5 +1,4 @@
 import 'package:atch_proj/config/routes/routes.dart';
-import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/components/save_button.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/home_feature/presentation/widgets/ads_item_details.dart';

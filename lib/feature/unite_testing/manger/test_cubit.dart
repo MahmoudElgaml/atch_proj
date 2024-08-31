@@ -1,13 +1,10 @@
 
 import 'package:atch_proj/feature/account_feature/advertise/data/model/EditAdvertiseData.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/repo/advertise_account_repo.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
-import '../../account_feature/user/data/model/EditUserData.dart';
-import '../../account_feature/user/data/repo/user_account_repo.dart';
 
 part 'test_state.dart';
 
@@ -21,11 +18,11 @@ static TestCubit get(context)=>BlocProvider.of(context);
     var result = await advertiseAccountRepo.editAdvertise(advertise);
     result.fold(
       (l) {
-        print(l.statusCode);
+
         emit(TestFailState());
       },
       (r) {
-       print(r);
+
         emit(TestSuccessState());
       },
     );

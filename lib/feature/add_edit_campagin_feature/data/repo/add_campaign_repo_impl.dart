@@ -7,7 +7,6 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/data/repo/add_campai
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:intl/intl.dart';
 
 @Injectable(as: AddCampaignRepo)
 class AddCampaignRepoImpl implements AddCampaignRepo {

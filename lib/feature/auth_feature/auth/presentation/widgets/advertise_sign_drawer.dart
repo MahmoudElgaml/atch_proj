@@ -1,6 +1,5 @@
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_camapaign_textfiled.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
-import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -13,10 +12,8 @@ import '../../../../../core/utils/app_string.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../data/model/SignDataTest.dart';
 import '../manger/auth_cubit.dart';
-import '../pages/test_upload_image.dart';
 import 'coatume_auth_button.dart';
 import 'costume_text_filed.dart';
-import 'logo_widget.dart';
 
 class AdvertiseSignDrawer extends StatefulWidget {
   const AdvertiseSignDrawer({super.key});

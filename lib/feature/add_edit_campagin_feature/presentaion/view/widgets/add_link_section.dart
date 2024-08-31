@@ -1,5 +1,4 @@
 import 'package:atch_proj/core/utils/app_style.dart';
-import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';

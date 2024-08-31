@@ -1,19 +1,10 @@
 import 'dart:io';
 
-import 'package:atch_proj/core/cache/storage_token.dart';
-import 'package:atch_proj/core/services/upload_image_service.dart';
-import 'package:atch_proj/feature/account_feature/advertise/data/model/EditAdvertiseData.dart';
 
-import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/test_upload_image.dart';
-import 'package:atch_proj/feature/unite_testing/manger/test_cubit.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 
-import '../../core/utils/service_locator/config.dart';
-import '../account_feature/user/data/model/EditUserData.dart';
 
 class TestView extends StatefulWidget {
   const TestView({super.key});
@@ -62,7 +53,7 @@ class _TestViewState extends State<TestView> {
               child: (result != null)
                   ? Text(
                    '  Data: ${result!.code}')
-                  : Text('Scan a code'),
+                  : const Text('Scan a code'),
             ),
           )
         ],

@@ -1,9 +1,6 @@
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
-import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
-import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'package:atch_proj/feature/adv_detail_feature/prsentation/manager/get_detail_campaign_cubit.dart';
-import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

@@ -1,4 +1,3 @@
-import 'package:atch_proj/feature/auth_feature/auth/data/model/SignData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/SignDataTest.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/repo/auth_repo.dart';

@@ -1,7 +1,5 @@
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/helper.dart';
-import 'package:atch_proj/core/utils/helper.dart';
-import 'package:atch_proj/core/utils/helper.dart';
 import 'package:flutter/material.dart';
 
 class CustomCampaignTextFiled extends StatelessWidget {

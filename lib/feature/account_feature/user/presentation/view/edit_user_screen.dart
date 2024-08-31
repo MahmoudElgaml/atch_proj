@@ -101,7 +101,7 @@ class _UserEditScreenState extends State<UserEditScreen> {
                       .retrieveSingleData<Person>(HiveKeys.userBox)
                       .id;
                   EditUserData editUser = EditUserData(
-                    image: UploadImageService.imageFile ?? null,
+                    image: UploadImageService.imageFile,
                     password: password.text,
                     username: username.text,
                     age: age.text,

@@ -1,6 +1,6 @@
 part of 'recently_viewed_cubit.dart';
 
-@immutable
+
 abstract class RecentlyViewedState {}
 
 class RecentlyViewedInitial extends RecentlyViewedState {}

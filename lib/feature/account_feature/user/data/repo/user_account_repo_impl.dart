@@ -71,7 +71,7 @@ class AccountRepoImpl implements UserAccountRepo {
       if (e is DioException) {
         return left(ServerFailure.fromServer(e));
       } else {
-        print(e.toString());
+
         return left(ServerFailure(e.toString()));
       }
     }

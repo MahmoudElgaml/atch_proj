@@ -2,7 +2,6 @@ import 'package:atch_proj/core/services/rectangle_shimmer.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/home_feature/presentation/manager/get_popular_campaign_cubit.dart';
 import 'package:atch_proj/feature/home_feature/presentation/widgets/popular_item.dart';
-import 'package:atch_proj/main.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter/material.dart';

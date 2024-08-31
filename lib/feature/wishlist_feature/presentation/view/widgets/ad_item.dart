@@ -1,5 +1,4 @@
 import 'package:atch_proj/config/routes/routes.dart';
-import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/helper.dart';

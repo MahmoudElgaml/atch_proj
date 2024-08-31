@@ -45,13 +45,13 @@ class WishlistRepoImpl implements WishlistRepo {
   Future<Either<Failure, String>> addToWishlist(num campaignId) async {
     try {
       var id = await storageToken.getToken();
-      print(id ?? "null");
+
       var role =
           hiveManager.retrieveSingleData<Person>(HiveKeys.userBox).role ?? "user";
-      print(hiveManager.retrieveSingleData<Person>(HiveKeys.userBox));
 
 
-      print(role);
+
+
       await aPiManger.post(EndPoints.addToWishlist, {
         "user_advertiser_id": id,
         "campaign_id": campaignId,

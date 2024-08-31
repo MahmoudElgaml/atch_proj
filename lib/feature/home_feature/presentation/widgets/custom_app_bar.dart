@@ -1,6 +1,5 @@
 import 'package:atch_proj/core/utils/app_color.dart';
 
-import 'package:atch_proj/feature/search_feature/presentation/view/widgets/search_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

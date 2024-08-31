@@ -4,7 +4,6 @@ import 'package:gap/gap.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../../../core/utils/app_style.dart';
-import '../../../../auth_feature/auth/data/model/UserData.dart';
 
 class ReferralCodeQrWidget extends StatelessWidget {
   const ReferralCodeQrWidget({super.key});

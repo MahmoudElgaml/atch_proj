@@ -1,7 +1,6 @@
 import 'package:atch_proj/feature/add_edit_campagin_feature/data/model/AddCampaignModel.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/data/model/EditCampignModel.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/data/repo/add_campaign_repo.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';

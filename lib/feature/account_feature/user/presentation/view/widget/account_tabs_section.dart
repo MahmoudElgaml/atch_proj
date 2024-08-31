@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../../home_feature/data/model/CampaignModel.dart';
 
 class AccountTabsSection extends StatelessWidget {
   const AccountTabsSection(

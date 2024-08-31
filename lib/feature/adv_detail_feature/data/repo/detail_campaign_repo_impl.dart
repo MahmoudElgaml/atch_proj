@@ -1,12 +1,10 @@
 import 'package:atch_proj/core/api/api_manger.dart';
 import 'package:atch_proj/core/api/end_points.dart';
-import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/erorr/failure.dart';
 import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'package:atch_proj/feature/adv_detail_feature/data/repo/campaign_detail_repo.dart';
-import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';

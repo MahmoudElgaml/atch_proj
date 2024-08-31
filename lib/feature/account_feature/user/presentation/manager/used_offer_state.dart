@@ -1,6 +1,5 @@
 part of 'used_offer_cubit.dart';
 
-@immutable
 abstract class UsedOfferState {}
 
 class UsedOfferInitial extends UsedOfferState {}

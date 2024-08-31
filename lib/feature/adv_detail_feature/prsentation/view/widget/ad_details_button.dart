@@ -1,7 +1,6 @@
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
-import 'package:atch_proj/feature/account_feature/page/account_screen.dart';
 import 'package:atch_proj/feature/qr_offer_feature/presentation/manger/qr_offer_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +64,7 @@ class AdDetailsButton extends StatelessWidget {
                     style: AppStyle.style13(context)
                         .copyWith(fontSize: 30, fontWeight: FontWeight.w400),
                   ),
-                  Gap(20),
+                  const Gap(20),
                   const Icon(
                     Icons.arrow_forward,
                     color: Colors.white,
