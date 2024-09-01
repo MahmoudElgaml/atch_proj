@@ -47,6 +47,8 @@ import '../../../feature/adv_detail_feature/data/repo/detail_campaign_repo_impl.
     as _i894;
 import '../../../feature/adv_detail_feature/prsentation/manager/get_detail_campaign_cubit.dart'
     as _i929;
+import '../../../feature/adv_detail_feature/prsentation/manager/impression_cubit.dart'
+    as _i360;
 import '../../../feature/advertiser_info_feature/data/repo/adv_info_impl.dart'
     as _i509;
 import '../../../feature/advertiser_info_feature/data/repo/adv_info_repo.dart'
@@ -115,10 +117,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
         ));
-    gh.factory<_i338.CampaignDetailRepo>(() => _i894.CampaignDetailRepoImpl(
-          gh<_i254.APiManger>(),
-          gh<_i353.StorageToken>(),
-        ));
     gh.factory<_i513.AdvInfoRepo>(() => _i509.AdvInfoImpl(
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
@@ -149,6 +147,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i238.QrOfferCubit(gh<_i888.QrOfferRepo>()));
     gh.factory<_i793.AddCampaignRepo>(
         () => _i11.AddCampaignRepoImpl(gh<_i254.APiManger>()));
+    gh.factory<_i338.CampaignDetailRepo>(() => _i894.CampaignDetailRepoImpl(
+          gh<_i254.APiManger>(),
+          gh<_i353.StorageToken>(),
+          gh<_i125.HiveManager>(),
+        ));
     gh.factory<_i341.SearchRepo>(
         () => _i523.SearchRepoImpl(gh<_i254.APiManger>()));
     gh.factory<_i283.AuthRepo>(() => _i188.AuthRepoImpl(
@@ -158,6 +161,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i929.GetDetailCampaignCubit>(
         () => _i929.GetDetailCampaignCubit(gh<_i338.CampaignDetailRepo>()));
+    gh.factory<_i360.ImpressionCubit>(
+        () => _i360.ImpressionCubit(gh<_i338.CampaignDetailRepo>()));
     gh.factory<_i851.EditUserCubit>(
         () => _i851.EditUserCubit(gh<_i645.UserAccountRepo>()));
     gh.factory<_i830.RecentlyViewedCubit>(

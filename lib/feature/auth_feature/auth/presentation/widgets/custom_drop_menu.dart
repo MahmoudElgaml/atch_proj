@@ -29,14 +29,11 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
           (item) {
             return DropdownMenuItem<String>(
               value: item.value,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FittedBox(
-                    child: Text(
-                  item.key,
-                  style: AppStyle.style18(context),
-                )),
-              ),
+              child: FittedBox(
+                  child: Text(
+                item.key,
+                style: AppStyle.style18(context),
+              )),
             );
           },
         ).toList(),

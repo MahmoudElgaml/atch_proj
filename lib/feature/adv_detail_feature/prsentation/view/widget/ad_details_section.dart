@@ -68,6 +68,7 @@ class AdDetailsSection extends StatelessWidget {
                 ),
                 const Gap(25),
                 AdDetailVideoSection(
+                   campaignId: campaign?.id,
                   videos: campaign?.videos,
                 ),
                 BlocProvider(

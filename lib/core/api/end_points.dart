@@ -6,6 +6,7 @@ class EndPoints {
   static const getPopularCampaign = "/home/popularCampaigns";
   static const getNormalCampaign = "/home/normalCampaigns";
   static const detailCampaign = "/home/getCampaign";
+  static const linkPressed = "/campaign_page/link_pressed";
   static const addCampaign = "/advertiser/addCampaign";
   static const editCampaign = "/advertiser/editCampaign";
   static const deleteCampaign = "/advertiser/deleteCampaign";

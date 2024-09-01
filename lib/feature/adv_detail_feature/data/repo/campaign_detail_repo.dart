@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 
 abstract class CampaignDetailRepo{
   Future<Either<Failure,DetailCampaignModel>> getDetails(num campaignId);
+  Future<Either<Failure,String>> pressedLink({required num? campaignId, required String? link});
 
 
 }

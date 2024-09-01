@@ -31,7 +31,7 @@ class HomeDrawer extends StatelessWidget {
 
     return Drawer(
       child: Padding(
-        padding: const EdgeInsets.only(top: 45, left: 24,right: 24),
+        padding: const EdgeInsets.only(top: 45, left: 24, right: 24),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,7 +41,8 @@ class HomeDrawer extends StatelessWidget {
                   width: 80,
                   height: 80,
                   child: CachedNetworkImage(
-                    imageUrl: userData.profilePic ?? "",
+                    imageUrl:
+                        "http://92.113.26.243:5000${userData.profilePic}" ?? "",
                     errorWidget: (context, url, error) {
                       return Image.network(ConstValue.emptyImage);
                     },
@@ -72,7 +73,8 @@ class HomeDrawer extends StatelessWidget {
                       .delete();
                   context.go(AppRoute.logInKey);
                 },
-                drawerItemModel:  DrawerItemModel(context.tr("logout"), Icons.login),
+                drawerItemModel:
+                    DrawerItemModel(context.tr("logout"), Icons.login),
               ),
               const Gap(20),
               userData.referralCode == null
