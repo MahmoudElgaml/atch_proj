@@ -25,7 +25,7 @@ abstract class Helper {
   }
 
   static String dateToString(DateTime date) {
-    return DateFormat.yMMMd().format(date);
+    return DateFormat.yMMMd("en_US").format(date);
   }
 
   static  OutlineInputBorder buildOutlineInputBorder() {

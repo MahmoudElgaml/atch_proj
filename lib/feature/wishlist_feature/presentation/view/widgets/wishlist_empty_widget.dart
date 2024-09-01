@@ -22,13 +22,13 @@ class WishlistEmptyWidget extends StatelessWidget {
             style: AppStyle.style26(context),
           ),
           Text(
+            textAlign: TextAlign.center,
             context.tr("tipWishlist"),
-            style: AppStyle.style13(context)
-                .copyWith(color: AppColor.fontColor),
+            style:
+                AppStyle.style13(context).copyWith(color: AppColor.fontColor),
           ),
         ],
       ),
     );
-
   }
 }

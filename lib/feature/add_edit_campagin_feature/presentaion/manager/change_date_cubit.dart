@@ -18,6 +18,7 @@ class ChangeDateCubit extends Cubit<ChangeDateState> {
 
   Future<void> showFirstDate(BuildContext context) async {
      firstSelectDate = await showDatePicker(
+         locale: const Locale("en"),
             context: context,
             firstDate: DateTime.now(),
             lastDate: DateTime(2040),
@@ -30,11 +31,13 @@ class ChangeDateCubit extends Cubit<ChangeDateState> {
 
   Future<void> showLastDate(BuildContext context) async {
     seconedSelectDate = await showDatePicker(
+      locale: const Locale("en"),
             context: context,
             firstDate: DateTime.now(),
             lastDate: DateTime(2040),
             initialDate: DateTime.now()) ??
         seconedSelectDate;
+
     lastDate=Helper.dateToString(seconedSelectDate);
     emit(ChangeDateSuccess());
     emit(ChangeDateInitial());

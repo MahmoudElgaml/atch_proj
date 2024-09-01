@@ -26,7 +26,7 @@ void main() async {
           Locale("en"),
           Locale("ar"),
         ],
-        fallbackLocale: const Locale('ar'),
+        fallbackLocale: const Locale('en'),
         path: 'assets/translation',
         child: const MyApp(),
       ), // Wrap your app
@@ -47,6 +47,10 @@ class MyApp extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         theme: ThemeData(
+
+          datePickerTheme: const DatePickerThemeData(
+            locale: Locale("en")
+          ),
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.white,
             surfaceTintColor: Colors.white,
