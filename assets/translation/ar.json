@@ -34,6 +34,16 @@
   "takeOffer": "احصل على العرض",
   "typeSearch": "اكتب للبحث",
   "noWishlist": "لا توجد مفضلات بعد",
-  "tipWishlist": "اضغط على القلب بجوار المنتج، وسنقوم بحفظها لك هنا"
-
+  "tipWishlist": "اضغط على القلب بجوار المنتج، وسنقوم بحفظها لك هنا",
+  "createAdvertise": "إنشاء إعلان",
+  "targetAudience": "الجمهور المستهدف",
+  "location": "الموقع",
+  "startDate": "تاريخ البدء",
+  "endDate": "تاريخ الانتهاء",
+  "addPhoto":"اضف صوره",
+  "addLink": "اضف لينك",
+  "bAddCampaign": "اضافه اعلان",
+  "campaignName": "اسم الحملة",
+  "description": "الوصف",
+  "oldPhoto": "الصور القديمه"
 }

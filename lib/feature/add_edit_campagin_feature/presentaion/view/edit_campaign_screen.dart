@@ -7,6 +7,7 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/wid
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_camapaign_textfiled.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/date_section_widget.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/old_image_section.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -83,7 +84,7 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
                     ),
                     const Gap(20),
                     Text(
-                      "Create Advertise",
+                      context.tr("createAdvertise"),
                       style: AppStyle.style24Regular(context),
                     ),
                     const Gap(19),
@@ -112,7 +113,7 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
                         Row(
                           children: [
                             Text(
-                              "Target audience",
+                              context.tr("targetAudience"),
                               style: AppStyle.style24Regular(context),
                             ),
                             const Gap(19),
@@ -193,7 +194,7 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
       campaignPrice: int.parse(price.text),
       campaignOffer: int.parse(offer.text),
       campaignDescription: description.text,
-      campaignEndDate: ChangeDateCubit.get(context).lastDate.substring(0, 12),
+      campaignEndDate: ChangeDateCubit.get(context).lastDate,
       campaignLocation: ["cairo"],
       campaignName: companyName.text,
       campaignVideos: linkCubit.links,

@@ -1,4 +1,5 @@
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
@@ -19,7 +20,7 @@ final LinkFeatureCubit linkCubit;
         Row(
           children: [
             Text(
-              "Add Link",
+              context.tr("addLink"),
               style: AppStyle.style24Regular(context),
             ),
             const Spacer(),

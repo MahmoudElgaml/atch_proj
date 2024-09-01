@@ -25,6 +25,7 @@ var profilepic = getIt<HiveManager>()
 class _TestUploadImageState extends State<TestUploadImage> {
   @override
   Widget build(BuildContext context) {
+    print(profilepic);
     return Center(
       child: Column(
         children: [

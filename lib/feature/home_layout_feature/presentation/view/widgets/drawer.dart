@@ -27,7 +27,8 @@ class HomeDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Person userData =
-        HiveManager().retrieveSingleData<Person>(HiveKeys.userBox);
+        getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox);
+    print(userData.profilePic);
 
     return Drawer(
       width: MediaQuery.sizeOf(context).width * .7,

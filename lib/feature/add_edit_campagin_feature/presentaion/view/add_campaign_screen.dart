@@ -3,6 +3,7 @@ import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/services/validation_service.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/helper.dart';
+import 'package:atch_proj/feature/account_feature/page/account_screen.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/data/model/AddCampaignModel.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_campaign_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_image_cubit.dart';
@@ -15,6 +16,7 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/wid
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
 import 'package:atch_proj/generated/assets.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -77,7 +79,7 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                     ),
                     const Gap(20),
                     Text(
-                      "Create Advertise",
+                      context.tr("createAdvertise"),
                       style: AppStyle.style24Regular(context),
                     ),
                     const Gap(19),
@@ -89,24 +91,24 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                               value, "Company Name"),
                           textEditingController: companyName,
                           icon: const Icon(Icons.person_2_outlined),
-                          hint: "Campaign Name",
+                          hint: context.tr("campaignName"),
                           maxLine: 1,
-                          labelText: "Campaign Name",
+                          labelText: context.tr("campaignName"),
                         ),
                         const Gap(19),
                         CustomCampaignTextFiled(
                           validator: (value) => ValidationService.validateEmpty(
                               value, "Description"),
                           textEditingController: description,
-                          hint: "Description",
+                          hint: context.tr("description"),
                           maxLine: 3,
-                          labelText: "Description",
+                          labelText: context.tr("description"),
                         ),
                         const Gap(19),
                         Row(
                           children: [
                             Text(
-                              "Target audience",
+                              context.tr("targetAudience"),
                               style: AppStyle.style24Regular(context),
                             ),
                             const Gap(19),
@@ -126,7 +128,7 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                         Row(
                           children: [
                             Text(
-                              "Location",
+                              context.tr("location"),
                               style: AppStyle.style24Regular(context),
                             ),
                             const Gap(19),
@@ -174,7 +176,7 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                         ),
                         const Gap(20),
                         CustomAddCampaignButton(
-                          title: "Add Campaign",
+                          title: context.tr("bAddCampaign"),
                           onPressed: () async {
                             if (validateState.currentState!.validate()) {
                               var adToken = getIt<HiveManager>()
@@ -206,8 +208,8 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
       campaignOffer: int.parse(offer.text),
       campaignDescription: description.text,
       campaignStartDate:
-          ChangeDateCubit.get(context).firstDate.substring(0, 12),
-      campaignEndDate: ChangeDateCubit.get(context).lastDate.substring(0, 12),
+          ChangeDateCubit.get(context).firstDate,
+      campaignEndDate: ChangeDateCubit.get(context).lastDate,
       campaignLocation: [selectedLocation],
       campaignName: companyName.text,
       campaignTargetAudience: selectedValue,

@@ -77,51 +77,66 @@ class AdvAccountCampaignItem extends StatelessWidget {
               flex: 3,
               child: Row(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        campaigns.endDate?.substring(0, 16) ?? " No Date",
-                        style: AppStyle.style18Regular(context),
-                      ),
-                      Text(
-                        campaigns.campaignName ?? "",
-                        style: AppStyle.style18(context),
-                      ),
-                      const Gap(7),
-                      FittedBox(
-                        child: SizedBox(
-                          width: 170,
-                          child: Text(
-                            overflow: TextOverflow.ellipsis,
-                            campaigns.description ?? "",
-                            maxLines: 2,
-                            style: AppStyle.style18(context),
-                          ),
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          campaigns.endDate?.substring(0, 16) ?? " No Date",
+                          style: AppStyle.style18Regular(context),
                         ),
-                      )
-                    ],
+                        Text(
+                          campaigns.campaignName ?? "",
+                          style: AppStyle.style18(context),
+                        ),
+                        const Gap(7),
+                        FittedBox(
+                          child: SizedBox(
+                            width: 170,
+                            child: Text(
+                              overflow: TextOverflow.ellipsis,
+                              campaigns.description ?? "",
+                              maxLines: 2,
+                              style: AppStyle.style18(context),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   const Spacer(),
-                  InkWell(
-                    onTap: () {
-                      final copiedData = campaigns.copyWith();
-                      context.push(
-                        AppRoute.editCampaign,
-                        extra: copiedData,
-                      );
-                    },
-                    child: SvgPicture.asset(Assets.imagesEdit),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      AdvertiseInfoCubit.get(context)
-                          .deleteCampaign(campaigns.id);
-                    },
-                    icon: const Icon(
-                      size: 26,
-                      Icons.delete_outline,
-                      color: AppColor.primaryColor,
+                  Expanded(
+                    flex: 1,
+                    child: Row(
+                      children: [
+                        Flexible(
+                          child: InkWell(
+                            onTap: () {
+                              final copiedData = campaigns.copyWith();
+                              context.push(
+                                AppRoute.editCampaign,
+                                extra: copiedData,
+                              );
+                            },
+                            child: SvgPicture.asset(Assets.imagesEdit),
+                          ),
+                        ),
+                        const Gap(15),
+                        Flexible(
+                          child: IconButton(
+                            onPressed: () {
+                              AdvertiseInfoCubit.get(context)
+                                  .deleteCampaign(campaigns.id);
+                            },
+                            icon: const Icon(
+                              size: 26,
+                              Icons.delete_outline,
+                              color: AppColor.primaryColor,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   )
                 ],

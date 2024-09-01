@@ -1,6 +1,8 @@
+import 'package:atch_proj/feature/account_feature/page/account_screen.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/old_image_cubit.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,15 +20,13 @@ class OldImageSection extends StatelessWidget {
     OldImageCubit.get(context).setOldImage(oldImages);
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Text(
-              "Old Photo",
-              style: AppStyle.style24Regular(context),
-            ),
-          ],
+        Text(
+          context.tr("oldPhoto"),
+          style: AppStyle.style24Regular(context),
         ),
+        const Gap(10),
         BlocBuilder<OldImageCubit, OldImageState>(
           builder: (context, state) {
             var images = OldImageCubit.get(context).myImages;

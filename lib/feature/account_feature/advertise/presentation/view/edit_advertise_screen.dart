@@ -1,4 +1,6 @@
 import 'package:atch_proj/config/routes/routes.dart';
+import 'package:atch_proj/core/services/validation_service.dart';
+import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
 import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +32,12 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
 
   TextEditingController companyName = TextEditingController();
 
-  TextEditingController phone = TextEditingController();
+  TextEditingController phone1 = TextEditingController();
+  TextEditingController phone2 = TextEditingController();
 
-  TextEditingController location = TextEditingController();
+  TextEditingController location1 = TextEditingController();
+  TextEditingController location2 = TextEditingController();
+
   TextEditingController about = TextEditingController();
 
   @override
@@ -48,11 +53,11 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
           EasyLoading.dismiss();
           EasyLoading.showError("");
         } else if (state is AdvertiseAccountSuccessState) {
+          await Helper.retrievePerson().delete();
           await EasyLoading.showSuccess("");
           if (context.mounted) {
             context.go(AppRoute.logInKey);
           }
-
         }
       },
       child: Column(
@@ -80,6 +85,7 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
           const Gap(25),
           CostumeTextFiled(
             title: "Contact Email",
+            validator: (value) => ValidationService.validateEmail(value),
             textEditingController: email,
           ),
           const Gap(25),
@@ -89,15 +95,46 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
             textEditingController: password,
           ),
           const Gap(25),
-          CostumeTextFiled(
-            title: "AdvertisePhone",
-            keyboardType: TextInputType.phone,
-            textEditingController: phone,
+          Row(
+            children: [
+              Expanded(
+                child: CostumeTextFiled(
+                  validator: (value) =>
+                      ValidationService.validatePhoneNumber(value),
+                  keyboardType: TextInputType.phone,
+                  title: "Phone1",
+                  textEditingController: phone1,
+                ),
+              ),
+              const Gap(10),
+              Expanded(
+                child: CostumeTextFiled(
+                  keyboardType: TextInputType.phone,
+                  title: "Phone2",
+                  textEditingController: phone2,
+                ),
+              ),
+            ],
           ),
           const Gap(25),
-          CostumeTextFiled(
-            title: "AdvertiseLocation",
-            textEditingController: location,
+          Row(
+            children: [
+              Expanded(
+                child: CostumeTextFiled(
+                  validator: (value) =>
+                      ValidationService.validateEmpty(value, "Your Location"),
+                  title: "Location",
+                  textEditingController: location1,
+                ),
+              ),
+              const Gap(10),
+              Expanded(
+                child: CostumeTextFiled(
+                  title: "Location2",
+                  textEditingController: location2,
+                ),
+              ),
+            ],
           ),
           const Gap(25),
           SizedBox(
@@ -107,20 +144,7 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
                 backgroundColor: AppColor.primaryColor,
               ),
               onPressed: () {
-                EditAdvertiseData advertise = EditAdvertiseData(
-
-                  password: password.text,
-                  username: username.text,
-                  visa: "5050",
-                  advertiserId: advertiser.id,
-                  about: about.text,
-                  advertiserLocations: [location.text],
-                  advertiserPhones: [phone.text],
-                  advertiserType: "Shop",
-                  name: companyName.text,
-                  email: email.text,
-                );
-                advertise.image = UploadImageService.imageFile;
+                EditAdvertiseData advertise = createEditAdvModel(advertiser);
                 AdvertiseInfoCubit.get(context).editAdvertiser(advertise);
               },
               child: Padding(
@@ -138,12 +162,41 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
     );
   }
 
+  EditAdvertiseData createEditAdvModel(Advertiser advertiser) {
+    List<String> phones = [phone1.text];
+    if (phone2.text != "") {
+      phones.add(phone2.text);
+    }
+    List<String> locations = [location1.text];
+
+    if (location2.text != "") {
+      locations.add(location2.text);
+    }
+    EditAdvertiseData advertise = EditAdvertiseData(
+      password: password.text,
+      username: username.text,
+      visa: "5050",
+      advertiserId: advertiser.id,
+      about: about.text,
+      advertiserLocations: locations,
+      advertiserPhones:phones,
+      advertiserType: "Shop",
+      name: companyName.text,
+      email: email.text,
+    );
+    advertise.image = UploadImageService.imageFile;
+    return advertise;
+  }
+
   setData(Advertiser advertiser) {
     companyName.text = advertiser.name ?? "";
     email.text = advertiser.email ?? "";
     username.text = advertiser.name ?? "";
-    location.text = advertiser.locations?[0] ?? "";
-    phone.text = advertiser.phones?[0] ?? "";
+    location1.text = advertiser.locations?[0] ?? "";
+    location2.text =
+        (advertiser.locations!.length > 1) ? advertiser.locations![1] : "";
+    phone1.text = advertiser.phones?[0] ?? "";
+    phone2.text = (advertiser.phones!.length > 1) ? advertiser.phones![1] : "";
     about.text = advertiser.about ?? "";
   }
 }
