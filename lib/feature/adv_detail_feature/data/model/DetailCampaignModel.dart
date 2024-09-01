@@ -101,6 +101,7 @@ class DetailAdvertiser {
     this.email,
     this.id,
     this.name,
+    this.phone,
     this.profilePic,
     this.referralCode,
     this.username,});
@@ -114,6 +115,7 @@ class DetailAdvertiser {
     profilePic = json['profile_pic'];
     referralCode = json['referral_code'];
     username = json['username'];
+    phone = json['phones'] != null ? json['phones'].cast<String>() : [];
   }
 
   String? about;
@@ -124,6 +126,7 @@ class DetailAdvertiser {
   String? profilePic;
   dynamic referralCode;
   String? username;
+  List<String>?phone;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -135,6 +138,7 @@ class DetailAdvertiser {
     map['profile_pic'] = profilePic;
     map['referral_code'] = referralCode;
     map['username'] = username;
+    map["phones"]=phone;
     return map;
   }
 

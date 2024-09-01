@@ -17,7 +17,7 @@ class CustomTap extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
       child: Center(
-        child: Text(
+        child:  Text(
           context.tr(categories.title),
           style: const TextStyle(color: Colors.white),
         ),

@@ -37,7 +37,7 @@ class InfoSection extends StatelessWidget {
               style: AppStyle.style24Regular(context),
             ),
             const Gap(10),
-            const MessageButton()
+             MessageButton(number:advertiser.phone?.first)
           ],
         ),
       ),

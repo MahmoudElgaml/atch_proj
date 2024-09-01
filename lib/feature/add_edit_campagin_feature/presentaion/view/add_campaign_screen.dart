@@ -2,6 +2,7 @@ import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/services/validation_service.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/data/model/AddCampaignModel.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_campaign_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_image_cubit.dart';
@@ -20,9 +21,15 @@ import 'package:gap/gap.dart';
 import '../../../../core/utils/service_locator/config.dart';
 import '../manager/link_feature_cubit.dart';
 
-class AddCampaignScreen extends StatelessWidget {
-  AddCampaignScreen({super.key});
+class AddCampaignScreen extends StatefulWidget {
+  const AddCampaignScreen({super.key});
 
+  @override
+  State<AddCampaignScreen> createState() => _AddCampaignScreenState();
+}
+
+class _AddCampaignScreenState extends State<AddCampaignScreen> {
+  String selectedValue = "Babies";
   static const Map<String, String> items = {
     "kids (1-3)": "Babies",
     "biggerKids (4-12)": "Kids",
@@ -31,10 +38,9 @@ class AddCampaignScreen extends StatelessWidget {
     "elder(+40)": "Elder",
   };
 
-  String selectedValue = "Babies";
-
   final TextEditingController companyName = TextEditingController();
-
+  final List<String> locations = Helper.retrievePerson().locations ?? [];
+  String selectedLocation = Helper.retrievePerson().locations?.first ?? "";
   final TextEditingController description = TextEditingController();
 
   final TextEditingController price = TextEditingController();
@@ -117,6 +123,26 @@ class AddCampaignScreen extends StatelessWidget {
                           ],
                         ),
                         const Gap(19),
+                        Row(
+                          children: [
+                            Text(
+                              "Location",
+                              style: AppStyle.style24Regular(context),
+                            ),
+                            const Gap(19),
+                            Expanded(
+                              child: CustomDropMenu(
+                                setValue: (value) {
+                                  selectedLocation = value;
+                                },
+                                items: Map.fromIterable(locations),
+                                selectedValue: selectedLocation,
+                                isAuth: false,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Gap(19),
                         const DateSectionWidget(),
                         const Gap(19),
                         CustomCampaignTextFiled(
@@ -150,7 +176,6 @@ class AddCampaignScreen extends StatelessWidget {
                         CustomAddCampaignButton(
                           title: "Add Campaign",
                           onPressed: () async {
-                            print(selectedValue);
                             if (validateState.currentState!.validate()) {
                               var adToken = getIt<HiveManager>()
                                   .retrieveSingleData<Person>(HiveKeys.userBox)

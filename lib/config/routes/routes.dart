@@ -85,7 +85,7 @@ class AppRoute {
                   create: (context) => getIt<AddCampaignCubit>(),
                 ),
               ],
-              child: AddCampaignScreen(),
+              child: const AddCampaignScreen(),
             ),
       ),
       GoRoute(

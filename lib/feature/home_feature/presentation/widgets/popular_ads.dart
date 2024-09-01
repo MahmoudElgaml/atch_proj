@@ -79,4 +79,4 @@ class PopularAdsLoading extends StatelessWidget {
       ),
     );
   }
-}
+} 

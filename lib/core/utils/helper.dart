@@ -28,7 +28,7 @@ abstract class Helper {
     return DateFormat.yMMMd().format(date);
   }
 
-  static OutlineInputBorder buildOutlineInputBorder() {
+  static  OutlineInputBorder buildOutlineInputBorder() {
     return OutlineInputBorder(
       borderSide: const BorderSide(color: Color(0xffE4DFDF)),
       borderRadius: BorderRadius.circular(12),

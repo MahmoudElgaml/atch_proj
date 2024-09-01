@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+
 part 'UserData.g.dart';
 
 class UserData {
@@ -24,14 +25,16 @@ class UserData {
     return map;
   }
 }
+
 @HiveType(typeId: 1)
-class Person extends HiveObject{
+class Person extends HiveObject {
   Person({
     this.age,
     this.about,
     this.advertiserType,
     this.email,
     this.id,
+    this.locations,
     this.name,
     this.profilePic,
     this.referralCode,
@@ -52,6 +55,7 @@ class Person extends HiveObject{
     role = json['role'];
     username = json['username'];
     wishlist = json['wishlist'] != null ? json['wishlist'].cast<num>() : [];
+    locations = json['location'] != null ? json['location'].cast<String>() : [];
   }
 
   @HiveField(1)
@@ -75,7 +79,9 @@ class Person extends HiveObject{
   @HiveField(10)
   int? age;
   @HiveField(11)
-  List<num>?wishlist;
+  List<num>? wishlist;
+  @HiveField(12)
+  List<String>? locations;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -90,6 +96,7 @@ class Person extends HiveObject{
     map['role'] = role;
     map['username'] = username;
     map['wishlist'] = wishlist;
+    map['location'] = locations;
     return map;
   }
 }

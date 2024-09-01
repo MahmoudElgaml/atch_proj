@@ -22,6 +22,7 @@ class PersonAdapter extends TypeAdapter<Person> {
       advertiserType: fields[2] as String?,
       email: fields[3] as String?,
       id: fields[4] as num?,
+      locations: (fields[12] as List?)?.cast<String>(),
       name: fields[5] as String?,
       profilePic: fields[6] as String?,
       referralCode: fields[7] as dynamic,
@@ -34,7 +35,7 @@ class PersonAdapter extends TypeAdapter<Person> {
   @override
   void write(BinaryWriter writer, Person obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(12)
       ..writeByte(1)
       ..write(obj.about)
       ..writeByte(2)
@@ -56,7 +57,9 @@ class PersonAdapter extends TypeAdapter<Person> {
       ..writeByte(10)
       ..write(obj.age)
       ..writeByte(11)
-      ..write(obj.wishlist);
+      ..write(obj.wishlist)
+      ..writeByte(12)
+      ..write(obj.locations);
   }
 
   @override
