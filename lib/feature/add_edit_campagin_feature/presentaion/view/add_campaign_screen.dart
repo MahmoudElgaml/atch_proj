@@ -208,7 +208,7 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
       campaignStartDate:
           ChangeDateCubit.get(context).firstDate.substring(0, 12),
       campaignEndDate: ChangeDateCubit.get(context).lastDate.substring(0, 12),
-      campaignLocation: ["cairo"],
+      campaignLocation: [selectedLocation],
       campaignName: companyName.text,
       campaignTargetAudience: selectedValue,
       campaignVideos: linkCubit.links,

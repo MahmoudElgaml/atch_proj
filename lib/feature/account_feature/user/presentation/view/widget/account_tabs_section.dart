@@ -21,30 +21,27 @@ class AccountTabsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.sizeOf(context).height * .40,
-      child: DefaultTabController(
-        length: 2,
-        child: Column(
-          children: [
-            const AccountTabs(),
-            Flexible(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TabBarView(
-                  children: [
-                    UsedCampaignList(
-                      usedOfferCubit: usedOfferCubit,
-                    ),
-                    RecentlyCampaignList(
-                      recentlyViewedCubit: recentlyViewedCubit,
-                    ),
-                  ],
-                ),
+    return DefaultTabController(
+      length: 2,
+      child: Column(
+        children: [
+          const AccountTabs(),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TabBarView(
+                children: [
+                  UsedCampaignList(
+                    usedOfferCubit: usedOfferCubit,
+                  ),
+                  RecentlyCampaignList(
+                    recentlyViewedCubit: recentlyViewedCubit,
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -5,7 +5,6 @@ import 'package:atch_proj/feature/account_feature/page/widgets/account_first_sec
 import 'package:atch_proj/feature/account_feature/user/presentation/view/widget/account_tabs_section.dart';
 import 'package:flutter/material.dart';
 
-
 class UserAccountScreen extends StatefulWidget {
   const UserAccountScreen({super.key});
 
@@ -19,20 +18,25 @@ late UsedOfferCubit usedOfferCubit;
 class _UserAccountScreenState extends State<UserAccountScreen> {
   @override
   void initState() {
-     recentlyViewedCubit = getIt<RecentlyViewedCubit>()..getRecentlyView();
-     usedOfferCubit = getIt<UsedOfferCubit>()..getUsedOffer();
+    recentlyViewedCubit = getIt<RecentlyViewedCubit>()..getRecentlyView();
+    usedOfferCubit = getIt<UsedOfferCubit>()..getUsedOffer();
     super.initState();
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const AccountFirstSection(),
-        AccountTabsSection(
-          usedOfferCubit: usedOfferCubit,
-          recentlyViewedCubit: recentlyViewedCubit,
+        const Expanded(
+          flex: 2,
+          child: AccountFirstSection(),
+        ),
+        Expanded(
+          flex: 3,
+          child: AccountTabsSection(
+            usedOfferCubit: usedOfferCubit,
+            recentlyViewedCubit: recentlyViewedCubit,
+          ),
         ),
       ],
     );

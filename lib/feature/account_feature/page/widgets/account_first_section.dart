@@ -23,38 +23,35 @@ class AccountFirstSection extends StatelessWidget {
     Person person =
         getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox);
 
-    return SizedBox(
-      height: MediaQuery.sizeOf(context).height * .3,
-      child: Center(
-        child: Column(
-          children: [
-            CircleAvatar(
-              radius: 60,
-              child: ClipOval(
-                child: CachedNetworkImage(
-                  fit: BoxFit.fill,
-                  width: double.infinity,
-                  imageUrl: "http://92.113.26.243:5000${person.profilePic}"
-                     ,
-                  errorWidget: (context, url, error) =>
-                      Image.network(ConstValue.emptyImage),
-                ),
+    return Center(
+      child: Column(
+        children: [
+          CircleAvatar(
+            radius: 40,
+            child: ClipOval(
+              child: CachedNetworkImage(
+                fit: BoxFit.fill,
+                width: double.infinity,
+                imageUrl: "http://92.113.26.243:5000${person.profilePic}"
+                   ,
+                errorWidget: (context, url, error) =>
+                    Image.network(ConstValue.emptyImage),
               ),
             ),
-            const Gap(10),
-            Text(
-              person.username ?? "",
-              style: AppStyle.style24Regular(context),
-            ),
-            const Gap(16),
-            Helper.retrieveRole() == "user"
-                ? InkWell(
-                    onTap: () => context.push(AppRoute.editUserPage),
-                    child: const EditButton(),
-                  )
-                : const EditButtonBuilderForAdv()
-          ],
-        ),
+          ),
+          const Gap(10),
+          Text(
+            person.username ?? "",
+            style: AppStyle.style24Regular(context),
+          ),
+          const Gap(16),
+          Helper.retrieveRole() == "user"
+              ? InkWell(
+                  onTap: () => context.push(AppRoute.editUserPage),
+                  child: const EditButton(),
+                )
+              : const EditButtonBuilderForAdv()
+        ],
       ),
     );
   }

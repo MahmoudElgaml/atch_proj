@@ -15,12 +15,13 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String role =
-        getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox).role ??
-            "user";
+    String role = getIt<HiveManager>()
+            .retrieveSingleData<Person>(HiveKeys.userBox)
+            .role ??
+        "user";
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(left: 8.0, right: 8),
         child: Column(
           children: [
             Text(
@@ -29,8 +30,8 @@ class AccountScreen extends StatelessWidget {
             ),
             const Gap(32),
             role == "user"
-                ? const UserAccountScreen()
-                : const AdvertiseAccountScreen(),
+                ? const Expanded(child: UserAccountScreen())
+                : const Expanded(child: AdvertiseAccountScreen()),
           ],
         ),
       ),

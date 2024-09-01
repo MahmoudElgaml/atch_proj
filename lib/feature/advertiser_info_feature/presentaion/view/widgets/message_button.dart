@@ -16,7 +16,7 @@ class MessageButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        lunchWhats(number??"");
+        lunchWhats(number ?? "");
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 19),
@@ -57,17 +57,10 @@ Future<void> lunchWhats(String number) async {
   String contact = number;
   String text = 'hello';
   String androidUrl = "whatsapp://send?phone=$contact&text=$text";
-  String iosUrl = "https://wa.me/$contact?text=${Uri.parse(text)}";
 
   try {
-    if (Platform.isIOS) {
-      if (await canLaunchUrl(Uri.parse(iosUrl))) {
-        await launchUrl(Uri.parse(iosUrl));
-      }
-    } else {
-      if (await canLaunchUrl(Uri.parse(androidUrl))) {
-        await launchUrl(Uri.parse(androidUrl));
-      }
+    if (await canLaunchUrl(Uri.parse(Uri.encodeFull(androidUrl)))) {
+      await launchUrl(Uri.parse(Uri.encodeFull(androidUrl)));
     }
   } catch (e) {
     print('object');
