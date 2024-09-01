@@ -94,8 +94,8 @@ class AdWishlistItem extends StatelessWidget {
                   IconButton(
                     onPressed: () {
                       WishlistCubit.get(context).addToWishList(campaign.id!);
-                      Helper.retrievePerson().wishlist?.remove(campaign.id);
-                      Helper.retrievePerson().save();
+                      Helper.retrievePerson()?.wishlist?.remove(campaign.id);
+                      Helper.retrievePerson()?.save();
                     },
                     icon: const Icon(
                       Icons.favorite_outlined,

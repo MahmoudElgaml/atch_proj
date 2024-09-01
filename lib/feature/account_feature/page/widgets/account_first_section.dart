@@ -20,7 +20,7 @@ class AccountFirstSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Person person =
+    Person? person =
         getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox);
 
     return Center(
@@ -32,7 +32,7 @@ class AccountFirstSection extends StatelessWidget {
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
                 width: double.infinity,
-                imageUrl: "http://92.113.26.243:5000${person.profilePic}"
+                imageUrl: "http://92.113.26.243:5000${person?.profilePic}"
                    ,
                 errorWidget: (context, url, error) =>
                     Image.network(ConstValue.emptyImage),
@@ -41,7 +41,7 @@ class AccountFirstSection extends StatelessWidget {
           ),
           const Gap(10),
           Text(
-            person.username ?? "",
+            person?.username ?? "",
             style: AppStyle.style24Regular(context),
           ),
           const Gap(16),

@@ -53,7 +53,7 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
           EasyLoading.dismiss();
           EasyLoading.showError("");
         } else if (state is AdvertiseAccountSuccessState) {
-          await Helper.retrievePerson().delete();
+          await Helper.retrievePerson()?.delete();
           await EasyLoading.showSuccess("");
           if (context.mounted) {
             context.go(AppRoute.logInKey);

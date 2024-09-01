@@ -26,9 +26,8 @@ class HomeDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Person userData =
+    Person? userData =
         getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox);
-    print(userData.profilePic);
 
     return Drawer(
       width: MediaQuery.sizeOf(context).width * .7,
@@ -44,7 +43,7 @@ class HomeDrawer extends StatelessWidget {
                   height: 80,
                   child: CachedNetworkImage(
                     imageUrl:
-                        "http://92.113.26.243:5000${userData.profilePic}" ?? "",
+                        "http://92.113.26.243:5000${userData?.profilePic}" ?? "",
                     errorWidget: (context, url, error) {
                       return Image.network(ConstValue.emptyImage);
                     },
@@ -53,7 +52,7 @@ class HomeDrawer extends StatelessWidget {
               ),
               const Gap(12),
               Text(
-                userData.username ?? "",
+                userData?.username ?? "",
                 style: AppStyle.style18ExtraBold(context),
               ),
               const Gap(40),
@@ -80,14 +79,20 @@ class HomeDrawer extends StatelessWidget {
                   getIt<StorageToken>().deleteToken();
                   getIt<HiveManager>()
                       .retrieveSingleData<Person>(HiveKeys.userBox)
-                      .delete();
+                      ?.delete();
                   context.go(AppRoute.logInKey);
                 },
                 drawerItemModel:
                     DrawerItemModel(context.tr("logout"), Icons.login),
               ),
               const Gap(20),
-              userData.referralCode == null
+              Row(
+                children: [
+                  const Text("Your id :"),
+                  Text(userData?.id?.toString() ?? ""),
+                ],
+              ),
+              userData?.referralCode == null
                   ? const SizedBox()
                   : const ReferralCodeQrWidget()
             ],

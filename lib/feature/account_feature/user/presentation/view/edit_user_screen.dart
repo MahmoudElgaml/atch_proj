@@ -53,12 +53,11 @@ class _UserEditScreenState extends State<UserEditScreen> {
           EasyLoading.dismiss();
           EasyLoading.showError("");
         } else if (state is EditUserSuccessState) {
-         await Helper.retrievePerson().delete();
+          await Helper.retrievePerson()?.delete();
           await EasyLoading.showSuccess("");
-          if(context.mounted){
+          if (context.mounted) {
             context.go(AppRoute.logInKey);
           }
-
         }
       },
       builder: (context, state) {
@@ -103,7 +102,7 @@ class _UserEditScreenState extends State<UserEditScreen> {
                 onPressed: () {
                   var userId = getIt<HiveManager>()
                       .retrieveSingleData<Person>(HiveKeys.userBox)
-                      .id;
+                      ?.id;
                   EditUserData editUser = EditUserData(
                     image: UploadImageService.imageFile,
                     password: password.text,
@@ -133,10 +132,11 @@ class _UserEditScreenState extends State<UserEditScreen> {
   }
 
   setData() {
-    var person = getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox);
-    username.text = person.name ?? "";
-    email.text = person.email ?? "";
-    name.text = person.name ?? "";
-    age.text = person.age.toString();
+    var person =
+        getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox);
+    username.text = person?.name ?? "";
+    email.text = person?.email ?? "";
+    name.text = person?.name ?? "";
+    age.text = person?.age?.toString()??"";
   }
 }

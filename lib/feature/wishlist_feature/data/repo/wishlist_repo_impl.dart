@@ -47,7 +47,7 @@ class WishlistRepoImpl implements WishlistRepo {
       var id = await storageToken.getToken();
 
       var role =
-          hiveManager.retrieveSingleData<Person>(HiveKeys.userBox).role ?? "user";
+          hiveManager.retrieveSingleData<Person>(HiveKeys.userBox)?.role ?? "user";
 
 
 

@@ -34,9 +34,9 @@ class HiveManager {
     }
   }
 
-  T retrieveSingleData<T>(String boxKey) {
+  T? retrieveSingleData<T>(String boxKey) {
     var box = Hive.box<T>(boxKey);
-    return box.get(0)!;
+    return box.get(0);
   }
   List<T> retrieveListData<T>(String boxKey) {
     var box = Hive.box<T>(boxKey);

@@ -19,7 +19,7 @@ class ReferralCodeQrWidget extends StatelessWidget {
         ),
         const Gap(10),
         QrImageView(
-          data: Helper.retrievePerson().referralCode,
+          data: Helper.retrievePerson()?.referralCode,
           version: QrVersions.auto,
           size: 150.0,
         ),

@@ -20,7 +20,7 @@ class TestUploadImage extends StatefulWidget {
 
 var profilepic = getIt<HiveManager>()
     .retrieveSingleData<Person>(HiveKeys.userBox)
-    .profilePic;
+    ?.profilePic;
 
 class _TestUploadImageState extends State<TestUploadImage> {
   @override

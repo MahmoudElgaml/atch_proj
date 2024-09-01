@@ -20,7 +20,7 @@ class EditAccountScreen extends StatefulWidget {
 
 class _EditAccountScreenState extends State<EditAccountScreen> {
   var role =
-      getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox).role;
+      getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox)?.role;
 
   @override
   Widget build(BuildContext context) {

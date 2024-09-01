@@ -50,7 +50,7 @@ class CampaignDetailRepoImpl implements CampaignDetailRepo {
       await aPiManger.post(EndPoints.linkPressed, {
         "user_id": uId,
         "campaign_id": campaignId,
-        "role": person.role,
+        "role": person?.role,
         "link": link
       });
       return right("success");

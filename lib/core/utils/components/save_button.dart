@@ -39,25 +39,25 @@ class _SaveButtonState extends State<SaveButton> {
           onTap: () async {
             if (getIt<HiveManager>()
                     .retrieveSingleData<Person>(HiveKeys.userBox)
-                    .wishlist
+                    ?.wishlist
                     ?.contains(widget.campaignId) ??
                 false) {
               getIt<HiveManager>()
                   .retrieveSingleData<Person>(HiveKeys.userBox)
-                  .wishlist
+                  ?.wishlist
                   ?.remove(widget.campaignId);
               await getIt<HiveManager>()
                   .retrieveSingleData<Person>(HiveKeys.userBox)
-                  .save();
+                  ?.save();
               WishlistCubit.get(context).addToWishList(widget.campaignId);
             } else {
               getIt<HiveManager>()
                   .retrieveSingleData<Person>(HiveKeys.userBox)
-                  .wishlist
+                  ?.wishlist
                   ?.add(widget.campaignId);
               await getIt<HiveManager>()
                   .retrieveSingleData<Person>(HiveKeys.userBox)
-                  .save();
+                  ?.save();
               WishlistCubit.get(context).addToWishList(widget.campaignId);
               isSelected = !isSelected;
             }
@@ -75,7 +75,7 @@ class _SaveButtonState extends State<SaveButton> {
                 Icons.favorite,
                 color: getIt<HiveManager>()
                             .retrieveSingleData<Person>(HiveKeys.userBox)
-                            .wishlist
+                            ?.wishlist
                             ?.contains(widget.campaignId) ??
                         false
                     ? const Color(0xffeb5757)

@@ -38,10 +38,10 @@ abstract class Helper {
   static String retrieveRole() {
     return getIt<HiveManager>()
             .retrieveSingleData<Person>(HiveKeys.userBox)
-            .role ??
+            ?.role ??
         "user";
   }
-  static Person retrievePerson() {
+  static Person? retrievePerson() {
     return getIt<HiveManager>()
         .retrieveSingleData<Person>(HiveKeys.userBox);
 
