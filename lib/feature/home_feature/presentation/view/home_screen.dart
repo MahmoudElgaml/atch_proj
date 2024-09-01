@@ -12,31 +12,22 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const CustomAppBar(),
-        const Gap(17),
+        CustomAppBar(),
+        Gap(17),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
-
               children: [
-                const TabsAppBar(),
-                ElevatedButton(onPressed: () {
-                  if(context.locale.toString()=="ar"){
-                    context.setLocale(const Locale('en'));
-                  }else{
-                    context.setLocale(const Locale('ar'));
-                  }
-
-                }, child:const Text("change local")),
-                const Gap(17),
-                const PopularAds(),
-                const Gap(17),
-                const AllAds(),
-                const Gap(20),
+                TabsAppBar(),
+                Gap(17),
+                PopularAds(),
+                Gap(17),
+                AllAds(),
+                Gap(20),
               ],
             ),
           ),

@@ -30,6 +30,7 @@ class HomeDrawer extends StatelessWidget {
         HiveManager().retrieveSingleData<Person>(HiveKeys.userBox);
 
     return Drawer(
+      width: MediaQuery.sizeOf(context).width * .7,
       child: Padding(
         padding: const EdgeInsets.only(top: 45, left: 24, right: 24),
         child: SingleChildScrollView(
@@ -59,6 +60,14 @@ class HomeDrawer extends StatelessWidget {
                 children: items
                     .map(
                       (e) => DrawerItem(
+                        onPressed: () {
+                          switch (e.title) {
+                            case "setting":
+                              {
+                                context.push(AppRoute.setting);
+                              }
+                          }
+                        },
                         drawerItemModel: e,
                       ),
                     )

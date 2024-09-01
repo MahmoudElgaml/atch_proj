@@ -1,5 +1,7 @@
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/check_box.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropMenu extends StatefulWidget {
@@ -8,7 +10,8 @@ class CustomDropMenu extends StatefulWidget {
       required this.items,
       required this.selectedValue,
       required this.isAuth,
-      required this.setValue});
+      required this.setValue,
+       this.isLang});
 
   @override
   State<CustomDropMenu> createState() => _CustomDropMenuState();
@@ -16,6 +19,7 @@ class CustomDropMenu extends StatefulWidget {
   final Map<String, String> items;
 
   final bool isAuth;
+   bool? isLang=false;
   final void Function(String value) setValue;
 }
 
@@ -40,10 +44,11 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
         value: widget.selectedValue,
         onChanged: (String? value) {
           widget.setValue(value ?? "Factory");
-
           setState(() {
             widget.selectedValue = value ?? "Factory";
           });
+          changeLangFunction(context);
+
         },
         buttonStyleData: ButtonStyleData(
           decoration: BoxDecoration(
@@ -61,5 +66,19 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
         menuItemStyleData: const MenuItemStyleData(),
       ),
     );
+  }
+
+  void changeLangFunction(BuildContext context) {
+    if (widget.isLang!) {
+      if (widget.selectedValue == "Arabic") {
+        if (context.locale.toString() == "en") {
+          context.setLocale(const Locale('ar'));
+        }
+      } else {
+        if (context.locale.toString() == "ar") {
+          context.setLocale(const Locale('en'));
+        }
+      }
+    }
   }
 }

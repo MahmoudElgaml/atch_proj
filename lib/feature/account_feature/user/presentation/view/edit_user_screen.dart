@@ -2,6 +2,7 @@ import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/services/upload_image_service.dart';
+import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/feature/account_feature/user/data/model/EditUserData.dart';
 import 'package:atch_proj/feature/account_feature/user/presentation/manager/edit_user_cubit.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
@@ -52,8 +53,12 @@ class _UserEditScreenState extends State<UserEditScreen> {
           EasyLoading.dismiss();
           EasyLoading.showError("");
         } else if (state is EditUserSuccessState) {
+         await Helper.retrievePerson().delete();
           await EasyLoading.showSuccess("");
-          context.go(AppRoute.logInKey);
+          if(context.mounted){
+            context.go(AppRoute.logInKey);
+          }
+
         }
         // TODO: implement listener
       },
