@@ -21,7 +21,7 @@ class AdsItem extends StatelessWidget {
         GoRouter.of(context).push(AppRoute.adDetails, extra: campaigns.id);
       },
       child: AspectRatio(
-        aspectRatio: 235 / 275,
+        aspectRatio: 220 / 275,
         child: Card(
           borderOnForeground: true,
           shadowColor: Colors.black26,
@@ -40,7 +40,7 @@ class AdsItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AspectRatio(
-                    aspectRatio: 200 / 120,
+                    aspectRatio: 180 / 120,
                     child: SizedBox(
                       width: 218,
                       height: 113,

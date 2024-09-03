@@ -42,10 +42,12 @@ class AdsItemDetails extends StatelessWidget {
               const Gap(10),
               FittedBox(child: Text(campaigns?.offer.toString() ?? "")),
               const Gap(20),
-              Text(
-                campaigns?.price.toString() ?? "",
-                style: const TextStyle(
-                  decoration: TextDecoration.lineThrough,
+              FittedBox(
+                child: Text(
+                  campaigns?.price.toString() ?? "",
+                  style: const TextStyle(
+                    decoration: TextDecoration.lineThrough,
+                  ),
                 ),
               ),
             ],

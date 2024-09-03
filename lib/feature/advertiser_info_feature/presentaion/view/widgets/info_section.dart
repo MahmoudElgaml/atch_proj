@@ -25,7 +25,7 @@ class InfoSection extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
                   width: double.infinity,
-                  imageUrl: advertiser.profilePic ?? "",
+                  imageUrl: "http://92.113.26.243:5000${advertiser.profilePic}" ?? "",
                   errorWidget: (context, url, error) =>
                       Image.asset(Assets.assetsImagesEmptyImage),
                 ),
