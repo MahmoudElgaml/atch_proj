@@ -1,4 +1,3 @@
-import 'package:atch_proj/feature/account_feature/page/account_screen.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/old_image_cubit.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';

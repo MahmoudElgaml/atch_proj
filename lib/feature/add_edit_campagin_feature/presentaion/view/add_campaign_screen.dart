@@ -3,7 +3,6 @@ import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/services/validation_service.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/helper.dart';
-import 'package:atch_proj/feature/account_feature/page/account_screen.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/data/model/AddCampaignModel.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_campaign_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_image_cubit.dart';

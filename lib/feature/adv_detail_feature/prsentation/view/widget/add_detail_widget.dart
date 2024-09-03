@@ -26,7 +26,7 @@ class AdDetailsWidget extends StatelessWidget {
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
                 height: 48,
-                imageUrl:"http://92.113.26.243:5000${imageAdvertise}" ?? "",
+                imageUrl:"http://92.113.26.243:5000$imageAdvertise" ?? "",
                 width: 48,
                 errorWidget: (context, url, error) => Image.asset(
                   Assets.imagesDate,

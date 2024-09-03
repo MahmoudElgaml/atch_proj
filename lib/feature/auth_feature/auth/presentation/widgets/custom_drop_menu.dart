@@ -1,5 +1,4 @@
 import 'package:atch_proj/core/utils/app_style.dart';
-import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/check_box.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
