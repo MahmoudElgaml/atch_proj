@@ -1,4 +1,5 @@
 import 'package:atch_proj/config/routes/routes.dart';
+import 'package:atch_proj/core/services/rectangle_shimmer.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'package:atch_proj/feature/adv_detail_feature/prsentation/view/widget/ad_detail_video_section.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/utils/service_locator/config.dart';
 import 'ad_details_button.dart';

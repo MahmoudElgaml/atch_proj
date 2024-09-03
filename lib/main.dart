@@ -21,15 +21,16 @@ void main() async {
   runApp(
     DevicePreview(
       enabled: true,
-      builder: (context) => EasyLocalization(
-        supportedLocales: const [
-          Locale("en"),
-          Locale("ar"),
-        ],
-        fallbackLocale: const Locale('ar'),
-        path: 'assets/translation',
-        child: const MyApp(),
-      ), // Wrap your app
+      builder: (context) =>
+          EasyLocalization(
+            supportedLocales: const [
+              Locale("en"),
+              Locale("ar"),
+            ],
+            fallbackLocale: const Locale('ar'),
+            path: 'assets/translation',
+            child: const MyApp(),
+          ), // Wrap your app
     ),
   );
 }

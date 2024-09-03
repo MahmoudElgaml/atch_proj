@@ -12,6 +12,7 @@ class GetDetailCampaignCubit extends Cubit<GetDetailCampaignState> {
       : super(GetDetailCampaignInitial());
   DetailCampaignModel? detailCampaignModel;
   CampaignDetailRepo campaignDetailRepo;
+  bool isLoading=true;
 
   static GetDetailCampaignCubit get(context) => BlocProvider.of(context);
 
@@ -23,6 +24,7 @@ class GetDetailCampaignCubit extends Cubit<GetDetailCampaignState> {
         emit(GetDetailCampaignFailState(fail.message));
       },
       (r) {
+        isLoading=false;
         detailCampaignModel = r;
         emit(GetDetailCampaignSuccessState());
       },

@@ -4,6 +4,7 @@ import 'package:atch_proj/feature/adv_detail_feature/prsentation/manager/get_det
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../widget/ad_details_section.dart';
 
@@ -32,11 +33,15 @@ class AdDetailsScreen extends StatelessWidget {
                   state.message,
                 ),
               );
-            } else if (state is GetDetailCampaignSuccessState) {
-              return AdDetailsSection(
-                campaign: GetDetailCampaignCubit.get(context)
-                    .detailCampaignModel
-                    ?.campaigns,
+            } else if (state is GetDetailCampaignSuccessState ||
+                state is GetDetailCampaignLoadingState) {
+              return Skeletonizer(
+                enabled: GetDetailCampaignCubit.get(context).isLoading,
+                child: AdDetailsSection(
+                  campaign: GetDetailCampaignCubit.get(context)
+                      .detailCampaignModel
+                      ?.campaigns,
+                ),
               );
             }
             return const Center(
