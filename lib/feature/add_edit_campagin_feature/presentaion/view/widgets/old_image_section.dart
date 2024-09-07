@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../core/api/end_points.dart';
 import '../../../../../core/utils/app_style.dart';
 
 class OldImageSection extends StatelessWidget {
@@ -81,7 +82,7 @@ class ImageItem extends StatelessWidget {
             width: 200,
             height: 200,
             child: CachedNetworkImage(
-              imageUrl: "http://92.113.26.243:5000$image",
+              imageUrl: "${EndPoints.baseUrl}$image",
               fit: BoxFit.fill,
               errorWidget: (context, url, error) =>
                   SvgPicture.asset(Assets.imagesEmptyImage),

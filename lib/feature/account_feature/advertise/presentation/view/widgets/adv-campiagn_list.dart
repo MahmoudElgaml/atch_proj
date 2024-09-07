@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../../config/routes/routes.dart';
+import '../../../../../../core/api/end_points.dart';
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_style.dart';
 import '../../../../../../generated/assets.dart';
@@ -60,7 +61,7 @@ class AdvAccountCampaignItem extends StatelessWidget {
                     child: CachedNetworkImage(
                       imageUrl: campaigns.images!.isEmpty
                           ? ""
-                          : "http://92.113.26.243:5000${campaigns.images?[0]}" ??
+                          : "${EndPoints.baseUrl}${campaigns.images?[0]}" ??
                               "",
                       fit: BoxFit.fill,
                       errorWidget: (context, url, error) => SvgPicture.asset(

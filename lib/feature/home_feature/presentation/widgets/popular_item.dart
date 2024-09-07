@@ -1,4 +1,5 @@
 import 'package:atch_proj/config/routes/routes.dart';
+import 'package:atch_proj/core/api/end_points.dart';
 import 'package:atch_proj/core/utils/components/save_button.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/home_feature/presentation/widgets/ads_item_details.dart';
@@ -50,7 +51,7 @@ class AdsItem extends StatelessWidget {
                           fit: BoxFit.fill,
                           imageUrl: campaigns.images!.isEmpty
                               ? ""
-                              :"http://92.113.26.243:5000${campaigns.images?[0]}" ?? "",
+                              :"${EndPoints.baseUrl}${campaigns.images?[0]}" ?? "",
                           errorWidget: (context, url, error) => SvgPicture.asset(
                             Assets.imagesEmptyImage,
                             fit: BoxFit.fill,

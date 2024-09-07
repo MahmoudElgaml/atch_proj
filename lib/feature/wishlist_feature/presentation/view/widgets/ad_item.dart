@@ -11,6 +11,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/api/end_points.dart';
+
 class AdWishlistItem extends StatelessWidget {
   const AdWishlistItem({super.key, required this.campaign});
 
@@ -42,7 +44,7 @@ class AdWishlistItem extends StatelessWidget {
                           fit: BoxFit.fill,
                           imageUrl: campaign.images!.isEmpty
                               ? ""
-                              : "http://92.113.26.243:5000${campaign.images?[0]}" ?? "",
+                              : "${EndPoints.baseUrl}${campaign.images?[0]}" ?? "",
                           errorWidget: (context, url, error) {
                             return SvgPicture.asset(
                               Assets.imagesEmptyImage,

@@ -15,6 +15,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/api/end_points.dart';
+
 class HomeDrawer extends StatelessWidget {
   const HomeDrawer({super.key});
 
@@ -43,7 +45,7 @@ class HomeDrawer extends StatelessWidget {
                   height: 80,
                   child: CachedNetworkImage(
                     imageUrl:
-                        "http://92.113.26.243:5000${userData?.profilePic}" ?? "",
+                        "${EndPoints.baseUrl}${userData?.profilePic}" ?? "",
                     errorWidget: (context, url, error) {
                       return Image.network(ConstValue.emptyImage);
                     },

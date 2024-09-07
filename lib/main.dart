@@ -4,6 +4,7 @@ import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -18,19 +19,17 @@ void main() async {
   await EasyLocalization.ensureInitialized();
 
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
-    DevicePreview(
-      enabled: true,
-      builder: (context) =>
-          EasyLocalization(
-            supportedLocales: const [
-              Locale("en"),
-              Locale("ar"),
-            ],
-            fallbackLocale: const Locale('ar'),
-            path: 'assets/translation',
-            child: const MyApp(),
-          ), // Wrap your app
+    EasyLocalization(
+      supportedLocales: const [
+        Locale("en"),
+        Locale("ar"),
+      ],
+      fallbackLocale: const Locale('ar'),
+      startLocale: const Locale("en"),
+      path: 'assets/translation',
+      child: const MyApp(),
     ),
   );
 }
@@ -57,7 +56,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         useInheritedMediaQuery: true,
-        builder: EasyLoading.init(builder: DevicePreview.appBuilder),
+        builder: EasyLoading.init(),
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         routerConfig: AppRoute.router,

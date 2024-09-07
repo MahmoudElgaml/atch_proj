@@ -79,13 +79,6 @@ class _LogInDrawerState extends State<LogInDrawer> {
                   },
                   items: items,
                 ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    style: AppStyle.styleRegularOpacity,
-                    AppString.helpMessage,
-                  ),
-                ),
                 const Gap(20),
                 CostumeButton(
                   title: 'Login',
@@ -98,15 +91,7 @@ class _LogInDrawerState extends State<LogInDrawer> {
                   },
                 ),
                 const Gap(32),
-                Center(
-                  child: Text(
-                    style: AppStyle.styleRegularOpacity,
-                    "or Log in With",
-                  ),
-                ),
-                const Gap(28),
-                const Center(child: SocialButton()),
-                const Gap(28),
+
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

@@ -7,12 +7,14 @@ import 'end_points.dart';
 @singleton
 @injectable
 class APiManger {
-  final Dio dio = Dio()
+   Dio dio = Dio()
     ..interceptors.add(
       LogInterceptor(responseBody: true, requestBody: true),
     );
 
+
   APiManger();
+
 
   Future<Response> get(String endPoint, {Map<String, dynamic>? body}) {
     return dio.get(EndPoints.baseUrl + endPoint, data: body);

@@ -7,6 +7,7 @@ import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../../core/api/end_points.dart';
 import '../../../../../core/utils/service_locator/config.dart';
 
 class TestUploadImage extends StatefulWidget {
@@ -25,7 +26,7 @@ var profilepic = getIt<HiveManager>()
 class _TestUploadImageState extends State<TestUploadImage> {
   @override
   Widget build(BuildContext context) {
-    print(profilepic);
+
     return Center(
       child: Column(
         children: [
@@ -38,7 +39,7 @@ class _TestUploadImageState extends State<TestUploadImage> {
                       ? widget.isEdit
                           ? NetworkImage(
                               profilepic != null
-                                  ? "http://92.113.26.243:5000$profilepic"
+                                  ? "${EndPoints.baseUrl}$profilepic"
                                   : ConstValue.emptyImage,
                             )
                           : const AssetImage(Assets.assetsImagesEmptyImage)

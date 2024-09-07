@@ -53,6 +53,7 @@ StorageToken storageToken;
       return right(userData);
     } catch (e) {
       if (e is DioException) {
+       print( ServerFailure.fromServer(e).statusCode);
         return left(ServerFailure.fromServer(e));
       } else {
         return left(ServerFailure(e.toString()));
@@ -60,3 +61,4 @@ StorageToken storageToken;
     }
   }
 }
+

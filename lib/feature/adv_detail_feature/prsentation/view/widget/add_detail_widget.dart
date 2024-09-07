@@ -4,6 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../core/api/end_points.dart';
+
 class AdDetailsWidget extends StatelessWidget {
   const AdDetailsWidget(
       {super.key, this.first, this.image, this.last, this.imageAdvertise,required this.isProfile});
@@ -26,7 +28,7 @@ class AdDetailsWidget extends StatelessWidget {
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
                 height: 48,
-                imageUrl:"http://92.113.26.243:5000$imageAdvertise" ?? "",
+                imageUrl:"${EndPoints.baseUrl}$imageAdvertise" ?? "",
                 width: 48,
                 errorWidget: (context, url, error) => Image.asset(
                   Assets.imagesDate,

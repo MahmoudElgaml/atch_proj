@@ -5,6 +5,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../../core/api/end_points.dart';
+
 class AdDetailsFistSection extends StatelessWidget {
   const AdDetailsFistSection({super.key, required this.campaign});
 
@@ -18,7 +20,7 @@ class AdDetailsFistSection extends StatelessWidget {
             (e) => ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: CachedNetworkImage(
-                imageUrl: e.isEmpty ? " " : "http://92.113.26.243:5000$e",
+                imageUrl: e.isEmpty ? " " : "${EndPoints.baseUrl}$e",
                 errorWidget: (context, url, error) => SvgPicture.asset(
                   Assets.imagesEmptyImage,
                   fit: BoxFit.fill,

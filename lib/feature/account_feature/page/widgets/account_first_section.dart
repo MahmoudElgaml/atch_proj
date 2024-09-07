@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/api/end_points.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_style.dart';
 import '../../../auth_feature/auth/data/model/UserData.dart';
@@ -32,7 +33,7 @@ class AccountFirstSection extends StatelessWidget {
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
                 width: double.infinity,
-                imageUrl: "http://92.113.26.243:5000${person?.profilePic}"
+                imageUrl: "${EndPoints.baseUrl}${person?.profilePic}"
                    ,
                 errorWidget: (context, url, error) =>
                     Image.network(ConstValue.emptyImage),

@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../core/api/end_points.dart';
 import '../../../../../generated/assets.dart';
 import '../../../../adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'message_button.dart';
@@ -25,7 +26,7 @@ class InfoSection extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
                   width: double.infinity,
-                  imageUrl: "http://92.113.26.243:5000${advertiser.profilePic}" ?? "",
+                  imageUrl: "${EndPoints.baseUrl}${advertiser.profilePic}" ?? "",
                   errorWidget: (context, url, error) =>
                       Image.asset(Assets.assetsImagesEmptyImage),
                 ),

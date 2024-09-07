@@ -161,13 +161,6 @@ class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
             ),
           ),
           const Gap(25),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Text(
-              style: AppStyle.styleRegularOpacity,
-              AppString.helpMessage,
-            ),
-          ),
           CustomDropMenu(
             items: AdvertiseSignDrawer.items,
             selectedValue: selectedValue,

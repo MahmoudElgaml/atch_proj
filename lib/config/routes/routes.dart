@@ -18,6 +18,7 @@ import 'package:atch_proj/feature/qr_offer_feature/presentation/view/pages/qr_of
 import 'package:atch_proj/feature/setting_feature/presentaion/view/setting_screen.dart';
 import 'package:atch_proj/feature/unite_testing/manger/test_cubit.dart';
 import 'package:atch_proj/feature/unite_testing/test_view.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:go_router/go_router.dart';
@@ -101,6 +102,20 @@ class AppRoute {
       ),
       GoRoute(
         path: editUserPage,
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            transitionDuration: const Duration(seconds: 1),
+            key: state.pageKey,
+            child: const EditAccountScreen(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return FadeTransition(
+                opacity: CurveTween(curve: Curves.easeInOut).animate(animation),
+                child: child,
+              );
+            },
+          );
+        },
         builder: (context, state) => const EditAccountScreen(),
       ),
       GoRoute(
