@@ -65,6 +65,7 @@ dependencies:
   qr_flutter: ^4.1.0
   easy_localization: ^3.0.7
   rename: ^3.0.2
+  animations: ^2.0.11
 
 
   # The following adds the Cupertino Icons font to your application.
