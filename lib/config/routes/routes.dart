@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/account_feature/page/edit_account_screen.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_campaign_cubit.dart';
@@ -71,22 +72,33 @@ class AppRoute {
       ),
       GoRoute(
         path: addCampaign,
-        builder: (context, state) => MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => getIt<AddImageCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt<LinkFeatureCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt<ChangeDateCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt<AddCampaignCubit>(),
-            ),
-          ],
-          child: const AddCampaignScreen(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          transitionDuration: const Duration(seconds: 2),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeThroughTransition(
+
+              animation: animation,
+              secondaryAnimation: secondaryAnimation,
+              child: child,
+            );
+          },
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<AddImageCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<LinkFeatureCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<ChangeDateCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<AddCampaignCubit>(),
+              ),
+            ],
+            child: const AddCampaignScreen(),
+          ),
         ),
       ),
       GoRoute(

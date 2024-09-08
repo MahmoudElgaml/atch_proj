@@ -41,7 +41,6 @@ class _DateSectionWidgetState extends State<DateSectionWidget> {
                     onTap: () {
                       isFirst = false;
                       dateCubit.showFirstDate(context);
-
                     },
                     hintText: isFirst
                         ? widget.firstDate ?? dateCubit.firstDate
