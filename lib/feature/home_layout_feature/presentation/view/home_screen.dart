@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
@@ -24,7 +25,6 @@ class HomeScreenLayout extends StatelessWidget {
           builder: (context, state) {
             //polymorphism
             return PageTransitionSwitcher(
-
               duration: const Duration(seconds: 1),
               transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
                 return FadeThroughTransition(
