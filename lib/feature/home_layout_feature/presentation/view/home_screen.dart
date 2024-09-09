@@ -25,6 +25,7 @@ class HomeScreenLayout extends StatelessWidget {
           builder: (context, state) {
             //polymorphism
             return PageTransitionSwitcher(
+
               duration: const Duration(seconds: 1),
               transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
                 return FadeThroughTransition(
