@@ -173,8 +173,7 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i376.AddCampaignCubit(gh<_i793.AddCampaignRepo>()));
     gh.factory<_i694.SearchCubit>(
         () => _i694.SearchCubit(gh<_i341.SearchRepo>()));
-    gh.singleton<_i1035.AuthCubit>(
-        () => _i1035.AuthCubit(gh<_i283.AuthRepo>()));
+    gh.factory<_i1035.AuthCubit>(() => _i1035.AuthCubit(gh<_i283.AuthRepo>()));
     return this;
   }
 }

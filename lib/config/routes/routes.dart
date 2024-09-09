@@ -1,4 +1,3 @@
-import 'package:animations/animations.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/account_feature/page/edit_account_screen.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_campaign_cubit.dart';
@@ -24,6 +23,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:go_router/go_router.dart';
 
+import '../../feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import '../../feature/home_layout_feature/presentation/view/home_screen.dart';
 import '../../feature/splash_feature/presentation/view/splash_view.dart';
 
@@ -50,11 +50,17 @@ class AppRoute {
       ),
       GoRoute(
         path: signInKey,
-        builder: (context, state) => const SignUpScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<AuthCubit>(),
+          child: const SignUpScreen(),
+        ),
       ),
       GoRoute(
         path: logInKey,
-        builder: (context, state) => const LoginScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<AuthCubit>(),
+          child: const LoginScreen(),
+        ),
       ),
       GoRoute(
         path: homeKey,
@@ -68,37 +74,31 @@ class AppRoute {
       ),
       GoRoute(
         path: signUpAsAdvertise,
-        builder: (context, state) => const SignUpAdvertise(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<AuthCubit>(),
+          child: const SignUpAdvertise(),
+        ),
       ),
       GoRoute(
         path: addCampaign,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          transitionDuration: const Duration(seconds: 1),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeThroughTransition(
 
-              animation: animation,
-              secondaryAnimation: secondaryAnimation,
-              child: child,
-            );
-          },
-          child: MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (context) => getIt<AddImageCubit>(),
-              ),
-              BlocProvider(
-                create: (context) => getIt<LinkFeatureCubit>(),
-              ),
-              BlocProvider(
-                create: (context) => getIt<ChangeDateCubit>(),
-              ),
-              BlocProvider(
-                create: (context) => getIt<AddCampaignCubit>(),
-              ),
-            ],
-            child: const AddCampaignScreen(),
-          ),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<AddImageCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<LinkFeatureCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<ChangeDateCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<AddCampaignCubit>(),
+            ),
+          ],
+          child: const AddCampaignScreen(),
+
         ),
       ),
       GoRoute(

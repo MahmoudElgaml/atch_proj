@@ -1,4 +1,3 @@
-import 'package:animations/animations.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
 import 'package:atch_proj/feature/home_feature/presentation/manager/get_normal_campagin_cubit.dart';

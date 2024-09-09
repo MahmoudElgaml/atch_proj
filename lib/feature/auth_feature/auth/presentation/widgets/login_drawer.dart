@@ -86,7 +86,7 @@ class _LogInDrawerState extends State<LogInDrawer> {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       AuthCubit.get(context)
-                          .logIn(email.text, password.text, selectedValue);
+                          .logIn(email.text.trim(), password.text, selectedValue);
                     }
                   },
                 ),

@@ -1,4 +1,5 @@
 import 'package:atch_proj/core/services/upload_image_service.dart';
+import 'package:atch_proj/core/services/validation_service.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/SignDataTest.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/check_box.dart';
@@ -66,6 +67,7 @@ class _SignUpDrawerState extends State<UserSignUpDrawer> {
           ),
           const Gap(20),
           CostumeTextFiled(
+           isPassword: true,
             title: "Password",
             textEditingController: password,
           ),
@@ -91,7 +93,7 @@ class _SignUpDrawerState extends State<UserSignUpDrawer> {
               signData.password = password.text;
               signData.username = username.text;
               signData.name = name.text;
-              signData.email = email.text;
+              signData.email = email.text.trim();
               signData.referralCode = selectedValue;
               signData.age = age.text;
               signData.role = "user";
