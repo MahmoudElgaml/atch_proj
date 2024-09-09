@@ -220,7 +220,7 @@ class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
     SignDataTest signData = SignDataTest();
     signData.name = companyName.text;
     signData.username = advertiseName.text;
-    signData.email = email.text;
+    signData.email = email.text.trim();
     signData.about = about.text;
     signData.password = password.text;
     signData.advertiserPhones = phones;

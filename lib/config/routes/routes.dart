@@ -23,6 +23,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:go_router/go_router.dart';
 
+import '../../feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import '../../feature/home_layout_feature/presentation/view/home_screen.dart';
 import '../../feature/splash_feature/presentation/view/splash_view.dart';
 
@@ -49,11 +50,17 @@ class AppRoute {
       ),
       GoRoute(
         path: signInKey,
-        builder: (context, state) => const SignUpScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<AuthCubit>(),
+          child: const SignUpScreen(),
+        ),
       ),
       GoRoute(
         path: logInKey,
-        builder: (context, state) => const LoginScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<AuthCubit>(),
+          child: const LoginScreen(),
+        ),
       ),
       GoRoute(
         path: homeKey,
@@ -67,7 +74,10 @@ class AppRoute {
       ),
       GoRoute(
         path: signUpAsAdvertise,
-        builder: (context, state) => const SignUpAdvertise(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<AuthCubit>(),
+          child: const SignUpAdvertise(),
+        ),
       ),
       GoRoute(
         path: addCampaign,

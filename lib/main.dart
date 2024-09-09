@@ -40,27 +40,24 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<AuthCubit>(),
-      child: MaterialApp.router(
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        theme: ThemeData(
-          datePickerTheme: const DatePickerThemeData(locale: Locale("en")),
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.white,
-            surfaceTintColor: Colors.white,
-          ),
-          scaffoldBackgroundColor: Colors.white,
-          primarySwatch: Colors.blue,
+    return MaterialApp.router(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      theme: ThemeData(
+        datePickerTheme: const DatePickerThemeData(locale: Locale("en")),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
         ),
-        useInheritedMediaQuery: true,
-        builder: EasyLoading.init(),
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        routerConfig: AppRoute.router,
+        scaffoldBackgroundColor: Colors.white,
+        primarySwatch: Colors.blue,
       ),
+      useInheritedMediaQuery: true,
+      builder: EasyLoading.init(),
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      routerConfig: AppRoute.router,
     );
   }
 }

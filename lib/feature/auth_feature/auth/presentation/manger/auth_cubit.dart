@@ -7,7 +7,7 @@ import 'package:meta/meta.dart';
 
 part 'auth_state.dart';
 
-@singleton
+
 @injectable
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this.authRepo) : super(AuthInitial());

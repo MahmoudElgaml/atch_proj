@@ -68,7 +68,7 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
   }
 
   void changeLangFunction(BuildContext context) {
-    if (widget.isLang!) {
+    if (widget.isLang??false) {
       if (widget.selectedValue == "Arabic") {
         if (context.locale.toString() == "en") {
           context.setLocale(const Locale('ar'));
