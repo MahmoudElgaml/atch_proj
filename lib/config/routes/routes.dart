@@ -73,7 +73,7 @@ class AppRoute {
       GoRoute(
         path: addCampaign,
         pageBuilder: (context, state) => CustomTransitionPage(
-          transitionDuration: const Duration(seconds: 2),
+          transitionDuration: const Duration(seconds: 1),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeThroughTransition(
 
