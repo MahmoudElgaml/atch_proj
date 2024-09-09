@@ -81,6 +81,7 @@ class AppRoute {
       ),
       GoRoute(
         path: addCampaign,
+
         builder: (context, state) => MultiBlocProvider(
           providers: [
             BlocProvider(
@@ -97,6 +98,7 @@ class AppRoute {
             ),
           ],
           child: const AddCampaignScreen(),
+
         ),
       ),
       GoRoute(
