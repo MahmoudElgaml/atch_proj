@@ -1,4 +1,3 @@
-import 'package:animations/animations.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +10,11 @@ import 'package:validators/validators.dart';
 import '../../manager/link_feature_cubit.dart';
 
 class AddLinkSection extends StatelessWidget {
-  const AddLinkSection({super.key, required this.linkCubit});
-
-  final LinkFeatureCubit linkCubit;
-
+  const AddLinkSection({super.key,required this.linkCubit});
+final LinkFeatureCubit linkCubit;
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
         Row(
@@ -28,10 +26,7 @@ class AddLinkSection extends StatelessWidget {
             const Spacer(),
             IconButton(
               onPressed: () {
-                showModal(
-                  configuration: const FadeScaleTransitionConfiguration(
-                    transitionDuration: Duration(milliseconds: 800),
-                  ),
+                showDialog(
                   context: context,
                   builder: (context) {
                     return Dialog(
@@ -39,9 +34,9 @@ class AddLinkSection extends StatelessWidget {
                         padding: const EdgeInsets.all(20.0),
                         child: TextField(
                           onSubmitted: (value) {
-                            if (isURL(value)) {
-                              linkCubit.addLink(value);
-                            }
+                          if(isURL(value)){
+                            linkCubit.addLink(value);
+                          }
                             context.pop();
                           },
                         ),
@@ -58,7 +53,7 @@ class AddLinkSection extends StatelessWidget {
           bloc: linkCubit,
           builder: (context, state) {
             return linkCubit.links.isEmpty
-                ? const SizedBox()
+                ?  const SizedBox()
                 : SizedBox(
                     height: MediaQuery.sizeOf(context).height * .1,
                     child: ListView.builder(

@@ -1,4 +1,3 @@
-import 'package:animations/animations.dart';
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
@@ -24,17 +23,7 @@ class HomeScreenLayout extends StatelessWidget {
         body: BlocBuilder<HomeLayoutCubit, HomeLayoutState>(
           builder: (context, state) {
             //polymorphism
-            return PageTransitionSwitcher(
-              duration: const Duration(seconds: 1),
-              transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
-                return FadeThroughTransition(
-                  animation: primaryAnimation,
-                  secondaryAnimation: secondaryAnimation,
-                  child: child,
-                );
-              },
-              child: state.viewTap(),
-            );
+            return state.viewTap();
           },
         ),
         bottomNavigationBar: const BottomNaviBar(),
@@ -52,6 +41,7 @@ class HomeScreenLayout extends StatelessWidget {
                   color: Colors.white,
                 ),
               )
-            : null);
+            : null
+    );
   }
 }
