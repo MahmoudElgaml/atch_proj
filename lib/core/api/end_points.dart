@@ -1,5 +1,5 @@
 class EndPoints {
-  static const baseUrl = "https://92.113.26.243:440";
+  static const baseUrl = "https://adv.great-eagle.net";
   static const search = "/search_page/search";
   static const register = "/register";
   static const logIn = "/login";
