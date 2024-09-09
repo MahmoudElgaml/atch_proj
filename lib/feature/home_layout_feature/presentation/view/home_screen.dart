@@ -23,7 +23,19 @@ class HomeScreenLayout extends StatelessWidget {
         body: BlocBuilder<HomeLayoutCubit, HomeLayoutState>(
           builder: (context, state) {
             //polymorphism
-            return state.viewTap();
+            return PageTransitionSwitcher(
+
+              duration: const Duration(seconds: 1),
+              transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
+                return FadeThroughTransition(
+                  animation: primaryAnimation,
+                  secondaryAnimation: secondaryAnimation,
+                  child: child,
+                );
+              },
+              child: state.viewTap(),
+            );
+
           },
         ),
         bottomNavigationBar: const BottomNaviBar(),
