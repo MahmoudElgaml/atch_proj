@@ -19,12 +19,12 @@ class DateSectionWidget extends StatefulWidget {
 
 class _DateSectionWidgetState extends State<DateSectionWidget> {
   bool isFirst = true;
-
   bool isLast = true;
 
   @override
   Widget build(BuildContext context) {
     var dateCubit = ChangeDateCubit.get(context);
+    setTheDateToCubit(context);
     return BlocBuilder<ChangeDateCubit, ChangeDateState>(
       builder: (context, state) {
         return Column(
@@ -78,5 +78,13 @@ class _DateSectionWidgetState extends State<DateSectionWidget> {
         );
       },
     );
+  }
+  setTheDateToCubit(BuildContext context){
+    var dateCubit = ChangeDateCubit.get(context);
+    if(widget.firstDate!=null&&isFirst==true&&isLast==true){
+      dateCubit.firstDate=widget.firstDate??DateTime.now().toString();
+      dateCubit.lastDate=widget.lastDate??DateTime.now().toString();
+    }
+
   }
 }
