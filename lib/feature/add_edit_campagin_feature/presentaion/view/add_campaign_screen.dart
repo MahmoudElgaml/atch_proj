@@ -161,8 +161,7 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                         ),
                         const Gap(19),
                         CustomCampaignTextFiled(
-                          validator: (value) =>
-                              ValidationService.validateEmpty(value, "offer"),
+
                           textInputType: TextInputType.number,
                           textEditingController: offer,
                           hint: "Offer",
@@ -207,7 +206,7 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
     AddCampaignModel addCampaignModel = AddCampaignModel(
       advertiserId: adToken,
       campaignPrice: int.parse(price.text),
-      campaignOffer: int.parse(offer.text),
+      campaignOffer: offer.text==""?null: int.parse(offer.text),
       campaignDescription: description.text,
       campaignStartDate:
           ChangeDateCubit.get(context).firstDate,
