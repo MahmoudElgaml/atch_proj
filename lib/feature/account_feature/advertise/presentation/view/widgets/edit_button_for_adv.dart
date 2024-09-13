@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../../config/routes/routes.dart';
+import '../../../../../../core/utils/app_color.dart';
 import '../../../../page/widgets/account_first_section.dart';
 import '../../../data/model/AdvertiseInfo.dart';
 import '../../manager/advertise_info_cubit.dart';
@@ -27,7 +28,12 @@ class EditButtonBuilderForAdv extends StatelessWidget {
             );
           }
               : null,
-          child: const EditButton(),
+          child:  const EditButton(
+            color: AppColor.primaryColor,
+            title: "editProfile",
+            icon: Icons.edit,
+
+          ),
         );
       },
     );

@@ -45,5 +45,6 @@
   "bAddCampaign": "Add Campaign",
   "campaignName": "Campaign Name",
   "description": "Description",
-  "oldPhoto": "Old Photo "
+  "oldPhoto": "Old Photo",
+  "deleteAccount": "DeleteAccount"
 }
