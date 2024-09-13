@@ -40,8 +40,11 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
   };
 
   final TextEditingController companyName = TextEditingController();
+
   final List<String> locations = Helper.retrievePerson()?.locations ?? [];
+
   String selectedLocation = Helper.retrievePerson()?.locations?.first ?? "";
+
   final TextEditingController description = TextEditingController();
 
   final TextEditingController price = TextEditingController();
