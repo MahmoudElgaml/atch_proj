@@ -7,6 +7,7 @@ abstract class AdvertiseAccountRepo{
  Future<Either<Failure,AdvertiseInfoModel>> getAdvertiseInfo();
  Future<Either<Failure,String>> editAdvertise(EditAdvertiseData advertiseData);
  Future<Either<Failure, String>> deleteCampaign(num?campaignId);
+ Future<Either<Failure, String>> deleteAccount(num?id,String?role);
 
 
 }
