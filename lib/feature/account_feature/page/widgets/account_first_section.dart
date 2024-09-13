@@ -33,8 +33,7 @@ class AccountFirstSection extends StatelessWidget {
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
                 width: double.infinity,
-                imageUrl: "${EndPoints.baseUrl}${person?.profilePic}"
-                   ,
+                imageUrl: "${EndPoints.baseUrl}${person?.profilePic}",
                 errorWidget: (context, url, error) =>
                     Image.network(ConstValue.emptyImage),
               ),
@@ -46,12 +45,27 @@ class AccountFirstSection extends StatelessWidget {
             style: AppStyle.style24Regular(context),
           ),
           const Gap(16),
-          Helper.retrieveRole() == "user"
-              ? InkWell(
-                  onTap: () => context.push(AppRoute.editUserPage),
-                  child: const EditButton(),
-                )
-              : const EditButtonBuilderForAdv()
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const EditButton(
+                title: "deleteAccount",
+                icon: Icons.delete,
+                color: Colors.red,
+              ),
+              const Gap(20),
+              Helper.retrieveRole() == "user"
+                  ? InkWell(
+                      onTap: () => context.push(AppRoute.editUserPage),
+                      child: const EditButton(
+                        title: "editProfile",
+                        color: AppColor.primaryColor,
+                        icon: Icons.edit,
+                      ),
+                    )
+                  : const EditButtonBuilderForAdv(),
+            ],
+          )
         ],
       ),
     );
@@ -59,7 +73,15 @@ class AccountFirstSection extends StatelessWidget {
 }
 
 class EditButton extends StatelessWidget {
-  const EditButton({super.key});
+  const EditButton(
+      {super.key,
+      required this.title,
+      required this.icon,
+      required this.color});
+
+  final String title;
+  final IconData icon;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +89,10 @@ class EditButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 19),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
-          side: const BorderSide(
+          side: BorderSide(
             width: 1.50,
             strokeAlign: BorderSide.strokeAlignCenter,
-            color: AppColor.primaryColor,
+            color: color,
           ),
           borderRadius: BorderRadius.circular(10),
         ),
@@ -80,16 +102,15 @@ class EditButton extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(
-            Icons.edit,
+          Icon(
+            icon,
             size: 25,
-            color: AppColor.primaryColor,
+            color: color,
           ),
           const Gap(10),
           Text(
-           context.tr("editProfile"),
-            style: AppStyle.style16Bold(context)
-                .copyWith(color: AppColor.primaryColor),
+            context.tr(title),
+            style: AppStyle.style16Bold(context).copyWith(color: color),
           )
         ],
       ),
