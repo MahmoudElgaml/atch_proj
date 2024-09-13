@@ -43,9 +43,7 @@ class _DateSectionWidgetState extends State<DateSectionWidget> {
                       dateCubit.showFirstDate(context);
 
                     },
-                    hintText: isFirst
-                        ? widget.firstDate ?? dateCubit.firstDate
-                        : dateCubit.firstDate,
+                    hintText: dateCubit.firstDate,
                     icon: const Icon(Icons.date_range),
                   ),
                 ),
@@ -66,9 +64,7 @@ class _DateSectionWidgetState extends State<DateSectionWidget> {
                       dateCubit.showLastDate(context);
 
                     },
-                    hintText: isLast
-                        ? widget.lastDate ?? dateCubit.lastDate
-                        : dateCubit.lastDate,
+                    hintText: dateCubit.lastDate,
                     icon: const Icon(Icons.date_range),
                   ),
                 ),

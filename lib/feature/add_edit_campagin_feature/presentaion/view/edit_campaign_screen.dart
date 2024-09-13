@@ -195,7 +195,6 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
       campaignOffer: int.parse(offer.text),
       campaignDescription: description.text,
       campaignEndDate: ChangeDateCubit.get(context).lastDate,
-      campaignLocation: ["cairo"],
       campaignName: companyName.text,
       campaignVideos: linkCubit.links,
       images: AddImageCubit.get(context).backendImages,
