@@ -12,5 +12,5 @@ final  String message;
 
   AdvertiseAccountFailState(this.message);
 }
-class DeleteAccountSuccessState extends AdvertiseInfoState {}
+
 

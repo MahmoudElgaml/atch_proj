@@ -4,9 +4,13 @@ import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/utils/constants.dart';
 import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
+import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
+import 'package:atch_proj/feature/account_feature/page/manger/delete_account_cubit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,7 +26,7 @@ class AccountFirstSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Person? person =
-        getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox);
+    getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox);
 
     return Center(
       child: Column(
@@ -48,21 +52,41 @@ class AccountFirstSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const EditButton(
-                title: "deleteAccount",
-                icon: Icons.delete,
-                color: Colors.red,
+              BlocListener<DeleteAccountCubit, DeleteAccountState>(
+                listener: (context, state) {
+                  if(state is DeleteAccountLoadingState){
+                    EasyLoading.show();
+                  }
+                  else if(state is DeleteAccountFailState){
+                    EasyLoading.showError(state.message);
+                  }
+                 if (state is DeleteAccountSuccessState){
+                   EasyLoading.showSuccess("");
+                   context.go(AppRoute.logInKey);
+                 }
+                },
+                child: InkWell(
+                  onTap: () {
+                    DeleteAccountCubit.get(context).deleteAccountForBoth(
+                        person?.id, person?.role);
+                  },
+                  child: const EditButton(
+                    title: "deleteAccount",
+                    icon: Icons.delete,
+                    color: Colors.red,
+                  ),
+                ),
               ),
               const Gap(20),
               Helper.retrieveRole() == "user"
                   ? InkWell(
-                      onTap: () => context.push(AppRoute.editUserPage),
-                      child: const EditButton(
-                        title: "editProfile",
-                        color: AppColor.primaryColor,
-                        icon: Icons.edit,
-                      ),
-                    )
+                onTap: () => context.push(AppRoute.editUserPage),
+                child: const EditButton(
+                  title: "editProfile",
+                  color: AppColor.primaryColor,
+                  icon: Icons.edit,
+                ),
+              )
                   : const EditButtonBuilderForAdv(),
             ],
           )
@@ -73,11 +97,10 @@ class AccountFirstSection extends StatelessWidget {
 }
 
 class EditButton extends StatelessWidget {
-  const EditButton(
-      {super.key,
-      required this.title,
-      required this.icon,
-      required this.color});
+  const EditButton({super.key,
+    required this.title,
+    required this.icon,
+    required this.color});
 
   final String title;
   final IconData icon;

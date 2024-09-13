@@ -63,15 +63,5 @@ class AdvertiseInfoCubit extends Cubit<AdvertiseInfoState> {
     );
   }
 
-  deleteAccountForBoth(num? id, String? role) async {
-    var result = await advertiseAccountRepo.deleteAccount(id, role);
-    result.fold(
-      (l) {
-        emit(AdvertiseAccountFailState(l.message));
-      },
-      (r) {
-        emit(DeleteAccountSuccessState());
-      },
-    );
-  }
+
 }
