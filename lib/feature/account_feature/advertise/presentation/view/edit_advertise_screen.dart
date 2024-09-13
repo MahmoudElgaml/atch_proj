@@ -179,8 +179,7 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
       advertiserId: advertiser.id,
       about: about.text,
       advertiserLocations: locations,
-      advertiserPhones:phones,
-      advertiserType: "Shop",
+      advertiserPhones: phones,
       name: companyName.text,
       email: email.text,
     );
