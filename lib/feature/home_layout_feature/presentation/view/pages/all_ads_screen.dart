@@ -5,6 +5,7 @@ import 'package:atch_proj/feature/home_layout_feature/presentation/manager/drawe
 import 'package:atch_proj/feature/search_feature/presentation/view/widgets/campaign_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 
 class AllAdsScreen extends StatelessWidget {
   const AllAdsScreen({super.key});
@@ -18,25 +19,27 @@ class AllAdsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: BlocBuilder<DrawerCubit, DrawerState>(
-              bloc: DrawerCubit.get(context)..getAllCampaigns(),
-              builder: (context, state) {
-                if (state is DrawerGetCampaignsFailState) {
-                  return Center(
-                    child: Text(
-                      state.message,
-                      style: AppStyle.style24Regular(context),
-                    ),
-                  );
-                } else if (state is DrawerGetCampaignsSuccessState) {
-                  return AllAdsList(
-                    allCampaigns: state.allCampaigns,
-                  );
-                }
-                return const Expanded(child: LoadingRectangleComponent());
-              },
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: BlocBuilder<DrawerCubit, DrawerState>(
+                bloc: DrawerCubit.get(context)..getAllCampaigns(),
+                builder: (context, state) {
+                  if (state is DrawerGetCampaignsFailState) {
+                    return Center(
+                      child: Text(
+                        state.message,
+                        style: AppStyle.style24Regular(context),
+                      ),
+                    );
+                  } else if (state is DrawerGetCampaignsSuccessState) {
+                    return AllAdsList(
+                      allCampaigns: state.allCampaigns,
+                    );
+                  }
+                  return const LoadingRectangleComponent();
+                },
+              ),
             ),
           ),
         ],

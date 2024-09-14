@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
@@ -10,10 +11,12 @@ import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/manager/drawer_cubit.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/drawer_item.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/referral_code_qr_widget.dart';
+import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -73,6 +76,52 @@ class HomeDrawer extends StatelessWidget {
                             case "AllAds":
                               {
                                 context.push(AppRoute.allAds);
+                              }
+                            case "contact":
+                              {
+                                showModal(
+                                  configuration:
+                                      const FadeScaleTransitionConfiguration(
+                                          transitionDuration:
+                                              Duration(seconds: 1)),
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: Container(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Our Social Media",
+                                              style: AppStyle.style18Regular(
+                                                  context),
+                                            ),
+                                            const Gap(10),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  SvgPicture.asset(Assets
+                                                      .imagesFacebookIcon),
+                                                  const Gap(10),
+                                                  SvgPicture.asset(Assets
+                                                      .imagesLinkedinIcon),
+                                                  const Gap(10),
+                                                  SvgPicture.asset(
+                                                      Assets.imagesWhatsIcon),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
                               }
                           }
                         },
