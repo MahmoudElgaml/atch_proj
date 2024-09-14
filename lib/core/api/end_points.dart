@@ -20,4 +20,5 @@ class EndPoints {
   static const addToWishlist = "/campaign_page/add_to_wishlist";
   static const checkOfferVal = "/campaign_page/check_offer";
   static const takeOffer = "/campaign_page/take_offer";
+  static const getAllAds = "/home/allCampaigns";
 }
