@@ -12,6 +12,7 @@ import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_scr
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_advertise.dart';
 import 'package:atch_proj/feature/adv_detail_feature/prsentation/view/pages/ad_details_screen.dart';
+import 'package:atch_proj/feature/home_layout_feature/presentation/manager/drawer_cubit.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_layout_cubit.dart';
 import 'package:atch_proj/feature/qr_offer_feature/presentation/manger/qr_offer_cubit.dart';
 import 'package:atch_proj/feature/qr_offer_feature/presentation/view/pages/qr_offer_screen.dart';
@@ -19,6 +20,7 @@ import 'package:atch_proj/feature/setting_feature/presentaion/view/setting_scree
 import 'package:atch_proj/feature/unite_testing/manger/test_cubit.dart';
 import 'package:atch_proj/feature/unite_testing/test_view.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:go_router/go_router.dart';
@@ -167,7 +169,7 @@ class AppRoute {
       GoRoute(
         path: allAds,
         builder: (context, state) => BlocProvider(
-          create: (context) => getIt<AuthCubit>(),
+          create: (context) => getIt<DrawerCubit>(),
           child: const AllAdsScreen(),
         ),
       )

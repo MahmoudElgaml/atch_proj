@@ -21,6 +21,7 @@ class AllAdsScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: BlocBuilder<DrawerCubit, DrawerState>(
+              bloc: DrawerCubit.get(context)..getAllCampaigns(),
               builder: (context, state) {
                 if (state is DrawerGetCampaignsFailState) {
                   return Center(
@@ -34,7 +35,7 @@ class AllAdsScreen extends StatelessWidget {
                     allCampaigns: state.allCampaigns,
                   );
                 }
-                return const LoadingRectangleComponent();
+                return const Expanded(child: LoadingRectangleComponent());
               },
             ),
           ),
