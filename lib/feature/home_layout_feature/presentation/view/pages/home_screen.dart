@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/utils/service_locator/config.dart';
+import '../../../../../core/utils/service_locator/config.dart';
 
 class HomeScreenLayout extends StatelessWidget {
   const HomeScreenLayout({super.key});

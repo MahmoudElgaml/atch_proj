@@ -68,6 +68,10 @@ class HomeDrawer extends StatelessWidget {
                               {
                                 context.push(AppRoute.setting);
                               }
+                            case "AllAds":
+                              {
+                                context.push(AppRoute.allAds);
+                              }
                           }
                         },
                         drawerItemModel: e,

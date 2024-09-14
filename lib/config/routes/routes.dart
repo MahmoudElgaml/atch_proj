@@ -24,7 +24,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
-import '../../feature/home_layout_feature/presentation/view/home_screen.dart';
+import '../../feature/home_layout_feature/presentation/view/pages/all_ads_screen.dart';
+import '../../feature/home_layout_feature/presentation/view/pages/home_screen.dart';
 import '../../feature/splash_feature/presentation/view/splash_view.dart';
 
 class AppRoute {
@@ -41,6 +42,7 @@ class AppRoute {
   static const String editCampaign = "/editCampaign";
   static const String qrOffer = "/qrOffer";
   static const String setting = "/settings";
+  static const String allAds = "/allAds";
 
   static final router = GoRouter(
     routes: [
@@ -81,7 +83,6 @@ class AppRoute {
       ),
       GoRoute(
         path: addCampaign,
-
         builder: (context, state) => MultiBlocProvider(
           providers: [
             BlocProvider(
@@ -98,7 +99,6 @@ class AppRoute {
             ),
           ],
           child: const AddCampaignScreen(),
-
         ),
       ),
       GoRoute(
@@ -164,6 +164,13 @@ class AppRoute {
         path: setting,
         builder: (context, state) => const SettingScreen(),
       ),
+      GoRoute(
+        path: allAds,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<AuthCubit>(),
+          child: const AllAdsScreen(),
+        ),
+      )
     ],
   );
 }
