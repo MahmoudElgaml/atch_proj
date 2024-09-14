@@ -14,11 +14,13 @@ class Assets {
   static const String imagesEdit = 'assets/images/edit.svg';
   static const String imagesEmptyImage = 'assets/images/EmptyImage.svg';
   static const String imagesFacebook = 'assets/images/facebook.png';
+  static const String imagesFacebookIcon = 'assets/images/facebook_icon.svg';
   static const String imagesFavIcon = 'assets/images/Fav_icon.png';
   static const String imagesGLogo = 'assets/images/g_logo.png';
   static const String imagesGoogle = 'assets/images/google.png';
   static const String imagesImageTest = 'assets/images/image_test.png';
   static const String imagesJazz = 'assets/images/jazz.png';
+  static const String imagesLinkedinIcon = 'assets/images/linkedin_icon.svg';
   static const String imagesListIcon = 'assets/images/list_icon.png';
   static const String imagesLocation = 'assets/images/Location.png';
   static const String imagesLogInPhoto = 'assets/images/log_in_photo.png';
@@ -28,6 +30,7 @@ class Assets {
   static const String imagesSearchImageTest = 'assets/images/search_image_test.png';
   static const String imagesSuccessiconpng = 'assets/images/successiconpng.png';
   static const String imagesTestImageProfile = 'assets/images/test_image_profile.png';
+  static const String imagesWhatsIcon = 'assets/images/whats_icon.svg';
   static const String imagesWishlist = 'assets/images/wishlist.png';
   static const String translationAr = 'assets/translation/ar.json';
   static const String translationEn = 'assets/translation/en.json';
