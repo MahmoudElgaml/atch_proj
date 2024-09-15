@@ -9,6 +9,7 @@ import 'package:atch_proj/core/utils/models/drawer_item_model.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/manager/drawer_cubit.dart';
+import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/contact_us_dialog.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/drawer_item.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/referral_code_qr_widget.dart';
 import 'package:atch_proj/generated/assets.dart';
@@ -82,44 +83,11 @@ class HomeDrawer extends StatelessWidget {
                                 showModal(
                                   configuration:
                                       const FadeScaleTransitionConfiguration(
-                                          transitionDuration:
-                                              Duration(seconds: 1)),
+                                    transitionDuration: Duration(seconds: 1),
+                                  ),
                                   context: context,
                                   builder: (context) {
-                                    return AlertDialog(
-                                      title: Container(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "Our Social Media",
-                                              style: AppStyle.style18Regular(
-                                                  context),
-                                            ),
-                                            const Gap(10),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  SvgPicture.asset(Assets
-                                                      .imagesFacebookIcon),
-                                                  const Gap(10),
-                                                  SvgPicture.asset(Assets
-                                                      .imagesLinkedinIcon),
-                                                  const Gap(10),
-                                                  SvgPicture.asset(
-                                                      Assets.imagesWhatsIcon),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    );
+                                    return const ContactUsDialog();
                                   },
                                 );
                               }
