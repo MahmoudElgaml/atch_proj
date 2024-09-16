@@ -7,8 +7,12 @@ import 'package:gap/gap.dart';
 import '../../../../../core/api/end_points.dart';
 
 class AdDetailsWidget extends StatelessWidget {
-  const AdDetailsWidget(
-      {super.key, this.first, this.image, this.last, this.imageAdvertise,required this.isProfile});
+  const AdDetailsWidget({super.key,
+    this.first,
+    this.image,
+    this.last,
+    this.imageAdvertise,
+    required this.isProfile});
 
   final String? image;
   final String? imageAdvertise;
@@ -19,7 +23,7 @@ class AdDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
+      elevation: isProfile ? 7 : 0,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Row(
@@ -28,7 +32,7 @@ class AdDetailsWidget extends StatelessWidget {
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
                 height: 48,
-                imageUrl:"${EndPoints.baseUrl}$imageAdvertise" ?? "",
+                imageUrl: "${EndPoints.baseUrl}$imageAdvertise" ?? "",
                 width: 48,
                 errorWidget: (context, url, error) => Image.asset(
                   Assets.imagesDate,
@@ -40,13 +44,11 @@ class AdDetailsWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  isProfile?first??"":
-                  first?.substring(0, 16) ?? "",
+                  isProfile ? first ?? "" : first?.substring(0, 16) ?? "",
                   style: AppStyle.style18(context),
                 ),
                 Text(
-                  isProfile?last??"":
-                  last?.substring(0, 16) ?? "",
+                  isProfile ? last ?? "" : last?.substring(0, 16) ?? "",
                   style: AppStyle.style18(context),
                 ),
               ],
