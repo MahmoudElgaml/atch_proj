@@ -32,8 +32,10 @@ class CostumeTextFiled extends StatelessWidget {
         ),
         const Gap(10),
         TextFormField(
-
-           maxLines: maxLine??1,
+          onTapOutside: (event) {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          maxLines: maxLine??1,
           obscureText: isPassword ?? false,
           keyboardType: keyboardType,
           autovalidateMode: AutovalidateMode.onUserInteraction,
