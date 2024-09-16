@@ -10,8 +10,11 @@ part 'delete_account_state.dart';
 class DeleteAccountCubit extends Cubit<DeleteAccountState> {
   DeleteAccountCubit(this.advertiseAccountRepo) : super(DeleteAccountInitial());
   AdvertiseAccountRepo advertiseAccountRepo;
-  static DeleteAccountCubit get(context)=>BlocProvider.of(context);
+
+  static DeleteAccountCubit get(context) => BlocProvider.of(context);
+
   deleteAccountForBoth(num? id, String? role) async {
+    emit(DeleteAccountLoadingState());
     var result = await advertiseAccountRepo.deleteAccount(id, role);
     result.fold(
       (l) {
