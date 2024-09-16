@@ -131,10 +131,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i553.AdvInfoCubit(gh<_i513.AdvInfoRepo>()));
     gh.factory<_i959.AdvertiseInfoCubit>(
         () => _i959.AdvertiseInfoCubit(gh<_i692.AdvertiseAccountRepo>()));
-    gh.factory<_i750.DeleteAccountCubit>(
-        () => _i750.DeleteAccountCubit(gh<_i692.AdvertiseAccountRepo>()));
     gh.factory<_i552.TestCubit>(
         () => _i552.TestCubit(gh<_i692.AdvertiseAccountRepo>()));
+    gh.factory<_i750.DeleteAccountCubit>(
+        () => _i750.DeleteAccountCubit(gh<_i692.AdvertiseAccountRepo>()));
     gh.factory<_i965.WishlistRepo>(() => _i325.WishlistRepoImpl(
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),

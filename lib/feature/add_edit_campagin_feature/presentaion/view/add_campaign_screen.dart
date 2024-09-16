@@ -41,9 +41,9 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
 
   final TextEditingController companyName = TextEditingController();
 
-  final List<String> locations = Helper.retrievePerson()?.locations ?? [];
+  // final List<String> locations = Helper.retrievePerson()?.locations ?? [];
 
-  String selectedLocation = Helper.retrievePerson()?.locations?.first ?? "";
+  // String selectedLocation = Helper.retrievePerson()?.locations?.first ?? "";
 
   final TextEditingController description = TextEditingController();
 
@@ -134,16 +134,6 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                               style: AppStyle.style24Regular(context),
                             ),
                             const Gap(19),
-                            Expanded(
-                              child: CustomDropMenu(
-                                setValue: (value) {
-                                  selectedLocation = value;
-                                },
-                                items: Map.fromIterable(locations),
-                                selectedValue: selectedLocation,
-                                isAuth: false,
-                              ),
-                            ),
                           ],
                         ),
                         const Gap(19),
@@ -211,7 +201,6 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
       campaignStartDate:
           ChangeDateCubit.get(context).firstDate,
       campaignEndDate: ChangeDateCubit.get(context).lastDate,
-      campaignLocation: [selectedLocation],
       campaignName: companyName.text,
       campaignTargetAudience: selectedValue,
       campaignVideos: linkCubit.links,
