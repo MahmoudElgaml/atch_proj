@@ -11,13 +11,12 @@ class HomeState extends HomeLayoutState {
         providers: [
           BlocProvider(
             create: (context) =>
-            getIt<GetPopularCampaignCubit>()..getPopularCampaign("Factory"),
+                getIt<GetPopularCampaignCubit>()..getPopularCampaign("Factory"),
           ),
           BlocProvider(
             create: (context) =>
                 getIt<GetNormalCampaignCubit>()..getNormalCampaign("Factory"),
           ),
-
           BlocProvider(
             create: (context) => getIt<WishlistCubit>(),
           )
@@ -44,8 +43,16 @@ class WishListState extends HomeLayoutState {
 
 class AccountState extends HomeLayoutState {
   @override
-  Widget viewTap() => BlocProvider(
-        create: (context) => getIt<AdvertiseInfoCubit>()..getAdvertiseInfo(),
+  Widget viewTap() => MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) =>
+                getIt<AdvertiseInfoCubit>()..getAdvertiseInfo(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<DeleteAccountCubit>(),
+          )
+        ],
         child: const AccountScreen(),
       );
 }

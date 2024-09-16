@@ -54,7 +54,9 @@ class AdDetailsSection extends StatelessWidget {
                 ),
                 const Gap(25),
                 AdDetailsLocationWidget(
-                    Assets.imagesLocation, campaign?.locations ?? []),
+                  Assets.imagesLocation,
+                  campaign?.locations?.entries.toList() ?? [],
+                ),
                 const Gap(25),
                 InkWell(
                   onTap: () => context.push(AppRoute.advertiserInfoPage,
@@ -68,7 +70,7 @@ class AdDetailsSection extends StatelessWidget {
                 ),
                 const Gap(25),
                 AdDetailVideoSection(
-                   campaignId: campaign?.id,
+                  campaignId: campaign?.id,
                   videos: campaign?.videos,
                 ),
                 BlocProvider(

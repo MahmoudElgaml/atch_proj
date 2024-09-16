@@ -5,6 +5,7 @@ import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 abstract class Helper {
   static String timeToString(TimeOfDay time) {
@@ -46,5 +47,12 @@ abstract class Helper {
         .retrieveSingleData<Person>(HiveKeys.userBox);
 
 
+  }
+
+  static Future<void> lunchUUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      launchUrl(uri);
+    }
   }
 }

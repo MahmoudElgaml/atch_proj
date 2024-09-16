@@ -17,6 +17,8 @@ import '../../../feature/account_feature/advertise/data/repo/advertise_account_r
     as _i92;
 import '../../../feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart'
     as _i959;
+import '../../../feature/account_feature/page/manger/delete_account_cubit.dart'
+    as _i750;
 import '../../../feature/account_feature/user/data/repo/user_account_repo.dart'
     as _i645;
 import '../../../feature/account_feature/user/data/repo/user_account_repo_impl.dart'
@@ -131,6 +133,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i959.AdvertiseInfoCubit(gh<_i692.AdvertiseAccountRepo>()));
     gh.factory<_i552.TestCubit>(
         () => _i552.TestCubit(gh<_i692.AdvertiseAccountRepo>()));
+    gh.factory<_i750.DeleteAccountCubit>(
+        () => _i750.DeleteAccountCubit(gh<_i692.AdvertiseAccountRepo>()));
     gh.factory<_i965.WishlistRepo>(() => _i325.WishlistRepoImpl(
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),

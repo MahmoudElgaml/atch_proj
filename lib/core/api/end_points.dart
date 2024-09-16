@@ -1,5 +1,5 @@
 class EndPoints {
-  static const baseUrl = "https://adv.great-eagle.net";
+  static const baseUrl = "https://advertise.great-eagle.net";
   static const search = "/search_page/search";
   static const register = "/register";
   static const logIn = "/login";
@@ -15,6 +15,7 @@ class EndPoints {
   static const getRecentlyViewed = "/user/recently_viewed";
   static const editProfileUSer = "/user/edit_profile";
   static const editProfileAdvertise = "/advertiser/editAdvertiser";
+  static const deleteAccount = "/delete_user_advertiser";
   static const advertiseInfo = "/advertiser/getInfo";
   static const getAdvCampaigns = "/advertiser/getCampaigns";
   static const addToWishlist = "/campaign_page/add_to_wishlist";

@@ -25,7 +25,8 @@ class AdvertiseAccountRepoImpl implements AdvertiseAccountRepo {
         EndPoints.advertiseInfo,
         {"advertiser_id": id},
       );
-      AdvertiseInfoModel advertiseInfo = AdvertiseInfoModel.fromJson(response.data);
+      AdvertiseInfoModel advertiseInfo =
+          AdvertiseInfoModel.fromJson(response.data);
       return right(advertiseInfo);
     } catch (e) {
       if (e is DioException) {
@@ -37,15 +38,15 @@ class AdvertiseAccountRepoImpl implements AdvertiseAccountRepo {
   }
 
   @override
-  Future<Either<Failure, String>> editAdvertise(EditAdvertiseData advertiseData) async{
+  Future<Either<Failure, String>> editAdvertise(
+      EditAdvertiseData advertiseData) async {
     try {
-      var formData= advertiseData.formData();
+      var formData = advertiseData.formData();
       await aPiManger.post(EndPoints.editProfileAdvertise, formData);
 
-      return  right("success");
+      return right("success");
     } catch (e) {
       if (e is DioException) {
-
         return left(ServerFailure.fromServer(e));
       } else {
         print(e.toString());
@@ -53,6 +54,7 @@ class AdvertiseAccountRepoImpl implements AdvertiseAccountRepo {
       }
     }
   }
+
   @override
   Future<Either<Failure, String>> deleteCampaign(num? campaignId) async {
     try {
@@ -61,6 +63,26 @@ class AdvertiseAccountRepoImpl implements AdvertiseAccountRepo {
       });
 
       return right("");
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromServer(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> deleteAccount(num? id, String? role) async {
+    try {
+      await aPiManger.post(
+        EndPoints.deleteAccount,
+        {
+          "id": id,
+          "role": role,
+        },
+      );
+      return right("success");
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromServer(e));
