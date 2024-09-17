@@ -30,9 +30,9 @@ class AddCampaignModel {
     campaignVideos = json['campaign_videos'] != null
         ? json['campaign_videos'].cast<String>()
         : [];
-    campaignLocation = json['campaign_location'] != null
-        ? json['campaign_location'].cast<String>()
-        : [];
+    campaignLocation = json['locations'] != null
+        ? Map<String, dynamic>.from(json['locations'])
+        : {};
   }
 
   num? advertiserId;
@@ -44,8 +44,8 @@ class AddCampaignModel {
   num? campaignPrice;
   num? campaignOffer;
   List<String>? campaignVideos;
-  List<String>? campaignLocation;
-  List<XFile>?images;
+  Map<String, dynamic>? campaignLocation;
+  List<XFile>? images;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -58,16 +58,18 @@ class AddCampaignModel {
     map['campaign_price'] = campaignPrice;
     map['campaign_offer'] = campaignOffer;
     map['campaign_videos'] = campaignVideos;
-    map['campaign_location'] = campaignLocation;
+    map['locations'] = campaignLocation;
     return map;
   }
 
- FormData formData(){
+  FormData formData() {
     return FormData.fromMap({
       "data": jsonEncode(toJson()),
-      "image": images?.map( (e) => MultipartFile.fromFileSync(e.path,filename: e.name)).toList(),
-    }
-    );
-
+      "images": images != null
+          ? images!
+              .map((e) => MultipartFile.fromFileSync(e.path, filename: e.name))
+              .toList()
+          : [],
+    });
   }
 }
