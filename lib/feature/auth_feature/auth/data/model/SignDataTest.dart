@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -33,9 +32,11 @@ class SignDataTest {
     advertiserPhones = json['advertiser_phones'] != null
         ? json['advertiser_phones'].cast<String>()
         : [];
+
+    // Updated to handle `advertiserLocation` as Map<String, dynamic>
     advertiserLocation = json['advertiser_location'] != null
-        ? json['advertiser_location'].cast<String>()
-        : [];
+        ? Map<String, dynamic>.from(json['advertiser_location'])
+        : {};
   }
 
   String? email;
@@ -49,7 +50,10 @@ class SignDataTest {
   String? username;
   String? advertiserType;
   List<String>? advertiserPhones;
-  List<String>? advertiserLocation;
+
+  // Updated to Map<String, dynamic>
+  Map<String, dynamic>? advertiserLocation;
+
   XFile? image;
 
   Map<String, dynamic> toJson() {
@@ -65,7 +69,9 @@ class SignDataTest {
     map['username'] = username;
     map['advertiser_type'] = advertiserType;
     map['advertiser_phones'] = advertiserPhones;
-    map['advertiser_location'] = advertiserLocation;
+
+    // Updated to handle `advertiserLocation` as Map<String, dynamic>
+    map['locations'] = advertiserLocation;
     return map;
   }
 
