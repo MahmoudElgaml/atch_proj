@@ -46,6 +46,25 @@ Prefix is 10, 11, 12 or 15 only""";
     return null;
   }
 
+  static String? validateLocationLink(String? value, String? link) {
+    if (link == null || link.trim().isEmpty) {
+      return "You must enter location";
+    } else {
+      if (value == null || value.trim().isEmpty) {
+        return 'You must enter Link for Location';
+      }
+      return null;
+    }
+  }
+
+  static String? validateLocationLink2(String? link) {
+    if (link == null || link.trim().isNotEmpty) {
+      return "You must enter Link for location";
+    } else {
+      return null;
+    }
+  }
+
   static String? validateEmpty(String? value, String? title) {
     if (value == null || value.trim().isEmpty) {
       return 'You must enter your $title';
