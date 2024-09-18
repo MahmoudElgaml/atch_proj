@@ -22,11 +22,10 @@ class AdsItem extends StatelessWidget {
         GoRouter.of(context).push(AppRoute.adDetails, extra: campaigns.id);
       },
       child: AspectRatio(
-        aspectRatio: 220 / 275,
+        aspectRatio: 220 / 320,
         child: Card(
           borderOnForeground: true,
           shadowColor: Colors.black26,
-          color: Colors.white,
           elevation: 20,
           shape: OutlineInputBorder(
             borderRadius: BorderRadius.circular(18),
@@ -40,19 +39,20 @@ class AdsItem extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AspectRatio(
-                    aspectRatio: 180 / 120,
+                  Center(
                     child: SizedBox(
-                      width: 218,
-                      height: 113,
+                      width: 200,
+                      height: 150,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(18),
                         child: CachedNetworkImage(
                           fit: BoxFit.fill,
                           imageUrl: campaigns.images!.isEmpty
                               ? ""
-                              :"${EndPoints.baseUrl}${campaigns.images?[0]}" ?? "",
-                          errorWidget: (context, url, error) => SvgPicture.asset(
+                              : "${EndPoints.baseUrl}${campaigns.images?[0]}" ??
+                                  "",
+                          errorWidget: (context, url, error) =>
+                              SvgPicture.asset(
                             Assets.imagesEmptyImage,
                             fit: BoxFit.fill,
                           ),
