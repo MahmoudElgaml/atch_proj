@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
@@ -29,7 +31,7 @@ abstract class Helper {
     return DateFormat.yMMMd("en_US").format(date);
   }
 
-  static  OutlineInputBorder buildOutlineInputBorder() {
+  static OutlineInputBorder buildOutlineInputBorder() {
     return OutlineInputBorder(
       borderSide: const BorderSide(color: Color(0xffE4DFDF)),
       borderRadius: BorderRadius.circular(12),
@@ -42,17 +44,37 @@ abstract class Helper {
             ?.role ??
         "user";
   }
+
   static Person? retrievePerson() {
-    return getIt<HiveManager>()
-        .retrieveSingleData<Person>(HiveKeys.userBox);
-
-
+    return getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox);
   }
 
   static Future<void> lunchUUrl(String url) async {
     final Uri uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
       launchUrl(uri);
+    }
+  }
+
+  static lunchWhatsapp(String contact) async {
+    String text = '';
+    String androidUrl = "whatsapp://send?phone=$contact&text=$text";
+    String iosUrl = "https://wa.me/$contact?text=${Uri.parse(text)}";
+
+    String webUrl = 'https://api.whatsapp.com/send/?phone=$contact&text=hi';
+
+    try {
+      if (Platform.isIOS) {
+        if (await canLaunchUrl(Uri.parse(iosUrl))) {
+          await launchUrl(Uri.parse(iosUrl));
+        }
+      } else {
+        if (await canLaunchUrl(Uri.parse(androidUrl))) {
+          await launchUrl(Uri.parse(androidUrl));
+        }
+      }
+    } catch (e) {
+      await launchUrl(Uri.parse(webUrl), mode: LaunchMode.externalApplication);
     }
   }
 }
