@@ -14,6 +14,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/services/validation_service.dart';
 import '../../../../core/utils/app_style.dart';
+import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/service_locator/config.dart';
 import '../../../../generated/assets.dart';
 import '../../../auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
@@ -47,6 +48,10 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
   final TextEditingController price = TextEditingController();
 
   final TextEditingController offer = TextEditingController();
+  final List<String> locations =
+      Helper.retrievePerson()?.locations?.keys.toList() ?? [];
+
+  String selectedLocation = "";
 
   final LinkFeatureCubit linkCubit = getIt<LinkFeatureCubit>();
   bool setValues = true;
@@ -129,6 +134,25 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            Text(
+                              context.tr("location"),
+                              style: AppStyle.style24Regular(context),
+                            ),
+                            const Gap(19),
+                            Expanded(
+                              child: CustomDropMenu(
+                                setValue: (value) {
+                                  selectedLocation = value;
+                                },
+                                items: Map.fromIterable(locations),
+                                selectedValue: selectedLocation,
+                                isAuth: false,
+                              ),
+                            ),
+                          ],
+                        ),
                         const Gap(19),
                         DateSectionWidget(
                           firstDate: campaign.startDate?.substring(0, 16),
@@ -188,12 +212,19 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
 
   EditCampignModel createEditCampaignModel(
       AdvertiseCampaigns campaign, BuildContext context) {
+    print(ChangeDateCubit.get(context).firstDate);
+    print(ChangeDateCubit.get(context).lastDate);
+    Map<String, dynamic> selectedLocationAsMap = {};
+    selectedLocationAsMap[selectedLocation] =
+        Helper.retrievePerson()?.locations?[selectedLocation];
     EditCampignModel editModel = EditCampignModel(
       campaignId: campaign.id,
       oldCampaignImages: OldImageCubit.get(context).myImages,
       campaignPrice: int.parse(price.text),
       campaignOffer: int.parse(offer.text),
       campaignDescription: description.text,
+      campaignLocation: selectedLocationAsMap,
+      campaignStartDate: ChangeDateCubit.get(context).firstDate,
       campaignEndDate: ChangeDateCubit.get(context).lastDate,
       campaignName: companyName.text,
       campaignVideos: linkCubit.links,
@@ -208,5 +239,6 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
     price.text = campaign.price.toString();
     offer.text = campaign.offer.toString();
     selectedValue = campaign.targetAudience ?? "";
+    selectedLocation = campaign.locations?.entries.first.key ?? "";
   }
 }
