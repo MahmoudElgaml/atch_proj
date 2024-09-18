@@ -1,4 +1,5 @@
 import 'package:atch_proj/config/routes/routes.dart';
+import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/services/validation_service.dart';
 import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
@@ -12,8 +13,10 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/services/upload_image_service.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
+import '../../../../../core/utils/service_locator/config.dart';
 import '../../../../auth_feature/auth/presentation/pages/test_upload_image.dart';
 import '../../../../auth_feature/auth/presentation/widgets/costume_text_filed.dart';
+import '../../../../auth_feature/auth/presentation/widgets/loction_section_widget.dart';
 import '../../data/model/EditAdvertiseData.dart';
 
 class AdvertiseEditScreen extends StatefulWidget {
@@ -36,15 +39,23 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
   TextEditingController phone2 = TextEditingController();
 
   TextEditingController location1 = TextEditingController();
+  TextEditingController location1Link = TextEditingController();
   TextEditingController location2 = TextEditingController();
+  TextEditingController location2Link = TextEditingController();
 
   TextEditingController about = TextEditingController();
+  int counter = 0;
+  bool isClicked = false;
 
   @override
   Widget build(BuildContext context) {
     final Advertiser advertiser =
         GoRouterState.of(context).extra! as Advertiser;
-    setData(advertiser);
+    if (counter == 0) {
+      setData(advertiser);
+      counter++;
+    }
+
     return BlocListener<AdvertiseInfoCubit, AdvertiseInfoState>(
       listener: (context, state) async {
         if (state is AdvertiseAccountLoadingState) {
@@ -54,6 +65,7 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
           EasyLoading.showError("");
         } else if (state is AdvertiseAccountSuccessState) {
           await Helper.retrievePerson()?.delete();
+          getIt<StorageToken>().deleteToken();
           await EasyLoading.showSuccess("");
           if (context.mounted) {
             context.go(AppRoute.logInKey);
@@ -63,7 +75,10 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
       child: Column(
         children: [
           const Gap(10),
-          const TestUploadImage(
+          TestUploadImage(
+            isClicked: (bool value) {
+              isClicked = value;
+            },
             isEdit: true,
           ),
           const Gap(25),
@@ -117,24 +132,11 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
             ],
           ),
           const Gap(25),
-          Row(
-            children: [
-              Expanded(
-                child: CostumeTextFiled(
-                  validator: (value) =>
-                      ValidationService.validateEmpty(value, "Your Location"),
-                  title: "Location",
-                  textEditingController: location1,
-                ),
-              ),
-              const Gap(10),
-              Expanded(
-                child: CostumeTextFiled(
-                  title: "Location2",
-                  textEditingController: location2,
-                ),
-              ),
-            ],
+          LocationSectionWidget(
+            location1: location1,
+            location1Link: location1Link,
+            location2: location2,
+            location2Link: location2Link,
           ),
           const Gap(25),
           SizedBox(
@@ -144,7 +146,8 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
                 backgroundColor: AppColor.primaryColor,
               ),
               onPressed: () {
-                EditAdvertiseData advertise = createEditAdvModel(advertiser);
+                EditAdvertiseData advertise =
+                    createEditAdvModel(advertiser, isClicked);
                 AdvertiseInfoCubit.get(context).editAdvertiser(advertise);
               },
               child: Padding(
@@ -162,23 +165,26 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
     );
   }
 
-  EditAdvertiseData createEditAdvModel(Advertiser advertiser) {
+  EditAdvertiseData createEditAdvModel(Advertiser advertiser, bool isClicked) {
     List<String> phones = [phone1.text];
     if (phone2.text != "") {
       phones.add(phone2.text);
     }
-    List<String> locations = [location1.text];
+    Map<String, dynamic>? locations = {};
+    locations[location1.text] = location1Link.text;
 
     if (location2.text != "") {
-      locations.add(location2.text);
+      locations[location2.text] = location2Link.text;
     }
+
     EditAdvertiseData advertise = EditAdvertiseData(
       password: password.text,
       username: username.text,
       visa: "5050",
       advertiserId: advertiser.id,
       about: about.text,
-      advertiserLocations: locations,
+      advertiserLocation: locations,
+      oldImage: isClicked ? null : Helper.retrievePerson()?.profilePic,
       advertiserPhones: phones,
       name: companyName.text,
       email: email.text,
@@ -191,9 +197,13 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
     companyName.text = advertiser.name ?? "";
     email.text = advertiser.email ?? "";
     username.text = advertiser.name ?? "";
-    location1.text = advertiser.locations?[0] ?? "";
-    location2.text =
-        (advertiser.locations!.length > 1) ? advertiser.locations![1] : "";
+    location1.text = advertiser.locations?.entries.first.key ?? "";
+    location1Link.text = advertiser.locations?.entries.first.value ?? "";
+    if (advertiser.locations!.length > 1) {
+      location2.text = advertiser.locations?.entries.last.key ?? "";
+      location2Link.text = advertiser.locations?.entries.last.value ?? "";
+    }
+
     phone1.text = advertiser.phones?[0] ?? "";
     phone2.text = (advertiser.phones!.length > 1) ? advertiser.phones![1] : "";
     about.text = advertiser.about ?? "";
