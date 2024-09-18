@@ -11,23 +11,22 @@ import '../../../../../core/api/end_points.dart';
 import '../../../../../core/utils/service_locator/config.dart';
 
 class TestUploadImage extends StatefulWidget {
-  const TestUploadImage({super.key, required this.isEdit});
+  const TestUploadImage({super.key, required this.isEdit, this.isClicked});
 
   final bool isEdit;
+  final void Function(bool valu)? isClicked;
 
   @override
   State<TestUploadImage> createState() => _TestUploadImageState();
 }
 
-
-
 class _TestUploadImageState extends State<TestUploadImage> {
   var profilePic = getIt<HiveManager>()
       .retrieveSingleData<Person>(HiveKeys.userBox)
       ?.profilePic;
+
   @override
   Widget build(BuildContext context) {
-
     return Center(
       child: Column(
         children: [
@@ -51,7 +50,9 @@ class _TestUploadImageState extends State<TestUploadImage> {
                   left: 80,
                   child: IconButton(
                     onPressed: () async {
+                      widget.isClicked == null ? null : widget.isClicked!(true);
                       await UploadImageService.selectImage(ImageSource.gallery);
+
                       setState(() {});
                     },
                     icon: const Icon(Icons.add_a_photo_outlined),

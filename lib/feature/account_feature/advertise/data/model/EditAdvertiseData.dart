@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -14,7 +13,9 @@ class EditAdvertiseData {
     this.username,
     this.advertiserType,
     this.advertiserPhones,
-    this.advertiserLocations,
+    this.advertiserLocation,
+    this.image,
+    this.oldImage, // Added field for old_image
   });
 
   EditAdvertiseData.fromJson(dynamic json) {
@@ -29,9 +30,10 @@ class EditAdvertiseData {
     advertiserPhones = json['advertiser_phones'] != null
         ? json['advertiser_phones'].cast<String>()
         : [];
-    advertiserLocations = json['advertiser_locations'] != null
-        ? json['advertiser_locations'].cast<String>()
-        : [];
+    advertiserLocation = json['locations'] != null
+        ? Map<String, dynamic>.from(json['locations'])
+        : {};
+    oldImage = json['old_image']; // Parse old_image from JSON
   }
 
   String? email;
@@ -43,8 +45,9 @@ class EditAdvertiseData {
   String? username;
   String? advertiserType;
   List<String>? advertiserPhones;
-  List<String>? advertiserLocations;
+  Map<String, dynamic>? advertiserLocation;
   XFile? image;
+  String? oldImage; // Added field for old_image
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -57,17 +60,17 @@ class EditAdvertiseData {
     map['username'] = username;
     map['advertiser_type'] = advertiserType;
     map['advertiser_phones'] = advertiserPhones;
-    map['advertiser_locations'] = advertiserLocations;
+    map['locations'] = advertiserLocation;
+    map['old_image'] = oldImage; // Add old_image to the JSON output
     return map;
   }
+
   FormData formData() {
     return FormData.fromMap({
       "data": jsonEncode(toJson()),
       "image": image == null
           ? null
-          : MultipartFile.fromFileSync(image!.path, filename: image!.name)
+          : MultipartFile.fromFileSync(image!.path, filename: image!.name),
     });
   }
 }
-
-
