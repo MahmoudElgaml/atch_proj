@@ -116,6 +116,7 @@ class DetailAdvertiser {
     this.profilePic,
     this.referralCode,
     this.username,
+    this.locations, // Added locations as Map
   });
 
   DetailAdvertiser.fromJson(dynamic json) {
@@ -128,6 +129,10 @@ class DetailAdvertiser {
     referralCode = json['referral_code'];
     username = json['username'];
     phone = json['phones'] != null ? json['phones'].cast<String>() : [];
+    locations = json['locations'] != null
+        ? Map<String, dynamic>.from(
+            json['locations']) // Handling Map for locations
+        : {};
   }
 
   String? about;
@@ -139,6 +144,7 @@ class DetailAdvertiser {
   dynamic referralCode;
   String? username;
   List<String>? phone;
+  Map<String, dynamic>? locations; // Added locations as a Map
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -151,6 +157,7 @@ class DetailAdvertiser {
     map['referral_code'] = referralCode;
     map['username'] = username;
     map['phones'] = phone;
+    map['locations'] = locations; // Adding locations to the map
     return map;
   }
 }
