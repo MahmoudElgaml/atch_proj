@@ -32,12 +32,17 @@ class ReachUsDialog extends StatelessWidget {
             children: locations.entries
                 .map(
                   (e) => Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(e.key),
                       const Gap(15),
                       InkWell(
                           onTap: () => Helper.lunchUUrl(e.value),
-                          child: SvgPicture.asset(Assets.imagesLocations))
+                          child: SvgPicture.asset(
+                            Assets.imagesLocations,
+                            width: 30,
+                            height: 30,
+                          ))
                     ],
                   ),
                 )
