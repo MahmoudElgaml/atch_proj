@@ -44,11 +44,11 @@ class AdDetailsWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  isProfile ? first ?? "" : first?.substring(0, 16) ?? "",
+                  isProfile ? first ?? "" : first ?? "",
                   style: AppStyle.style18(context),
                 ),
                 Text(
-                  isProfile ? last ?? "" : last?.substring(0, 16) ?? "",
+                  isProfile ? last ?? "" : last ?? "",
                   style: AppStyle.style18(context),
                 ),
               ],

@@ -155,8 +155,8 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
                         ),
                         const Gap(19),
                         DateSectionWidget(
-                          firstDate: campaign.startDate?.substring(0, 16),
-                          lastDate: campaign.endDate?.substring(0, 16),
+                          firstDate: campaign.startDate,
+                          lastDate: campaign.endDate,
                         ),
                         const Gap(19),
                         CustomCampaignTextFiled(
@@ -221,7 +221,7 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
       campaignId: campaign.id,
       oldCampaignImages: OldImageCubit.get(context).myImages,
       campaignPrice: int.parse(price.text),
-      campaignOffer: int.parse(offer.text),
+      campaignOffer: offer.text == "" ? null : int.parse(offer.text),
       campaignDescription: description.text,
       campaignLocation: selectedLocationAsMap,
       campaignStartDate: ChangeDateCubit.get(context).firstDate,
@@ -237,8 +237,9 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
     companyName.text = campaign.campaignName ?? "";
     description.text = campaign.description ?? "";
     price.text = campaign.price.toString();
-    offer.text = campaign.offer.toString();
+    offer.text = campaign.offer == null ? "" : campaign.offer.toString();
     selectedValue = campaign.targetAudience ?? "";
-    selectedLocation = campaign.locations?.entries.first.key ?? "";
+    selectedLocation =
+        Helper.retrievePerson()?.locations?.entries.first.key ?? "";
   }
 }

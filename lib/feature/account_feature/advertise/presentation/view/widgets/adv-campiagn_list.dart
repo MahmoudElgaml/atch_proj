@@ -84,7 +84,7 @@ class AdvAccountCampaignItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          campaigns.endDate?.substring(0, 16) ?? " No Date",
+                          campaigns.endDate ?? " No Date",
                           style: AppStyle.style18Regular(context),
                         ),
                         Text(
