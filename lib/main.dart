@@ -26,18 +26,15 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(
-    DevicePreview(
-      enabled: true,
-      builder: (context) => EasyLocalization(
-        supportedLocales: const [
-          Locale("en"),
-          Locale("ar"),
-        ],
-        fallbackLocale: const Locale('ar'),
-        startLocale: const Locale("en"),
-        path: 'assets/translation',
-        child: const MyApp(),
-      ), // Wrap your app
+    EasyLocalization(
+      supportedLocales: const [
+        Locale("en"),
+        Locale("ar"),
+      ],
+      fallbackLocale: const Locale('ar'),
+      startLocale: const Locale("en"),
+      path: 'assets/translation',
+      child: const MyApp(),
     ),
   );
 }
@@ -62,7 +59,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       useInheritedMediaQuery: true,
-      builder: EasyLoading.init(builder: DevicePreview.appBuilder),
+      builder: EasyLoading.init(),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       routerConfig: AppRoute.router,
