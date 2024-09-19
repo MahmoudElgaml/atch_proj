@@ -25,7 +25,7 @@ class Assets {
   static const String imagesLinkedinIcon = 'assets/images/linkedin_icon.svg';
   static const String imagesListIcon = 'assets/images/list_icon.png';
   static const String imagesLocation = 'assets/images/Location.png';
-  static const String imagesLocations = 'assets/images/locations.svg';
+  static const String imagesLoctions = 'assets/images/loctions.svg';
   static const String imagesLogInPhoto = 'assets/images/log_in_photo.png';
   static const String imagesMailIcon = 'assets/images/mail_icon.svg';
   static const String imagesMiniLogo = 'assets/images/mini_logo.png';
