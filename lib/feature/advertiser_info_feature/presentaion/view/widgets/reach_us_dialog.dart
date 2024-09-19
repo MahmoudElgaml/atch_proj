@@ -39,7 +39,7 @@ class ReachUsDialog extends StatelessWidget {
                       InkWell(
                           onTap: () => Helper.lunchUUrl(e.value),
                           child: SvgPicture.asset(
-                            Assets.imagesLocations,
+                            Assets.imagesLoctions,
                             width: 30,
                             height: 30,
                           ))
