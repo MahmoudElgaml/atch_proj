@@ -18,7 +18,7 @@ class AdDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Add Detail",
+          "Campaign Detail",
           style: AppStyle.style24Regular(context),
         ),
       ),
