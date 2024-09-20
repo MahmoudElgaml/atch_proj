@@ -7,6 +7,7 @@ import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
 import 'package:atch_proj/feature/account_feature/page/manger/delete_account_cubit.dart';
+import 'package:atch_proj/feature/account_feature/page/widgets/confirm_delete_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -72,8 +73,15 @@ class AccountFirstSection extends StatelessWidget {
                 },
                 child: InkWell(
                   onTap: () {
-                    DeleteAccountCubit.get(context)
-                        .deleteAccountForBoth(person?.id, person?.role);
+                    showDialog(
+                      context: context,
+                      builder: (_) {
+                        return ConfirmDeleteDialog(
+                          contexts: context,
+                          deletePerson: person,
+                        );
+                      },
+                    );
                   },
                   child: const EditButton(
                     title: "deleteAccount",
