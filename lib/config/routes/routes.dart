@@ -7,6 +7,8 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/old_image_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/add_campaign_screen.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/edit_campaign_screen.dart';
+import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
+import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/advertiser_info_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_screen.dart';
@@ -112,24 +114,17 @@ class AppRoute {
       ),
       GoRoute(
         path: advertiserInfoPage,
-        builder: (context, state) => const AdvertiserInfoPage(),
+        builder: (context, state) => BlocProvider(
+          create: (context) {
+            var detailAdv = state.extra as DetailAdvertiser;
+            var advId = detailAdv.id;
+            return getIt<AdvInfoCubit>()..getAdvCampaigns(advId);
+          },
+          child: const AdvertiserInfoPage(),
+        ),
       ),
       GoRoute(
         path: editUserPage,
-        pageBuilder: (context, state) {
-          return CustomTransitionPage(
-            transitionDuration: const Duration(seconds: 1),
-            key: state.pageKey,
-            child: const EditAccountScreen(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return FadeTransition(
-                opacity: CurveTween(curve: Curves.easeInOut).animate(animation),
-                child: child,
-              );
-            },
-          );
-        },
         builder: (context, state) => const EditAccountScreen(),
       ),
       GoRoute(

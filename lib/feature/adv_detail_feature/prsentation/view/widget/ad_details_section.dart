@@ -115,14 +115,19 @@ class PriceSection extends StatelessWidget {
             const Gap(25),
             Row(
               children: [
-                Text(campaign?.offer?.toString() ?? "",
+                Text(
+                    campaign?.offer == null
+                        ? campaign?.price?.toString() ?? ""
+                        : campaign?.offer?.toString() ?? "",
                     style: AppStyle.style18(context).copyWith(
                       color: AppColor.primaryColor,
                       fontSize: 20,
                     )),
                 const Gap(7),
                 Text(
-                  campaign?.price.toString() ?? "",
+                  campaign?.offer == null
+                      ? ""
+                      : campaign?.price.toString() ?? "",
                   style: const TextStyle(
                       decoration: TextDecoration.lineThrough, fontSize: 18),
                 )

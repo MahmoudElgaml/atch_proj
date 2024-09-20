@@ -50,6 +50,12 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: ThemeData(
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          },
+        ),
         datePickerTheme: const DatePickerThemeData(locale: Locale("en")),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
