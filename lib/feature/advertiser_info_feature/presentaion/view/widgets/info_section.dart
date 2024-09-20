@@ -26,7 +26,8 @@ class InfoSection extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
                   width: double.infinity,
-                  imageUrl: "${EndPoints.baseUrl}${advertiser.profilePic}" ?? "",
+                  imageUrl:
+                      "${EndPoints.baseUrl}${advertiser.profilePic}" ?? "",
                   errorWidget: (context, url, error) =>
                       Image.asset(Assets.assetsImagesEmptyImage),
                 ),
@@ -38,7 +39,11 @@ class InfoSection extends StatelessWidget {
               style: AppStyle.style24Regular(context),
             ),
             const Gap(10),
-             MessageButton(number:advertiser.phone?.first)
+            MessageButton(
+              number: advertiser.phone?.first,
+              locations: advertiser.locations ?? {},
+              phones: advertiser.phone ?? [],
+            )
           ],
         ),
       ),

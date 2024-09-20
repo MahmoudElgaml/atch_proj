@@ -4,15 +4,14 @@ import 'package:gap/gap.dart';
 import '../../../../../core/utils/helper.dart';
 
 class CostumeTextFiled extends StatelessWidget {
-  const CostumeTextFiled({
-    required this.title,
-    super.key,
-    required this.textEditingController,
-    this.validator,
-    this.keyboardType,
-    this.isPassword,
-    this.maxLine
-  });
+  const CostumeTextFiled(
+      {required this.title,
+      super.key,
+      required this.textEditingController,
+      this.validator,
+      this.keyboardType,
+      this.isPassword,
+      this.maxLine});
 
   final TextEditingController? textEditingController;
   final String title;
@@ -32,14 +31,18 @@ class CostumeTextFiled extends StatelessWidget {
         ),
         const Gap(10),
         TextFormField(
-
-           maxLines: maxLine??1,
+          onTapOutside: (event) {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          maxLines: maxLine ?? 1,
           obscureText: isPassword ?? false,
           keyboardType: keyboardType,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: validator,
           controller: textEditingController,
           decoration: InputDecoration(
+              focusedErrorBorder: Helper.buildOutlineInputBorder(),
+              errorBorder: Helper.buildOutlineInputBorder(),
               focusedBorder: Helper.buildOutlineInputBorder(),
               enabledBorder: Helper.buildOutlineInputBorder()),
         )

@@ -1,5 +1,6 @@
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_camapaign_textfiled.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/loction_section_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -54,7 +55,9 @@ class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
   TextEditingController phone2 = TextEditingController();
 
   TextEditingController location1 = TextEditingController();
+  TextEditingController location1Link = TextEditingController();
   TextEditingController location2 = TextEditingController();
+  TextEditingController location2Link = TextEditingController();
   TextEditingController referralCode = TextEditingController();
 
   String selectedValue = "Factory";
@@ -113,7 +116,8 @@ class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
             children: [
               Expanded(
                 child: CostumeTextFiled(
-                  validator: (value) => ValidationService.validatePhoneNumber(value),
+                  validator: (value) =>
+                      ValidationService.validatePhoneNumber(value),
                   keyboardType: TextInputType.phone,
                   title: "Phone1",
                   textEditingController: phone1,
@@ -130,24 +134,11 @@ class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
             ],
           ),
           const Gap(20),
-          Row(
-            children: [
-              Expanded(
-                child: CostumeTextFiled(
-                  validator: (value) =>
-                      ValidationService.validateEmpty(value, "Your Location"),
-                  title: "Location",
-                  textEditingController: location1,
-                ),
-              ),
-              const Gap(10),
-              Expanded(
-                child: CostumeTextFiled(
-                  title: "Location2",
-                  textEditingController: location2,
-                ),
-              ),
-            ],
+          LocationSectionWidget(
+            location1: location1,
+            location1Link: location1Link,
+            location2: location2,
+            location2Link: location2Link,
           ),
           const Gap(20),
           SizedBox(
@@ -209,14 +200,16 @@ class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
 
   SignDataTest setSignData() {
     List<String> phones = [phone1.text];
-    if(phone2.text!=""){
+    if (phone2.text != "") {
       phones.add(phone2.text);
     }
-    List<String> locations = [location1.text];
+    Map<String, String>? locations = {};
+    locations[location1.text] = location1Link.text;
 
     if (location2.text != "") {
-      locations.add(location2.text);
+      locations[location2.text] = location2Link.text;
     }
+    print(locations);
     SignDataTest signData = SignDataTest();
     signData.name = companyName.text;
     signData.username = advertiseName.text;

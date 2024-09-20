@@ -19,28 +19,23 @@ class AllAdsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: BlocBuilder<DrawerCubit, DrawerState>(
-                bloc: DrawerCubit.get(context)..getAllCampaigns(),
-                builder: (context, state) {
-                  if (state is DrawerGetCampaignsFailState) {
-                    return Center(
-                      child: Text(
-                        state.message,
-                        style: AppStyle.style24Regular(context),
-                      ),
-                    );
-                  } else if (state is DrawerGetCampaignsSuccessState) {
-                    return AllAdsList(
-                      allCampaigns: state.allCampaigns,
-                    );
-                  }
-                  return const LoadingRectangleComponent();
-                },
-              ),
-            ),
+          BlocBuilder<DrawerCubit, DrawerState>(
+            bloc: DrawerCubit.get(context)..getAllCampaigns(),
+            builder: (context, state) {
+              if (state is DrawerGetCampaignsFailState) {
+                return Center(
+                  child: Text(
+                    state.message,
+                    style: AppStyle.style24Regular(context),
+                  ),
+                );
+              } else if (state is DrawerGetCampaignsSuccessState) {
+                return AllAdsList(
+                  allCampaigns: state.allCampaigns,
+                );
+              }
+              return Expanded(child: const LoadingRectangleComponent());
+            },
           ),
         ],
       ),
@@ -56,13 +51,16 @@ class AllAdsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView.builder(
-        itemCount: allCampaigns.length,
-        itemBuilder: (context, index) {
-          return CampaignItem(
-            campaigns: allCampaigns[index],
-          );
-        },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.builder(
+          itemCount: allCampaigns.length,
+          itemBuilder: (context, index) {
+            return CampaignItem(
+              campaigns: allCampaigns[index],
+            );
+          },
+        ),
       ),
     );
   }

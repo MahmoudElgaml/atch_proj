@@ -50,6 +50,9 @@ class HomeDrawer extends StatelessWidget {
                   width: 80,
                   height: 80,
                   child: CachedNetworkImage(
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.fill,
                     imageUrl:
                         "${EndPoints.baseUrl}${userData?.profilePic}" ?? "",
                     errorWidget: (context, url, error) {

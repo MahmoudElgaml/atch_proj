@@ -41,9 +41,11 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
 
   final TextEditingController companyName = TextEditingController();
 
-  // final List<String> locations = Helper.retrievePerson()?.locations ?? [];
+  final List<String> locations =
+      Helper.retrievePerson()?.locations?.keys.toList() ?? [];
 
-  // String selectedLocation = Helper.retrievePerson()?.locations?.first ?? "";
+  String selectedLocation =
+      Helper.retrievePerson()?.locations?.keys.first ?? "";
 
   final TextEditingController description = TextEditingController();
 
@@ -134,6 +136,16 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                               style: AppStyle.style24Regular(context),
                             ),
                             const Gap(19),
+                            Expanded(
+                              child: CustomDropMenu(
+                                setValue: (value) {
+                                  selectedLocation = value;
+                                },
+                                items: Map.fromIterable(locations),
+                                selectedValue: selectedLocation,
+                                isAuth: false,
+                              ),
+                            ),
                           ],
                         ),
                         const Gap(19),
@@ -151,7 +163,6 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                         ),
                         const Gap(19),
                         CustomCampaignTextFiled(
-
                           textInputType: TextInputType.number,
                           textEditingController: offer,
                           hint: "Offer",
@@ -193,13 +204,16 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
   }
 
   AddCampaignModel createAddCampaignModel(num? adToken, BuildContext context) {
+    Map<String, dynamic> theLocation = {};
+    theLocation[selectedLocation] =
+        Helper.retrievePerson()?.locations?[selectedLocation];
     AddCampaignModel addCampaignModel = AddCampaignModel(
       advertiserId: adToken,
+      campaignLocation: theLocation,
       campaignPrice: int.parse(price.text),
-      campaignOffer: offer.text==""?null: int.parse(offer.text),
+      campaignOffer: offer.text == "" ? null : int.parse(offer.text),
       campaignDescription: description.text,
-      campaignStartDate:
-          ChangeDateCubit.get(context).firstDate,
+      campaignStartDate: ChangeDateCubit.get(context).firstDate,
       campaignEndDate: ChangeDateCubit.get(context).lastDate,
       campaignName: companyName.text,
       campaignTargetAudience: selectedValue,
