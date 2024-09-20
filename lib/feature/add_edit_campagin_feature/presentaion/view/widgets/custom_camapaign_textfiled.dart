@@ -24,6 +24,9 @@ class CustomCampaignTextFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTapOutside: (event) {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       validator: validator,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: textInputType,

@@ -45,5 +45,6 @@
   "bAddCampaign": "اضافه اعلان",
   "campaignName": "اسم الحملة",
   "description": "الوصف",
-  "oldPhoto": "الصور القديمه"
+  "oldPhoto": "الصور القديمه",
+  "deleteAccount": "مسح الحساب"
 }

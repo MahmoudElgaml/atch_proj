@@ -22,7 +22,7 @@ class PersonAdapter extends TypeAdapter<Person> {
       advertiserType: fields[2] as String?,
       email: fields[3] as String?,
       id: fields[4] as num?,
-      locations: (fields[12] as List?)?.cast<String>(),
+      locations: (fields[12] as Map?)?.cast<String, dynamic>(),
       name: fields[5] as String?,
       profilePic: fields[6] as String?,
       referralCode: fields[7] as dynamic,

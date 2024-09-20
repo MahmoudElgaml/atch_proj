@@ -8,11 +8,9 @@ import '../../../../adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'advertise_campignes_list.dart';
 
 class InfoTabsSection extends StatelessWidget {
-  const InfoTabsSection(
-      {super.key, required this.advInfoCubit, required this.advertiser});
+  const InfoTabsSection({super.key, required this.advertiser});
 
   final DetailAdvertiser advertiser;
-  final AdvInfoCubit advInfoCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +35,6 @@ class InfoTabsSection extends StatelessWidget {
                         ),
                         AdvertiseCampaignsList(
                           advId: advertiser.id,
-                          advInfoCubit: advInfoCubit,
                         ),
                       ],
                     ),

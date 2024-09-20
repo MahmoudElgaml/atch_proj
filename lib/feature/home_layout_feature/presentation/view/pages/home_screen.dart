@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/utils/service_locator/config.dart';
+import '../../../../../core/utils/service_locator/config.dart';
 
 class HomeScreenLayout extends StatelessWidget {
   const HomeScreenLayout({super.key});
@@ -25,8 +25,7 @@ class HomeScreenLayout extends StatelessWidget {
           builder: (context, state) {
             //polymorphism
             return PageTransitionSwitcher(
-
-              duration: const Duration(seconds: 1),
+              duration: const Duration(milliseconds: 500),
               transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
                 return FadeThroughTransition(
                   animation: primaryAnimation,

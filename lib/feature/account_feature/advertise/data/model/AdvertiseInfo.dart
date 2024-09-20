@@ -50,7 +50,10 @@ class AdvertiseCampaigns {
   String? endDate;
   num? id;
   List<String>? images;
-  List<String>? locations;
+
+  // Updated locations from List<String> to Map<String, dynamic>
+  Map<String, dynamic>? locations;
+
   num? offer;
   num? price;
   String? startDate;
@@ -81,8 +84,12 @@ class AdvertiseCampaigns {
     endDate = json['end_date'];
     id = json['id'];
     images = json['images'] != null ? json['images'].cast<String>() : [];
-    locations =
-        json['locations'] != null ? json['locations'].cast<String>() : [];
+
+    // Parse locations as Map<String, dynamic>
+    locations = json['locations'] != null
+        ? Map<String, dynamic>.from(json['locations'])
+        : null;
+
     offer = json['offer'];
     price = json['price'];
     startDate = json['start_date'];
@@ -98,7 +105,7 @@ class AdvertiseCampaigns {
     String? endDate,
     num? id,
     List<String>? images,
-    List<String>? locations,
+    Map<String, dynamic>? locations,
     num? offer,
     num? price,
     String? startDate,
@@ -115,9 +122,12 @@ class AdvertiseCampaigns {
       images: images != null
           ? List<String>.from(images)
           : List<String>.from(this.images ?? []),
+
+      // Use the provided locations or fallback to the current ones
       locations: locations != null
-          ? List<String>.from(locations)
-          : List<String>.from(this.locations ?? []),
+          ? Map<String, dynamic>.from(locations)
+          : Map<String, dynamic>.from(this.locations ?? {}),
+
       offer: offer ?? this.offer,
       price: price ?? this.price,
       startDate: startDate ?? this.startDate,
@@ -137,7 +147,10 @@ class AdvertiseCampaigns {
     map['end_date'] = endDate;
     map['id'] = id;
     map['images'] = images;
+
+    // Convert locations back to Map<String, dynamic>
     map['locations'] = locations;
+
     map['offer'] = offer;
     map['price'] = price;
     map['start_date'] = startDate;
@@ -153,7 +166,10 @@ class Advertiser {
   String? advertiserType;
   String? email;
   num? id;
-  List<String>? locations;
+
+  // Updated locations from List<String> to Map<String, dynamic>
+  Map<String, dynamic>? locations;
+
   String? name;
   List<String>? phones;
   String? profilePic;
@@ -178,8 +194,12 @@ class Advertiser {
     advertiserType = json['advertiser_type'];
     email = json['email'];
     id = json['id'];
-    locations =
-        json['locations'] != null ? json['locations'].cast<String>() : [];
+
+    // Parse locations as Map<String, dynamic>
+    locations = json['locations'] != null
+        ? Map<String, dynamic>.from(json['locations'])
+        : null;
+
     name = json['name'];
     phones = json['phones'] != null ? json['phones'].cast<String>() : [];
     profilePic = json['profile_pic'];
@@ -192,7 +212,7 @@ class Advertiser {
     String? advertiserType,
     String? email,
     num? id,
-    List<String>? locations,
+    Map<String, dynamic>? locations,
     String? name,
     List<String>? phones,
     String? profilePic,
@@ -204,9 +224,12 @@ class Advertiser {
       advertiserType: advertiserType ?? this.advertiserType,
       email: email ?? this.email,
       id: id ?? this.id,
+
+      // Use the provided locations or fallback to the current ones
       locations: locations != null
-          ? List<String>.from(locations)
-          : List<String>.from(this.locations ?? []),
+          ? Map<String, dynamic>.from(locations)
+          : Map<String, dynamic>.from(this.locations ?? {}),
+
       name: name ?? this.name,
       phones: phones != null
           ? List<String>.from(phones)
@@ -223,7 +246,10 @@ class Advertiser {
     map['advertiser_type'] = advertiserType;
     map['email'] = email;
     map['id'] = id;
+
+    // Convert locations back to Map<String, dynamic>
     map['locations'] = locations;
+
     map['name'] = name;
     map['phones'] = phones;
     map['profile_pic'] = profilePic;

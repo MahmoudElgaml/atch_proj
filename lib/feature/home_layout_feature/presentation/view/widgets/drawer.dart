@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
@@ -7,11 +8,16 @@ import 'package:atch_proj/core/utils/constants.dart';
 import 'package:atch_proj/core/utils/models/drawer_item_model.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
+import 'package:atch_proj/feature/home_layout_feature/presentation/manager/drawer_cubit.dart';
+import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/contact_us_dialog.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/drawer_item.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/referral_code_qr_widget.dart';
+import 'package:atch_proj/generated/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -44,6 +50,9 @@ class HomeDrawer extends StatelessWidget {
                   width: 80,
                   height: 80,
                   child: CachedNetworkImage(
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.fill,
                     imageUrl:
                         "${EndPoints.baseUrl}${userData?.profilePic}" ?? "",
                     errorWidget: (context, url, error) {
@@ -67,6 +76,23 @@ class HomeDrawer extends StatelessWidget {
                             case "setting":
                               {
                                 context.push(AppRoute.setting);
+                              }
+                            case "AllAds":
+                              {
+                                context.push(AppRoute.allAds);
+                              }
+                            case "contact":
+                              {
+                                showModal(
+                                  configuration:
+                                      const FadeScaleTransitionConfiguration(
+                                    transitionDuration: Duration(seconds: 1),
+                                  ),
+                                  context: context,
+                                  builder: (context) {
+                                    return const ContactUsDialog();
+                                  },
+                                );
                               }
                           }
                         },

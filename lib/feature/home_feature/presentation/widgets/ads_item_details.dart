@@ -30,7 +30,8 @@ class AdsItemDetails extends StatelessWidget {
               Text(
                 campaigns!.locations!.isEmpty
                     ? "No Location"
-                    : campaigns?.locations?.first ?? "No Location",
+                    : campaigns?.locations?.keys.toList().first ??
+                        "No Location",
                 style: AppStyle.style18(context).copyWith(
                     color: const Color(0xff8c8c8c),
                     fontWeight: FontWeight.w500),
@@ -40,14 +41,19 @@ class AdsItemDetails extends StatelessWidget {
           Row(
             children: [
               const Gap(10),
-              FittedBox(child: Text(campaigns?.offer.toString() ?? "")),
-              const Gap(20),
               FittedBox(
-                child: Text(
-                  campaigns?.price.toString() ?? "",
-                  style: const TextStyle(
-                    decoration: TextDecoration.lineThrough,
-                  ),
+                  child: Text(
+                campaigns?.offer == null
+                    ? campaigns?.price?.toString() ?? ""
+                    : campaigns?.offer?.toString() ?? "",
+              )),
+              const Gap(20),
+              Text(
+                campaigns?.offer == null
+                    ? ""
+                    : campaigns?.price.toString() ?? "",
+                style: const TextStyle(
+                  decoration: TextDecoration.lineThrough,
                 ),
               ),
             ],

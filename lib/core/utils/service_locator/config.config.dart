@@ -17,6 +17,8 @@ import '../../../feature/account_feature/advertise/data/repo/advertise_account_r
     as _i92;
 import '../../../feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart'
     as _i959;
+import '../../../feature/account_feature/page/manger/delete_account_cubit.dart'
+    as _i750;
 import '../../../feature/account_feature/user/data/repo/user_account_repo.dart'
     as _i645;
 import '../../../feature/account_feature/user/data/repo/user_account_repo_impl.dart'
@@ -66,6 +68,12 @@ import '../../../feature/home_feature/presentation/manager/get_normal_campagin_c
     as _i369;
 import '../../../feature/home_feature/presentation/manager/get_popular_campaign_cubit.dart'
     as _i401;
+import '../../../feature/home_layout_feature/data/repo/home_layout_repo.dart'
+    as _i801;
+import '../../../feature/home_layout_feature/data/repo/homelayout_repo_impl.dart'
+    as _i1036;
+import '../../../feature/home_layout_feature/presentation/manager/drawer_cubit.dart'
+    as _i400;
 import '../../../feature/home_layout_feature/presentation/manager/home_layout_cubit.dart'
     as _i637;
 import '../../../feature/qr_offer_feature/data/repo/qr_offer_repo.dart'
@@ -131,6 +139,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i959.AdvertiseInfoCubit(gh<_i692.AdvertiseAccountRepo>()));
     gh.factory<_i552.TestCubit>(
         () => _i552.TestCubit(gh<_i692.AdvertiseAccountRepo>()));
+    gh.factory<_i750.DeleteAccountCubit>(
+        () => _i750.DeleteAccountCubit(gh<_i692.AdvertiseAccountRepo>()));
     gh.factory<_i965.WishlistRepo>(() => _i325.WishlistRepoImpl(
           gh<_i254.APiManger>(),
           gh<_i353.StorageToken>(),
@@ -145,6 +155,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i401.GetPopularCampaignCubit(gh<_i651.HomeRepo>()));
     gh.factory<_i238.QrOfferCubit>(
         () => _i238.QrOfferCubit(gh<_i888.QrOfferRepo>()));
+    gh.factory<_i801.HomeLayoutRepo>(
+        () => _i1036.HomeLayoutRepoImpl(gh<_i254.APiManger>()));
     gh.factory<_i793.AddCampaignRepo>(
         () => _i11.AddCampaignRepoImpl(gh<_i254.APiManger>()));
     gh.factory<_i338.CampaignDetailRepo>(() => _i894.CampaignDetailRepoImpl(
@@ -174,6 +186,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i694.SearchCubit>(
         () => _i694.SearchCubit(gh<_i341.SearchRepo>()));
     gh.factory<_i1035.AuthCubit>(() => _i1035.AuthCubit(gh<_i283.AuthRepo>()));
+    gh.factory<_i400.DrawerCubit>(
+        () => _i400.DrawerCubit(gh<_i801.HomeLayoutRepo>()));
     return this;
   }
 }

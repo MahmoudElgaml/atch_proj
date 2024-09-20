@@ -1,12 +1,18 @@
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
+import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/utils/constants.dart';
 import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
+import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
+import 'package:atch_proj/feature/account_feature/page/manger/delete_account_cubit.dart';
+import 'package:atch_proj/feature/account_feature/page/widgets/confirm_delete_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -33,8 +39,8 @@ class AccountFirstSection extends StatelessWidget {
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
                 width: double.infinity,
-                imageUrl: "${EndPoints.baseUrl}${person?.profilePic}"
-                   ,
+                height: double.infinity,
+                imageUrl: "${EndPoints.baseUrl}${person?.profilePic}",
                 errorWidget: (context, url, error) =>
                     Image.network(ConstValue.emptyImage),
               ),
@@ -46,12 +52,57 @@ class AccountFirstSection extends StatelessWidget {
             style: AppStyle.style24Regular(context),
           ),
           const Gap(16),
-          Helper.retrieveRole() == "user"
-              ? InkWell(
-                  onTap: () => context.push(AppRoute.editUserPage),
-                  child: const EditButton(),
-                )
-              : const EditButtonBuilderForAdv()
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              BlocListener<DeleteAccountCubit, DeleteAccountState>(
+                listener: (context, state) async {
+                  if (state is DeleteAccountLoadingState) {
+                    EasyLoading.show();
+                  } else if (state is DeleteAccountFailState) {
+                    EasyLoading.showError(state.message);
+                  }
+                  if (state is DeleteAccountSuccessState) {
+                    EasyLoading.showSuccess("");
+                    await Helper.retrievePerson()?.delete();
+                    getIt<StorageToken>().deleteToken();
+                    if (context.mounted) {
+                      context.go(AppRoute.logInKey);
+                    }
+                  }
+                },
+                child: InkWell(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) {
+                        return ConfirmDeleteDialog(
+                          contexts: context,
+                          deletePerson: person,
+                        );
+                      },
+                    );
+                  },
+                  child: const EditButton(
+                    title: "deleteAccount",
+                    icon: Icons.delete,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+              const Gap(20),
+              Helper.retrieveRole() == "user"
+                  ? InkWell(
+                      onTap: () => context.push(AppRoute.editUserPage),
+                      child: const EditButton(
+                        title: "editProfile",
+                        color: AppColor.primaryColor,
+                        icon: Icons.edit,
+                      ),
+                    )
+                  : const EditButtonBuilderForAdv(),
+            ],
+          )
         ],
       ),
     );
@@ -59,7 +110,15 @@ class AccountFirstSection extends StatelessWidget {
 }
 
 class EditButton extends StatelessWidget {
-  const EditButton({super.key});
+  const EditButton(
+      {super.key,
+      required this.title,
+      required this.icon,
+      required this.color});
+
+  final String title;
+  final IconData icon;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +126,10 @@ class EditButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 19),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
-          side: const BorderSide(
+          side: BorderSide(
             width: 1.50,
             strokeAlign: BorderSide.strokeAlignCenter,
-            color: AppColor.primaryColor,
+            color: color,
           ),
           borderRadius: BorderRadius.circular(10),
         ),
@@ -80,16 +139,15 @@ class EditButton extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(
-            Icons.edit,
+          Icon(
+            icon,
             size: 25,
-            color: AppColor.primaryColor,
+            color: color,
           ),
           const Gap(10),
           Text(
-           context.tr("editProfile"),
-            style: AppStyle.style16Bold(context)
-                .copyWith(color: AppColor.primaryColor),
+            context.tr(title),
+            style: AppStyle.style16Bold(context).copyWith(color: color),
           )
         ],
       ),

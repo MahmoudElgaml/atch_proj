@@ -62,4 +62,6 @@ class AdvertiseInfoCubit extends Cubit<AdvertiseInfoState> {
       },
     );
   }
+
+
 }

@@ -1,6 +1,10 @@
 import 'package:atch_proj/config/routes/routes.dart';
+import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
+import 'package:atch_proj/core/cache/storage_token.dart';
+import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
+import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -15,9 +19,10 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   configureDependencies();
   configureEasyLoading();
-  await HiveManager().inti();
-  await EasyLocalization.ensureInitialized();
 
+  await HiveManager().inti();
+
+  await EasyLocalization.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(
@@ -45,6 +50,12 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: ThemeData(
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          },
+        ),
         datePickerTheme: const DatePickerThemeData(locale: Locale("en")),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
