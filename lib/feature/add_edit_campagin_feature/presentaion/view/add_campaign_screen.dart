@@ -39,13 +39,12 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
     "elder(+40)": "Elder",
   };
 
-  final TextEditingController companyName = TextEditingController();
-
   final List<String> locations =
       Helper.retrievePerson()?.locations?.keys.toList() ?? [];
 
   String selectedLocation =
       Helper.retrievePerson()?.locations?.keys.first ?? "";
+  final TextEditingController companyName = TextEditingController();
 
   final TextEditingController description = TextEditingController();
 
@@ -56,6 +55,15 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
   final LinkFeatureCubit linkCubit = getIt<LinkFeatureCubit>();
 
   var validateState = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    companyName.dispose();
+    description.dispose();
+    price.dispose();
+    offer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -164,6 +172,11 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                         const Gap(19),
                         CustomCampaignTextFiled(
                           textInputType: TextInputType.number,
+                          validator: (value) => AddCampaignCubit.get(context)
+                              .validateOfferUponPrice(
+                            offer: value ?? "",
+                            price: price.text,
+                          ),
                           textEditingController: offer,
                           hint: "Offer",
                           maxLine: 1,

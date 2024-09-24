@@ -11,7 +11,9 @@ part 'add_campaign_state.dart';
 class AddCampaignCubit extends Cubit<AddCampaignState> {
   AddCampaignCubit(this.addCampaignRepo) : super(AddCampaignInitial());
   AddCampaignRepo addCampaignRepo;
-  static AddCampaignCubit get(context)=>BlocProvider.of(context);
+
+  static AddCampaignCubit get(context) => BlocProvider.of(context);
+
   addCampaign(AddCampaignModel campaign) async {
     emit(AddCampaignLoadingState());
     var result = await addCampaignRepo.addCampaign(campaign);
@@ -24,16 +26,32 @@ class AddCampaignCubit extends Cubit<AddCampaignState> {
       },
     );
   }
-  editCampaign(EditCampignModel editCampaignItem)async{
+
+  editCampaign(EditCampignModel editCampaignItem) async {
     emit(AddCampaignLoadingState());
     var result = await addCampaignRepo.editCampaign(editCampaignItem);
     result.fold(
-          (fail) {
+      (fail) {
         emit(AddCampaignFailState(fail.message));
       },
-          (success) {
+      (success) {
         emit(AddCampaignSuccessState());
       },
     );
+  }
+
+  validateOfferUponPrice({required String price, required String offer}) {
+    print(price);
+    print(offer);
+    if (price != "" && offer != "") {
+      int thePrice = int.parse(price);
+      int theOffer = int.parse(offer);
+
+      if (theOffer >= thePrice) {
+        return "Offer must be lower than price";
+      } else {
+        return null;
+      }
+    }
   }
 }
