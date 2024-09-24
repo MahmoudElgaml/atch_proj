@@ -10,6 +10,7 @@
 .svn/
 migrate_working_dir/
 android/app/upload-keystore.jks
+
 # IntelliJ related
 *.iml
 *.ipr
@@ -41,3 +42,9 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+.firebaserc
+firebase.json
+.firebase
+lib/firebase_options.dart
+android/app/google-services.json
+
