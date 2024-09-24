@@ -26,10 +26,13 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Animate(
-          child: Image.asset(Assets.imagesGLogo)
-              .animate()
-              .fade(duration: const Duration(seconds: 3)),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Animate(
+            child: Image.asset(Assets.imagesGLogo)
+                .animate()
+                .fade(duration: const Duration(seconds: 3)),
+          ),
         ),
       ),
     );
