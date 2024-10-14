@@ -1,3 +1,4 @@
+import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -35,8 +36,12 @@ class LocationSectionWidget extends StatelessWidget {
             const Gap(10),
             Expanded(
               child: CostumeTextFiled(
-                validator: (value) => ValidationService.validateLocationLink(
-                    value, location1.text),
+                validator: (value) =>
+                    AuthCubit.get(context).validateOnLocationLink(
+                  link: value ?? "",
+                  isLocation1: true,
+                  location1: location1.text,
+                ),
                 title: "LinkForLocation",
                 textEditingController: location1Link,
               ),
@@ -56,7 +61,11 @@ class LocationSectionWidget extends StatelessWidget {
             Expanded(
               child: CostumeTextFiled(
                 validator: (value) =>
-                    ValidationService.validateLocationLink2(location2.text),
+                    AuthCubit.get(context).validateOnLocationLink(
+                  link: value ?? "",
+                  isLocation1: false,
+                  location2: location2.text,
+                ),
                 title: "LinkForLocation",
                 textEditingController: location2Link,
               ),
