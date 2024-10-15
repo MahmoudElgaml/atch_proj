@@ -117,10 +117,10 @@ flutter:
   # example:
   # fonts:
   fonts:
-    - family: AbhayaLibre
+    - family: Roboto
       fonts:
-        - asset: assets/fonts/AbhayaLibre-ExtraBold.ttf
-          weight: 900
+        - asset: assets/fonts/Roboto-Regular.ttf
+          weight: 400
 
 
 

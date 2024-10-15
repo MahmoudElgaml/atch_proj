@@ -4,8 +4,11 @@ class Assets {
 
   static const String assetsImagesEmptyImage = 'assets/images/empty_image.png';
   static const String fontsAbhayaLibreExtraBold = 'assets/fonts/AbhayaLibre-ExtraBold.ttf';
+  static const String fontsRobotoRegular = 'assets/fonts/Roboto-Regular.ttf';
   static const String images1638950165112 = 'assets/images/1638950165112.jfif';
   static const String imagesAdImage = 'assets/images/ad_image.png';
+  static const String imagesAdvertiserBadge =
+      'assets/images/advertiser_badge.png';
   static const String imagesApple = 'assets/images/apple.png';
   static const String imagesBubbleText = 'assets/images/bubble_text.png';
   static const String imagesBubbleTextSign = 'assets/images/bubble_text_sign.png';
@@ -34,6 +37,7 @@ class Assets {
   static const String imagesSearchImageTest = 'assets/images/search_image_test.png';
   static const String imagesSuccessiconpng = 'assets/images/successiconpng.png';
   static const String imagesTestImageProfile = 'assets/images/test_image_profile.png';
+  static const String imagesUserBadge = 'assets/images/user_badge.png';
   static const String imagesWhatsIcon = 'assets/images/whats_icon.svg';
   static const String imagesWishlist = 'assets/images/wishlist.png';
   static const String translationAr = 'assets/translation/ar.json';

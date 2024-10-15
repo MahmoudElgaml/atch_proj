@@ -11,6 +11,7 @@ import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignMo
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/advertiser_info_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/select_role_sigup_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_advertise.dart';
 import 'package:atch_proj/feature/adv_detail_feature/prsentation/view/pages/ad_details_screen.dart';
@@ -33,7 +34,7 @@ import '../../feature/home_layout_feature/presentation/view/pages/home_screen.da
 import '../../feature/splash_feature/presentation/view/splash_view.dart';
 
 class AppRoute {
-  static const String splashKey = "/";
+  static const String splashKey = "/spalsh";
   static const String signInKey = "/signup";
   static const String logInKey = "/login";
   static const String homeKey = "/home";
@@ -42,7 +43,7 @@ class AppRoute {
   static const String addCampaign = "/addCampaign";
   static const String advertiserInfoPage = "/adver";
   static const String editUserPage = "/edituser";
-  static const String test = "/test";
+  static const String test = "/";
   static const String editCampaign = "/editCampaign";
   static const String qrOffer = "/qrOffer";
   static const String setting = "/settings";
@@ -107,10 +108,7 @@ class AppRoute {
       ),
       GoRoute(
         path: test,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<TestCubit>(),
-          child: const TestView(),
-        ),
+        builder: (context, state) => const SelectRoleSigUpPage(),
       ),
       GoRoute(
         path: advertiserInfoPage,
