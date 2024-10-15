@@ -29,7 +29,7 @@ class CostumeTextFiled extends StatelessWidget {
           title,
           style: const TextStyle(fontSize: 13),
         ),
-        const Gap(10),
+        const Gap(5),
         TextFormField(
           onTapOutside: (event) {
             FocusManager.instance.primaryFocus?.unfocus();

@@ -10,6 +10,7 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/edi
 import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/advertiser_info_page.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/select_role_sigup_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_screen.dart';
@@ -108,7 +109,10 @@ class AppRoute {
       ),
       GoRoute(
         path: test,
-        builder: (context, state) => const SelectRoleSigUpPage(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<AuthCubit>(),
+          child: const LoginPage(),
+        ),
       ),
       GoRoute(
         path: advertiserInfoPage,

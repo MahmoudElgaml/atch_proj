@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'app_color.dart';
+
 abstract class Helper {
   static String timeToString(TimeOfDay time) {
     try {
@@ -33,8 +35,8 @@ abstract class Helper {
 
   static OutlineInputBorder buildOutlineInputBorder() {
     return OutlineInputBorder(
-      borderSide: const BorderSide(color: Color(0xffE4DFDF)),
-      borderRadius: BorderRadius.circular(12),
+      borderSide: const BorderSide(width: 2, color: AppColor.yellowColor),
+      borderRadius: BorderRadius.circular(1000),
     );
   }
 

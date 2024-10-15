@@ -32,6 +32,7 @@ class Assets {
   static const String imagesLogInPhoto = 'assets/images/log_in_photo.png';
   static const String imagesMailIcon = 'assets/images/mail_icon.svg';
   static const String imagesMiniLogo = 'assets/images/mini_logo.png';
+  static const String imagesNewLogo = 'assets/images/new_logo.png';
   static const String imagesNotification = 'assets/images/notification.png';
   static const String imagesProfileTestImage = 'assets/images/profile_test_image.png';
   static const String imagesSearchImageTest = 'assets/images/search_image_test.png';

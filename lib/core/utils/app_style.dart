@@ -12,6 +12,24 @@ class AppStyle {
     );
   }
 
+  static TextStyle style21Medium(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: AppColor.authColor,
+      fontSize: responsiveFont(fontSize: 21, context: context),
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle style24BoldDarkBlue(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: AppColor.darkBlue,
+      fontSize: responsiveFont(fontSize: 24, context: context),
+      fontWeight: FontWeight.w700,
+    );
+  }
+
   ///////////////////////////////////////////////////////////////////////////////
   static TextStyle style34(BuildContext context) {
     return TextStyle(

@@ -13,6 +13,7 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this.authRepo) : super(AuthInitial());
   UserData userData = UserData();
   AuthRepo authRepo;
+  bool isAdvertiser = true;
 
   static AuthCubit get(context) => BlocProvider.of(context);
 

@@ -1,5 +1,6 @@
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/services/upload_image_service.dart';
+import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,14 +24,9 @@ class CostumeButton extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 68,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(10),
-            topLeft: Radius.circular(10),
-            topRight: Radius.circular(10)),
-        gradient: LinearGradient(
-          colors: [Color(0xff8658E8), Color(0xff4718AD)],
-        ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(1000),
+        color: AppColor.yellowColor,
       ),
       child: ElevatedButton(
         onPressed: onPressed,
@@ -63,7 +59,7 @@ class CostumeButton extends StatelessWidget {
             }
             return Text(
               title,
-              style: AppStyle.styleWhite,
+              style: AppStyle.style24BoldDarkBlue(context),
             );
           },
         ),
