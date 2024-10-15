@@ -21,8 +21,7 @@ import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_
 import 'package:atch_proj/feature/qr_offer_feature/presentation/manger/qr_offer_cubit.dart';
 import 'package:atch_proj/feature/qr_offer_feature/presentation/view/pages/qr_offer_screen.dart';
 import 'package:atch_proj/feature/setting_feature/presentaion/view/setting_screen.dart';
-import 'package:atch_proj/feature/unite_testing/manger/test_cubit.dart';
-import 'package:atch_proj/feature/unite_testing/test_view.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,6 +44,7 @@ class AppRoute {
   static const String advertiserInfoPage = "/adver";
   static const String editUserPage = "/edituser";
   static const String test = "/";
+  static const String selectRole = "/selectRole";
   static const String editCampaign = "/editCampaign";
   static const String qrOffer = "/qrOffer";
   static const String setting = "/settings";
@@ -52,6 +52,28 @@ class AppRoute {
 
   static final router = GoRouter(
     routes: [
+      GoRoute(
+        path: selectRole,
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            child: const SelectRoleSigUpPage(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              const begin = Offset(0.0, 1.0);
+              const end = Offset.zero;
+              const curve = Curves.easeInOut;
+
+              var tween =
+                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+              return SlideTransition(
+                position: animation.drive(tween),
+                child: child,
+              );
+            },
+          );
+        },
+      ),
       GoRoute(
         path: splashKey,
         builder: (context, state) => const SplashView(),
