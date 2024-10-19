@@ -30,6 +30,14 @@ class AppStyle {
     );
   }
 
+  static TextStyle style14Regular(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      fontSize: responsiveFont(fontSize: 14, context: context),
+      fontWeight: FontWeight.w700,
+    );
+  }
+
   ///////////////////////////////////////////////////////////////////////////////
   static TextStyle style34(BuildContext context) {
     return TextStyle(
@@ -82,15 +90,6 @@ class AppStyle {
       fontFamily: "AbhayaLibre",
       fontSize: responsiveFont(fontSize: 14, context: context),
       fontWeight: FontWeight.w900,
-    );
-  }
-
-  static TextStyle style14Regular(BuildContext context) {
-    return TextStyle(
-      color: Colors.black,
-      fontFamily: "AbhayaLibre",
-      fontSize: responsiveFont(fontSize: 14, context: context),
-      fontWeight: FontWeight.w400,
     );
   }
 
