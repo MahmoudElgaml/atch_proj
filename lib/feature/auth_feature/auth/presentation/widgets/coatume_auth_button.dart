@@ -21,17 +21,14 @@ class CostumeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
-      height: 68,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(1000),
-        color: AppColor.yellowColor,
-      ),
+      height: 46,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.transparent,
+          padding: EdgeInsets.all(0),
+          backgroundColor: AppColor.yellowColor,
           shadowColor: Colors.transparent,
         ),
         child: BlocConsumer<AuthCubit, AuthState>(

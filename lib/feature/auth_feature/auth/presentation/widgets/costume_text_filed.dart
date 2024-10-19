@@ -1,3 +1,4 @@
+import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -27,7 +28,7 @@ class CostumeTextFiled extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 13),
+          style: AppStyle.style21Medium(context),
         ),
         const Gap(5),
         TextFormField(
@@ -41,6 +42,7 @@ class CostumeTextFiled extends StatelessWidget {
           validator: validator,
           controller: textEditingController,
           decoration: InputDecoration(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 20),
               focusedErrorBorder: Helper.buildOutlineInputBorder(),
               errorBorder: Helper.buildOutlineInputBorder(),
               focusedBorder: Helper.buildOutlineInputBorder(),

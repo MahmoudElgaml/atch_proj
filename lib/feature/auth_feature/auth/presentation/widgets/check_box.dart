@@ -1,5 +1,6 @@
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/coatume_auth_button.dart';
 import 'package:flutter/material.dart';
 
 class CheckkBox extends StatefulWidget {
@@ -18,19 +19,26 @@ class _CheckkBoxState extends State<CheckkBox> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Checkbox(
-          value: selectedValue,
-          onChanged: (value) {
-            selectedValue = value ?? false;
-            widget.setValue(value);
-            setState(() {});
-          },
+        Transform.scale(
+          scale: 1.3,
+          child: Checkbox(
+            value: selectedValue,
+            checkColor: AppColor.yellowColor,
+            activeColor: Colors.yellow,
+            side: const BorderSide(
+              color: AppColor.yellowColor,
+            ),
+            onChanged: (value) {
+              selectedValue = value ?? false;
+              widget.setValue(value);
+              setState(() {});
+            },
+          ),
         ),
         Text(
           "Generate ReferralCode?",
-          style:
-              AppStyle.style18(context).copyWith(color: AppColor.primaryColor),
-        )
+          style: AppStyle.style21Medium(context),
+        ),
       ],
     );
   }

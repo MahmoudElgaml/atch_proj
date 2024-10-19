@@ -15,7 +15,7 @@ class AppStyle {
   static TextStyle style21Medium(BuildContext context) {
     return TextStyle(
       fontFamily: "Roboto",
-      color: AppColor.authColor,
+      color: Colors.black,
       fontSize: responsiveFont(fontSize: 21, context: context),
       fontWeight: FontWeight.w500,
     );
