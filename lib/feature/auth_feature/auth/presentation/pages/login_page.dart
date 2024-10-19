@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding:
@@ -40,10 +40,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    color: Colors.red,
-                    child: Image.asset(Assets.imagesNewLogo),
-                  ),
+                  Image.asset(Assets.imagesNewLogo),
                   const Gap(52),
                   const SelectRoleSection(),
                   const Gap(37),

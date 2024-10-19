@@ -1,3 +1,4 @@
+import 'package:atch_proj/config/routes/navigation_helper.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/account_feature/page/edit_account_screen.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_campaign_cubit.dart';
@@ -13,6 +14,7 @@ import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/adver
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/select_role_sigup_page.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_advertise.dart';
 import 'package:atch_proj/feature/adv_detail_feature/prsentation/view/pages/ad_details_screen.dart';
@@ -55,22 +57,8 @@ class AppRoute {
       GoRoute(
         path: selectRole,
         pageBuilder: (context, state) {
-          return CustomTransitionPage(
-            child: const SelectRoleSigUpPage(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              const begin = Offset(0.0, 1.0);
-              const end = Offset.zero;
-              const curve = Curves.easeInOut;
-
-              var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-              return SlideTransition(
-                position: animation.drive(tween),
-                child: child,
-              );
-            },
+          return NavigationHelper.navigateFromBottomToUp(
+            yourWidget: const SelectRoleSigUpPage(),
           );
         },
       ),
@@ -80,9 +68,12 @@ class AppRoute {
       ),
       GoRoute(
         path: signInKey,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<AuthCubit>(),
-          child: const SignUpScreen(),
+        pageBuilder: (context, state) =>
+            NavigationHelper.navigateFromBottomToUp(
+          yourWidget: BlocProvider(
+            create: (context) => getIt<AuthCubit>(),
+            child: const SignUpUserPage(),
+          ),
         ),
       ),
       GoRoute(
@@ -104,10 +95,12 @@ class AppRoute {
       ),
       GoRoute(
         path: signUpAsAdvertise,
-        builder: (context, state) => BlocProvider(
+        pageBuilder: (context, state) =>
+            NavigationHelper.navigateFromTopToBottom(
+                yourWidget: BlocProvider(
           create: (context) => getIt<AuthCubit>(),
           child: const SignUpAdvertise(),
-        ),
+        )),
       ),
       GoRoute(
         path: addCampaign,

@@ -1,8 +1,10 @@
+import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class SelectRoleSigUpPage extends StatelessWidget {
   const SelectRoleSigUpPage({super.key});
@@ -16,13 +18,16 @@ class SelectRoleSigUpPage extends StatelessWidget {
           Column(
             children: [
               Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: AppColor.darkBlue,
-                  ),
-                  child: Center(
-                    child: Image.asset(
-                      Assets.imagesAdvertiserBadge,
+                child: InkWell(
+                  onTap: () => context.push(AppRoute.signUpAsAdvertise),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: AppColor.darkBlue,
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        Assets.imagesAdvertiserBadge,
+                      ),
                     ),
                   ),
                 ),
@@ -31,11 +36,16 @@ class SelectRoleSigUpPage extends StatelessWidget {
                 height: 20,
               ),
               Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: AppColor.yellowColor,
+                child: InkWell(
+                  onTap: () {
+                    context.push(AppRoute.signInKey);
+                  },
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: AppColor.yellowColor,
+                    ),
+                    child: Center(child: Image.asset(Assets.imagesUserBadge)),
                   ),
-                  child: Center(child: Image.asset(Assets.imagesUserBadge)),
                 ),
               ),
             ],

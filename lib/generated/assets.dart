@@ -7,6 +7,7 @@ class Assets {
   static const String fontsRobotoRegular = 'assets/fonts/Roboto-Regular.ttf';
   static const String images1638950165112 = 'assets/images/1638950165112.jfif';
   static const String imagesAdImage = 'assets/images/ad_image.png';
+  static const String imagesAddPhotoIcon = 'assets/images/add_photo_icon.svg';
   static const String imagesAdvertiserBadge =
       'assets/images/advertiser_badge.png';
   static const String imagesApple = 'assets/images/apple.png';
