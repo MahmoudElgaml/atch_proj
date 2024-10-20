@@ -14,6 +14,7 @@ import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/adver
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/select_role_sigup_page.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_advertise_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_advertise.dart';
@@ -99,7 +100,7 @@ class AppRoute {
             NavigationHelper.navigateFromTopToBottom(
                 yourWidget: BlocProvider(
           create: (context) => getIt<AuthCubit>(),
-          child: const SignUpAdvertise(),
+          child: const SignUpAdvertisePage(),
         )),
       ),
       GoRoute(

@@ -2,6 +2,7 @@ import 'package:atch_proj/core/services/validation_service.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/SignDataTest.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/repo/auth_repo.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -14,6 +15,23 @@ class AuthCubit extends Cubit<AuthState> {
   UserData userData = UserData();
   AuthRepo authRepo;
   bool isAdvertiser = true;
+  TextEditingController companyName = TextEditingController();
+
+  TextEditingController advertiseName = TextEditingController();
+
+  TextEditingController about = TextEditingController();
+
+  TextEditingController password = TextEditingController();
+
+  TextEditingController email = TextEditingController();
+
+  disposeAll() {
+    companyName.dispose();
+    advertiseName.dispose();
+    about.dispose();
+    password.dispose();
+    email.dispose();
+  }
 
   static AuthCubit get(context) => BlocProvider.of(context);
 

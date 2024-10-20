@@ -1,6 +1,6 @@
 import 'package:atch_proj/core/services/validation_service.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
-import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/custom_drop_menu.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';
 
