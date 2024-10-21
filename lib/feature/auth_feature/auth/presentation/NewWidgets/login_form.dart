@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../widgets/costume_text_filed.dart';
+import 'costume_text_filed.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key, required this.email, required this.password});

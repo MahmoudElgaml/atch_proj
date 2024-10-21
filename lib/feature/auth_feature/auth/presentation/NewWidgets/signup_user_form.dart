@@ -4,7 +4,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/services/validation_service.dart';
 import '../pages/sign_up_user_page.dart';
-import '../widgets/costume_text_filed.dart';
+import 'costume_text_filed.dart';
 
 class SignUpUserForm extends StatelessWidget {
   const SignUpUserForm({

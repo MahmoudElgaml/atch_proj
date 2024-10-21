@@ -16,7 +16,7 @@ import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/utils/service_locator/config.dart';
 import '../../../../auth_feature/auth/presentation/pages/test_upload_image.dart';
-import '../../../../auth_feature/auth/presentation/widgets/costume_text_filed.dart';
+import '../../../../auth_feature/auth/presentation/NewWidgets/costume_text_filed.dart';
 
 class UserEditScreen extends StatefulWidget {
   const UserEditScreen({super.key});

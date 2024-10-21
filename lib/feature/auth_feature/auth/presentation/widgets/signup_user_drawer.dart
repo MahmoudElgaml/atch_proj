@@ -13,8 +13,8 @@ import '../../../../../config/routes/routes.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_string.dart';
 import '../../../../../core/utils/app_style.dart';
-import 'coatume_auth_button.dart';
-import 'costume_text_filed.dart';
+import '../NewWidgets/coatume_auth_button.dart';
+import '../NewWidgets/costume_text_filed.dart';
 
 class UserSignUpDrawer extends StatefulWidget {
   const UserSignUpDrawer({super.key});
@@ -86,7 +86,7 @@ class _SignUpDrawerState extends State<UserSignUpDrawer> {
             ),
           ),
           const Gap(20),
-          CostumeButton(
+          CostumeAuthButton(
             title: "SignUP",
             onPressed: () {
               SignDataTest signData = SignDataTest();

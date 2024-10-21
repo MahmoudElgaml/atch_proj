@@ -3,7 +3,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/services/validation_service.dart';
 import '../manger/auth_cubit.dart';
-import '../widgets/costume_text_filed.dart';
+import 'costume_text_filed.dart';
 
 class SignUpAdvertiseForm1 extends StatelessWidget {
   const SignUpAdvertiseForm1({super.key});

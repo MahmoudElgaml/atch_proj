@@ -1,8 +1,8 @@
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/select_role_section.dart';
-import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/coatume_auth_button.dart';
-import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/costume_text_filed.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/coatume_auth_button.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/costume_text_filed.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                         context.push(AppRoute.selectRole);
                       },
                       child: const Text("Now here?")),
-                  CostumeButton(
+                  CostumeAuthButton(
                       title: "Login",
                       onPressed: () {
                         String role = AuthCubit.get(context).isAdvertiser

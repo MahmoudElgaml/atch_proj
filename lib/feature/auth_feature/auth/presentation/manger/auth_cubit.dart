@@ -24,6 +24,7 @@ class AuthCubit extends Cubit<AuthState> {
   TextEditingController password = TextEditingController();
 
   TextEditingController email = TextEditingController();
+  String selectedValue = "Factory";
 
   disposeAll() {
     companyName.dispose();

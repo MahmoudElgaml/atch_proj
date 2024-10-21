@@ -1,3 +1,4 @@
+import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -30,8 +31,6 @@ class SelectBusinessSection extends StatefulWidget {
 }
 
 class _SelectBusinessSectionState extends State<SelectBusinessSection> {
-  String selectedValue = "Factory";
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -44,9 +43,9 @@ class _SelectBusinessSectionState extends State<SelectBusinessSection> {
         const Gap(5),
         CustomDropMenu(
           items: SelectBusinessSection.items,
-          selectedValue: selectedValue,
+          selectedValue: AuthCubit.get(context).selectedValue,
           isAuth: false,
-          setValue: (value) => selectedValue = value,
+          setValue: (value) => AuthCubit.get(context).selectedValue = value,
         ),
       ],
     );

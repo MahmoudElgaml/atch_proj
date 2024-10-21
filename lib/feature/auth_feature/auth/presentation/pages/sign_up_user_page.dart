@@ -10,8 +10,8 @@ import '../../data/model/SignDataTest.dart';
 import '../NewWidgets/signup_user_form.dart';
 import '../manger/auth_cubit.dart';
 import '../widgets/check_box.dart';
-import '../widgets/coatume_auth_button.dart';
-import '../widgets/costume_text_filed.dart';
+import '../NewWidgets/coatume_auth_button.dart';
+import '../NewWidgets/costume_text_filed.dart';
 
 class SignUpUserPage extends StatefulWidget {
   const SignUpUserPage({super.key});
@@ -70,7 +70,7 @@ class _SignUpUserPageState extends State<SignUpUserPage> {
                   },
                 ),
                 const Gap(20),
-                CostumeButton(
+                CostumeAuthButton(
                   title: "SignUp",
                   onPressed: () {
                     if (_formKey.currentState?.validate() ?? false) {

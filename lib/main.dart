@@ -53,30 +53,33 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      theme: ThemeData(
-        pageTransitionsTheme: const PageTransitionsTheme(
-          builders: {
-            TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-          },
+    return BlocProvider(
+      create: (context) => getIt<AuthCubit>(),
+      child: MaterialApp.router(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        theme: ThemeData(
+          pageTransitionsTheme: const PageTransitionsTheme(
+            builders: {
+              TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+              TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+            },
+          ),
+          datePickerTheme: const DatePickerThemeData(locale: Locale("en")),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.white,
+          ),
+          scaffoldBackgroundColor: Colors.white,
+          primarySwatch: Colors.blue,
         ),
-        datePickerTheme: const DatePickerThemeData(locale: Locale("en")),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.white,
-        ),
-        scaffoldBackgroundColor: Colors.white,
-        primarySwatch: Colors.blue,
+        useInheritedMediaQuery: true,
+        builder: EasyLoading.init(builder: DevicePreview.appBuilder),
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        routerConfig: AppRoute.router,
       ),
-      useInheritedMediaQuery: true,
-      builder: EasyLoading.init(builder: DevicePreview.appBuilder),
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      routerConfig: AppRoute.router,
     );
   }
 }

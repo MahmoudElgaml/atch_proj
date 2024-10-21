@@ -36,7 +36,7 @@ abstract class Helper {
   static OutlineInputBorder buildOutlineInputBorder() {
     return OutlineInputBorder(
       borderSide: const BorderSide(width: 2, color: AppColor.yellowColor),
-      borderRadius: BorderRadius.circular(1000),
+      borderRadius: BorderRadius.circular(20),
     );
   }
 

@@ -5,14 +5,17 @@ import 'package:gap/gap.dart';
 import '../../../../../core/utils/helper.dart';
 
 class CostumeTextFiled extends StatelessWidget {
-  const CostumeTextFiled(
-      {required this.title,
-      super.key,
-      required this.textEditingController,
-      this.validator,
-      this.keyboardType,
-      this.isPassword,
-      this.maxLine});
+  const CostumeTextFiled({
+    required this.title,
+    super.key,
+    required this.textEditingController,
+    this.validator,
+    this.keyboardType,
+    this.isPassword,
+    this.maxLine,
+    this.withoutTitle = false,
+    this.withoutLabel = true,
+  });
 
   final TextEditingController? textEditingController;
   final String title;
@@ -20,16 +23,20 @@ class CostumeTextFiled extends StatelessWidget {
   final TextInputType? keyboardType;
   final bool? isPassword;
   final int? maxLine;
+  final bool withoutTitle;
+  final bool withoutLabel;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: AppStyle.style21Medium(context),
-        ),
+        withoutTitle
+            ? const SizedBox()
+            : Text(
+                title,
+                style: AppStyle.style21Medium(context),
+              ),
         const Gap(5),
         TextFormField(
           onTapOutside: (event) {
@@ -42,6 +49,12 @@ class CostumeTextFiled extends StatelessWidget {
           validator: validator,
           controller: textEditingController,
           decoration: InputDecoration(
+              label: withoutLabel
+                  ? null
+                  : Text(
+                      title,
+                      style: AppStyle.style21Medium(context),
+                    ),
               contentPadding: const EdgeInsets.symmetric(horizontal: 20),
               focusedErrorBorder: Helper.buildOutlineInputBorder(),
               errorBorder: Helper.buildOutlineInputBorder(),

@@ -1,6 +1,6 @@
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
-import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/coatume_auth_button.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/coatume_auth_button.dart';
 import 'package:flutter/material.dart';
 
 class CheckkBox extends StatefulWidget {

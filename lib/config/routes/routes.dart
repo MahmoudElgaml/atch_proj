@@ -15,6 +15,7 @@ import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_pag
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/select_role_sigup_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_advertise_page.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_advertise_page2.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_advertise.dart';
@@ -40,9 +41,12 @@ class AppRoute {
   static const String splashKey = "/spalsh";
   static const String signInKey = "/signup";
   static const String logInKey = "/login";
+  static const String signUpAsAdvertise = "/advertise";
+  static const String signUpAsAdvertise2 = "/advertis2";
+
   static const String homeKey = "/home";
   static const String adDetails = "/adDetails";
-  static const String signUpAsAdvertise = "/advertise";
+
   static const String addCampaign = "/addCampaign";
   static const String advertiserInfoPage = "/adver";
   static const String editUserPage = "/edituser";
@@ -71,18 +75,23 @@ class AppRoute {
         path: signInKey,
         pageBuilder: (context, state) =>
             NavigationHelper.navigateFromBottomToUp(
-          yourWidget: BlocProvider(
-            create: (context) => getIt<AuthCubit>(),
-            child: const SignUpUserPage(),
-          ),
+          yourWidget: const SignUpUserPage(),
         ),
       ),
       GoRoute(
-        path: logInKey,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<AuthCubit>(),
-          child: const LoginScreen(),
+        path: signUpAsAdvertise,
+        pageBuilder: (context, state) =>
+            NavigationHelper.navigateFromTopToBottom(
+          yourWidget: const SignUpAdvertisePage(),
         ),
+      ),
+      GoRoute(
+        path: signUpAsAdvertise2,
+        builder: (context, state) => const SignUpAdvertisePage2(),
+      ),
+      GoRoute(
+        path: logInKey,
+        builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
         path: homeKey,
@@ -93,15 +102,6 @@ class AppRoute {
       GoRoute(
         path: adDetails,
         builder: (context, state) => const AdDetailsScreen(),
-      ),
-      GoRoute(
-        path: signUpAsAdvertise,
-        pageBuilder: (context, state) =>
-            NavigationHelper.navigateFromTopToBottom(
-                yourWidget: BlocProvider(
-          create: (context) => getIt<AuthCubit>(),
-          child: const SignUpAdvertisePage(),
-        )),
       ),
       GoRoute(
         path: addCampaign,

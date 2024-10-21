@@ -8,8 +8,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/app_style.dart';
 
-class CostumeButton extends StatelessWidget {
-  const CostumeButton(
+class CostumeAuthButton extends StatelessWidget {
+  const CostumeAuthButton(
       {required this.title,
       super.key,
       required this.onPressed,
