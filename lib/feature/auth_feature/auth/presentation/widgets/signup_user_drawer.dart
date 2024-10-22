@@ -98,7 +98,7 @@ class _SignUpDrawerState extends State<UserSignUpDrawer> {
               signData.age = age.text;
               signData.role = "user";
               signData.image = UploadImageService.imageFile;
-              AuthCubit.get(context).signIn(signData);
+              // AuthCubit.get(context).signIn(signData);
             },
             isLoading: false,
           ),

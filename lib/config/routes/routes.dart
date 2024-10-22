@@ -91,7 +91,7 @@ class AppRoute {
       ),
       GoRoute(
         path: logInKey,
-        builder: (context, state) => const LoginScreen(),
+        builder: (context, state) => const LoginPage(),
       ),
       GoRoute(
         path: homeKey,

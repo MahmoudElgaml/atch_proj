@@ -164,7 +164,7 @@ class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 SignDataTest signData = setSignData();
-                AuthCubit.get(context).signIn(signData);
+                // AuthCubit.get(context).signIn(signData);
               }
             },
             isLoading: false,

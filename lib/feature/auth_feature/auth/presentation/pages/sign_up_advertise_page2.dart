@@ -6,6 +6,7 @@ import '../../../../../core/services/upload_image_service.dart';
 import '../../../../../core/services/validation_service.dart';
 import '../../../../add_edit_campagin_feature/presentaion/view/widgets/custom_camapaign_textfiled.dart';
 import '../../data/model/SignDataTest.dart';
+import '../../data/model/request/SignDataNew.dart';
 import '../manger/auth_cubit.dart';
 import '../NewWidgets/costume_text_filed.dart';
 import '../NewWidgets/loction_section_widget.dart';
@@ -94,30 +95,47 @@ class _SignUpAdvertisePage2State extends State<SignUpAdvertisePage2> {
     );
   }
 
-  SignDataTest setSignData() {
+  SignDataNew setSignData() {
     var authCubit = AuthCubit.get(context);
     List<String> phones = [phone1.text];
     if (phone2.text != "") {
       phones.add(phone2.text);
     }
-    Map<String, String>? locations = {};
-    locations[location1.text] = location1Link.text;
-
-    if (location2.text != "") {
-      locations[location2.text] = location2Link.text;
-    }
-
-    SignDataTest signData = SignDataTest();
+    // Map<String, String>? locations = {};
+    // locations[location1.text] = location1Link.text;
+    //
+    // if (location2.text != "") {
+    //   locations[location2.text] = location2Link.text;
+    // }
+    Locations locations = getLocationData();
+    SignDataNew signData = SignDataNew();
     signData.name = authCubit.companyName.text;
     signData.username = authCubit.advertiseName.text;
     signData.email = authCubit.email.text.trim();
     signData.about = about.text;
     signData.password = authCubit.password.text;
     signData.advertiserPhones = phones;
-    signData.advertiserLocation = locations;
+    signData.locations = locations;
+    //  signData.advertiserLocation = locations;
     signData.role = "advertiser";
     signData.advertiserType = authCubit.selectedValue;
     signData.image = UploadImageService.imageFile;
     return signData;
+  }
+
+  Locations getLocationData() {
+    Location1 location1Data = Location1(
+      name: location1.text,
+      link: location1Link.text,
+    );
+    Location2 location2Data = Location2(
+      name: location2.text,
+      link: location2Link.text,
+    );
+    Locations locations = Locations(
+      location1: location1Data,
+      location2: location2Data,
+    );
+    return locations;
   }
 }

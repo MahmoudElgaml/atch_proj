@@ -1,6 +1,7 @@
 import 'package:atch_proj/core/services/validation_service.dart';
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/feature/auth_feature/auth/data/model/request/SignDataNew.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/test_upload_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -74,7 +75,7 @@ class _SignUpUserPageState extends State<SignUpUserPage> {
                   title: "SignUp",
                   onPressed: () {
                     if (_formKey.currentState?.validate() ?? false) {
-                      SignDataTest signData = SignDataTest();
+                      SignDataNew signData = SignDataNew();
                       signData.password = password.text;
                       signData.username = username.text;
                       signData.name = name.text;
