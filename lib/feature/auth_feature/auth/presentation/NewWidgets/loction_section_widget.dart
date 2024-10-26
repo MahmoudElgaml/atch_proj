@@ -1,9 +1,12 @@
+import 'package:atch_proj/config/routes/navigation_helper.dart';
+import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/services/validation_service.dart';
 import 'costume_text_filed.dart';
@@ -78,7 +81,9 @@ class Location1Section extends StatelessWidget {
                 elevation: WidgetStateProperty.all(10),
                 shadowColor: WidgetStateProperty.all(Colors.grey[50]),
               ),
-              onPressed: () {},
+              onPressed: () {
+                context.push(AppRoute.mapPage, extra: true);
+              },
               icon: SvgPicture.asset(
                 width: 35,
                 height: 35,
@@ -142,7 +147,9 @@ class Location2Section extends StatelessWidget {
                 elevation: WidgetStateProperty.all(10),
                 shadowColor: WidgetStateProperty.all(Colors.grey[50]),
               ),
-              onPressed: () {},
+              onPressed: () {
+                context.push(AppRoute.mapPage, extra: false);
+              },
               icon: SvgPicture.asset(
                 width: 35,
                 height: 35,

@@ -6,6 +6,7 @@ import 'package:atch_proj/feature/auth_feature/auth/data/repo/auth_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:meta/meta.dart';
 
 part 'auth_state.dart';
@@ -25,6 +26,9 @@ class AuthCubit extends Cubit<AuthState> {
   TextEditingController password = TextEditingController();
 
   TextEditingController email = TextEditingController();
+  LatLng? firstLocation;
+  LatLng? secondLocation;
+
   var formKey = GlobalKey<FormState>();
   String selectedValue = "Factory";
 

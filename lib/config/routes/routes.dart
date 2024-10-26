@@ -35,6 +35,7 @@ import 'package:go_router/go_router.dart';
 import '../../feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import '../../feature/home_layout_feature/presentation/view/pages/all_ads_screen.dart';
 import '../../feature/home_layout_feature/presentation/view/pages/home_screen.dart';
+import '../../feature/map_feature/presentation/pages/map_page.dart';
 import '../../feature/splash_feature/presentation/view/splash_view.dart';
 
 class AppRoute {
@@ -56,6 +57,7 @@ class AppRoute {
   static const String qrOffer = "/qrOffer";
   static const String setting = "/settings";
   static const String allAds = "/allAds";
+  static const String mapPage = "/mapPage";
 
   static final router = GoRouter(
     routes: [
@@ -185,6 +187,10 @@ class AppRoute {
           create: (context) => getIt<DrawerCubit>(),
           child: const AllAdsScreen(),
         ),
+      ),
+      GoRoute(
+        path: mapPage,
+        builder: (context, state) => const MapPage(),
       )
     ],
   );
