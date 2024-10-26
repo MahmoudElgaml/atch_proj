@@ -1,5 +1,6 @@
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/utils/app_color.dart';
+import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/select_role_section.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/coatume_auth_button.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/costume_text_filed.dart';
@@ -27,6 +28,13 @@ class _LoginPageState extends State<LoginPage> {
   var formKey = GlobalKey<FormState>();
 
   @override
+  void dispose() {
+    email.dispose();
+    password.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -50,10 +58,14 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const Gap(100),
                   TextButton(
-                      onPressed: () {
-                        context.push(AppRoute.selectRole);
-                      },
-                      child: const Text("Now here?")),
+                    onPressed: () {
+                      context.push(AppRoute.selectRole);
+                    },
+                    child: Text(
+                      "New here?",
+                      style: AppStyle.style21Medium(context),
+                    ),
+                  ),
                   CostumeAuthButton(
                       title: "Login",
                       onPressed: () {

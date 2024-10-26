@@ -39,7 +39,7 @@ import '../../feature/map_feature/presentation/pages/map_page.dart';
 import '../../feature/splash_feature/presentation/view/splash_view.dart';
 
 class AppRoute {
-  static const String splashKey = "/spalsh";
+  static const String splashKey = "/";
   static const String signInKey = "/signup";
   static const String logInKey = "/login";
   static const String signUpAsAdvertise = "/advertise";
@@ -51,7 +51,7 @@ class AppRoute {
   static const String addCampaign = "/addCampaign";
   static const String advertiserInfoPage = "/adver";
   static const String editUserPage = "/edituser";
-  static const String test = "/";
+  static const String test = "/test";
   static const String selectRole = "/selectRole";
   static const String editCampaign = "/editCampaign";
   static const String qrOffer = "/qrOffer";

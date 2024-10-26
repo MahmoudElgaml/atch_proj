@@ -37,10 +37,9 @@ class SignUpAdvertisePage extends StatelessWidget {
               const Gap(50),
               GeneralButton(
                 onPressed: () {
-                  context.push(AppRoute.signUpAsAdvertise2);
-                  // if (AuthCubit.get(context).formKey.currentState!.validate()) {
-                  //   context.push(AppRoute.signUpAsAdvertise2);
-                  // }
+                  if (AuthCubit.get(context).formKey.currentState!.validate()) {
+                    context.push(AppRoute.signUpAsAdvertise2);
+                  }
                 },
                 title: "Next",
               ),
