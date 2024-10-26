@@ -28,13 +28,19 @@ class SignUpAdvertisePage extends StatelessWidget {
             children: [
               const TestUploadImage(isEdit: false),
               const Gap(37),
-              const SignUpAdvertiseForm1(),
+              Form(
+                key: AuthCubit.get(context).formKey,
+                child: const SignUpAdvertiseForm1(),
+              ),
               const Gap(24),
               const SelectBusinessSection(),
               const Gap(50),
               GeneralButton(
                 onPressed: () {
                   context.push(AppRoute.signUpAsAdvertise2);
+                  // if (AuthCubit.get(context).formKey.currentState!.validate()) {
+                  //   context.push(AppRoute.signUpAsAdvertise2);
+                  // }
                 },
                 title: "Next",
               ),

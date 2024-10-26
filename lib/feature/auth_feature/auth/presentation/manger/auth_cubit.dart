@@ -25,6 +25,7 @@ class AuthCubit extends Cubit<AuthState> {
   TextEditingController password = TextEditingController();
 
   TextEditingController email = TextEditingController();
+  var formKey = GlobalKey<FormState>();
   String selectedValue = "Factory";
 
   disposeAll() {
