@@ -20,7 +20,7 @@ class _BottomNaviBarState extends State<BottomNaviBar> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(2000),
+          borderRadius: BorderRadius.circular(9),
           child: BottomNavigationBar(
             showUnselectedLabels: false,
             selectedFontSize: 0,
