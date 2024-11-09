@@ -20,6 +20,7 @@ class HomeScreenLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         drawer: const HomeDrawer(),
         body: BlocBuilder<HomeLayoutCubit, HomeLayoutState>(
           builder: (context, state) {
