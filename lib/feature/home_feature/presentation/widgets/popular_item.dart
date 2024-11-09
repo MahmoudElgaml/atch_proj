@@ -1,5 +1,6 @@
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/api/end_points.dart';
+import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/components/save_button.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/home_feature/presentation/widgets/ads_item_details.dart';
@@ -33,12 +34,12 @@ class AdsItem extends StatelessWidget {
               color: Color(0xff8c8c8c),
             ),
           ),
-          child: Container(
-            color: Colors.red,
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                Positioned.fill(
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              Positioned.fill(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(18),
                   child: CachedNetworkImage(
                     fit: BoxFit.fill,
                     imageUrl: campaigns.images!.isEmpty
@@ -50,14 +51,42 @@ class AdsItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  height: 50,
-                  color: Colors.black.withOpacity(0.5),
-                  child: Row(),
-                )
-              ],
-            ),
+              ),
+              buildCardDetail(context)
+            ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Container buildCardDetail(BuildContext context) {
+    return Container(
+      height: 50,
+      decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.59),
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(18),
+            bottomRight: Radius.circular(18),
+          )),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(campaigns.campaignName ?? "",
+                style: AppStyle.style16Medium(context)),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("${campaigns.offer.toString()} LE" ?? "",
+                    style: AppStyle.style16Bold(context)),
+                Text("${campaigns.price.toString()} LE" ?? "",
+                    style: AppStyle.style10Bold(context)),
+              ],
+            )
+          ],
         ),
       ),
     );
