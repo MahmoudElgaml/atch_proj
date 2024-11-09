@@ -33,6 +33,11 @@ class AuthCubit extends Cubit<AuthState> {
   String selectedValue = "Factory";
 
   disposeAll() {
+    companyName.text = "";
+    advertiseName.text = "";
+    about.text = "";
+    password.text = "";
+    email.text = "";
     companyName.dispose();
     advertiseName.dispose();
     about.dispose();

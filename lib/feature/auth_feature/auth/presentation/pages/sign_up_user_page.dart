@@ -35,12 +35,12 @@ class _SignUpUserPageState extends State<SignUpUserPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   dispose() {
-    super.dispose();
     name.dispose();
     username.dispose();
     age.dispose();
     password.dispose();
     email.dispose();
+    super.dispose();
   }
 
   Widget build(BuildContext context) {

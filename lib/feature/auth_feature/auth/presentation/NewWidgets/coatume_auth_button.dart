@@ -27,7 +27,7 @@ class CostumeAuthButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.all(0),
+          padding: const EdgeInsets.all(0),
           backgroundColor: AppColor.yellowColor,
           shadowColor: Colors.transparent,
         ),
