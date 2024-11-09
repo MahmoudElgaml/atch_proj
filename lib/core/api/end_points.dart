@@ -1,6 +1,5 @@
 class EndPoints {
-  //now in test mode
-  static const baseUrl = "https://advertise.great-eagle.net";
+  static const baseUrl = "https://adv.great-eagle.net";
   static const search = "/search_page/search";
   static const register = "/register";
   static const logIn = "/login";

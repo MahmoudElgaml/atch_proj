@@ -21,10 +21,12 @@ class _TabsAppBarState extends State<TabsAppBar> {
   Widget build(BuildContext context) {
     List<Categories> category = Categories.values.toList();
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         DefaultTabController(
           length: category.length,
           child: TabBar(
+              padding: EdgeInsets.zero,
               dividerColor: Colors.transparent,
               tabAlignment: TabAlignment.center,
               onTap: (index) {

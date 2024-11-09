@@ -28,8 +28,6 @@ class _SaveButtonState extends State<SaveButton> {
           EasyLoading.show();
         } else if (state is WishlistAddedSuccessState) {
           EasyLoading.dismiss();
-          print(
-              getIt<HiveManager>().retrieveListData<num>(HiveKeys.wishlistBox));
         } else if (state is WishlistFailState) {
           EasyLoading.showError(state.message);
         }

@@ -22,7 +22,7 @@ class AdsItem extends StatelessWidget {
         GoRouter.of(context).push(AppRoute.adDetails, extra: campaigns.id);
       },
       child: AspectRatio(
-        aspectRatio: 220 / 320,
+        aspectRatio: 354 / 167,
         child: Card(
           borderOnForeground: true,
           shadowColor: Colors.black26,
@@ -33,46 +33,30 @@ class AdsItem extends StatelessWidget {
               color: Color(0xff8c8c8c),
             ),
           ),
-          child: Stack(
-            alignment: AlignmentDirectional.topEnd,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: SizedBox(
-                      width: 200,
-                      height: 150,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(18),
-                        child: CachedNetworkImage(
-                          fit: BoxFit.fill,
-                          imageUrl: campaigns.images!.isEmpty
-                              ? ""
-                              : "${EndPoints.baseUrl}${campaigns.images?[0]}" ??
-                                  "",
-                          errorWidget: (context, url, error) =>
-                              SvgPicture.asset(
-                            Assets.imagesEmptyImage,
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
+          child: Container(
+            color: Colors.red,
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                Positioned.fill(
+                  child: CachedNetworkImage(
+                    fit: BoxFit.fill,
+                    imageUrl: campaigns.images!.isEmpty
+                        ? ""
+                        : "${EndPoints.baseUrl}${campaigns.images?[0]}" ?? "",
+                    errorWidget: (context, url, error) => SvgPicture.asset(
+                      Assets.imagesEmptyImage,
+                      fit: BoxFit.fill,
                     ),
                   ),
-                  const Gap(14),
-                  AdsItemDetails(
-                    campaigns: campaigns,
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: SaveButton(
-                  campaignId: campaigns.id!,
                 ),
-              ),
-            ],
+                Container(
+                  height: 50,
+                  color: Colors.black.withOpacity(0.5),
+                  child: Row(),
+                )
+              ],
+            ),
           ),
         ),
       ),
