@@ -1,6 +1,6 @@
 import 'package:atch_proj/core/services/validation_service.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
-import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/custom_drop_menu.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +11,8 @@ import '../../../../../config/routes/routes.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_string.dart';
 import '../../../../../core/utils/app_style.dart';
-import 'coatume_auth_button.dart';
-import 'costume_text_filed.dart';
+import '../NewWidgets/coatume_auth_button.dart';
+import '../NewWidgets/costume_text_filed.dart';
 
 class LogInDrawer extends StatefulWidget {
   const LogInDrawer({super.key});
@@ -80,7 +80,7 @@ class _LogInDrawerState extends State<LogInDrawer> {
                   items: items,
                 ),
                 const Gap(20),
-                CostumeButton(
+                CostumeAuthButton(
                   title: 'Login',
                   isLoading: true,
                   onPressed: () {

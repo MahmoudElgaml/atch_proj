@@ -6,6 +6,7 @@ import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/erorr/failure.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/SignDataTest.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
+import 'package:atch_proj/feature/auth_feature/auth/data/model/request/SignDataNew.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/repo/auth_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -21,7 +22,7 @@ class AuthRepoImpl implements AuthRepo {
   StorageToken storageToken;
 
   @override
-  Future<Either<Failure, String>> sign(SignDataTest signData) async {
+  Future<Either<Failure, String>> sign(SignDataNew signData) async {
     try {
       var formData = await signData.formData();
 

@@ -1,5 +1,6 @@
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/services/upload_image_service.dart';
+import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,8 +8,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/app_style.dart';
 
-class CostumeButton extends StatelessWidget {
-  const CostumeButton(
+class CostumeAuthButton extends StatelessWidget {
+  const CostumeAuthButton(
       {required this.title,
       super.key,
       required this.onPressed,
@@ -20,22 +21,14 @@ class CostumeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
-      height: 68,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(10),
-            topLeft: Radius.circular(10),
-            topRight: Radius.circular(10)),
-        gradient: LinearGradient(
-          colors: [Color(0xff8658E8), Color(0xff4718AD)],
-        ),
-      ),
+      height: 46,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.transparent,
+          padding: const EdgeInsets.all(0),
+          backgroundColor: AppColor.yellowColor,
           shadowColor: Colors.transparent,
         ),
         child: BlocConsumer<AuthCubit, AuthState>(
@@ -63,7 +56,7 @@ class CostumeButton extends StatelessWidget {
             }
             return Text(
               title,
-              style: AppStyle.styleWhite,
+              style: AppStyle.style24BoldDarkBlue(context),
             );
           },
         ),

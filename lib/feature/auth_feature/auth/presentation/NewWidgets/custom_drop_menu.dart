@@ -1,3 +1,4 @@
+import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -50,18 +51,17 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
         },
         buttonStyleData: ButtonStyleData(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: const Border(
-                top: BorderSide(color: Color(0xffE4DFDF)),
-                bottom: BorderSide(color: Color(0xffE4DFDF)),
-                right: BorderSide(color: Color(0xffE4DFDF)),
-                left: BorderSide(color: Color(0xffE4DFDF)),
-              )),
+            borderRadius: BorderRadius.circular(1000),
+            border: Border.all(color: AppColor.yellowColor, width: 2),
+          ),
           padding: const EdgeInsets.symmetric(horizontal: 10),
           height: widget.isAuth ? 40 : null,
           width: widget.isAuth ? 140 : null,
         ),
-        menuItemStyleData: const MenuItemStyleData(),
+        menuItemStyleData: const MenuItemStyleData(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          height: 40,
+        ),
       ),
     );
   }

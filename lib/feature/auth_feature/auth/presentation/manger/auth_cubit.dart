@@ -1,9 +1,12 @@
 import 'package:atch_proj/core/services/validation_service.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/SignDataTest.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
+import 'package:atch_proj/feature/auth_feature/auth/data/model/request/SignDataNew.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/repo/auth_repo.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:meta/meta.dart';
 
 part 'auth_state.dart';
@@ -13,10 +16,38 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this.authRepo) : super(AuthInitial());
   UserData userData = UserData();
   AuthRepo authRepo;
+  bool isAdvertiser = true;
+  TextEditingController companyName = TextEditingController();
+
+  TextEditingController advertiseName = TextEditingController();
+
+  TextEditingController about = TextEditingController();
+
+  TextEditingController password = TextEditingController();
+
+  TextEditingController email = TextEditingController();
+  LatLng? firstLocation;
+  LatLng? secondLocation;
+
+  var formKey = GlobalKey<FormState>();
+  String selectedValue = "Factory";
+
+  disposeAll() {
+    companyName.text = "";
+    advertiseName.text = "";
+    about.text = "";
+    password.text = "";
+    email.text = "";
+    companyName.dispose();
+    advertiseName.dispose();
+    about.dispose();
+    password.dispose();
+    email.dispose();
+  }
 
   static AuthCubit get(context) => BlocProvider.of(context);
 
-  signIn(SignDataTest signData) async {
+  signIn(SignDataNew signData) async {
     emit(AuthLoadingState());
     var result = await authRepo.sign(signData);
     result.fold(

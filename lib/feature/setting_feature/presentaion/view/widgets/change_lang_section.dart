@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/app_style.dart';
-import '../../../../auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
+import '../../../../auth_feature/auth/presentation/NewWidgets/custom_drop_menu.dart';
 
 class ChangeLangSection extends StatelessWidget {
   const ChangeLangSection({super.key});

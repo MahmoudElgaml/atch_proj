@@ -1,4 +1,27 @@
 class ValidationService {
+  static var regex8Char = RegExp(
+    r"^(?=.{8,})",
+  );
+  static var regexSpecialChar = RegExp(
+    r"^(?=.*?[#?!@$%^&*-])",
+  );
+
+  static String? validate8CharAndSpecialChar(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return null;
+    }
+
+    var regex = RegExp(
+      r"^(?=.{8,})(?=.*?[#?!@$%^&*-])",
+    );
+
+    if (!regex.hasMatch(value)) {
+      return "MustContains 8 characters and special characters";
+    } else {
+      return null;
+    }
+  }
+
   static String? validateEmail(String? value) {
     if (value == null || value.trim().isEmpty) {
       return ("You must enter your email");
@@ -67,7 +90,7 @@ Prefix is 10, 11, 12 or 15 only""";
 
   static String? validateEmpty(String? value, String? title) {
     if (value == null || value.trim().isEmpty) {
-      return 'You must enter your $title';
+      return 'enter your $title';
     }
     return null;
   }

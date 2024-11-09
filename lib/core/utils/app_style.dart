@@ -3,6 +3,42 @@ import 'package:flutter/material.dart';
 import 'app_color.dart';
 
 class AppStyle {
+  static TextStyle style24Medium(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: AppColor.authColor,
+      fontSize: responsiveFont(fontSize: 24, context: context),
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle style21Medium(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: Colors.black,
+      fontSize: responsiveFont(fontSize: 21, context: context),
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle style24BoldDarkBlue(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: AppColor.darkBlue,
+      fontSize: responsiveFont(fontSize: 24, context: context),
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  static TextStyle style14Regular(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      fontSize: responsiveFont(fontSize: 14, context: context),
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  ///////////////////////////////////////////////////////////////////////////////
   static TextStyle style34(BuildContext context) {
     return TextStyle(
       fontFamily: "AbhayaLibre",
@@ -56,14 +92,6 @@ class AppStyle {
       fontWeight: FontWeight.w900,
     );
   }
-  static TextStyle style14Regular(BuildContext context) {
-    return TextStyle(
-      color: Colors.black,
-      fontFamily: "AbhayaLibre",
-      fontSize: responsiveFont(fontSize: 14, context: context),
-      fontWeight: FontWeight.w400,
-    );
-  }
 
   static TextStyle style18Regular(BuildContext context) {
     return TextStyle(
@@ -73,6 +101,7 @@ class AppStyle {
       fontWeight: FontWeight.w400,
     );
   }
+
   static TextStyle style16Regular(BuildContext context) {
     return TextStyle(
       color: Colors.black,
@@ -81,6 +110,7 @@ class AppStyle {
       fontWeight: FontWeight.w400,
     );
   }
+
   static TextStyle style16Bold(BuildContext context) {
     return TextStyle(
       color: Colors.black,

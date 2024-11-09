@@ -1,3 +1,4 @@
+import 'package:atch_proj/config/routes/navigation_helper.dart';
 import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/account_feature/page/edit_account_screen.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/add_campaign_cubit.dart';
@@ -10,7 +11,12 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/edi
 import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/advertiser_info_page.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/select_role_sigup_page.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_advertise_page.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_advertise_page2.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_advertise.dart';
 import 'package:atch_proj/feature/adv_detail_feature/prsentation/view/pages/ad_details_screen.dart';
@@ -19,8 +25,7 @@ import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_
 import 'package:atch_proj/feature/qr_offer_feature/presentation/manger/qr_offer_cubit.dart';
 import 'package:atch_proj/feature/qr_offer_feature/presentation/view/pages/qr_offer_screen.dart';
 import 'package:atch_proj/feature/setting_feature/presentaion/view/setting_screen.dart';
-import 'package:atch_proj/feature/unite_testing/manger/test_cubit.dart';
-import 'package:atch_proj/feature/unite_testing/test_view.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,43 +35,65 @@ import 'package:go_router/go_router.dart';
 import '../../feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
 import '../../feature/home_layout_feature/presentation/view/pages/all_ads_screen.dart';
 import '../../feature/home_layout_feature/presentation/view/pages/home_screen.dart';
+import '../../feature/map_feature/presentation/pages/map_page.dart';
 import '../../feature/splash_feature/presentation/view/splash_view.dart';
 
 class AppRoute {
   static const String splashKey = "/";
   static const String signInKey = "/signup";
   static const String logInKey = "/login";
+  static const String signUpAsAdvertise = "/advertise";
+  static const String signUpAsAdvertise2 = "/advertis2";
+
   static const String homeKey = "/home";
   static const String adDetails = "/adDetails";
-  static const String signUpAsAdvertise = "/advertise";
+
   static const String addCampaign = "/addCampaign";
   static const String advertiserInfoPage = "/adver";
   static const String editUserPage = "/edituser";
   static const String test = "/test";
+  static const String selectRole = "/selectRole";
   static const String editCampaign = "/editCampaign";
   static const String qrOffer = "/qrOffer";
   static const String setting = "/settings";
   static const String allAds = "/allAds";
+  static const String mapPage = "/mapPage";
 
   static final router = GoRouter(
     routes: [
+      GoRoute(
+        path: selectRole,
+        pageBuilder: (context, state) {
+          return NavigationHelper.navigateFromBottomToUp(
+            yourWidget: const SelectRoleSigUpPage(),
+          );
+        },
+      ),
       GoRoute(
         path: splashKey,
         builder: (context, state) => const SplashView(),
       ),
       GoRoute(
         path: signInKey,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<AuthCubit>(),
-          child: const SignUpScreen(),
+        pageBuilder: (context, state) =>
+            NavigationHelper.navigateFromBottomToUp(
+          yourWidget: const SignUpUserPage(),
         ),
       ),
       GoRoute(
-        path: logInKey,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<AuthCubit>(),
-          child: const LoginScreen(),
+        path: signUpAsAdvertise,
+        pageBuilder: (context, state) =>
+            NavigationHelper.navigateFromTopToBottom(
+          yourWidget: const SignUpAdvertisePage(),
         ),
+      ),
+      GoRoute(
+        path: signUpAsAdvertise2,
+        builder: (context, state) => const SignUpAdvertisePage2(),
+      ),
+      GoRoute(
+        path: logInKey,
+        builder: (context, state) => const LoginPage(),
       ),
       GoRoute(
         path: homeKey,
@@ -77,13 +104,6 @@ class AppRoute {
       GoRoute(
         path: adDetails,
         builder: (context, state) => const AdDetailsScreen(),
-      ),
-      GoRoute(
-        path: signUpAsAdvertise,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<AuthCubit>(),
-          child: const SignUpAdvertise(),
-        ),
       ),
       GoRoute(
         path: addCampaign,
@@ -108,8 +128,8 @@ class AppRoute {
       GoRoute(
         path: test,
         builder: (context, state) => BlocProvider(
-          create: (context) => getIt<TestCubit>(),
-          child: const TestView(),
+          create: (context) => getIt<AuthCubit>(),
+          child: const LoginPage(),
         ),
       ),
       GoRoute(
@@ -167,6 +187,10 @@ class AppRoute {
           create: (context) => getIt<DrawerCubit>(),
           child: const AllAdsScreen(),
         ),
+      ),
+      GoRoute(
+        path: mapPage,
+        builder: (context, state) => const MapPage(),
       )
     ],
   );
