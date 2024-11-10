@@ -69,6 +69,7 @@ dependencies:
   animations: ^2.0.11
   flutter_map: ^7.0.2
   latlong2: ^0.9.1
+  fluttertoast: ^8.2.8
 
 
   # The following adds the Cupertino Icons font to your application.

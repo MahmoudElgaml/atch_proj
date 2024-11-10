@@ -15,31 +15,21 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Padding(
         padding: const EdgeInsets.only(left: 24.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            buildWelcomeSection(context),
             const Gap(17),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    buildWelcomeSection(context),
-                    const Gap(17),
-                    const PopularAds(),
-                    const Gap(17),
-                    const CategoryTaps(),
-                    const Gap(17),
-                    const AllAds(),
-                    const Gap(20),
-                  ],
-                ),
-              ),
-            )
+            const PopularAds(),
+            const Gap(17),
+            const CategoryTaps(),
+            const Gap(17),
+            const AllAds(),
+            const Gap(20),
           ],
         ),
       ),

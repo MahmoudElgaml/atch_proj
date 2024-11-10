@@ -22,6 +22,18 @@ class HomeScreenLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          leading: Builder(
+            builder: (context) => InkWell(
+              onTap: () => Scaffold.of(context).openDrawer(),
+              child: const Icon(
+                Icons.menu,
+                color: AppColor.PrimaryColor,
+              ),
+            ),
+          ),
+        ),
         resizeToAvoidBottomInset: false,
         drawer: const HomeDrawer(),
         body: BlocBuilder<HomeLayoutCubit, HomeLayoutState>(
@@ -38,7 +50,6 @@ class HomeScreenLayout extends StatelessWidget {
               },
               child: state.viewTap(),
             );
-
           },
         ),
         bottomNavigationBar: const BottomNaviBar(),
@@ -57,7 +68,6 @@ class HomeScreenLayout extends StatelessWidget {
                   context.push(AppRoute.addCampaign);
                 },
                 child: SvgPicture.asset(Assets.imagesAddPhotoIcon))
-            : null
-    );
+            : null);
   }
 }

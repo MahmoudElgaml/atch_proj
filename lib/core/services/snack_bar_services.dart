@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../config/routes/routes.dart';
@@ -18,5 +19,16 @@ class SnackBarServices {
     );
     print("showSelectLocationMessage");
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  static void showSaveToWishList(BuildContext context) {
+    Fluttertoast.showToast(
+        msg: "Added Successfully",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: AppColor.PrimaryColor,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 }

@@ -77,14 +77,16 @@ class AdsItem extends StatelessWidget {
           children: [
             Text(campaigns.campaignName ?? "",
                 style: AppStyle.style16Medium(context)),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("${campaigns.offer.toString()} LE" ?? "",
-                    style: AppStyle.style16Bold(context)),
-                Text("${campaigns.price.toString()} LE" ?? "",
-                    style: AppStyle.style10Bold(context)),
-              ],
+            FittedBox(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("${campaigns.offer.toString()} LE" ?? "",
+                      style: AppStyle.style16Bold(context)),
+                  Text("${campaigns.price.toString()} LE" ?? "",
+                      style: AppStyle.style10Bold(context)),
+                ],
+              ),
             )
           ],
         ),
