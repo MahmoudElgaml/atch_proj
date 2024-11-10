@@ -63,13 +63,13 @@ class PopularAdsLoading extends StatelessWidget {
       baseColor: Colors.black,
       highlightColor: Colors.grey[100]!,
       child: SizedBox(
-        height: 250,
+        height: 190,
         child: ListView.separated(
           separatorBuilder: (context, index) => const Gap(15),
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => const Skeleton(
-            height: 255,
-            width: 237,
+            height: 167,
+            width: 354,
           ),
           itemCount: 10,
         ),

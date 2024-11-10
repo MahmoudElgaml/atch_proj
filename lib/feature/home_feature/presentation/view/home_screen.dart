@@ -8,7 +8,7 @@ import 'package:gap/gap.dart';
 import '../widgets/all_campain.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/popular_ads.dart';
-import '../widgets/tabs_app_bar.dart';
+import '../widgets/category_taps.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -31,6 +31,8 @@ class HomeScreen extends StatelessWidget {
                     buildWelcomeSection(context),
                     const Gap(17),
                     const PopularAds(),
+                    const Gap(17),
+                    const CategoryTaps(),
                     const Gap(17),
                     const AllAds(),
                     const Gap(20),
