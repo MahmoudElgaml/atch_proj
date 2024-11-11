@@ -1,3 +1,4 @@
+import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/helper.dart';
 import 'package:flutter/material.dart';
 
@@ -28,10 +29,13 @@ class CustomDateTimeTextFiled extends StatelessWidget {
       onChanged: onChanged,
       maxLines: maxLines,
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.only(left: 10),
+        hintStyle: AppStyle.style21Regular(context),
         hintText: hintText,
         suffixIcon: icon,
         enabledBorder: Helper.buildOutlineInputBorder(),
         disabledBorder: Helper.buildOutlineInputBorder(),
+        focusedBorder: Helper.buildOutlineInputBorder(),
         border: Helper.buildOutlineInputBorder(),
       ),
     );

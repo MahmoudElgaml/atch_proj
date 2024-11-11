@@ -13,6 +13,8 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/wid
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_add_campaign_button.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_camapaign_textfiled.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/date_section_widget.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/first_form.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/price_offer_section.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/custom_drop_menu.dart';
 import 'package:atch_proj/generated/assets.dart';
@@ -102,29 +104,9 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                         const Gap(19),
                         const DateSectionWidget(),
                         const Gap(19),
-                        CustomCampaignTextFiled(
-                          validator: (value) =>
-                              ValidationService.validateEmpty(value, "Price"),
-                          textInputType: TextInputType.number,
-                          textEditingController: price,
-                          hint: "Price",
-                          maxLine: 1,
-                          labelText: "Price",
-                          icon: const Icon(Icons.attach_money_sharp),
-                        ),
-                        const Gap(19),
-                        CustomCampaignTextFiled(
-                          textInputType: TextInputType.number,
-                          validator: (value) => AddCampaignCubit.get(context)
-                              .validateOfferUponPrice(
-                            offer: value ?? "",
-                            price: price.text,
-                          ),
-                          textEditingController: offer,
-                          hint: "Offer",
-                          maxLine: 1,
-                          labelText: "Offer",
-                          icon: const Icon(Icons.attach_money_sharp),
+                        PriceOfferSection(
+                          price: price,
+                          offer: offer,
                         ),
                         const Gap(19),
                         const AddPhotoSection(),
@@ -181,109 +163,4 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
   }
 }
 
-class FirstForm extends StatefulWidget {
-  const FirstForm({
-    super.key,
-    required this.companyName,
-    required this.description,
-  });
 
-  final TextEditingController companyName;
-
-  final TextEditingController description;
-
-  static const Map<String, String> items = {
-    "kids (1-3)": "Babies",
-    "biggerKids (4-12)": "Kids",
-    "teenagers(13-20)": "Teenagers",
-    "adults(20-40)": "Adults",
-    "elder(+40)": "Elder",
-  };
-
-  @override
-  State<FirstForm> createState() => _FirstFormState();
-}
-
-class _FirstFormState extends State<FirstForm> {
-  final List<String> locations =
-      Helper.retrievePerson()?.locations?.keys.toList() ?? [];
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Column(
-          children: [
-            Text(
-              context.tr("companyName"),
-              style: AppStyle.style21Regular(context),
-            ),
-            CustomCampaignTextFiled(
-              validator: (value) => ValidationService.validateEmpty(
-                value,
-                "Company Name",
-              ),
-              hint: "ex: Great Eagle",
-              textEditingController: widget.companyName,
-              maxLine: 1,
-            ),
-          ],
-        ),
-        const Gap(19),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              context.tr("targetAudience"),
-              style: AppStyle.style21Regular(context),
-            ),
-            const Gap(3),
-            CustomDropMenu(
-              setValue: (value) {
-                AddCampaignCubit.get(context).selectedAudience = value;
-              },
-              items: FirstForm.items,
-              selectedValue: AddCampaignCubit.get(context).selectedAudience,
-              isAuth: false,
-            ),
-          ],
-        ),
-        const Gap(18),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              context.tr("location"),
-              style: AppStyle.style24Regular(context),
-            ),
-            const Gap(3),
-            CustomDropMenu(
-              setValue: (value) {
-                AddCampaignCubit.get(context).selectedLocation = value;
-              },
-              items: Map.fromIterable(locations),
-              selectedValue: AddCampaignCubit.get(context).selectedLocation,
-              isAuth: false,
-            ),
-          ],
-        ),
-        const Gap(19),
-        Column(
-          children: [
-            Text(
-              context.tr("description"),
-              style: AppStyle.style21Regular(context),
-            ),
-            CustomCampaignTextFiled(
-              validator: (value) =>
-                  ValidationService.validateEmpty(value, "Description"),
-              textEditingController: widget.description,
-              hint: "ex: we offer",
-              maxLine: 6,
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
