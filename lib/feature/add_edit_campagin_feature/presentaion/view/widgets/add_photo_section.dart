@@ -51,10 +51,10 @@ class AddPhotoSection extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       separatorBuilder: (context, index) => const Gap(15),
                       itemBuilder: (context, index) => ImageItem(
-                        index: index,
-                        image: images[index],
+                        index: index + 1,
+                        image: images[index + 1],
                       ),
-                      itemCount: images.length,
+                      itemCount: images.length - 1,
                     ),
                   );
           },

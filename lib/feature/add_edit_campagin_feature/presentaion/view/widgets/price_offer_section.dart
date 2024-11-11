@@ -21,7 +21,7 @@ class PriceOfferSection extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "offer",
+                "price",
                 style: AppStyle.style21Regular(context),
               ),
               Row(
@@ -50,7 +50,7 @@ class PriceOfferSection extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "price",
+                "offer",
                 style: AppStyle.style21Regular(context),
               ),
               Row(

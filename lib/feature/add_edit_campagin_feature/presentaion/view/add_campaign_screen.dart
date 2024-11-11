@@ -1,5 +1,6 @@
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
+import 'package:atch_proj/core/services/snack_bar_services.dart';
 import 'package:atch_proj/core/services/validation_service.dart';
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
@@ -20,6 +21,7 @@ import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/cust
 import 'package:atch_proj/generated/assets.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
@@ -73,26 +75,7 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Center(
-                      child: AspectRatio(
-                        aspectRatio: 302 / 212,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: AppColor.grayColor,
-                          ),
-                          width: double.infinity,
-                          height: 212,
-                          child: Center(
-                            child: SvgPicture.asset(
-                              Assets.imagesAddPhotoIcon,
-                              width: 123,
-                              height: 123,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    const CoverImageSection(),
                     const Gap(15),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,13 +102,19 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                           title: context.tr("bAddCampaign"),
                           onPressed: () async {
                             if (validateState.currentState!.validate()) {
-                              var adToken = getIt<HiveManager>()
-                                  .retrieveSingleData<Person>(HiveKeys.userBox)
-                                  ?.id;
-                              AddCampaignModel addCampaignModel =
-                                  createAddCampaignModel(adToken, context);
-                              AddCampaignCubit.get(context)
-                                  .addCampaign(addCampaignModel);
+                              if (AddImageCubit.get(context).images.isEmpty) {
+                                print("No Image");
+                                SnackBarServices.showCoverImageValidate();
+                              } else {
+                                var adToken = getIt<HiveManager>()
+                                    .retrieveSingleData<Person>(
+                                        HiveKeys.userBox)
+                                    ?.id;
+                                AddCampaignModel addCampaignModel =
+                                    createAddCampaignModel(adToken, context);
+                                AddCampaignCubit.get(context)
+                                    .addCampaign(addCampaignModel);
+                              }
                             }
                           },
                         ),
@@ -163,4 +152,71 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
   }
 }
 
+class CoverImageSection extends StatelessWidget {
+  const CoverImageSection({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        AddImageCubit.get(context).addCoverImage();
+      },
+      child: Center(
+        child: AspectRatio(
+          aspectRatio: 302 / 212,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: AppColor.grayColor,
+            ),
+            width: double.infinity,
+            height: 212,
+            child: BlocBuilder<AddImageCubit, AddImageState>(
+              buildWhen: (previous, current) {
+                return current is AddImageCoverSuccessState ||
+                    current is AddImageCoverDeletedState;
+              },
+              builder: (context, state) {
+                var image = AddImageCubit.get(context).images.isEmpty
+                    ? null
+                    : AddImageCubit.get(context).images.first;
+                return image == null
+                    ? Center(
+                        child: SvgPicture.asset(
+                          Assets.imagesAddPhotoIcon,
+                          width: 123,
+                          height: 123,
+                        ),
+                      )
+                    : Stack(
+                        alignment: Alignment.topRight,
+                        children: [
+                          Positioned.fill(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image.memory(
+                                image,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              AddImageCubit.get(context).deleteCoverImage();
+                            },
+                            icon: const Icon(
+                              Icons.delete,
+                              size: 30,
+                              color: Colors.red,
+                            ),
+                          )
+                        ],
+                      );
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

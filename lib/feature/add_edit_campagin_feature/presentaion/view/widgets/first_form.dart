@@ -79,7 +79,7 @@ class FirstForm extends StatelessWidget {
           children: [
             Text(
               context.tr("location"),
-              style: AppStyle.style24Regular(context),
+              style: AppStyle.style21Regular(context),
             ),
             const Gap(3),
             CustomDropMenu(
@@ -100,6 +100,7 @@ class FirstForm extends StatelessWidget {
               context.tr("description"),
               style: AppStyle.style21Regular(context),
             ),
+            const Gap(3),
             CustomCampaignTextFiled(
               validator: (value) =>
                   ValidationService.validateEmpty(value, "Description"),

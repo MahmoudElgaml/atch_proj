@@ -23,12 +23,25 @@ class SnackBarServices {
 
   static void showSaveToWishList(BuildContext context) {
     Fluttertoast.showToast(
-        msg: "Added Successfully",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
-        backgroundColor: AppColor.PrimaryColor,
-        textColor: Colors.white,
-        fontSize: 16.0);
+      msg: "Added Successfully",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: AppColor.PrimaryColor,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
+
+  static void showCoverImageValidate() {
+    Fluttertoast.showToast(
+      msg: "you must add cover image first",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
   }
 }
