@@ -29,7 +29,7 @@ class CustomDateTimeTextFiled extends StatelessWidget {
       onChanged: onChanged,
       maxLines: maxLines,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.only(left: 10),
+        contentPadding: const EdgeInsets.only(left: 10),
         hintStyle: AppStyle.style21Regular(context),
         hintText: hintText,
         suffixIcon: icon,

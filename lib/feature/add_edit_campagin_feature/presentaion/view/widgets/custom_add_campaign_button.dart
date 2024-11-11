@@ -19,7 +19,7 @@ class CustomAddCampaignButton extends StatelessWidget {
       child: Center(
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColor.primaryColor,
+            backgroundColor: AppColor.PrimaryColor,
           ),
           onPressed: onPressed,
           child: BlocConsumer<AddCampaignCubit, AddCampaignState>(
@@ -50,7 +50,7 @@ class CustomAddCampaignButton extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   title,
-                  style: AppStyle.style24Regular(context).copyWith(
+                  style: AppStyle.style24BoldDarkBlue(context).copyWith(
                     color: Colors.white,
                   ),
                 ),

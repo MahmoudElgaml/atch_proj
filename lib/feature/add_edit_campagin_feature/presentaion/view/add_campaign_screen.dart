@@ -109,11 +109,11 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                           offer: offer,
                         ),
                         const Gap(19),
-                        const AddPhotoSection(),
-                        const Gap(20),
                         AddLinkSection(
                           linkCubit: linkCubit,
                         ),
+                        const Gap(20),
+                        const AddPhotoSection(),
                         const Gap(20),
                         CustomAddCampaignButton(
                           title: context.tr("bAddCampaign"),

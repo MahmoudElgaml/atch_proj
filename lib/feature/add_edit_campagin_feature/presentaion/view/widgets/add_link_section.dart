@@ -1,9 +1,12 @@
 import 'package:animations/animations.dart';
+import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
+import 'package:atch_proj/generated/assets.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:validators/validators.dart';
@@ -23,7 +26,7 @@ class AddLinkSection extends StatelessWidget {
           children: [
             Text(
               context.tr("addLink"),
-              style: AppStyle.style24Regular(context),
+              style: AppStyle.style21Regular(context),
             ),
             const Spacer(),
             IconButton(
@@ -50,7 +53,15 @@ class AddLinkSection extends StatelessWidget {
                   },
                 );
               },
-              icon: const Icon(Icons.add),
+              icon: SvgPicture.asset(
+                Assets.imagesAddPhotoIcon,
+                width: 15,
+                height: 15,
+                colorFilter: const ColorFilter.mode(
+                  AppColor.PrimaryColor,
+                  BlendMode.srcIn,
+                ),
+              ),
             )
           ],
         ),

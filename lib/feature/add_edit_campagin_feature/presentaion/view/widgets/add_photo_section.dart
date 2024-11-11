@@ -5,7 +5,11 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+
+import '../../../../../core/utils/app_color.dart';
+import '../../../../../generated/assets.dart';
 
 class AddPhotoSection extends StatelessWidget {
   const AddPhotoSection({super.key});
@@ -18,13 +22,20 @@ class AddPhotoSection extends StatelessWidget {
           children: [
             Text(
               context.tr("addPhoto"),
-              style: AppStyle.style24Regular(context),
+              style: AppStyle.style21Regular(context),
             ),
             const Spacer(),
             IconButton(
               onPressed: () => AddImageCubit.get(context).addImage(),
-              icon: const Icon(Icons.add),
-              color: Colors.black,
+              icon: SvgPicture.asset(
+                Assets.imagesAddPhotoIcon,
+                width: 15,
+                height: 15,
+                colorFilter: const ColorFilter.mode(
+                  AppColor.PrimaryColor,
+                  BlendMode.srcIn,
+                ),
+              ),
             ),
           ],
         ),
@@ -32,20 +43,20 @@ class AddPhotoSection extends StatelessWidget {
         BlocBuilder<AddImageCubit, AddImageState>(
           builder: (context, state) {
             var images = AddImageCubit.get(context).images;
-            return
-            images.isEmpty?const SizedBox():
-              SizedBox(
-              height: MediaQuery.sizeOf(context).height * .1,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                separatorBuilder: (context, index) => const Gap(15),
-                itemBuilder: (context, index) => ImageItem(
-                  index: index,
-                  image: images[index],
-                ),
-                itemCount: images.length,
-              ),
-            );
+            return images.isEmpty
+                ? const EmptyListPhoto()
+                : SizedBox(
+                    height: MediaQuery.sizeOf(context).height * .1,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      separatorBuilder: (context, index) => const Gap(15),
+                      itemBuilder: (context, index) => ImageItem(
+                        index: index,
+                        image: images[index],
+                      ),
+                      itemCount: images.length,
+                    ),
+                  );
           },
         ),
       ],
@@ -54,10 +65,11 @@ class AddPhotoSection extends StatelessWidget {
 }
 
 class ImageItem extends StatelessWidget {
-  const ImageItem({super.key, required this.image,required this.index});
+  const ImageItem({super.key, required this.image, required this.index});
 
   final Uint8List image;
- final int index;
+  final int index;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -74,6 +86,30 @@ class ImageItem extends StatelessWidget {
           color: Colors.grey,
         )
       ],
+    );
+  }
+}
+
+class EmptyListPhoto extends StatelessWidget {
+  const EmptyListPhoto({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 100,
+      child: ListView.separated(
+        separatorBuilder: (context, index) => const Gap(20),
+        scrollDirection: Axis.horizontal,
+        itemCount: 4,
+        itemBuilder: (context, index) => Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: AppColor.grayColor,
+          ),
+        ),
+      ),
     );
   }
 }

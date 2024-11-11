@@ -19,7 +19,6 @@ class PriceOfferSection extends StatelessWidget {
       children: [
         Expanded(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "offer",
@@ -49,7 +48,6 @@ class PriceOfferSection extends StatelessWidget {
         const Gap(19),
         Expanded(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "price",
