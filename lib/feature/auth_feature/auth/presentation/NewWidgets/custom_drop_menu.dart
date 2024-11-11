@@ -28,6 +28,13 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
       child: DropdownButton2(
+        iconStyleData: const IconStyleData(
+          icon: Icon(
+            Icons.arrow_drop_down,
+            size: 30,
+            color: AppColor.PrimaryColor,
+          ),
+        ),
         isExpanded: true,
         items: widget.items.entries.map(
           (item) {
@@ -36,7 +43,7 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
               child: FittedBox(
                   child: Text(
                 item.key,
-                style: AppStyle.style18(context),
+                style: AppStyle.style21Regular(context),
               )),
             );
           },

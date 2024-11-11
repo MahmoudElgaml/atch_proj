@@ -120,6 +120,14 @@ class AppStyle {
     );
   }
 
+  static TextStyle style21Regular(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      fontSize: responsiveFont(fontSize: 21, context: context),
+      fontWeight: FontWeight.w400,
+    );
+  }
+
   static TextStyle style10Regular(BuildContext context) {
     return TextStyle(
       fontFamily: "Roboto",
