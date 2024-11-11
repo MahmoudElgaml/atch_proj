@@ -3,6 +3,7 @@ import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/cache/hive/hive_keyes.dart';
 import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/cache/storage_token.dart';
+import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/constants.dart';
 import 'package:atch_proj/core/utils/models/drawer_item_model.dart';
@@ -27,9 +28,9 @@ class HomeDrawer extends StatelessWidget {
   const HomeDrawer({super.key});
 
   static const List<DrawerItemModel> items = [
-    DrawerItemModel("contact", Icons.mail_outline_outlined),
-    DrawerItemModel("setting", Icons.settings),
-    DrawerItemModel("AllAds", Icons.verified_user_rounded),
+    DrawerItemModel("AllAds", Assets.imagesAllCampaign),
+    DrawerItemModel("setting", Assets.imagesSettingssvg),
+    DrawerItemModel("contact", Assets.imagesContact),
   ];
 
   @override
@@ -45,28 +46,8 @@ class HomeDrawer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipOval(
-                child: SizedBox(
-                  width: 80,
-                  height: 80,
-                  child: CachedNetworkImage(
-                    width: double.infinity,
-                    height: double.infinity,
-                    fit: BoxFit.fill,
-                    imageUrl:
-                        "${EndPoints.baseUrl}${userData?.profilePic}" ?? "",
-                    errorWidget: (context, url, error) {
-                      return Image.network(ConstValue.emptyImage);
-                    },
-                  ),
-                ),
-              ),
-              const Gap(12),
-              Text(
-                userData?.username ?? "",
-                style: AppStyle.style18ExtraBold(context),
-              ),
-              const Gap(40),
+              ImageAndName(userData: userData),
+              const Gap(60),
               Column(
                 children: items
                     .map(
@@ -111,7 +92,7 @@ class HomeDrawer extends StatelessWidget {
                   context.go(AppRoute.logInKey);
                 },
                 drawerItemModel:
-                    DrawerItemModel(context.tr("logout"), Icons.login),
+                    DrawerItemModel(context.tr("logout"), Assets.imagesLogOut),
               ),
               const Gap(20),
               Row(
@@ -127,6 +108,47 @@ class HomeDrawer extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ImageAndName extends StatelessWidget {
+  const ImageAndName({super.key, required this.userData});
+
+  final Person? userData;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Center(
+          child: Container(
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: AppColor.PrimaryColor, width: 2.5)),
+            width: 118,
+            height: 118,
+            child: ClipOval(
+              child: CachedNetworkImage(
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.fill,
+                imageUrl: "${EndPoints.baseUrl}${userData?.profilePic}" ?? "",
+                errorWidget: (context, url, error) {
+                  return Image.network(ConstValue.emptyImage);
+                },
+              ),
+            ),
+          ),
+        ),
+        const Gap(12),
+        Center(
+          child: Text(
+            userData?.username ?? "",
+            style: AppStyle.style18ExtraBold(context),
+          ),
+        ),
+      ],
     );
   }
 }

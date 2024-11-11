@@ -17,7 +17,7 @@ class AppStyle {
       fontFamily: "Roboto",
       color: Colors.black,
       fontSize: responsiveFont(fontSize: 21, context: context),
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w600,
     );
   }
 

@@ -10,10 +10,12 @@ class Assets {
   static const String imagesAddPhotoIcon = 'assets/images/add_photo_icon.svg';
   static const String imagesAdvertiserBadge =
       'assets/images/advertiser_badge.png';
+  static const String imagesAllCampaign = 'assets/images/all_campaign.svg';
   static const String imagesApple = 'assets/images/apple.png';
   static const String imagesBubbleText = 'assets/images/bubble_text.png';
   static const String imagesBubbleTextSign = 'assets/images/bubble_text_sign.png';
   static const String imagesClose = 'assets/images/close.png';
+  static const String imagesContact = 'assets/images/contact.svg';
   static const String imagesDate = 'assets/images/Date.png';
   static const String imagesDollar = 'assets/images/dollar.png';
   static const String imagesEdit = 'assets/images/edit.svg';
@@ -31,6 +33,7 @@ class Assets {
   static const String imagesLocation = 'assets/images/Location.png';
   static const String imagesLoctions = 'assets/images/loctions.svg';
   static const String imagesLogInPhoto = 'assets/images/log_in_photo.png';
+  static const String imagesLogOut = 'assets/images/log_out.svg';
   static const String imagesMailIcon = 'assets/images/mail_icon.svg';
   static const String imagesMiniLogo = 'assets/images/mini_logo.png';
   static const String imagesNewLocation = 'assets/images/new_location.svg';
@@ -39,6 +42,7 @@ class Assets {
   static const String imagesProfileTestImage = 'assets/images/profile_test_image.png';
   static const String imagesSearchImageTest = 'assets/images/search_image_test.png';
   static const String imagesSelectedLove = 'assets/images/selected_love.svg';
+  static const String imagesSettingssvg = 'assets/images/settingssvg.svg';
   static const String imagesSuccessiconpng = 'assets/images/successiconpng.png';
   static const String imagesTestImageProfile = 'assets/images/test_image_profile.png';
   static const String imagesUnselectedLove =
