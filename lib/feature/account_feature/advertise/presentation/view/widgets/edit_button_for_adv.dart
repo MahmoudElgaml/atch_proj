@@ -29,7 +29,7 @@ class EditButtonBuilderForAdv extends StatelessWidget {
           }
               : null,
           child:  const EditButton(
-            color: AppColor.primaryColor,
+            color: AppColor.PrimaryColor,
             title: "editProfile",
             icon: Icons.edit,
 

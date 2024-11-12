@@ -39,6 +39,15 @@ class AppStyle {
     );
   }
 
+  static TextStyle style36Medium(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: AppColor.PrimaryColor,
+      fontSize: responsiveFont(fontSize: 36, context: context),
+      fontWeight: FontWeight.w600,
+    );
+  }
+
   static TextStyle style24BoldDarkBlue(BuildContext context) {
     return TextStyle(
       fontFamily: "Roboto",

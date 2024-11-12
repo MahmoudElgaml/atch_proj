@@ -14,103 +14,132 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/api/end_points.dart';
 
 class AdWishlistItem extends StatelessWidget {
-  const AdWishlistItem({super.key, required this.campaign});
+  const AdWishlistItem({super.key, required this.campaigns});
 
-  final Campaigns campaign;
+  final Campaigns campaigns;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => context.push(
-         AppRoute.adDetails,
-        extra: campaign.id
-      ),
-      child: Card(
-        elevation: 15,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+         AppRoute.adDetails, extra: campaigns.id),
+      child: Stack(
+        alignment: Alignment.topRight,
+        children: [
+          SizedBox(
+            height: 130,
+            child: Card(
+              shape: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: const BorderSide(color: AppColor.PrimaryColor),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
                     flex: 1,
-                    child: AspectRatio(
-                      aspectRatio: 79 / 92,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: AspectRatio(
+                        aspectRatio: 1,
                         child: CachedNetworkImage(
-                          fit: BoxFit.fill,
-                          imageUrl: campaign.images!.isEmpty
+                          height: double.infinity,
+                          imageUrl: campaigns.images!.isEmpty
                               ? ""
-                              : "${EndPoints.baseUrl}${campaign.images?[0]}" ?? "",
-                          errorWidget: (context, url, error) {
-                            return SvgPicture.asset(
-                              Assets.imagesEmptyImage,
-                              fit: BoxFit.fill,
-                            );
-                          },
+                              : "${EndPoints.baseUrl}${campaigns.images?[0]}" ??
+                                  "",
+                          fit: BoxFit.fill,
+                          errorWidget: (context, url, error) =>
+                              SvgPicture.asset(Assets.imagesEmptyImage),
                         ),
                       ),
                     ),
                   ),
-                  const Gap(20),
+                  const Gap(18),
                   Expanded(
-                    flex: 3,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    flex: 2,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          campaign.endDate ?? "",
-                          style: AppStyle.style13(context)
-                              .copyWith(color: AppColor.primaryColor),
-                        ),
-                        const Gap(5),
-                        Text(
-                          campaign.campaignName ?? "",
-                          style: AppStyle.style13(context)
-                              .copyWith(color: AppColor.fontColor, fontSize: 16),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "EGP ${campaign.offer.toString()}",
-                              style: AppStyle.style16Bold(context),
+                      children: <Widget>[
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                FittedBox(
+                                  child: Text(
+                                    campaigns.campaignName ?? "",
+                                    style: AppStyle.style24Medium(context),
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      Assets.imagesNewLocation,
+                                    ),
+                                    const Gap(5),
+                                    Text(
+                                      campaigns.locations?.entries.first.key ??
+                                          "",
+                                      style: AppStyle.style16Regular(context),
+                                    ),
+                                  ],
+                                )
+                              ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "EGP ${campaign.price.toString()}",
-                                style: AppStyle.style16Bold(context).copyWith(
-                                    decoration: TextDecoration.lineThrough),
-                              ),
+                          ),
+                        ),
+                        const Gap(7),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: Column(
+                              children: [
+                                const Gap(50),
+                                Text(
+                                  "EGP ${campaigns.offer.toString()}",
+                                  style: AppStyle.style24BoldDarkBlue(context)
+                                      .copyWith(
+                                    color: AppColor.PrimaryColor,
+                                  ),
+                                ),
+                                Text(
+                                  "EGP ${campaigns.price.toString()}",
+                                  style: AppStyle.style16Bold(context).copyWith(
+                                    color: AppColor.PrimaryColor,
+                                    decoration: TextDecoration.lineThrough,
+                                    decorationColor: AppColor.PrimaryColor,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         )
                       ],
                     ),
-                  ),
-
-                  IconButton(
-                    onPressed: () {
-                      WishlistCubit.get(context).addToWishList(campaign.id!);
-                      Helper.retrievePerson()?.wishlist?.remove(campaign.id);
-                      Helper.retrievePerson()?.save();
-                    },
-                    icon: const Icon(
-                      Icons.favorite_outlined,
-                    ),
-                    color: Colors.pink,
                   )
                 ],
               ),
-
-            ],
-
+            ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton(
+              onPressed: () {
+                WishlistCubit.get(context).addToWishList(campaigns.id!);
+                Helper.retrievePerson()?.wishlist?.remove(campaigns.id);
+                Helper.retrievePerson()?.save();
+              },
+              icon: const Icon(
+                Icons.favorite_outlined,
+              ),
+              color: AppColor.PrimaryColor,
+            ),
+          )
+        ],
       ),
     );
   }
