@@ -46,7 +46,10 @@ class HomeDrawer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ImageAndName(userData: userData),
+              ImageAndName(
+                userData: userData,
+                isDrawer: true,
+              ),
               const Gap(60),
               Column(
                 children: items
@@ -113,10 +116,11 @@ class HomeDrawer extends StatelessWidget {
 }
 
 class ImageAndName extends StatelessWidget {
-  const ImageAndName({super.key, required this.userData});
+  const ImageAndName(
+      {super.key, required this.userData, required this.isDrawer});
 
   final Person? userData;
-
+  final bool isDrawer;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -145,7 +149,9 @@ class ImageAndName extends StatelessWidget {
         Center(
           child: Text(
             userData?.username ?? "",
-            style: AppStyle.style18ExtraBold(context),
+            style: isDrawer
+                ? AppStyle.style18ExtraBold(context)
+                : AppStyle.style24Medium(context).copyWith(color: Colors.black),
           ),
         ),
       ],

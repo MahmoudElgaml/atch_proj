@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-
 class AccountTabsSection extends StatelessWidget {
   const AccountTabsSection(
       {super.key,
@@ -53,23 +52,26 @@ class AccountTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBar(
-      tabs:  [
+      tabs: [
         Tab(
           child: Text(
             context.tr("used"),
+            style: AppStyle.style14Regular(context),
           ),
         ),
         Tab(
           child: Text(
-           context.tr("recently"),
+            context.tr("recently"),
+            style: AppStyle.style14Regular(context),
           ),
         ),
       ],
-      dividerColor: AppColor.primaryColor,
+      dividerColor: Colors.black,
       tabAlignment: TabAlignment.start,
       isScrollable: true,
-      labelStyle: AppStyle.style16Regular(context),
-      indicatorColor: AppColor.primaryColor,
+      labelStyle: AppStyle.style16Regular(context)
+          .copyWith(color: AppColor.PrimaryColor),
+      indicatorColor: AppColor.PrimaryColor,
     );
   }
 }
