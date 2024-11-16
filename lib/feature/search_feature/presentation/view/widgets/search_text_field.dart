@@ -4,22 +4,33 @@ import 'package:atch_proj/feature/search_feature/presentation/manger/search_cubi
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../../core/utils/helper.dart';
+
 class SearchTextField extends StatelessWidget {
-  const SearchTextField({super.key,required this.textEditingController});
-final TextEditingController textEditingController;
+  const SearchTextField({super.key, required this.textEditingController});
+
+  final TextEditingController textEditingController;
+
   @override
   Widget build(BuildContext context) {
-    return  TextField(
+    return TextField(
       onChanged: (value) {
         SearchCubit.get(context).search(value);
       },
       controller: textEditingController,
       decoration: InputDecoration(
-        enabledBorder: buildOutlineInputBorder(),
-        focusedBorder: buildOutlineInputBorder(),
-        hintText: 'Search',
-        hintStyle: AppStyle.style13(context).copyWith(
-          fontSize: 15,color: Colors.grey.withOpacity(.3)
+        disabledBorder: Helper.buildOutlineInputBorder().copyWith(
+          borderRadius: BorderRadius.circular(50),
+        ),
+        enabledBorder: Helper.buildOutlineInputBorder().copyWith(
+          borderRadius: BorderRadius.circular(50),
+        ),
+        focusedBorder: Helper.buildOutlineInputBorder().copyWith(
+          borderRadius: BorderRadius.circular(50),
+        ),
+        hintText: 'what do you have in mind?',
+        hintStyle: AppStyle.style20Regular(context).copyWith(
+          color: AppColor.PrimaryColor,
         ),
         prefixIcon: IconButton(
           padding: EdgeInsets.zero,
@@ -29,20 +40,11 @@ final TextEditingController textEditingController;
             child: Icon(
               FontAwesomeIcons.magnifyingGlass,
               size: 22,
-              color: AppColor.primaryColor,
+              color: AppColor.PrimaryColor,
             ),
           ),
         ),
       ),
     );
   }
-
-  OutlineInputBorder buildOutlineInputBorder() {
-    return const OutlineInputBorder(
-      borderSide:  BorderSide(
-        color: Colors.transparent,
-      ),
-    );
-  }
-
 }

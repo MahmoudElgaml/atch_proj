@@ -146,15 +146,16 @@ class AppStyle {
     );
   }
 
-  ///////////////////////////////////////////////////////////////////////////////
   static TextStyle style34(BuildContext context) {
     return TextStyle(
-      fontFamily: "AbhayaLibre",
-      color: AppColor.authColor,
+      fontFamily: "Roboto",
+      color: AppColor.PrimaryColor,
       fontSize: responsiveFont(fontSize: 34, context: context),
       fontWeight: FontWeight.bold,
     );
   }
+
+  ///////////////////////////////////////////////////////////////////////////////
 
   static TextStyle style13(BuildContext context) {
     return TextStyle(
