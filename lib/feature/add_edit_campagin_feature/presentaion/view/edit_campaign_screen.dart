@@ -1,18 +1,23 @@
+import 'package:atch_proj/core/services/snack_bar_services.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/data/model/EditCampignModel.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/old_image_cubit.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/add_campaign_screen.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/add_link_section.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/add_photo_section.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_add_campaign_button.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_camapaign_textfiled.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/date_section_widget.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/first_form.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/old_image_section.dart';
+import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/price_offer_section.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/services/validation_service.dart';
+import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_style.dart';
 import '../../../../core/utils/helper.dart';
 import '../../../../core/utils/service_locator/config.dart';
@@ -69,7 +74,11 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
 
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          iconTheme: const IconThemeData(
+            color: AppColor.PrimaryColor,
+          ),
+        ),
         body: Form(
           key: validateState,
           child: SizedBox(
@@ -81,77 +90,18 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Center(
-                      child: CircleAvatar(
-                        radius: 40,
-                        child: Image.asset(Assets.imagesGLogo),
-                      ),
-                    ),
                     const Gap(20),
                     Text(
-                      context.tr("createAdvertise"),
+                      context.tr("update"),
                       style: AppStyle.style24Regular(context),
                     ),
                     const Gap(19),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomCampaignTextFiled(
-                          validator: (value) => ValidationService.validateEmpty(
-                              value, "Company Name"),
-                          textEditingController: companyName,
-                          icon: const Icon(Icons.person_2_outlined),
-                          hint: "Campaign Name",
-                          maxLine: 1,
-                          labelText: "Campaign Name",
-                        ),
-                        const Gap(19),
-                        CustomCampaignTextFiled(
-                          validator: (value) => ValidationService.validateEmpty(
-                              value, "Description"),
-                          textEditingController: description,
-                          hint: "Description",
-                          maxLine: 3,
-                          labelText: "Description",
-                        ),
-                        const Gap(19),
-                        Row(
-                          children: [
-                            Text(
-                              context.tr("targetAudience"),
-                              style: AppStyle.style24Regular(context),
-                            ),
-                            const Gap(19),
-                            Expanded(
-                              child: CustomDropMenu(
-                                setValue: (value) {
-                                  selectedValue = value;
-                                },
-                                items: EditCampaignScreen.items,
-                                selectedValue: selectedValue,
-                                isAuth: false,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              context.tr("location"),
-                              style: AppStyle.style24Regular(context),
-                            ),
-                            const Gap(19),
-                            Expanded(
-                              child: CustomDropMenu(
-                                setValue: (value) {
-                                  selectedLocation = value;
-                                },
-                                items: Map.fromIterable(locations),
-                                selectedValue: selectedLocation,
-                                isAuth: false,
-                              ),
-                            ),
-                          ],
+                        FirstForm(
+                          companyName: companyName,
+                          description: description,
                         ),
                         const Gap(19),
                         DateSectionWidget(
@@ -159,31 +109,16 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
                           lastDate: campaign.endDate,
                         ),
                         const Gap(19),
-                        CustomCampaignTextFiled(
-                          validator: (value) =>
-                              ValidationService.validateEmpty(value, "Price"),
-                          textInputType: TextInputType.number,
-                          textEditingController: price,
-                          hint: "Price",
-                          maxLine: 1,
-                          labelText: "Price",
-                          icon: const Icon(Icons.attach_money_sharp),
-                        ),
-                        const Gap(19),
-                        CustomCampaignTextFiled(
-                          validator: (value) =>
-                              ValidationService.validateEmpty(value, "offer"),
-                          textInputType: TextInputType.number,
-                          textEditingController: offer,
-                          hint: "Offer",
-                          maxLine: 1,
-                          labelText: "Offer",
-                          icon: const Icon(Icons.attach_money_sharp),
+                        PriceOfferSection(
+                          price: price,
+                          offer: offer,
                         ),
                         const Gap(19),
                         OldImageSection(oldImages: campaign.images ?? []),
                         const Gap(19),
-                        const AddPhotoSection(),
+                        const AddPhotoSection(
+                          isEdit: true,
+                        ),
                         const Gap(20),
                         AddLinkSection(
                           linkCubit: linkCubit,
@@ -191,10 +126,17 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
                         CustomAddCampaignButton(
                           title: "Update",
                           onPressed: () {
-                            EditCampignModel editModel =
-                                createEditCampaignModel(campaign, context);
-                            AddCampaignCubit.get(context)
-                                .editCampaign(editModel);
+                            if (OldImageCubit.get(context).myImages.isEmpty &&
+                                AddImageCubit.get(context)
+                                    .backendImages
+                                    .isEmpty) {
+                              SnackBarServices.showCoverImageValidate();
+                            } else {
+                              EditCampignModel editModel =
+                                  createEditCampaignModel(campaign, context);
+                              AddCampaignCubit.get(context)
+                                  .editCampaign(editModel);
+                            }
                           },
                         ),
                         const Gap(20),
@@ -238,8 +180,8 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
     description.text = campaign.description ?? "";
     price.text = campaign.price.toString();
     offer.text = campaign.offer == null ? "" : campaign.offer.toString();
-    selectedValue = campaign.targetAudience ?? "";
-    selectedLocation =
-        Helper.retrievePerson()?.locations?.entries.first.key ?? "";
+    AddCampaignCubit.get(context).selectedAudience =
+        campaign.targetAudience ?? "";
+    selectedLocation = campaign.locations?.entries.first.key ?? "";
   }
 }

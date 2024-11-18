@@ -12,8 +12,9 @@ import '../../../../../core/utils/app_color.dart';
 import '../../../../../generated/assets.dart';
 
 class AddPhotoSection extends StatelessWidget {
-  const AddPhotoSection({super.key});
+  const AddPhotoSection({super.key, required this.isEdit});
 
+  final bool isEdit;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,7 +27,7 @@ class AddPhotoSection extends StatelessWidget {
             ),
             const Spacer(),
             IconButton(
-              onPressed: () => AddImageCubit.get(context).addImage(),
+              onPressed: () => AddImageCubit.get(context).addImage(isEdit),
               icon: SvgPicture.asset(
                 Assets.imagesAddPhotoIcon,
                 width: 15,
@@ -51,10 +52,10 @@ class AddPhotoSection extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       separatorBuilder: (context, index) => const Gap(15),
                       itemBuilder: (context, index) => ImageItem(
-                        index: index + 1,
-                        image: images[index + 1],
+                        index: isEdit ? index : index + 1,
+                        image: isEdit ? images[index] : images[index + 1],
                       ),
-                      itemCount: images.length - 1,
+                      itemCount: isEdit ? images.length : images.length - 1,
                     ),
                   );
           },

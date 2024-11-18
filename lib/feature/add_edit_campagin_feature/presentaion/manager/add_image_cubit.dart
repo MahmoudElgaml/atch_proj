@@ -17,8 +17,8 @@ class AddImageCubit extends Cubit<AddImageState> {
 
   static AddImageCubit get(context) => BlocProvider.of(context);
 
-  addImage() async {
-    if (images.isEmpty) {
+  addImage(bool isEdit) async {
+    if (images.isEmpty && !isEdit) {
       SnackBarServices.showCoverImageValidate();
     } else {
       await UploadImageService.selectImage(ImageSource.gallery);
