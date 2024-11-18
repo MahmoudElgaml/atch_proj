@@ -57,6 +57,7 @@ class _SignUpUserPageState extends State<SignUpUserPage> {
                 Form(
                   key: _formKey,
                   child: SignUpUserForm(
+                    isEditAccount: false,
                     age: age,
                     email: email,
                     name: name,

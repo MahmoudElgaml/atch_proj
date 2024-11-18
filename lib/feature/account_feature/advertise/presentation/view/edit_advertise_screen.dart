@@ -143,7 +143,7 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
             width: double.infinity,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColor.primaryColor,
+                backgroundColor: AppColor.PrimaryColor,
               ),
               onPressed: () {
                 EditAdvertiseData advertise =
@@ -159,7 +159,8 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
                 ),
               ),
             ),
-          )
+          ),
+          const Gap(20),
         ],
       ),
     );

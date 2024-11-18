@@ -14,6 +14,7 @@ class SignUpUserForm extends StatelessWidget {
     required this.age,
     required this.password,
     required this.email,
+    required this.isEditAccount,
   });
 
   final TextEditingController name;
@@ -23,6 +24,7 @@ class SignUpUserForm extends StatelessWidget {
 
   final TextEditingController password;
   final TextEditingController email;
+  final bool isEditAccount;
 
   @override
   Widget build(BuildContext context) {
@@ -45,16 +47,23 @@ class SignUpUserForm extends StatelessWidget {
           textEditingController: email,
         ),
         const Gap(20),
-        CostumeTextFiled(
-          validator: (value) =>
-              ValidationService.validate8CharAndSpecialChar(value),
-          isPassword: true,
-          title: "Password",
-          textEditingController: password,
-        ),
-        ValidationForm(
-          password: password,
-        ),
+        isEditAccount
+            ? const SizedBox()
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CostumeTextFiled(
+                    validator: (value) =>
+                        ValidationService.validate8CharAndSpecialChar(value),
+                    isPassword: true,
+                    title: "Password",
+                    textEditingController: password,
+                  ),
+                  ValidationForm(
+                    password: password,
+                  ),
+                ],
+              ),
         const Gap(20),
         SizedBox(
           width: MediaQuery.of(context).size.width * .3,
