@@ -22,7 +22,7 @@ class PersonAdapter extends TypeAdapter<Person> {
       advertiserType: fields[2] as String?,
       email: fields[3] as String?,
       id: fields[4] as num?,
-      locations: fields[12] as Locations?,
+      locations: fields[12] as UserLocations?,
       name: fields[5] as String?,
       profilePic: fields[6] as String?,
       referralCode: fields[7] as dynamic,
@@ -73,24 +73,24 @@ class PersonAdapter extends TypeAdapter<Person> {
           typeId == other.typeId;
 }
 
-class LocationsAdapter extends TypeAdapter<Locations> {
+class UserLocationsAdapter extends TypeAdapter<UserLocations> {
   @override
   final int typeId = 2;
 
   @override
-  Locations read(BinaryReader reader) {
+  UserLocations read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Locations(
-      location0: fields[1] as Location0?,
-      location1: fields[2] as Location1?,
+    return UserLocations(
+      location0: fields[1] as UserLocation0?,
+      location1: fields[2] as UserLocation1?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, Locations obj) {
+  void write(BinaryWriter writer, UserLocations obj) {
     writer
       ..writeByte(2)
       ..writeByte(1)
@@ -105,41 +105,47 @@ class LocationsAdapter extends TypeAdapter<Locations> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is LocationsAdapter &&
+      other is UserLocationsAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
 
-class Location1Adapter extends TypeAdapter<Location1> {
+class UserLocation1Adapter extends TypeAdapter<UserLocation1> {
   @override
   final int typeId = 3;
 
   @override
-  Location1 read(BinaryReader reader) {
+  UserLocation1 read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Location1(
-      lat: fields[1] as num?,
-      link: fields[2] as String?,
-      lng: fields[3] as num?,
-      name: fields[4] as String?,
-    );
+    return UserLocation1(
+      lat: fields[3] as num?,
+      link: fields[4] as String?,
+      lng: fields[5] as num?,
+      name: fields[6] as String?,
+    )
+      ..location0 = fields[1] as UserLocation0?
+      ..location1 = fields[2] as UserLocation1?;
   }
 
   @override
-  void write(BinaryWriter writer, Location1 obj) {
+  void write(BinaryWriter writer, UserLocation1 obj) {
     writer
-      ..writeByte(4)
-      ..writeByte(1)
-      ..write(obj.lat)
-      ..writeByte(2)
-      ..write(obj.link)
+      ..writeByte(6)
       ..writeByte(3)
-      ..write(obj.lng)
+      ..write(obj.lat)
       ..writeByte(4)
-      ..write(obj.name);
+      ..write(obj.link)
+      ..writeByte(5)
+      ..write(obj.lng)
+      ..writeByte(6)
+      ..write(obj.name)
+      ..writeByte(1)
+      ..write(obj.location0)
+      ..writeByte(2)
+      ..write(obj.location1);
   }
 
   @override
@@ -148,41 +154,47 @@ class Location1Adapter extends TypeAdapter<Location1> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Location1Adapter &&
+      other is UserLocation1Adapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
 
-class Location0Adapter extends TypeAdapter<Location0> {
+class UserLocation0Adapter extends TypeAdapter<UserLocation0> {
   @override
   final int typeId = 4;
 
   @override
-  Location0 read(BinaryReader reader) {
+  UserLocation0 read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Location0(
-      lat: fields[1] as num?,
-      link: fields[2] as String?,
-      lng: fields[3] as num?,
-      name: fields[4] as String?,
-    );
+    return UserLocation0(
+      lat: fields[3] as num?,
+      link: fields[4] as String?,
+      lng: fields[5] as num?,
+      name: fields[6] as String?,
+    )
+      ..location0 = fields[1] as UserLocation0?
+      ..location1 = fields[2] as UserLocation1?;
   }
 
   @override
-  void write(BinaryWriter writer, Location0 obj) {
+  void write(BinaryWriter writer, UserLocation0 obj) {
     writer
-      ..writeByte(4)
-      ..writeByte(1)
-      ..write(obj.lat)
-      ..writeByte(2)
-      ..write(obj.link)
+      ..writeByte(6)
       ..writeByte(3)
-      ..write(obj.lng)
+      ..write(obj.lat)
       ..writeByte(4)
-      ..write(obj.name);
+      ..write(obj.link)
+      ..writeByte(5)
+      ..write(obj.lng)
+      ..writeByte(6)
+      ..write(obj.name)
+      ..writeByte(1)
+      ..write(obj.location0)
+      ..writeByte(2)
+      ..write(obj.location1);
   }
 
   @override
@@ -191,7 +203,7 @@ class Location0Adapter extends TypeAdapter<Location0> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Location0Adapter &&
+      other is UserLocation0Adapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

@@ -14,8 +14,7 @@ class AddCampaignCubit extends Cubit<AddCampaignState> {
   AddCampaignCubit(this.addCampaignRepo) : super(AddCampaignInitial());
   AddCampaignRepo addCampaignRepo;
   String selectedAudience = "Babies";
-  String selectedLocation =
-      Helper.retrievePerson()?.locations?.location0?.name ?? "Location";
+  String selectedLocation = "First Location";
   static AddCampaignCubit get(context) => BlocProvider.of(context);
 
   addCampaign(AddCampaignModel campaign) async {

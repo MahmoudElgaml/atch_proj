@@ -134,12 +134,13 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
 
   AddCampaignModel createAddCampaignModel(num? adToken, BuildContext context) {
     var addCampaignCubit = AddCampaignCubit.get(context);
-    Map<String, dynamic> theLocation = {};
-    // theLocation[addCampaignCubit.selectedLocation] =
-    //     Helper.retrievePerson()?.locations?[addCampaignCubit.selectedLocation];
+    UserLocations? theLocation = UserLocations();
+
+    setTheLocationUponUserSelection(addCampaignCubit, theLocation);
+
     AddCampaignModel addCampaignModel = AddCampaignModel(
       advertiserId: adToken,
-      campaignLocation: theLocation,
+      locations: theLocation,
       campaignPrice: int.parse(price.text),
       campaignOffer: offer.text == "" ? null : int.parse(offer.text),
       campaignDescription: description.text,
@@ -151,6 +152,22 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
       images: AddImageCubit.get(context).backendImages,
     );
     return addCampaignModel;
+  }
+
+  void setTheLocationUponUserSelection(
+      AddCampaignCubit addCampaignCubit, UserLocations theLocation) {
+    switch (addCampaignCubit.selectedLocation) {
+      case "First Location":
+        theLocation.location0 = Helper.retrievePerson()?.locations?.location0;
+        break;
+      case "Seconed Location":
+        theLocation.location1 = Helper.retrievePerson()?.locations?.location1;
+        break;
+      case "Both Locations":
+        theLocation.location0 = Helper.retrievePerson()?.locations?.location0;
+        theLocation.location1 = Helper.retrievePerson()?.locations?.location1;
+        break;
+    }
   }
 }
 

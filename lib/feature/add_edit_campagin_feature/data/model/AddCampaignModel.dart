@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -14,7 +15,7 @@ class AddCampaignModel {
     this.campaignPrice,
     this.campaignOffer,
     this.campaignVideos,
-    this.campaignLocation,
+    this.locations,
     this.images,
   });
 
@@ -30,9 +31,9 @@ class AddCampaignModel {
     campaignVideos = json['campaign_videos'] != null
         ? json['campaign_videos'].cast<String>()
         : [];
-    campaignLocation = json['locations'] != null
-        ? Map<String, dynamic>.from(json['locations'])
-        : {};
+    locations = json['locations'] != null
+        ? UserLocations.fromJson(json['locations'])
+        : null;
   }
 
   num? advertiserId;
@@ -44,7 +45,7 @@ class AddCampaignModel {
   num? campaignPrice;
   num? campaignOffer;
   List<String>? campaignVideos;
-  Map<String, dynamic>? campaignLocation;
+  UserLocations? locations;
   List<XFile>? images;
 
   Map<String, dynamic> toJson() {
@@ -58,7 +59,9 @@ class AddCampaignModel {
     map['campaign_price'] = campaignPrice;
     map['campaign_offer'] = campaignOffer;
     map['campaign_videos'] = campaignVideos;
-    map['locations'] = campaignLocation;
+    if (locations != null) {
+      map['locations'] = locations?.toJson();
+    }
     return map;
   }
 

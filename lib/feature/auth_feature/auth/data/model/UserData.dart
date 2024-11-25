@@ -56,7 +56,7 @@ class Person extends HiveObject {
     username = json['username'];
     wishlist = json['wishlist'] != null ? json['wishlist'].cast<num>() : [];
     locations = json['locations'] != null
-        ? Locations.fromJson(json['locations'])
+        ? UserLocations.fromJson(json['locations'])
         : null;
   }
 
@@ -83,7 +83,7 @@ class Person extends HiveObject {
   @HiveField(11)
   List<num>? wishlist;
   @HiveField(12)
-  Locations? locations;
+  UserLocations? locations;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -105,25 +105,25 @@ class Person extends HiveObject {
 }
 
 @HiveType(typeId: 2)
-class Locations {
-  Locations({
+class UserLocations {
+  UserLocations({
     this.location0,
     this.location1,
   });
 
-  Locations.fromJson(dynamic json) {
+  UserLocations.fromJson(dynamic json) {
     location0 = json['location0'] != null
-        ? Location0.fromJson(json['location0'])
+        ? UserLocation0.fromJson(json['location0'])
         : null;
     location1 = json['location1'] != null
-        ? Location1.fromJson(json['location1'])
+        ? UserLocation1.fromJson(json['location1'])
         : null;
   }
 
   @HiveField(1)
-  Location0? location0;
+  UserLocation0? location0;
   @HiveField(2)
-  Location1? location1;
+  UserLocation1? location1;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -138,28 +138,28 @@ class Locations {
 }
 
 @HiveType(typeId: 3)
-class Location1 extends Locations {
-  Location1({
+class UserLocation1 extends UserLocations {
+  UserLocation1({
     this.lat,
     this.link,
     this.lng,
     this.name,
   });
 
-  Location1.fromJson(dynamic json) {
+  UserLocation1.fromJson(dynamic json) {
     lat = json['lat'];
     link = json['link'];
     lng = json['lng'];
     name = json['name'];
   }
 
-  @HiveField(1)
-  num? lat;
-  @HiveField(2)
-  String? link;
   @HiveField(3)
-  num? lng;
+  num? lat;
   @HiveField(4)
+  String? link;
+  @HiveField(5)
+  num? lng;
+  @HiveField(6)
   String? name;
 
   Map<String, dynamic> toJson() {
@@ -173,28 +173,28 @@ class Location1 extends Locations {
 }
 
 @HiveType(typeId: 4)
-class Location0 extends Locations {
-  Location0({
+class UserLocation0 extends UserLocations {
+  UserLocation0({
     this.lat,
     this.link,
     this.lng,
     this.name,
   });
 
-  Location0.fromJson(dynamic json) {
+  UserLocation0.fromJson(dynamic json) {
     lat = json['lat'];
     link = json['link'];
     lng = json['lng'];
     name = json['name'];
   }
 
-  @HiveField(1)
-  num? lat;
-  @HiveField(2)
-  String? link;
   @HiveField(3)
-  num? lng;
+  num? lat;
   @HiveField(4)
+  String? link;
+  @HiveField(5)
+  num? lng;
+  @HiveField(6)
   String? name;
 
   Map<String, dynamic> toJson() {

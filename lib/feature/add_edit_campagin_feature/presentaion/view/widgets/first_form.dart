@@ -29,7 +29,11 @@ class FirstForm extends StatelessWidget {
     "elder(+40)": "Elder",
   };
 
-  static List<String> locationMenu = ["First Location", "Seconed Location"];
+  static List<String> locationMenu = [
+    "First Location",
+    "Seconed Location",
+    "Both Locations"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +90,7 @@ class FirstForm extends StatelessWidget {
               setValue: (value) {
                 AddCampaignCubit.get(context).selectedLocation = value;
               },
-              items: Map.fromIterable({}),
+              items: Map.fromIterable(locationMenu),
               selectedValue: AddCampaignCubit.get(context).selectedLocation,
               isAuth: false,
             ),
