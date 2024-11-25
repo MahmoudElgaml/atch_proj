@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class DrawerItemModel{
   final  String title;
- final   IconData iconData;
+  final String iconPath;
 
- const  DrawerItemModel(this.title, this.iconData);
+  const DrawerItemModel(this.title, this.iconPath);
 }

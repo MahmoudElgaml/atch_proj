@@ -26,7 +26,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColor.primaryColor,
+        backgroundColor: AppColor.PrimaryColor,
         toolbarHeight: MediaQuery
             .sizeOf(context)
             .height * .22,

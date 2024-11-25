@@ -14,45 +14,42 @@ class PopularAds extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            context.tr("popular"),
-
-            style: AppStyle.style26(context),
-          ),
-          const Gap(17),
-          BlocBuilder<GetPopularCampaignCubit, GetPopularCampaignState>(
-            builder: (context, state) {
-              if (state is GetPopularCampaignFailureState) {
-                return Center(child: Text(state.message));
-              }
-              else if(state is GetPopularCanselRequestState){
-               return  const PopularAdsLoading();
-              }
-              else if (state is GetPopularCampaignSuccessState) {
-                var popularCampaigns =
-                    GetPopularCampaignCubit.get(context).popularCampaign;
-                return SizedBox(
-                  height: 300,
-                  child: ListView.separated(
-                    separatorBuilder: (context, index) => const Gap(10),
-                    itemBuilder: (context, index) => AdsItem(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          context.tr("popular"),
+          style: AppStyle.style26(context),
+        ),
+        const Gap(17),
+        BlocBuilder<GetPopularCampaignCubit, GetPopularCampaignState>(
+          builder: (context, state) {
+            if (state is GetPopularCampaignFailureState) {
+              return Center(child: Text(state.message));
+            } else if (state is GetPopularCanselRequestState) {
+              return const PopularAdsLoading();
+            } else if (state is GetPopularCampaignSuccessState) {
+              var popularCampaigns =
+                  GetPopularCampaignCubit.get(context).popularCampaign;
+              return SizedBox(
+                height: 190,
+                child: ListView.separated(
+                  separatorBuilder: (context, index) => const Gap(10),
+                  itemBuilder: (context, index) => SizedBox(
+                    width: 354,
+                    child: AdsItem(
                       campaigns: popularCampaigns[index],
                     ),
-                    itemCount: popularCampaigns.length,
-                    scrollDirection: Axis.horizontal,
                   ),
-                );
-              }
-              return const PopularAdsLoading();
-            },
-          ),
-        ],
-      ),
+                  itemCount: popularCampaigns.length,
+                  scrollDirection: Axis.horizontal,
+                ),
+              );
+            }
+            return const PopularAdsLoading();
+          },
+        ),
+      ],
     );
   }
 }
@@ -66,17 +63,17 @@ class PopularAdsLoading extends StatelessWidget {
       baseColor: Colors.black,
       highlightColor: Colors.grey[100]!,
       child: SizedBox(
-        height: 250,
+        height: 190,
         child: ListView.separated(
           separatorBuilder: (context, index) => const Gap(15),
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => const Skeleton(
-            height: 255,
-            width: 237,
+            height: 167,
+            width: 354,
           ),
           itemCount: 10,
         ),
       ),
     );
   }
-} 
+}

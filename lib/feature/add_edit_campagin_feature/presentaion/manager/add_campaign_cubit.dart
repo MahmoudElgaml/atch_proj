@@ -5,13 +5,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../core/utils/helper.dart';
+
 part 'add_campaign_state.dart';
 
 @injectable
 class AddCampaignCubit extends Cubit<AddCampaignState> {
   AddCampaignCubit(this.addCampaignRepo) : super(AddCampaignInitial());
   AddCampaignRepo addCampaignRepo;
-
+  String selectedAudience = "Babies";
+  String selectedLocation =
+      Helper.retrievePerson()?.locations?.keys.first ?? "";
   static AddCampaignCubit get(context) => BlocProvider.of(context);
 
   addCampaign(AddCampaignModel campaign) async {

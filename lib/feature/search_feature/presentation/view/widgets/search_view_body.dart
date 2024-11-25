@@ -17,24 +17,19 @@ class SearchViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: SearchTextField(
-                    textEditingController: search,
-                  ),
-                ),
-                const Gap(10),
-                const FilterButton()
-              ],
-            ),
-            const Gap(20),
-            const SearchList(),
-          ],
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              SearchTextField(
+                textEditingController: search,
+              ),
+              const Gap(20),
+              const SearchList(),
+            ],
+          ),
         ),
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/custom_camapaign_textfiled.dart';
-import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/custom_drop_menu.dart';
-import 'package:atch_proj/feature/auth_feature/auth/presentation/widgets/loction_section_widget.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/custom_drop_menu.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/loction_section_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -13,8 +13,8 @@ import '../../../../../core/utils/app_string.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../data/model/SignDataTest.dart';
 import '../manger/auth_cubit.dart';
-import 'coatume_auth_button.dart';
-import 'costume_text_filed.dart';
+import '../NewWidgets/coatume_auth_button.dart';
+import '../NewWidgets/costume_text_filed.dart';
 
 class AdvertiseSignDrawer extends StatefulWidget {
   const AdvertiseSignDrawer({super.key});
@@ -159,12 +159,12 @@ class _AdvertiseSignDrawerState extends State<AdvertiseSignDrawer> {
             setValue: (value) => selectedValue = value,
           ),
           const Gap(20),
-          CostumeButton(
+          CostumeAuthButton(
             title: "SignUP",
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 SignDataTest signData = setSignData();
-                AuthCubit.get(context).signIn(signData);
+                // AuthCubit.get(context).signIn(signData);
               }
             },
             isLoading: false,

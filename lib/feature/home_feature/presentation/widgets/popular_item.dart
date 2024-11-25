@@ -1,5 +1,6 @@
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/api/end_points.dart';
+import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/core/utils/components/save_button.dart';
 import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:atch_proj/feature/home_feature/presentation/widgets/ads_item_details.dart';
@@ -22,7 +23,7 @@ class AdsItem extends StatelessWidget {
         GoRouter.of(context).push(AppRoute.adDetails, extra: campaigns.id);
       },
       child: AspectRatio(
-        aspectRatio: 220 / 320,
+        aspectRatio: 354 / 167,
         child: Card(
           borderOnForeground: true,
           shadowColor: Colors.black26,
@@ -34,46 +35,60 @@ class AdsItem extends StatelessWidget {
             ),
           ),
           child: Stack(
-            alignment: AlignmentDirectional.topEnd,
+            alignment: Alignment.bottomCenter,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: SizedBox(
-                      width: 200,
-                      height: 150,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(18),
-                        child: CachedNetworkImage(
-                          fit: BoxFit.fill,
-                          imageUrl: campaigns.images!.isEmpty
-                              ? ""
-                              : "${EndPoints.baseUrl}${campaigns.images?[0]}" ??
-                                  "",
-                          errorWidget: (context, url, error) =>
-                              SvgPicture.asset(
-                            Assets.imagesEmptyImage,
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
+              Positioned.fill(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(18),
+                  child: CachedNetworkImage(
+                    fit: BoxFit.fill,
+                    imageUrl: campaigns.images!.isEmpty
+                        ? ""
+                        : "${EndPoints.baseUrl}${campaigns.images?[0]}" ?? "",
+                    errorWidget: (context, url, error) => SvgPicture.asset(
+                      Assets.imagesEmptyImage,
+                      fit: BoxFit.fill,
                     ),
                   ),
-                  const Gap(14),
-                  AdsItemDetails(
-                    campaigns: campaigns,
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: SaveButton(
-                  campaignId: campaigns.id!,
                 ),
               ),
+              buildCardDetail(context)
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Container buildCardDetail(BuildContext context) {
+    return Container(
+      height: 50,
+      decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.59),
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(18),
+            bottomRight: Radius.circular(18),
+          )),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(campaigns.campaignName ?? "",
+                style: AppStyle.style16Medium(context)),
+            FittedBox(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("${campaigns.offer.toString()} LE" ?? "",
+                      style: AppStyle.style16Bold(context)),
+                  Text("${campaigns.price.toString()} LE" ?? "",
+                      style: AppStyle.style10Bold(context)),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

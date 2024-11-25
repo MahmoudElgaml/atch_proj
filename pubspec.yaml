@@ -67,6 +67,9 @@ dependencies:
   easy_localization: ^3.0.7
   rename: ^3.0.2
   animations: ^2.0.11
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
+  fluttertoast: ^8.2.8
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -117,10 +120,10 @@ flutter:
   # example:
   # fonts:
   fonts:
-    - family: AbhayaLibre
+    - family: Roboto
       fonts:
-        - asset: assets/fonts/AbhayaLibre-ExtraBold.ttf
-          weight: 900
+        - asset: assets/fonts/Roboto-Regular.ttf
+          weight: 400
 
 
 

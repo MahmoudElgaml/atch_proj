@@ -36,6 +36,7 @@
   "noWishlist": "No favourites yet",
   "tipWishlist":"Tap heart next to the product, We'll save them for you here",
   "createAdvertise": "Create Advertise",
+  "update": "Update Advertise",
   "targetAudience": "Target Audience",
   "location": "Location",
   "startDate": "Start Date",
@@ -43,7 +44,7 @@
   "addPhoto":"Add Photo",
   "addLink": "Add Link",
   "bAddCampaign": "Add Campaign",
-  "campaignName": "Campaign Name",
+  "campaignName": "Campaign Title",
   "description": "Description",
   "oldPhoto": "Old Photo",
   "deleteAccount": "DeleteAccount"

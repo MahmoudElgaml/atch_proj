@@ -6,15 +6,15 @@ class CustomCampaignTextFiled extends StatelessWidget {
   const CustomCampaignTextFiled(
       {super.key,
       this.icon,
-      required this.hint,
+      this.hint,
       required this.maxLine,
-      required this.labelText,
+      this.labelText,
       this.textEditingController,
       this.textInputType,
       this.validator});
 
-  final String hint;
-  final String labelText;
+  final String? hint;
+  final String? labelText;
   final Icon? icon;
   final int maxLine;
   final TextEditingController? textEditingController;
@@ -32,18 +32,21 @@ class CustomCampaignTextFiled extends StatelessWidget {
       keyboardType: textInputType,
       controller: textEditingController,
       decoration: InputDecoration(
-          border: Helper.buildOutlineInputBorder(),
-          enabledBorder: Helper.buildOutlineInputBorder(),
-          disabledBorder: Helper.buildOutlineInputBorder(),
-          labelText: labelText,
-          labelStyle: AppStyle.style18(context).copyWith(
-            color: const Color(0xff747688),
-          ),
-          hintText: hint,
-          hintStyle: AppStyle.style14Regular(context).copyWith(
-            color: const Color(0xff747688),
-          ),
-          prefixIcon: icon),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+        border: Helper.buildOutlineInputBorder(),
+        enabledBorder: Helper.buildOutlineInputBorder(),
+        disabledBorder: Helper.buildOutlineInputBorder(),
+        focusedBorder: Helper.buildOutlineInputBorder(),
+        labelText: labelText,
+        labelStyle: AppStyle.style18(context).copyWith(
+          color: const Color(0xff747688),
+        ),
+        hintText: hint,
+        hintStyle: AppStyle.style14Regular(context).copyWith(
+          color: const Color(0xff747688),
+        ),
+        prefixIcon: icon,
+      ),
       maxLines: maxLine,
     );
   }

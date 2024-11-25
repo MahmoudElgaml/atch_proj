@@ -59,19 +59,22 @@ class CustomTabsWidget extends StatelessWidget {
         Tab(
           child: Text(
             context.tr("about"),
+            style: AppStyle.style14Regular(context),
           ),
         ),
         Tab(
           child: Text(
             context.tr("campaigns"),
+            style: AppStyle.style14Regular(context),
           ),
         ),
       ],
-      dividerColor: AppColor.primaryColor,
+      dividerColor: Colors.black,
       tabAlignment: TabAlignment.start,
       isScrollable: true,
-      labelStyle: AppStyle.style16Regular(context),
-      indicatorColor: AppColor.primaryColor,
+      labelStyle: AppStyle.style16Regular(context)
+          .copyWith(color: AppColor.PrimaryColor),
+      indicatorColor: AppColor.PrimaryColor,
     );
   }
 }

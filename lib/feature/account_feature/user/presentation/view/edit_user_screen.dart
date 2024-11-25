@@ -6,6 +6,7 @@ import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/feature/account_feature/user/data/model/EditUserData.dart';
 import 'package:atch_proj/feature/account_feature/user/presentation/manager/edit_user_cubit.dart';
 import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
+import 'package:atch_proj/feature/auth_feature/auth/presentation/NewWidgets/signup_user_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -16,7 +17,7 @@ import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/utils/service_locator/config.dart';
 import '../../../../auth_feature/auth/presentation/pages/test_upload_image.dart';
-import '../../../../auth_feature/auth/presentation/widgets/costume_text_filed.dart';
+import '../../../../auth_feature/auth/presentation/NewWidgets/costume_text_filed.dart';
 
 class UserEditScreen extends StatefulWidget {
   const UserEditScreen({super.key});
@@ -67,37 +68,26 @@ class _UserEditScreenState extends State<UserEditScreen> {
             const TestUploadImage(
               isEdit: true,
             ),
-            CostumeTextFiled(
-              title: "Name",
-              textEditingController: name,
-            ),
             const Gap(25),
-            CostumeTextFiled(
-              title: "UserName",
-              textEditingController: username,
-            ),
-            const Gap(25),
-            CostumeTextFiled(
-              title: "Email",
-              textEditingController: email,
-            ),
-            const Gap(25),
+            SignUpUserForm(
+                isEditAccount: true,
+                name: name,
+                username: username,
+                age: age,
+                password: password,
+                email: email),
+            const Gap(15),
             CostumeTextFiled(
               isPassword: true,
               title: "New password",
               textEditingController: password,
             ),
             const Gap(25),
-            CostumeTextFiled(
-              title: "age",
-              textEditingController: age,
-            ),
-            const Gap(25),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColor.primaryColor,
+                  backgroundColor: AppColor.PrimaryColor,
                 ),
                 onPressed: () {
                   var userId = getIt<HiveManager>()
@@ -124,7 +114,8 @@ class _UserEditScreenState extends State<UserEditScreen> {
                   ),
                 ),
               ),
-            )
+            ),
+            const Gap(20),
           ],
         );
       },
@@ -137,6 +128,6 @@ class _UserEditScreenState extends State<UserEditScreen> {
     username.text = person?.name ?? "";
     email.text = person?.email ?? "";
     name.text = person?.name ?? "";
-    age.text = person?.age?.toString()??"";
+    age.text = person?.age?.toString() ?? "";
   }
 }

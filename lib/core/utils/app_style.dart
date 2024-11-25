@@ -3,14 +3,159 @@ import 'package:flutter/material.dart';
 import 'app_color.dart';
 
 class AppStyle {
+  static TextStyle style24Medium(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: Colors.black,
+      fontSize: responsiveFont(fontSize: 24, context: context),
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle style21Medium(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: Colors.black,
+      fontSize: responsiveFont(fontSize: 21, context: context),
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle style16Medium(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: Colors.white,
+      fontSize: responsiveFont(fontSize: 16, context: context),
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle style14Medium(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: Colors.black,
+      fontSize: responsiveFont(fontSize: 14, context: context),
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle style36Medium(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: AppColor.PrimaryColor,
+      fontSize: responsiveFont(fontSize: 36, context: context),
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle style24BoldDarkBlue(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: AppColor.darkBlue,
+      fontSize: responsiveFont(fontSize: 24, context: context),
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  static TextStyle style16Bold(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: Colors.white,
+      fontSize: responsiveFont(fontSize: 16, context: context),
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+  static TextStyle style10Bold(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: Colors.white,
+      fontSize: responsiveFont(fontSize: 10, context: context),
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+  static TextStyle style12Bold(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: AppColor.PrimaryColor,
+      decoration: TextDecoration.lineThrough,
+      decorationColor: AppColor.PrimaryColor,
+      fontSize: responsiveFont(fontSize: 10, context: context),
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+  static TextStyle style20Bold(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: AppColor.PrimaryColor,
+      fontSize: responsiveFont(fontSize: 20, context: context),
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+  static TextStyle style12Regular(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: Colors.black,
+      fontSize: responsiveFont(fontSize: 12, context: context),
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  static TextStyle style14Regular(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      fontSize: responsiveFont(fontSize: 14, context: context),
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  static TextStyle style16Regular(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: Colors.black,
+      fontSize: responsiveFont(fontSize: 16, context: context),
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle style20Regular(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      fontSize: responsiveFont(fontSize: 20, context: context),
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle style21Regular(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      fontSize: responsiveFont(fontSize: 21, context: context),
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle style10Regular(BuildContext context) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      color: AppColor.PrimaryColor,
+      fontSize: responsiveFont(fontSize: 14, context: context),
+      fontWeight: FontWeight.w400,
+    );
+  }
+
   static TextStyle style34(BuildContext context) {
     return TextStyle(
-      fontFamily: "AbhayaLibre",
-      color: AppColor.authColor,
+      fontFamily: "Roboto",
+      color: AppColor.PrimaryColor,
       fontSize: responsiveFont(fontSize: 34, context: context),
       fontWeight: FontWeight.bold,
     );
   }
+
+  ///////////////////////////////////////////////////////////////////////////////
 
   static TextStyle style13(BuildContext context) {
     return TextStyle(
@@ -56,14 +201,6 @@ class AppStyle {
       fontWeight: FontWeight.w900,
     );
   }
-  static TextStyle style14Regular(BuildContext context) {
-    return TextStyle(
-      color: Colors.black,
-      fontFamily: "AbhayaLibre",
-      fontSize: responsiveFont(fontSize: 14, context: context),
-      fontWeight: FontWeight.w400,
-    );
-  }
 
   static TextStyle style18Regular(BuildContext context) {
     return TextStyle(
@@ -71,22 +208,6 @@ class AppStyle {
       fontFamily: "AbhayaLibre",
       fontSize: responsiveFont(fontSize: 18, context: context),
       fontWeight: FontWeight.w400,
-    );
-  }
-  static TextStyle style16Regular(BuildContext context) {
-    return TextStyle(
-      color: Colors.black,
-      fontFamily: "AbhayaLibre",
-      fontSize: responsiveFont(fontSize: 16, context: context),
-      fontWeight: FontWeight.w400,
-    );
-  }
-  static TextStyle style16Bold(BuildContext context) {
-    return TextStyle(
-      color: Colors.black,
-      fontFamily: "AbhayaLibre",
-      fontSize: responsiveFont(fontSize: 16, context: context),
-      fontWeight: FontWeight.w800,
     );
   }
 

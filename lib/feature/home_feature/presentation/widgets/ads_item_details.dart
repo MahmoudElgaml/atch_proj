@@ -12,52 +12,41 @@ class AdsItemDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(7.0),
+      padding: const EdgeInsets.all(12.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             campaigns?.campaignName ?? "",
-            style: AppStyle.style18(context),
+            style: AppStyle.style16Regular(context),
           ),
-          const Gap(12),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Icon(
-                Icons.location_on,
-                color: Color(0xff8c8c8c),
-              ),
               Text(
-                campaigns!.locations!.isEmpty
-                    ? "No Location"
-                    : campaigns?.locations?.keys.toList().first ??
-                        "No Location",
-                style: AppStyle.style18(context).copyWith(
-                    color: const Color(0xff8c8c8c),
-                    fontWeight: FontWeight.w500),
+                "${campaigns?.price.toString()} LE",
+                style: AppStyle.style20Bold(context),
+              ),
+              Column(
+                children: [
+                  const Icon(
+                    Icons.location_on,
+                    color: Color(0xff8c8c8c),
+                  ),
+                  Text(
+                    campaigns!.locations!.isEmpty
+                        ? "No Location"
+                        : campaigns?.locations?.keys.toList().first ??
+                            "No Location",
+                    style: AppStyle.style12Regular(context).copyWith(
+                        color: const Color(0xff8c8c8c),
+                        fontWeight: FontWeight.w500),
+                  ),
+                ],
               ),
             ],
           ),
-          Row(
-            children: [
-              const Gap(10),
-              FittedBox(
-                  child: Text(
-                campaigns?.offer == null
-                    ? campaigns?.price?.toString() ?? ""
-                    : campaigns?.offer?.toString() ?? "",
-              )),
-              const Gap(20),
-              Text(
-                campaigns?.offer == null
-                    ? ""
-                    : campaigns?.price.toString() ?? "",
-                style: const TextStyle(
-                  decoration: TextDecoration.lineThrough,
-                ),
-              ),
-            ],
-          )
         ],
       ),
     );

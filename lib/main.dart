@@ -9,6 +9,7 @@ import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cub
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,7 +39,10 @@ void main() async {
       fallbackLocale: const Locale('ar'),
       startLocale: const Locale("en"),
       path: 'assets/translation',
-      child: const MyApp(),
+      child: DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (context) => const MyApp(),
+      ),
     ),
   );
 }
@@ -49,30 +53,33 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      theme: ThemeData(
-        pageTransitionsTheme: const PageTransitionsTheme(
-          builders: {
-            TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-          },
+    return BlocProvider(
+      create: (context) => getIt<AuthCubit>(),
+      child: MaterialApp.router(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        theme: ThemeData(
+          pageTransitionsTheme: const PageTransitionsTheme(
+            builders: {
+              TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+              TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+            },
+          ),
+          datePickerTheme: const DatePickerThemeData(locale: Locale("en")),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.white,
+          ),
+          scaffoldBackgroundColor: Colors.white,
+          primarySwatch: Colors.blue,
         ),
-        datePickerTheme: const DatePickerThemeData(locale: Locale("en")),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.white,
-        ),
-        scaffoldBackgroundColor: Colors.white,
-        primarySwatch: Colors.blue,
+        useInheritedMediaQuery: true,
+        builder: EasyLoading.init(builder: DevicePreview.appBuilder),
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        routerConfig: AppRoute.router,
       ),
-      useInheritedMediaQuery: true,
-      builder: EasyLoading.init(),
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      routerConfig: AppRoute.router,
     );
   }
 }

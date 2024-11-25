@@ -15,8 +15,8 @@ import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/utils/service_locator/config.dart';
 import '../../../../auth_feature/auth/presentation/pages/test_upload_image.dart';
-import '../../../../auth_feature/auth/presentation/widgets/costume_text_filed.dart';
-import '../../../../auth_feature/auth/presentation/widgets/loction_section_widget.dart';
+import '../../../../auth_feature/auth/presentation/NewWidgets/costume_text_filed.dart';
+import '../../../../auth_feature/auth/presentation/NewWidgets/loction_section_widget.dart';
 import '../../data/model/EditAdvertiseData.dart';
 
 class AdvertiseEditScreen extends StatefulWidget {
@@ -143,7 +143,7 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
             width: double.infinity,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColor.primaryColor,
+                backgroundColor: AppColor.PrimaryColor,
               ),
               onPressed: () {
                 EditAdvertiseData advertise =
@@ -159,7 +159,8 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
                 ),
               ),
             ),
-          )
+          ),
+          const Gap(20),
         ],
       ),
     );

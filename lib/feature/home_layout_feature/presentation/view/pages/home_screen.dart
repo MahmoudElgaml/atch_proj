@@ -7,9 +7,11 @@ import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_layout_cubit.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/bottom_navi_bar.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/drawer.dart';
+import 'package:atch_proj/generated/assets.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/service_locator/config.dart';
@@ -20,6 +22,19 @@ class HomeScreenLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          leading: Builder(
+            builder: (context) => InkWell(
+              onTap: () => Scaffold.of(context).openDrawer(),
+              child: const Icon(
+                Icons.menu,
+                color: AppColor.PrimaryColor,
+              ),
+            ),
+          ),
+        ),
+        resizeToAvoidBottomInset: false,
         drawer: const HomeDrawer(),
         body: BlocBuilder<HomeLayoutCubit, HomeLayoutState>(
           builder: (context, state) {
@@ -35,7 +50,6 @@ class HomeScreenLayout extends StatelessWidget {
               },
               child: state.viewTap(),
             );
-
           },
         ),
         bottomNavigationBar: const BottomNaviBar(),
@@ -44,16 +58,16 @@ class HomeScreenLayout extends StatelessWidget {
                     ?.role ==
                 "advertiser"
             ? FloatingActionButton(
-                backgroundColor: AppColor.buttonColor,
+                shape: ShapeBorder.lerp(
+                  const CircleBorder(),
+                  const StadiumBorder(),
+                  0.5,
+                ),
+                backgroundColor: AppColor.PrimaryColor,
                 onPressed: () {
                   context.push(AppRoute.addCampaign);
                 },
-                child: const Icon(
-                  Icons.add,
-                  color: Colors.white,
-                ),
-              )
-            : null
-    );
+                child: SvgPicture.asset(Assets.imagesAddPhotoIcon))
+            : null);
   }
 }

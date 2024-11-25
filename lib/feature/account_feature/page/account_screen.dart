@@ -20,19 +20,17 @@ class AccountScreen extends StatelessWidget {
             ?.role ??
         "user";
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 8.0, right: 8),
-        child: Column(
-          children: [
-            Text(
-              context.tr("navAccount"),
-              style: AppStyle.style24Regular(context),
-            ),
-            const Gap(32),
-            role == "user"
-                ? const Expanded(child: UserAccountScreen())
-                : const Expanded(child: AdvertiseAccountScreen()),
-          ],
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Padding(
+          padding: const EdgeInsets.only(left: 8.0, right: 8),
+          child: Column(
+            children: [
+              role == "user"
+                  ? const Expanded(child: UserAccountScreen())
+                  : const Expanded(child: AdvertiseAccountScreen()),
+            ],
+          ),
         ),
       ),
     );

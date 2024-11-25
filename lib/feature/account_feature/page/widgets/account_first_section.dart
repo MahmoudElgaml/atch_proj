@@ -8,6 +8,7 @@ import 'package:atch_proj/core/utils/service_locator/config.dart';
 import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
 import 'package:atch_proj/feature/account_feature/page/manger/delete_account_cubit.dart';
 import 'package:atch_proj/feature/account_feature/page/widgets/confirm_delete_dialog.dart';
+import 'package:atch_proj/feature/home_layout_feature/presentation/view/widgets/drawer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -30,80 +31,27 @@ class AccountFirstSection extends StatelessWidget {
     Person? person =
         getIt<HiveManager>().retrieveSingleData<Person>(HiveKeys.userBox);
 
-    return Center(
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 40,
-            child: ClipOval(
-              child: CachedNetworkImage(
-                fit: BoxFit.fill,
-                width: double.infinity,
-                height: double.infinity,
-                imageUrl: "${EndPoints.baseUrl}${person?.profilePic}",
-                errorWidget: (context, url, error) =>
-                    Image.network(ConstValue.emptyImage),
-              ),
+    return FittedBox(
+      child: Center(
+        child: Column(
+          children: [
+            ImageAndName(
+              userData: person,
+              isDrawer: false,
             ),
-          ),
-          const Gap(10),
-          Text(
-            person?.username ?? "",
-            style: AppStyle.style24Regular(context),
-          ),
-          const Gap(16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              BlocListener<DeleteAccountCubit, DeleteAccountState>(
-                listener: (context, state) async {
-                  if (state is DeleteAccountLoadingState) {
-                    EasyLoading.show();
-                  } else if (state is DeleteAccountFailState) {
-                    EasyLoading.showError(state.message);
-                  }
-                  if (state is DeleteAccountSuccessState) {
-                    EasyLoading.showSuccess("");
-                    await Helper.retrievePerson()?.delete();
-                    getIt<StorageToken>().deleteToken();
-                    if (context.mounted) {
-                      context.go(AppRoute.logInKey);
-                    }
-                  }
-                },
-                child: InkWell(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) {
-                        return ConfirmDeleteDialog(
-                          contexts: context,
-                          deletePerson: person,
-                        );
-                      },
-                    );
-                  },
-                  child: const EditButton(
-                    title: "deleteAccount",
-                    icon: Icons.delete,
-                    color: Colors.red,
-                  ),
-                ),
-              ),
-              const Gap(20),
-              Helper.retrieveRole() == "user"
-                  ? InkWell(
-                      onTap: () => context.push(AppRoute.editUserPage),
-                      child: const EditButton(
-                        title: "editProfile",
-                        color: AppColor.primaryColor,
-                        icon: Icons.edit,
-                      ),
-                    )
-                  : const EditButtonBuilderForAdv(),
-            ],
-          )
-        ],
+            const Gap(12),
+            Helper.retrieveRole() == "user"
+                ? InkWell(
+                    onTap: () => context.push(AppRoute.editUserPage),
+                    child: const EditButton(
+                      title: "editProfile",
+                      color: AppColor.PrimaryColor,
+                      icon: Icons.edit,
+                    ),
+                  )
+                : const EditButtonBuilderForAdv()
+          ],
+        ),
       ),
     );
   }
@@ -122,34 +70,23 @@ class EditButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 19),
-      decoration: ShapeDecoration(
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-            width: 1.50,
-            strokeAlign: BorderSide.strokeAlignCenter,
-            color: color,
+    return FittedBox(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 28),
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              width: 1.50,
+              strokeAlign: BorderSide.strokeAlignCenter,
+              color: color,
+            ),
+            borderRadius: BorderRadius.circular(500),
           ),
-          borderRadius: BorderRadius.circular(10),
         ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            size: 25,
-            color: color,
-          ),
-          const Gap(10),
-          Text(
-            context.tr(title),
-            style: AppStyle.style16Bold(context).copyWith(color: color),
-          )
-        ],
+        child: Text(
+          context.tr(title),
+          style: AppStyle.style16Regular(context).copyWith(color: color),
+        ),
       ),
     );
   }

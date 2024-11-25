@@ -27,60 +27,56 @@ class _DateSectionWidgetState extends State<DateSectionWidget> {
     setTheDateToCubit(context);
     return BlocBuilder<ChangeDateCubit, ChangeDateState>(
       builder: (context, state) {
-        return Column(
+        return Row(
           children: [
-            Row(
-              children: [
-                Text(
-                  context.tr("startDate"),
-                  style: AppStyle.style24Regular(context),
-                ),
-                const Gap(10),
-                Expanded(
-                  child: CustomDateTimeTextFiled(
+            Expanded(
+              child: Column(
+                children: [
+                  Text(
+                    context.tr("startDate"),
+                    style: AppStyle.style21Regular(context),
+                  ),
+                  const Gap(3),
+                  CustomDateTimeTextFiled(
                     onTap: () {
                       isFirst = false;
                       dateCubit.showFirstDate(context);
-
                     },
                     hintText: dateCubit.firstDate,
-                    icon: const Icon(Icons.date_range),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const Gap(19),
-            Row(
-              children: [
-                Text(
-                  context.tr("endDate"),
-                  style: AppStyle.style24Regular(context),
-                ),
-                const Gap(10),
-                Expanded(
-                  child: CustomDateTimeTextFiled(
+            Expanded(
+              child: Column(
+                children: [
+                  Text(
+                    context.tr("endDate"),
+                    style: AppStyle.style21Regular(context),
+                  ),
+                  const Gap(3),
+                  CustomDateTimeTextFiled(
                     onTap: () {
                       isLast = false;
                       dateCubit.showLastDate(context);
-
                     },
                     hintText: dateCubit.lastDate,
-                    icon: const Icon(Icons.date_range),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         );
       },
     );
   }
-  setTheDateToCubit(BuildContext context){
-    var dateCubit = ChangeDateCubit.get(context);
-    if(widget.firstDate!=null&&isFirst==true&&isLast==true){
-      dateCubit.firstDate=widget.firstDate??DateTime.now().toString();
-      dateCubit.lastDate=widget.lastDate??DateTime.now().toString();
-    }
 
+  setTheDateToCubit(BuildContext context) {
+    var dateCubit = ChangeDateCubit.get(context);
+    if (widget.firstDate != null && isFirst == true && isLast == true) {
+      dateCubit.firstDate = widget.firstDate ?? DateTime.now().toString();
+      dateCubit.lastDate = widget.lastDate ?? DateTime.now().toString();
+    }
   }
 }

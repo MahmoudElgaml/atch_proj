@@ -19,7 +19,7 @@ class WishlistScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           context.tr("navWishList"),
-          style: AppStyle.style24Regular(context),
+          style: AppStyle.style36Medium(context),
         ),
       ),
       body: const SafeArea(
@@ -54,7 +54,7 @@ class WishlistList extends StatelessWidget {
           return Expanded(
             child: ListView.separated(
               itemBuilder: (context, index) => AdWishlistItem(
-                campaign: WishlistCubit.get(context).campaigns[index]!,
+                campaigns: WishlistCubit.get(context).campaigns[index]!,
               ),
               separatorBuilder: (context, index) => const Gap(15),
               itemCount: WishlistCubit.get(context).campaigns.length,

@@ -14,47 +14,56 @@ class ContactUsDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              "Our Social Media",
-              style: AppStyle.style18Regular(context),
+    return AspectRatio(
+      aspectRatio: 345 / 336,
+      child: AlertDialog(
+        title: Container(
+          child: Padding(
+            padding: const EdgeInsets.all(36.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Our Social Media",
+                  style: AppStyle.style24Medium(context),
+                ),
+                const Gap(32),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FittedBox(
+                    child: Row(
+                      children: items
+                          .map(
+                            (e) => Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: InkWell(
+                                  onTap: () {
+                                    e.icon == Assets.imagesWhatsIcon
+                                        ? Helper.lunchWhatsapp(e.link)
+                                        : Helper.lunchUUrl(e.link);
+                                  },
+                                  child: SvgPicture.asset(
+                                    e.icon,
+                                    width: 60,
+                                    height: 60,
+                                  )),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                ),
+                Gap(37),
+                Text(
+                  "Our Emails",
+                  style: AppStyle.style24Medium(context),
+                ),
+                const Gap(7),
+                SelectableText("Greateagle2030@gmail.com",
+                    style: AppStyle.style20Regular(context))
+              ],
             ),
-            const Gap(7),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Wrap(
-                children: items
-                    .map(
-                      (e) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: InkWell(
-                            onTap: () {
-                              e.icon == Assets.imagesWhatsIcon
-                                  ? Helper.lunchWhatsapp(e.link)
-                                  : Helper.lunchUUrl(e.link);
-                            },
-                            child: SvgPicture.asset(
-                              e.icon,
-                              width: 40,
-                              height: 40,
-                            )),
-                      ),
-                    )
-                    .toList(),
-              ),
-            ),
-            Text(
-              "Our Emails",
-              style: AppStyle.style18Regular(context),
-            ),
-            const Gap(7),
-            SelectableText("Greateagle2030@gmail.com",
-                style: AppStyle.style16Regular(context))
-          ],
+          ),
         ),
       ),
     );

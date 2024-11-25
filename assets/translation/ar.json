@@ -36,6 +36,7 @@
   "noWishlist": "لا توجد مفضلات بعد",
   "tipWishlist": "اضغط على القلب بجوار المنتج، وسنقوم بحفظها لك هنا",
   "createAdvertise": "إنشاء إعلان",
+  "update": "تحديث الإعلان",
   "targetAudience": "الجمهور المستهدف",
   "location": "الموقع",
   "startDate": "تاريخ البدء",
@@ -43,7 +44,7 @@
   "addPhoto":"اضف صوره",
   "addLink": "اضف لينك",
   "bAddCampaign": "اضافه اعلان",
-  "campaignName": "اسم الحملة",
+  "campaignName": "عنوان الحملة",
   "description": "الوصف",
   "oldPhoto": "الصور القديمه",
   "deleteAccount": "مسح الحساب"
