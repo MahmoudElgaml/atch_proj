@@ -16,6 +16,9 @@ class HiveManager {
 
   void _registerAdapter() {
     Hive.registerAdapter(PersonAdapter());
+    Hive.registerAdapter(LocationsAdapter());
+    Hive.registerAdapter(Location0Adapter());
+    Hive.registerAdapter(Location1Adapter());
   }
 
   Future<void> _openBox() async {

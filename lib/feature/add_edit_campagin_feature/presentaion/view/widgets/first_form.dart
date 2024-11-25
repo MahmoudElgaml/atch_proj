@@ -1,3 +1,4 @@
+import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -28,8 +29,7 @@ class FirstForm extends StatelessWidget {
     "elder(+40)": "Elder",
   };
 
-  static List<String> locations =
-      Helper.retrievePerson()?.locations?.keys.toList() ?? [];
+  static List<String> locationMenu = ["First Location", "Seconed Location"];
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +86,7 @@ class FirstForm extends StatelessWidget {
               setValue: (value) {
                 AddCampaignCubit.get(context).selectedLocation = value;
               },
-              items: Map.fromIterable(locations),
+              items: Map.fromIterable({}),
               selectedValue: AddCampaignCubit.get(context).selectedLocation,
               isAuth: false,
             ),

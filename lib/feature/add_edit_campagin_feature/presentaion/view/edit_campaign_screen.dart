@@ -53,8 +53,9 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
   final TextEditingController price = TextEditingController();
 
   final TextEditingController offer = TextEditingController();
-  final List<String> locations =
-      Helper.retrievePerson()?.locations?.keys.toList() ?? [];
+
+  // final List<String> locations =
+  //     Helper.retrievePerson()?.locations?.keys.toList() ?? [];
 
   String selectedLocation = "";
 
@@ -154,11 +155,9 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
 
   EditCampignModel createEditCampaignModel(
       AdvertiseCampaigns campaign, BuildContext context) {
-    print(ChangeDateCubit.get(context).firstDate);
-    print(ChangeDateCubit.get(context).lastDate);
     Map<String, dynamic> selectedLocationAsMap = {};
-    selectedLocationAsMap[selectedLocation] =
-        Helper.retrievePerson()?.locations?[selectedLocation];
+    // selectedLocationAsMap[selectedLocation] =
+    //     Helper.retrievePerson()?.locations?[selectedLocation];
     EditCampignModel editModel = EditCampignModel(
       campaignId: campaign.id,
       oldCampaignImages: OldImageCubit.get(context).myImages,

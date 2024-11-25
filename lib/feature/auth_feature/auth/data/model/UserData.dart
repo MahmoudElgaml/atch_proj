@@ -55,9 +55,9 @@ class Person extends HiveObject {
     role = json['role'];
     username = json['username'];
     wishlist = json['wishlist'] != null ? json['wishlist'].cast<num>() : [];
-    locations = json['location'] != null
-        ? Map<String, dynamic>.from(json['location'])
-        : {};
+    locations = json['locations'] != null
+        ? Locations.fromJson(json['locations'])
+        : null;
   }
 
   @HiveField(1)
@@ -83,7 +83,7 @@ class Person extends HiveObject {
   @HiveField(11)
   List<num>? wishlist;
   @HiveField(12)
-  Map<String, dynamic>? locations;
+  Locations? locations;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -97,7 +97,112 @@ class Person extends HiveObject {
     map['role'] = role;
     map['username'] = username;
     map['wishlist'] = wishlist;
-    map['location'] = locations;
+    if (locations != null) {
+      map['locations'] = locations?.toJson();
+    }
+    return map;
+  }
+}
+
+@HiveType(typeId: 2)
+class Locations {
+  Locations({
+    this.location0,
+    this.location1,
+  });
+
+  Locations.fromJson(dynamic json) {
+    location0 = json['location0'] != null
+        ? Location0.fromJson(json['location0'])
+        : null;
+    location1 = json['location1'] != null
+        ? Location1.fromJson(json['location1'])
+        : null;
+  }
+
+  @HiveField(1)
+  Location0? location0;
+  @HiveField(2)
+  Location1? location1;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    if (location0 != null) {
+      map['location0'] = location0?.toJson();
+    }
+    if (location1 != null) {
+      map['location1'] = location1?.toJson();
+    }
+    return map;
+  }
+}
+
+@HiveType(typeId: 3)
+class Location1 extends Locations {
+  Location1({
+    this.lat,
+    this.link,
+    this.lng,
+    this.name,
+  });
+
+  Location1.fromJson(dynamic json) {
+    lat = json['lat'];
+    link = json['link'];
+    lng = json['lng'];
+    name = json['name'];
+  }
+
+  @HiveField(1)
+  num? lat;
+  @HiveField(2)
+  String? link;
+  @HiveField(3)
+  num? lng;
+  @HiveField(4)
+  String? name;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['lat'] = lat;
+    map['link'] = link;
+    map['lng'] = lng;
+    map['name'] = name;
+    return map;
+  }
+}
+
+@HiveType(typeId: 4)
+class Location0 extends Locations {
+  Location0({
+    this.lat,
+    this.link,
+    this.lng,
+    this.name,
+  });
+
+  Location0.fromJson(dynamic json) {
+    lat = json['lat'];
+    link = json['link'];
+    lng = json['lng'];
+    name = json['name'];
+  }
+
+  @HiveField(1)
+  num? lat;
+  @HiveField(2)
+  String? link;
+  @HiveField(3)
+  num? lng;
+  @HiveField(4)
+  String? name;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['lat'] = lat;
+    map['link'] = link;
+    map['lng'] = lng;
+    map['name'] = name;
     return map;
   }
 }

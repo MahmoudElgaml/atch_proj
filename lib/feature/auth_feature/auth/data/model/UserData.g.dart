@@ -22,7 +22,7 @@ class PersonAdapter extends TypeAdapter<Person> {
       advertiserType: fields[2] as String?,
       email: fields[3] as String?,
       id: fields[4] as num?,
-      locations: (fields[12] as Map?)?.cast<String, dynamic>(),
+      locations: fields[12] as Locations?,
       name: fields[5] as String?,
       profilePic: fields[6] as String?,
       referralCode: fields[7] as dynamic,
@@ -69,6 +69,129 @@ class PersonAdapter extends TypeAdapter<Person> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is PersonAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class LocationsAdapter extends TypeAdapter<Locations> {
+  @override
+  final int typeId = 2;
+
+  @override
+  Locations read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Locations(
+      location0: fields[1] as Location0?,
+      location1: fields[2] as Location1?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Locations obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(1)
+      ..write(obj.location0)
+      ..writeByte(2)
+      ..write(obj.location1);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is LocationsAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class Location1Adapter extends TypeAdapter<Location1> {
+  @override
+  final int typeId = 3;
+
+  @override
+  Location1 read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Location1(
+      lat: fields[1] as num?,
+      link: fields[2] as String?,
+      lng: fields[3] as num?,
+      name: fields[4] as String?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Location1 obj) {
+    writer
+      ..writeByte(4)
+      ..writeByte(1)
+      ..write(obj.lat)
+      ..writeByte(2)
+      ..write(obj.link)
+      ..writeByte(3)
+      ..write(obj.lng)
+      ..writeByte(4)
+      ..write(obj.name);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Location1Adapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class Location0Adapter extends TypeAdapter<Location0> {
+  @override
+  final int typeId = 4;
+
+  @override
+  Location0 read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Location0(
+      lat: fields[1] as num?,
+      link: fields[2] as String?,
+      lng: fields[3] as num?,
+      name: fields[4] as String?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Location0 obj) {
+    writer
+      ..writeByte(4)
+      ..writeByte(1)
+      ..write(obj.lat)
+      ..writeByte(2)
+      ..write(obj.link)
+      ..writeByte(3)
+      ..write(obj.lng)
+      ..writeByte(4)
+      ..write(obj.name);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Location0Adapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

@@ -135,8 +135,8 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
   AddCampaignModel createAddCampaignModel(num? adToken, BuildContext context) {
     var addCampaignCubit = AddCampaignCubit.get(context);
     Map<String, dynamic> theLocation = {};
-    theLocation[addCampaignCubit.selectedLocation] =
-        Helper.retrievePerson()?.locations?[addCampaignCubit.selectedLocation];
+    // theLocation[addCampaignCubit.selectedLocation] =
+    //     Helper.retrievePerson()?.locations?[addCampaignCubit.selectedLocation];
     AddCampaignModel addCampaignModel = AddCampaignModel(
       advertiserId: adToken,
       campaignLocation: theLocation,
