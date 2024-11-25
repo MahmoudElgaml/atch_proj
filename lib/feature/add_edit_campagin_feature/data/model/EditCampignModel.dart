@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../auth_feature/auth/data/model/UserData.dart';
+
 class EditCampignModel {
   EditCampignModel({
     this.campaignId,
@@ -13,7 +15,7 @@ class EditCampignModel {
     this.campaignPrice,
     this.campaignOffer,
     this.campaignVideos,
-    this.campaignLocation,
+    this.locations,
     this.oldCampaignImages,
     this.images,
   });
@@ -29,9 +31,9 @@ class EditCampignModel {
     campaignVideos = json['campaign_videos'] != null
         ? json['campaign_videos'].cast<String>()
         : [];
-    campaignLocation = json['locations'] != null
-        ? Map<String, dynamic>.from(json['locations'])
-        : {};
+    locations = json['locations'] != null
+        ? UserLocations.fromJson(json['locations'])
+        : null;
     oldCampaignImages = json['old_campaign_images'] != null
         ? json['old_campaign_images'].cast<String>()
         : [];
@@ -45,7 +47,7 @@ class EditCampignModel {
   num? campaignPrice;
   num? campaignOffer;
   List<String>? campaignVideos;
-  Map<String, dynamic>? campaignLocation;
+  UserLocations? locations;
   List<String>? oldCampaignImages;
   List<XFile>? images;
 
@@ -59,7 +61,9 @@ class EditCampignModel {
     map['campaign_price'] = campaignPrice;
     map['campaign_offer'] = campaignOffer;
     map['campaign_videos'] = campaignVideos;
-    map['locations'] = campaignLocation;
+    if (locations != null) {
+      map['locations'] = locations?.toJson();
+    }
     map['old_campaign_images'] = oldCampaignImages;
     return map;
   }

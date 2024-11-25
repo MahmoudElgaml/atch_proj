@@ -136,7 +136,7 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
     var addCampaignCubit = AddCampaignCubit.get(context);
     UserLocations? theLocation = UserLocations();
 
-    setTheLocationUponUserSelection(addCampaignCubit, theLocation);
+    Helper.setTheLocationUponUserSelection(addCampaignCubit, theLocation);
 
     AddCampaignModel addCampaignModel = AddCampaignModel(
       advertiserId: adToken,
@@ -152,22 +152,6 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
       images: AddImageCubit.get(context).backendImages,
     );
     return addCampaignModel;
-  }
-
-  void setTheLocationUponUserSelection(
-      AddCampaignCubit addCampaignCubit, UserLocations theLocation) {
-    switch (addCampaignCubit.selectedLocation) {
-      case "First Location":
-        theLocation.location0 = Helper.retrievePerson()?.locations?.location0;
-        break;
-      case "Seconed Location":
-        theLocation.location1 = Helper.retrievePerson()?.locations?.location1;
-        break;
-      case "Both Locations":
-        theLocation.location0 = Helper.retrievePerson()?.locations?.location0;
-        theLocation.location1 = Helper.retrievePerson()?.locations?.location1;
-        break;
-    }
   }
 }
 

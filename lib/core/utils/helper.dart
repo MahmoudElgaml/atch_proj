@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../feature/add_edit_campagin_feature/presentaion/manager/add_campaign_cubit.dart';
 import 'app_color.dart';
 
 abstract class Helper {
@@ -77,6 +78,22 @@ abstract class Helper {
       }
     } catch (e) {
       await launchUrl(Uri.parse(webUrl), mode: LaunchMode.externalApplication);
+    }
+  }
+
+  static setTheLocationUponUserSelection(
+      AddCampaignCubit addCampaignCubit, UserLocations theLocation) {
+    switch (addCampaignCubit.selectedLocation) {
+      case "First Location":
+        theLocation.location0 = Helper.retrievePerson()?.locations?.location0;
+        break;
+      case "Seconed Location":
+        theLocation.location1 = Helper.retrievePerson()?.locations?.location1;
+        break;
+      case "Both Locations":
+        theLocation.location0 = Helper.retrievePerson()?.locations?.location0;
+        theLocation.location1 = Helper.retrievePerson()?.locations?.location1;
+        break;
     }
   }
 }

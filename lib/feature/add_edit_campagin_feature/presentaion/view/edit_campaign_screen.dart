@@ -11,6 +11,7 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/wid
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/first_form.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/old_image_section.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/widgets/price_offer_section.dart';
+import 'package:atch_proj/feature/auth_feature/auth/data/model/UserData.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -155,7 +156,9 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
 
   EditCampignModel createEditCampaignModel(
       AdvertiseCampaigns campaign, BuildContext context) {
-    Map<String, dynamic> selectedLocationAsMap = {};
+    AddCampaignCubit addCampaignCubit = AddCampaignCubit.get(context);
+    UserLocations theLocation = UserLocations();
+    Helper.setTheLocationUponUserSelection(addCampaignCubit, theLocation);
     // selectedLocationAsMap[selectedLocation] =
     //     Helper.retrievePerson()?.locations?[selectedLocation];
     EditCampignModel editModel = EditCampignModel(
@@ -164,7 +167,7 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
       campaignPrice: int.parse(price.text),
       campaignOffer: offer.text == "" ? null : int.parse(offer.text),
       campaignDescription: description.text,
-      campaignLocation: selectedLocationAsMap,
+      locations: theLocation,
       campaignStartDate: ChangeDateCubit.get(context).firstDate,
       campaignEndDate: ChangeDateCubit.get(context).lastDate,
       campaignName: companyName.text,
