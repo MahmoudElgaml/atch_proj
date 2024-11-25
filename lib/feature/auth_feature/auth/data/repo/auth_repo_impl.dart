@@ -16,8 +16,10 @@ class AuthRepoImpl implements AuthRepo {
   APiManger aPiManger;
   HiveManager hiveManager;
 
-  AuthRepoImpl(this.aPiManger,this.storageToken,this.hiveManager);
-StorageToken storageToken;
+  AuthRepoImpl(this.aPiManger, this.storageToken, this.hiveManager);
+
+  StorageToken storageToken;
+
   @override
   Future<Either<Failure, String>> sign(SignDataTest signData) async {
     try {
@@ -27,7 +29,6 @@ StorageToken storageToken;
       return right("success");
     } catch (e) {
       if (e is DioException) {
-
         return left(ServerFailure.fromServer(e));
       } else {
         return left(ServerFailure(e.toString()));
@@ -46,14 +47,14 @@ StorageToken storageToken;
 
       UserData userData = UserData.fromJson(response.data);
 
-     await hiveManager.cacheData<Person>(boxKey: HiveKeys.userBox,dataItem: userData.person);
+      await hiveManager.cacheData<Person>(
+          boxKey: HiveKeys.userBox, dataItem: userData.person);
       storageToken.setToken(userData.person!.id.toString());
-
 
       return right(userData);
     } catch (e) {
       if (e is DioException) {
-       print( ServerFailure.fromServer(e).statusCode);
+        print(ServerFailure.fromServer(e).statusCode);
         return left(ServerFailure.fromServer(e));
       } else {
         return left(ServerFailure(e.toString()));
@@ -61,4 +62,3 @@ StorageToken storageToken;
     }
   }
 }
-

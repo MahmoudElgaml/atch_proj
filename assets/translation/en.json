@@ -1,6 +1,6 @@
 {
   "popular": "Popular Campaign",
-  "All": "All Advertise",
+  "All": "All campaign",
   "Factory": "Factory",
   "Shop": "Shop",
   "Supermarket": "Supermarket",
@@ -45,5 +45,6 @@
   "bAddCampaign": "Add Campaign",
   "campaignName": "Campaign Name",
   "description": "Description",
-  "oldPhoto": "Old Photo "
+  "oldPhoto": "Old Photo",
+  "deleteAccount": "DeleteAccount"
 }

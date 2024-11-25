@@ -10,7 +10,7 @@ class CustomDropMenu extends StatefulWidget {
       required this.selectedValue,
       required this.isAuth,
       required this.setValue,
-       this.isLang});
+      this.isLang});
 
   @override
   State<CustomDropMenu> createState() => _CustomDropMenuState();
@@ -18,7 +18,7 @@ class CustomDropMenu extends StatefulWidget {
   final Map<String, String> items;
 
   final bool isAuth;
-   bool? isLang=false;
+  bool? isLang = false;
   final void Function(String value) setValue;
 }
 
@@ -47,7 +47,6 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
             widget.selectedValue = value ?? "Factory";
           });
           changeLangFunction(context);
-
         },
         buttonStyleData: ButtonStyleData(
           decoration: BoxDecoration(
@@ -68,7 +67,7 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
   }
 
   void changeLangFunction(BuildContext context) {
-    if (widget.isLang??false) {
+    if (widget.isLang ?? false) {
       if (widget.selectedValue == "Arabic") {
         if (context.locale.toString() == "en") {
           context.setLocale(const Locale('ar'));

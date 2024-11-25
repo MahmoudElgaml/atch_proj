@@ -33,7 +33,7 @@ class AllAds extends StatelessWidget {
                 var campaigns =
                     GetNormalCampaignCubit.get(context).popularCampaign;
                 return SizedBox(
-                  height: 250,
+                  height: 300,
                   child: ListView.separated(
                     separatorBuilder: (context, index) => const Gap(10),
                     itemBuilder: (context, index) => AdsItem(

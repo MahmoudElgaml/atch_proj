@@ -39,9 +39,13 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
     "elder(+40)": "Elder",
   };
 
+  final List<String> locations =
+      Helper.retrievePerson()?.locations?.keys.toList() ?? [];
+
+  String selectedLocation =
+      Helper.retrievePerson()?.locations?.keys.first ?? "";
   final TextEditingController companyName = TextEditingController();
-  final List<String> locations = Helper.retrievePerson()?.locations ?? [];
-  String selectedLocation = Helper.retrievePerson()?.locations?.first ?? "";
+
   final TextEditingController description = TextEditingController();
 
   final TextEditingController price = TextEditingController();
@@ -51,6 +55,15 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
   final LinkFeatureCubit linkCubit = getIt<LinkFeatureCubit>();
 
   var validateState = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    companyName.dispose();
+    description.dispose();
+    price.dispose();
+    offer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -158,9 +171,12 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
                         ),
                         const Gap(19),
                         CustomCampaignTextFiled(
-                          validator: (value) =>
-                              ValidationService.validateEmpty(value, "offer"),
                           textInputType: TextInputType.number,
+                          validator: (value) => AddCampaignCubit.get(context)
+                              .validateOfferUponPrice(
+                            offer: value ?? "",
+                            price: price.text,
+                          ),
                           textEditingController: offer,
                           hint: "Offer",
                           maxLine: 1,
@@ -201,15 +217,17 @@ class _AddCampaignScreenState extends State<AddCampaignScreen> {
   }
 
   AddCampaignModel createAddCampaignModel(num? adToken, BuildContext context) {
+    Map<String, dynamic> theLocation = {};
+    theLocation[selectedLocation] =
+        Helper.retrievePerson()?.locations?[selectedLocation];
     AddCampaignModel addCampaignModel = AddCampaignModel(
       advertiserId: adToken,
+      campaignLocation: theLocation,
       campaignPrice: int.parse(price.text),
-      campaignOffer: int.parse(offer.text),
+      campaignOffer: offer.text == "" ? null : int.parse(offer.text),
       campaignDescription: description.text,
-      campaignStartDate:
-          ChangeDateCubit.get(context).firstDate,
+      campaignStartDate: ChangeDateCubit.get(context).firstDate,
       campaignEndDate: ChangeDateCubit.get(context).lastDate,
-      campaignLocation: [selectedLocation],
       campaignName: companyName.text,
       campaignTargetAudience: selectedValue,
       campaignVideos: linkCubit.links,

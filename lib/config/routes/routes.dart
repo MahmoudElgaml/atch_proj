@@ -7,11 +7,14 @@ import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/manager/old_image_cubit.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/add_campaign_screen.dart';
 import 'package:atch_proj/feature/add_edit_campagin_feature/presentaion/view/edit_campaign_screen.dart';
+import 'package:atch_proj/feature/adv_detail_feature/data/model/DetailCampaignModel.dart';
+import 'package:atch_proj/feature/advertiser_info_feature/presentaion/manager/adv_info_cubit.dart';
 import 'package:atch_proj/feature/advertiser_info_feature/presentaion/view/advertiser_info_page.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/login_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_user_screen.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/pages/sign_up_advertise.dart';
 import 'package:atch_proj/feature/adv_detail_feature/prsentation/view/pages/ad_details_screen.dart';
+import 'package:atch_proj/feature/home_layout_feature/presentation/manager/drawer_cubit.dart';
 import 'package:atch_proj/feature/home_layout_feature/presentation/manager/home_layout_cubit.dart';
 import 'package:atch_proj/feature/qr_offer_feature/presentation/manger/qr_offer_cubit.dart';
 import 'package:atch_proj/feature/qr_offer_feature/presentation/view/pages/qr_offer_screen.dart';
@@ -19,12 +22,14 @@ import 'package:atch_proj/feature/setting_feature/presentaion/view/setting_scree
 import 'package:atch_proj/feature/unite_testing/manger/test_cubit.dart';
 import 'package:atch_proj/feature/unite_testing/test_view.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:go_router/go_router.dart';
 
 import '../../feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
-import '../../feature/home_layout_feature/presentation/view/home_screen.dart';
+import '../../feature/home_layout_feature/presentation/view/pages/all_ads_screen.dart';
+import '../../feature/home_layout_feature/presentation/view/pages/home_screen.dart';
 import '../../feature/splash_feature/presentation/view/splash_view.dart';
 
 class AppRoute {
@@ -41,6 +46,7 @@ class AppRoute {
   static const String editCampaign = "/editCampaign";
   static const String qrOffer = "/qrOffer";
   static const String setting = "/settings";
+  static const String allAds = "/allAds";
 
   static final router = GoRouter(
     routes: [
@@ -81,7 +87,6 @@ class AppRoute {
       ),
       GoRoute(
         path: addCampaign,
-
         builder: (context, state) => MultiBlocProvider(
           providers: [
             BlocProvider(
@@ -98,7 +103,6 @@ class AppRoute {
             ),
           ],
           child: const AddCampaignScreen(),
-
         ),
       ),
       GoRoute(
@@ -110,24 +114,17 @@ class AppRoute {
       ),
       GoRoute(
         path: advertiserInfoPage,
-        builder: (context, state) => const AdvertiserInfoPage(),
+        builder: (context, state) => BlocProvider(
+          create: (context) {
+            var detailAdv = state.extra as DetailAdvertiser;
+            var advId = detailAdv.id;
+            return getIt<AdvInfoCubit>()..getAdvCampaigns(advId);
+          },
+          child: const AdvertiserInfoPage(),
+        ),
       ),
       GoRoute(
         path: editUserPage,
-        pageBuilder: (context, state) {
-          return CustomTransitionPage(
-            transitionDuration: const Duration(seconds: 1),
-            key: state.pageKey,
-            child: const EditAccountScreen(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return FadeTransition(
-                opacity: CurveTween(curve: Curves.easeInOut).animate(animation),
-                child: child,
-              );
-            },
-          );
-        },
         builder: (context, state) => const EditAccountScreen(),
       ),
       GoRoute(
@@ -164,6 +161,13 @@ class AppRoute {
         path: setting,
         builder: (context, state) => const SettingScreen(),
       ),
+      GoRoute(
+        path: allAds,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<DrawerCubit>(),
+          child: const AllAdsScreen(),
+        ),
+      )
     ],
   );
 }

@@ -45,7 +45,7 @@ class Person extends HiveObject {
 
   Person.fromJson(dynamic json) {
     about = json['about'];
-    age = json["age"];
+    age = json['age'];
     advertiserType = json['advertiser_type'];
     email = json['email'];
     id = json['id'];
@@ -55,7 +55,9 @@ class Person extends HiveObject {
     role = json['role'];
     username = json['username'];
     wishlist = json['wishlist'] != null ? json['wishlist'].cast<num>() : [];
-    locations = json['location'] != null ? json['location'].cast<String>() : [];
+    locations = json['location'] != null
+        ? Map<String, dynamic>.from(json['location'])
+        : {};
   }
 
   @HiveField(1)
@@ -81,12 +83,11 @@ class Person extends HiveObject {
   @HiveField(11)
   List<num>? wishlist;
   @HiveField(12)
-  List<String>? locations;
+  Map<String, dynamic>? locations;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['about'] = about;
-
     map['advertiser_type'] = advertiserType;
     map['email'] = email;
     map['id'] = id;

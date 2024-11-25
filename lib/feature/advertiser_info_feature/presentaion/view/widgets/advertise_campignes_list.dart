@@ -6,23 +6,20 @@ import 'package:gap/gap.dart';
 
 
 class AdvertiseCampaignsList extends StatelessWidget {
-  const AdvertiseCampaignsList(
-      {super.key, required this.advId, required this.advInfoCubit});
+  const AdvertiseCampaignsList({super.key, required this.advId,});
 
   final num? advId;
-  final AdvInfoCubit advInfoCubit;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AdvInfoCubit, AdvInfoState>(
-      bloc: advInfoCubit,
       builder: (context, state) {
         if (state is AdvInfoFailState) {
           return Center(
             child: Text(state.message),
           );
         } else if (state is AdvInfoSuccessState) {
-          var advCampaigns = advInfoCubit.advCampaigns;
+          var advCampaigns = AdvInfoCubit.get(context).advCampaigns;
           return ListView.separated(
             itemBuilder: (context, index) => CampaignItem(
               campaigns: advCampaigns[index],
