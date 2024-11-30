@@ -51,8 +51,8 @@ class AdvertiseCampaigns {
   num? id;
   List<String>? images;
 
-  // Updated locations from List<String> to Map<String, dynamic>
-  Map<String, dynamic>? locations;
+  // Convert locations back to Locations type
+  Locations? locations;
 
   num? offer;
   num? price;
@@ -85,9 +85,9 @@ class AdvertiseCampaigns {
     id = json['id'];
     images = json['images'] != null ? json['images'].cast<String>() : [];
 
-    // Parse locations as Map<String, dynamic>
+    // Convert locations back to Locations type
     locations = json['locations'] != null
-        ? Map<String, dynamic>.from(json['locations'])
+        ? Locations.fromJson(json['locations'])
         : null;
 
     offer = json['offer'];
@@ -105,7 +105,7 @@ class AdvertiseCampaigns {
     String? endDate,
     num? id,
     List<String>? images,
-    Map<String, dynamic>? locations,
+    Locations? locations,
     num? offer,
     num? price,
     String? startDate,
@@ -124,9 +124,7 @@ class AdvertiseCampaigns {
           : List<String>.from(this.images ?? []),
 
       // Use the provided locations or fallback to the current ones
-      locations: locations != null
-          ? Map<String, dynamic>.from(locations)
-          : Map<String, dynamic>.from(this.locations ?? {}),
+      locations: locations ?? this.locations?.copyWith(),
 
       offer: offer ?? this.offer,
       price: price ?? this.price,
@@ -148,8 +146,10 @@ class AdvertiseCampaigns {
     map['id'] = id;
     map['images'] = images;
 
-    // Convert locations back to Map<String, dynamic>
-    map['locations'] = locations;
+    // Convert locations back to Locations type
+    if (locations != null) {
+      map['locations'] = locations?.toJson();
+    }
 
     map['offer'] = offer;
     map['price'] = price;
@@ -167,8 +167,8 @@ class Advertiser {
   String? email;
   num? id;
 
-  // Updated locations from List<String> to Map<String, dynamic>
-  Map<String, dynamic>? locations;
+  // Convert locations back to Locations type
+  Locations? locations;
 
   String? name;
   List<String>? phones;
@@ -195,9 +195,9 @@ class Advertiser {
     email = json['email'];
     id = json['id'];
 
-    // Parse locations as Map<String, dynamic>
+    // Convert locations back to Locations type
     locations = json['locations'] != null
-        ? Map<String, dynamic>.from(json['locations'])
+        ? Locations.fromJson(json['locations'])
         : null;
 
     name = json['name'];
@@ -212,7 +212,7 @@ class Advertiser {
     String? advertiserType,
     String? email,
     num? id,
-    Map<String, dynamic>? locations,
+    Locations? locations,
     String? name,
     List<String>? phones,
     String? profilePic,
@@ -226,9 +226,7 @@ class Advertiser {
       id: id ?? this.id,
 
       // Use the provided locations or fallback to the current ones
-      locations: locations != null
-          ? Map<String, dynamic>.from(locations)
-          : Map<String, dynamic>.from(this.locations ?? {}),
+      locations: locations ?? this.locations?.copyWith(),
 
       name: name ?? this.name,
       phones: phones != null
@@ -247,8 +245,10 @@ class Advertiser {
     map['email'] = email;
     map['id'] = id;
 
-    // Convert locations back to Map<String, dynamic>
-    map['locations'] = locations;
+    // Convert locations back to Locations type
+    if (locations != null) {
+      map['locations'] = locations?.toJson();
+    }
 
     map['name'] = name;
     map['phones'] = phones;
@@ -256,5 +256,135 @@ class Advertiser {
     map['referral_code'] = referralCode;
     map['username'] = username;
     return map;
+  }
+}
+
+class Locations {
+  Locations({
+    this.location0,
+    this.location1,
+  });
+
+  Locations.fromJson(dynamic json) {
+    location0 = json['location0'] != null
+        ? Location0.fromJson(json['location0'])
+        : null;
+    location1 = json['location1'] != null
+        ? Location1.fromJson(json['location1'])
+        : null;
+  }
+
+  Location0? location0;
+  Location1? location1;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    if (location0 != null) {
+      map['location0'] = location0?.toJson();
+    }
+    if (location1 != null) {
+      map['location1'] = location1?.toJson();
+    }
+    return map;
+  }
+
+  Locations copyWith({
+    Location0? location0,
+    Location1? location1,
+  }) {
+    return Locations(
+      location0: location0 ?? this.location0?.copyWith(),
+      location1: location1 ?? this.location1?.copyWith(),
+    );
+  }
+}
+
+class Location1 {
+  Location1({
+    this.lat,
+    this.link,
+    this.lng,
+    this.name,
+  });
+
+  Location1.fromJson(dynamic json) {
+    lat = json['lat'];
+    link = json['link'];
+    lng = json['lng'];
+    name = json['name'];
+  }
+
+  num? lat;
+  String? link;
+  num? lng;
+  String? name;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['lat'] = lat;
+    map['link'] = link;
+    map['lng'] = lng;
+    map['name'] = name;
+    return map;
+  }
+
+  // add copy with
+  Location1 copyWith({
+    num? lat,
+    String? link,
+    num? lng,
+    String? name,
+  }) {
+    return Location1(
+      lat: lat ?? this.lat,
+      link: link ?? this.link,
+      lng: lng ?? this.lng,
+      name: name ?? this.name,
+    );
+  }
+}
+
+class Location0 {
+  Location0({
+    this.lat,
+    this.link,
+    this.lng,
+    this.name,
+  });
+
+  Location0.fromJson(dynamic json) {
+    lat = json['lat'];
+    link = json['link'];
+    lng = json['lng'];
+    name = json['name'];
+  }
+
+  num? lat;
+  String? link;
+  num? lng;
+  String? name;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['lat'] = lat;
+    map['link'] = link;
+    map['lng'] = lng;
+    map['name'] = name;
+    return map;
+  }
+
+  // add copy with
+  Location0 copyWith({
+    num? lat,
+    String? link,
+    num? lng,
+    String? name,
+  }) {
+    return Location0(
+      lat: lat ?? this.lat,
+      link: link ?? this.link,
+      lng: lng ?? this.lng,
+      name: name ?? this.name,
+    );
   }
 }

@@ -184,6 +184,6 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
     offer.text = campaign.offer == null ? "" : campaign.offer.toString();
     AddCampaignCubit.get(context).selectedAudience =
         campaign.targetAudience ?? "";
-    selectedLocation = campaign.locations?.entries.first.key ?? "";
+    selectedLocation = campaign.locations?.location0?.name ?? "";
   }
 }

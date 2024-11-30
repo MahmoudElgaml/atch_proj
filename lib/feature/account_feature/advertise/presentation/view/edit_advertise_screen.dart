@@ -198,12 +198,11 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
     companyName.text = advertiser.name ?? "";
     email.text = advertiser.email ?? "";
     username.text = advertiser.name ?? "";
-    location1.text = advertiser.locations?.entries.first.key ?? "";
-    location1Link.text = advertiser.locations?.entries.first.value ?? "";
-    if (advertiser.locations!.length > 1) {
-      location2.text = advertiser.locations?.entries.last.key ?? "";
-      location2Link.text = advertiser.locations?.entries.last.value ?? "";
-    }
+    location1.text = advertiser.locations?.location0?.name ?? "";
+    location1Link.text = advertiser.locations?.location0?.link ?? "";
+
+    location2.text = advertiser.locations?.location1?.name ?? "";
+    location2Link.text = advertiser.locations?.location1?.link ?? "";
 
     phone1.text = advertiser.phones?[0] ?? "";
     phone2.text = (advertiser.phones!.length > 1) ? advertiser.phones![1] : "";
