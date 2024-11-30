@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../home_feature/data/model/CampaignModel.dart';
+
 part 'advertise_info_state.dart';
 
 @injectable
@@ -63,5 +65,13 @@ class AdvertiseInfoCubit extends Cubit<AdvertiseInfoState> {
     );
   }
 
-
+  getUnApproveCampaigns() async {
+    emit(AdvertiseAccountGetUnApproveLoadingState());
+    var result = await advertiseAccountRepo.getAdvertiserUnApprovedCampaign();
+    result.fold((fail) {
+      emit(AdvertiseAccountGetUnApproveFailState(fail.message));
+    }, (campaigns) {
+      emit(AdvertiseAccountGetUnApproveSuccessState(campaigns));
+    });
+  }
 }

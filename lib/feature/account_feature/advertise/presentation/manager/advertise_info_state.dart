@@ -13,4 +13,16 @@ final  String message;
   AdvertiseAccountFailState(this.message);
 }
 
+class AdvertiseAccountGetUnApproveLoadingState extends AdvertiseInfoState {}
 
+class AdvertiseAccountGetUnApproveSuccessState extends AdvertiseInfoState {
+  final CampaignModel campaignModel;
+
+  AdvertiseAccountGetUnApproveSuccessState(this.campaignModel);
+}
+
+class AdvertiseAccountGetUnApproveFailState extends AdvertiseInfoState {
+  final String message;
+
+  AdvertiseAccountGetUnApproveFailState(this.message);
+}
