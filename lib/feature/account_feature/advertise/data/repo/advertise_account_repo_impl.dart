@@ -3,6 +3,7 @@ import 'package:atch_proj/core/api/end_points.dart';
 import 'package:atch_proj/core/cache/storage_token.dart';
 import 'package:atch_proj/core/erorr/failure.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/model/EditAdvertiseData.dart';
+import 'package:atch_proj/feature/home_feature/data/model/CampaignModel.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -83,6 +84,25 @@ class AdvertiseAccountRepoImpl implements AdvertiseAccountRepo {
         },
       );
       return right("success");
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromServer(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, CampaignModel>>
+      getAdvertiserUnApprovedCampaign() async {
+    try {
+      var id = await storageToken.getToken();
+      var response = await aPiManger.post(EndPoints.unApprovedCampaign, {
+        "advertiser_id": id,
+      });
+      CampaignModel campaignModel = CampaignModel.fromJson(response.data);
+      return right(campaignModel);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromServer(e));
