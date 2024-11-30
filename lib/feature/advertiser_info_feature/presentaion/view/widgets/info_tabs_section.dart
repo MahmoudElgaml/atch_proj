@@ -20,7 +20,7 @@ class InfoTabsSection extends StatelessWidget {
         child: SizedBox(
           height: MediaQuery.sizeOf(context).height * .53,
           child: DefaultTabController(
-            length: 2,
+            length: 3,
             child: Column(
               children: [
                 const CustomTabsWidget(),
@@ -65,6 +65,12 @@ class CustomTabsWidget extends StatelessWidget {
         Tab(
           child: Text(
             context.tr("campaigns"),
+            style: AppStyle.style14Regular(context),
+          ),
+        ),
+        Tab(
+          child: Text(
+            context.tr("Un Approved"),
             style: AppStyle.style14Regular(context),
           ),
         ),

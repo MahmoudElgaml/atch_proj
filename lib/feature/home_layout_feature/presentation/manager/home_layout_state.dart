@@ -46,12 +46,13 @@ class AccountState extends HomeLayoutState {
   Widget viewTap() => MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) =>
-                getIt<AdvertiseInfoCubit>()..getAdvertiseInfo(),
+            create: (context) => getIt<AdvertiseInfoCubit>()
+              ..getAdvertiseInfo()
+              ..getUnApproveCampaigns(),
           ),
           BlocProvider(
             create: (context) => getIt<DeleteAccountCubit>(),
-          )
+          ),
         ],
         child: const AccountScreen(),
       );
