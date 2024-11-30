@@ -82,8 +82,8 @@ class AdWishlistItem extends StatelessWidget {
                                     ),
                                     const Gap(5),
                                     Text(
-                                      campaigns.locations?.entries.first.key ??
-                                          "",
+                                      campaigns.locations?.location0?.name ??
+                                          " No Location ",
                                       style: AppStyle.style16Regular(context),
                                     ),
                                   ],

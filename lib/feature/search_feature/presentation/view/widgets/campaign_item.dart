@@ -44,8 +44,10 @@ class CampaignItem extends StatelessWidget {
                           ? ""
                           : "${EndPoints.baseUrl}${campaigns.images?[0]}" ?? "",
                       fit: BoxFit.fill,
-                      errorWidget: (context, url, error) =>
-                          SvgPicture.asset(Assets.imagesEmptyImage),
+                      errorWidget: (context, url, error) => SvgPicture.asset(
+                        Assets.imagesEmptyImage,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
@@ -70,17 +72,22 @@ class CampaignItem extends StatelessWidget {
                                 style: AppStyle.style24Medium(context),
                               ),
                             ),
-                            Row(
-                              children: [
-                                SvgPicture.asset(
-                                  Assets.imagesNewLocation,
-                                ),
-                                const Gap(5),
-                                Text(
-                                  campaigns.locations?.entries.first.key ?? "",
-                                  style: AppStyle.style16Regular(context),
-                                ),
-                              ],
+                            FittedBox(
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    Assets.imagesNewLocation,
+                                  ),
+                                  const Gap(5),
+                                  FittedBox(
+                                    child: Text(
+                                      campaigns.locations?.location0?.name ??
+                                          " No Location ",
+                                      style: AppStyle.style16Regular(context),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             )
                           ],
                         ),

@@ -58,7 +58,7 @@ class AdDetailsSection extends StatelessWidget {
                 const Gap(25),
                 AdDetailsLocationWidget(
                   Assets.imagesLocation,
-                  campaign?.locations?.entries.toList() ?? [],
+                  campaign?.locations,
                 ),
                 const Gap(25),
                 InkWell(

@@ -35,10 +35,7 @@ class AdsItemDetails extends StatelessWidget {
                     color: Color(0xff8c8c8c),
                   ),
                   Text(
-                    campaigns!.locations!.isEmpty
-                        ? "No Location"
-                        : campaigns?.locations?.keys.toList().first ??
-                            "No Location",
+                    campaigns?.locations?.location0?.name ?? " No Location ",
                     style: AppStyle.style12Regular(context).copyWith(
                         color: const Color(0xff8c8c8c),
                         fontWeight: FontWeight.w500),
