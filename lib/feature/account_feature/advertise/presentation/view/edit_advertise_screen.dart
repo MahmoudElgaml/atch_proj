@@ -4,6 +4,7 @@ import 'package:atch_proj/core/services/validation_service.dart';
 import 'package:atch_proj/core/utils/helper.dart';
 import 'package:atch_proj/feature/account_feature/advertise/data/model/AdvertiseInfo.dart';
 import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
+import 'package:atch_proj/feature/map_feature/presentation/manager/map_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -190,14 +191,14 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
     }
     LocationsForEdit locations = LocationsForEdit(
       location0: Location0ForEdit(
-        lat: AdvertiseInfoCubit.get(context).firstLocation?.latitude,
-        lng: AdvertiseInfoCubit.get(context).firstLocation?.longitude,
+        lat: MapCubit.get(context).firstLocation?.latitude,
+        lng: MapCubit.get(context).firstLocation?.longitude,
         name: location1.text,
         link: location1Link.text,
       ),
       location1: Location1ForEdit(
-        lat: AdvertiseInfoCubit.get(context).secondLocation?.latitude,
-        lng: AdvertiseInfoCubit.get(context).secondLocation?.longitude,
+        lat: MapCubit.get(context).secondLocation?.latitude,
+        lng: MapCubit.get(context).secondLocation?.longitude,
         name: location2.text,
         link: location2Link.text,
       ),

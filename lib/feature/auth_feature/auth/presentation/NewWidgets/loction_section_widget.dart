@@ -2,6 +2,8 @@ import 'package:atch_proj/config/routes/navigation_helper.dart';
 import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
+import 'package:atch_proj/feature/map_feature/map_setting_model.dart';
+import 'package:atch_proj/feature/map_feature/presentation/manager/map_cubit.dart';
 import 'package:atch_proj/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -82,7 +84,13 @@ class Location1Section extends StatelessWidget {
                 shadowColor: WidgetStateProperty.all(Colors.grey[50]),
               ),
               onPressed: () {
-                context.push(AppRoute.mapPage, extra: true);
+                context.push(
+                  AppRoute.mapPage,
+                  extra: MapSettingModel(
+                    isFirstLocation: true,
+                    mapCubit: MapCubit.get(context),
+                  ),
+                );
               },
               icon: SvgPicture.asset(
                 width: 35,
@@ -148,7 +156,13 @@ class Location2Section extends StatelessWidget {
                 shadowColor: WidgetStateProperty.all(Colors.grey[50]),
               ),
               onPressed: () {
-                context.push(AppRoute.mapPage, extra: false);
+                context.push(
+                  AppRoute.mapPage,
+                  extra: MapSettingModel(
+                    isFirstLocation: false,
+                    mapCubit: MapCubit.get(context),
+                  ),
+                );
               },
               icon: SvgPicture.asset(
                 width: 35,

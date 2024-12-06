@@ -16,8 +16,6 @@ class AdvertiseInfoCubit extends Cubit<AdvertiseInfoState> {
   AdvertiseAccountRepo advertiseAccountRepo;
   AdvertiseInfoModel? advertiseInfoModel;
   bool isDone = false;
-  LatLng? firstLocation;
-  LatLng? secondLocation;
 
   static AdvertiseInfoCubit get(context) => BlocProvider.of(context);
 

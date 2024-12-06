@@ -3,6 +3,7 @@ import 'package:atch_proj/core/cache/hive/hive_manager.dart';
 import 'package:atch_proj/core/utils/app_color.dart';
 import 'package:atch_proj/feature/account_feature/advertise/presentation/manager/advertise_info_cubit.dart';
 import 'package:atch_proj/feature/account_feature/user/presentation/manager/edit_user_cubit.dart';
+import 'package:atch_proj/feature/map_feature/presentation/manager/map_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,22 +28,27 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.PrimaryColor,
-        toolbarHeight: MediaQuery
-            .sizeOf(context)
-            .height * .22,
+        toolbarHeight: MediaQuery.sizeOf(context).height * .22,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 36),
         child: SingleChildScrollView(
           child: role == "user"
               ? BlocProvider(
-            create: (context) => getIt<EditUserCubit>(),
-            child: const UserEditScreen(),
-          )
-              : BlocProvider(
-            create: (context) => getIt<AdvertiseInfoCubit>(),
-            child: const AdvertiseEditScreen(),
-          ),
+                  create: (context) => getIt<EditUserCubit>(),
+                  child: const UserEditScreen(),
+                )
+              : MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => getIt<AdvertiseInfoCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => MapCubit(),
+                    ),
+                  ],
+                  child: const AdvertiseEditScreen(),
+                ),
         ),
       ),
     );

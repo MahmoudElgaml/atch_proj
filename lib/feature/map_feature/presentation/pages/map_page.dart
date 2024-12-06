@@ -1,8 +1,12 @@
 import 'package:atch_proj/config/routes/navigation_helper.dart';
+import 'package:atch_proj/config/routes/routes.dart';
 import 'package:atch_proj/core/services/snack_bar_services.dart';
 import 'package:atch_proj/core/utils/app_style.dart';
 import 'package:atch_proj/feature/auth_feature/auth/presentation/manger/auth_cubit.dart';
+import 'package:atch_proj/feature/map_feature/map_setting_model.dart';
+import 'package:atch_proj/feature/map_feature/presentation/manager/map_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
@@ -21,7 +25,8 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isFirstLocation = GoRouterState.of(context).extra! as bool;
+    MapSettingModel mapSettingModel =
+        GoRouterState.of(context).extra! as MapSettingModel;
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -47,10 +52,10 @@ class _MapPageState extends State<MapPage> {
               child: FlutterMap(
                 options: MapOptions(
                   onTap: (tapPosition, point) {
-                    if (isFirstLocation) {
-                      AuthCubit.get(context).firstLocation = point;
+                    if (mapSettingModel.isFirstLocation) {
+                      mapSettingModel.mapCubit.firstLocation = point;
                     } else {
-                      AuthCubit.get(context).secondLocation = point;
+                      mapSettingModel.mapCubit.secondLocation = point;
                     }
 
                     setState(() {
