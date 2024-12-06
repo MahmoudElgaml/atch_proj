@@ -47,8 +47,7 @@ class AccountState extends HomeLayoutState {
         providers: [
           BlocProvider(
             create: (context) => getIt<AdvertiseInfoCubit>()
-              ..getAdvertiseInfo()
-              ..getUnApproveCampaigns(),
+              ..getAdvertiseInfo(),
           ),
           BlocProvider(
             create: (context) => getIt<DeleteAccountCubit>(),

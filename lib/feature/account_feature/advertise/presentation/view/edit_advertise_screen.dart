@@ -48,6 +48,23 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
   bool isClicked = false;
 
   @override
+  void dispose() {
+    username.dispose();
+    email.dispose();
+    password.dispose();
+    companyName.dispose();
+    phone1.dispose();
+    phone2.dispose();
+    location1.dispose();
+    location1Link.dispose();
+    location2.dispose();
+    location2Link.dispose();
+    about.dispose();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final Advertiser advertiser =
         GoRouterState.of(context).extra! as Advertiser;
@@ -171,12 +188,20 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
     if (phone2.text != "") {
       phones.add(phone2.text);
     }
-    Map<String, dynamic>? locations = {};
-    locations[location1.text] = location1Link.text;
-
-    if (location2.text != "") {
-      locations[location2.text] = location2Link.text;
-    }
+    LocationsForEdit locations = LocationsForEdit(
+      location0: Location0ForEdit(
+        lat: AdvertiseInfoCubit.get(context).firstLocation?.latitude,
+        lng: AdvertiseInfoCubit.get(context).firstLocation?.longitude,
+        name: location1.text,
+        link: location1Link.text,
+      ),
+      location1: Location1ForEdit(
+        lat: AdvertiseInfoCubit.get(context).secondLocation?.latitude,
+        lng: AdvertiseInfoCubit.get(context).secondLocation?.longitude,
+        name: location2.text,
+        link: location2Link.text,
+      ),
+    );
 
     EditAdvertiseData advertise = EditAdvertiseData(
       password: password.text,
@@ -184,7 +209,7 @@ class _AdvertiseEditScreenState extends State<AdvertiseEditScreen> {
       visa: "5050",
       advertiserId: advertiser.id,
       about: about.text,
-      advertiserLocation: locations,
+      locations: locations,
       oldImage: isClicked ? null : Helper.retrievePerson()?.profilePic,
       advertiserPhones: phones,
       name: companyName.text,

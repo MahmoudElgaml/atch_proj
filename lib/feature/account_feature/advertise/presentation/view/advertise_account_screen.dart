@@ -54,6 +54,9 @@ class AdvertiseAccountTaps extends StatelessWidget {
                   if (state is AdvertiseAccountDeleteCampaignSuccessState) {
                     AdvertiseInfoCubit.get(context).getAdvertiseInfo();
                   }
+                  if (state is AdvertiseAccountSuccessState) {
+                    AdvertiseInfoCubit.get(context).getUnApproveCampaigns();
+                  }
                 },
                 builder: (context, state) {
                   if (state is AdvertiseAccountFailState) {

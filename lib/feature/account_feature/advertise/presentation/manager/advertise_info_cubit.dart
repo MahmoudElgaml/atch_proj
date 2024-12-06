@@ -3,6 +3,7 @@ import 'package:atch_proj/feature/account_feature/advertise/data/model/EditAdver
 import 'package:atch_proj/feature/account_feature/advertise/data/repo/advertise_account_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../home_feature/data/model/CampaignModel.dart';
@@ -15,6 +16,8 @@ class AdvertiseInfoCubit extends Cubit<AdvertiseInfoState> {
   AdvertiseAccountRepo advertiseAccountRepo;
   AdvertiseInfoModel? advertiseInfoModel;
   bool isDone = false;
+  LatLng? firstLocation;
+  LatLng? secondLocation;
 
   static AdvertiseInfoCubit get(context) => BlocProvider.of(context);
 
