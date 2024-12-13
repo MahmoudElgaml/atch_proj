@@ -67,6 +67,7 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.blue,
+        
       ),
       useInheritedMediaQuery: true,
       builder: EasyLoading.init(),
